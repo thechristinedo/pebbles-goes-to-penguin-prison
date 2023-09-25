@@ -1,16 +1,16 @@
 # Pebbles Goes to Penguin Prison
 
-# Table of Contents
+## Table of Contents
 
-# Introduction
+## Introduction
 
-# Features
+## Features
 
-# Installation & Setup
+## Installation & Setup
 
-# How to Play
+## How to Play
 
-# Contrubutors
+## Contrubutors
 Meet the Pixel Pushers Team
 
-# Feedback & Bug Report
+## Feedback & Bug Report
