@@ -8,9 +8,12 @@
 
 ## Installation & Setup
 
+Use Godot 4.1.1
+
 ## How to Play
 
-## Contrubutors
+## Contributors
+
 Meet the Pixel Pushers Team
 
 ## Feedback & Bug Report

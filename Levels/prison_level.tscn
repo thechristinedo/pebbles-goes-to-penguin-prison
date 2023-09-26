@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://7yfwdhr36eyq"]
+
+[ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
+[ext_resource type="PackedScene" uid="uid://dqm2yvq2vyimg" path="res://Scenes/Bed.tscn" id="3_id7cy"]
+[ext_resource type="PackedScene" uid="uid://ktujw2iocqb3" path="res://Scenes/Toilet.tscn" id="4_om7kv"]
+[ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
+[ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
+
+[sub_resource type="GDScript" id="GDScript_vtapm"]
+script/source = "extends Node2D
+
+@export var tilemap: TileMap
+@export var player: CharacterBody2D
+
+func _ready():
+	pass
+"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd6w"]
+texture = ExtResource("1_qtpx2")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:5/0 = 0
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_h6jei"]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Floor"
+terrain_set_0/terrain_0/color = Color(0.721569, 0.0117647, 0.160784, 1)
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_gbd6w")
+
+[node name="PrisonLevel" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+y_sort_enabled = true
+script = SubResource("GDScript_vtapm")
+tilemap = NodePath("TileMap")
+player = NodePath("Pebbles")
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_h6jei")
+cell_quadrant_size = 32
+format = 2
+layer_0/name = "Floors"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(-1, 131072, 1, -65536, 196608, 1, 65535, 327680, 2, 0, 327680, 1, 131071, 327680, 1, 65536, 131072, 2, 196605, 0, 2, 196606, 65536, 1, 196607, 196608, 1, 131072, 262144, 2, 131073, 131072, 1, 131074, 327680, 1)
+layer_1/name = "Walls and Doors"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 32
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(-65537, 0, 0, -131072, 65536, 0, 65537, 196608, 0, 65538, 262144, 0, 131069, 131072, 0, 131070, 327680, 0, 131071, 0, 3, 65536, 327680, 0)
+layer_2/name = "Wall Tops"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array(65534, 65536, 4, -2, 0, 4, -65538, 0, 4, -131074, 131072, 4, -131073, 262144, 4, -196608, 262144, 4, 65533, 262144, 4, 2, 262144, 4, 1, 65536, 5, -65535, 0, 5, -131071, 0, 5, -196607, 196608, 4, 0, 262144, 4, 65535, 262144, 4)
+
+[node name="Bed" parent="." instance=ExtResource("3_id7cy")]
+position = Vector2(40, -52)
+
+[node name="Toilet" parent="." instance=ExtResource("4_om7kv")]
+position = Vector2(-42, -64)
+
+[node name="Pebbles" parent="." instance=ExtResource("5_aw3i6")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+zoom = Vector2(3, 3)
+position_smoothing_speed = 6.0
+script = ExtResource("6_pje2u")
+target = NodePath("../Pebbles")
