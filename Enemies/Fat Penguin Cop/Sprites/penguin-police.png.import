@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbt25cu4v7qkf"
-path="res://.godot/imported/penguin-police.png-255457f77459b354030593c16ce84bf6.ctex"
+path="res://.godot/imported/penguin-police.png-461b71cffce7ee355db917a263723519.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Sprites/penguin-police.png"
-dest_files=["res://.godot/imported/penguin-police.png-255457f77459b354030593c16ce84bf6.ctex"]
+source_file="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png"
+dest_files=["res://.godot/imported/penguin-police.png-461b71cffce7ee355db917a263723519.ctex"]
 
 [params]
 
