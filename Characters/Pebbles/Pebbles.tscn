@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://tdf8iqs82nqm"]
+[gd_scene load_steps=17 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
+[ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
 [ext_resource type="Texture2D" uid="uid://bm87nqm22na2i" path="res://Characters/Pebbles/Sprites/pebbles-idle.png" id="2_oo8pk"]
 [ext_resource type="PackedScene" uid="uid://w6vnu6g7xefs" path="res://Guns/Gun.tscn" id="3_uhnfq"]
 [ext_resource type="Texture2D" uid="uid://d2c78aft3tu7e" path="res://Characters/Pebbles/Sprites/pebble-run.png" id="4_cnw0k"]
@@ -166,6 +167,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 script = ExtResource("1_cxbe1")
 sprite_2d = NodePath("Sprite2D")
 animation_tree = NodePath("AnimationTree")
+bullet_scene = ExtResource("2_nt858")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_oo8pk")

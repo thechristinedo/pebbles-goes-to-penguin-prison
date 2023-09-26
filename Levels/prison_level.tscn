@@ -14,6 +14,9 @@ script/source = "extends Node2D
 
 func _ready():
 	pass
+
+func _physics_process(_delta):
+	pass
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd6w"]

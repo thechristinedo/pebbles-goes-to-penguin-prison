@@ -1,5 +1,6 @@
 extends Sprite2D
 
+
 @export var sprite_2d: Sprite2D
 @export var player: CharacterBody2D
 
@@ -19,3 +20,5 @@ func _physics_process(_delta):
 	else:
 		scale = GUN_LEFT
 		sprite_2d["scale"] = PLAYER_LEFT
+	
+	
