@@ -19,3 +19,6 @@ func _physics_process(_delta):
 	else:
 		scale = GUN_LEFT
 		sprite_2d["scale"] = PLAYER_LEFT
+
+func shooting():
+	pass

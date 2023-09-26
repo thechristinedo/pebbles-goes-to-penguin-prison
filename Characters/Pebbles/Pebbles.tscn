@@ -170,7 +170,7 @@ animation_tree = NodePath("AnimationTree")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_oo8pk")
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="Gun" parent="." node_paths=PackedStringArray("sprite_2d", "player") instance=ExtResource("3_uhnfq")]
 position = Vector2(0, 6)
