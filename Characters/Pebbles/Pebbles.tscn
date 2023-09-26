@@ -1,0 +1,195 @@
+[gd_scene load_steps=16 format=3 uid="uid://tdf8iqs82nqm"]
+
+[ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
+[ext_resource type="Texture2D" uid="uid://bm87nqm22na2i" path="res://Characters/Pebbles/Sprites/pebbles-idle.png" id="2_oo8pk"]
+[ext_resource type="PackedScene" uid="uid://w6vnu6g7xefs" path="res://Guns/Gun.tscn" id="3_uhnfq"]
+[ext_resource type="Texture2D" uid="uid://d2c78aft3tu7e" path="res://Characters/Pebbles/Sprites/pebble-run.png" id="4_cnw0k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17j5c"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_pfgd8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_oo8pk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_0hiao"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_oo8pk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_gvmgd"]
+resource_name = "running"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_cnw0k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ap2"]
+_data = {
+"RESET": SubResource("Animation_pfgd8"),
+"idle": SubResource("Animation_0hiao"),
+"running": SubResource("Animation_gvmgd")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83gxc"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ywhf"]
+animation = &"running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mluq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yvevq"]
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1q40i"]
+advance_mode = 2
+advance_condition = &"not_moving"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_prp0b"]
+states/Start/position = Vector2(171, 124)
+states/idle/node = SubResource("AnimationNodeAnimation_83gxc")
+states/idle/position = Vector2(298, 111)
+states/running/node = SubResource("AnimationNodeAnimation_6ywhf")
+states/running/position = Vector2(484.5, 114.5)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_8mluq"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_yvevq"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_1q40i")]
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "animation_tree")]
+script = ExtResource("1_cxbe1")
+sprite_2d = NodePath("Sprite2D")
+animation_tree = NodePath("AnimationTree")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oo8pk")
+hframes = 3
+frame = 1
+
+[node name="Gun" parent="." node_paths=PackedStringArray("sprite_2d", "player") instance=ExtResource("3_uhnfq")]
+position = Vector2(0, 6)
+offset = Vector2(8, 2.08165e-12)
+sprite_2d = NodePath("../Sprite2D")
+player = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_17j5c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b2ap2")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_prp0b")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/moving = false
+parameters/conditions/not_moving = false
