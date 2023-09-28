@@ -11,6 +11,9 @@ const RIGHT = Vector2(1 ,1)
 
 const FLOAT_TOL = 0.001
 
+func _ready():
+	animation_tree.active = true
+
 func _physics_process(_delta):
 	var horizontal_movement = \
 		Input.get_action_strength("right") - \
