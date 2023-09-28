@@ -4,6 +4,7 @@ var player
 var speed = 50
 var pebbles_chase = false
 var pebbles = null
+var health = 250
 
 
 	
@@ -20,6 +21,11 @@ func _physics_process(delta):
 		
 		move_and_collide(Vector2.ZERO)
 
+func take_damage(damage: int) -> void:
+	health -= damage
+	
+	if health <= 0:
+		queue_free()
 
 func _on_detection_radius_body_entered(body):
 	if body.name == "Pebbles":
@@ -30,3 +36,5 @@ func _on_detection_radius_body_entered(body):
 
 func _on_detection_radius_body_exited(body):
 	pass
+	
+
