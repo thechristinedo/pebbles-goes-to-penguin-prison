@@ -42,8 +42,6 @@ func pick_new_animation_state():
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	bullet.transform = $Gun.global_transform
-	var angle = $Gun.rotation
-	var bullet_direction = Vector2(cos(angle), sin(angle))
-	bullet.position += bullet_direction * 25
+	bullet.global_position = get_node("Gun/Muzzle").global_position
+	bullet.rotation = get_node("Gun").rotation
 	owner.add_child(bullet)
