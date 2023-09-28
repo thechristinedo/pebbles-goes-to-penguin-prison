@@ -161,10 +161,10 @@ layer_2/tile_data = PackedInt32Array(65534, 65536, 4, -2, 0, 4, -65538, 0, 4, -1
 
 [node name="Bed" parent="." instance=ExtResource("3_id7cy")]
 position = Vector2(40, -52)
+freeze = false
 
 [node name="Toilet" parent="." instance=ExtResource("4_om7kv")]
 position = Vector2(-42, -64)
-freeze = true
 
 [node name="Pebbles" parent="." instance=ExtResource("5_aw3i6")]
 
