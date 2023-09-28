@@ -164,6 +164,7 @@ position = Vector2(40, -52)
 
 [node name="Toilet" parent="." instance=ExtResource("4_om7kv")]
 position = Vector2(-42, -64)
+freeze = true
 
 [node name="Pebbles" parent="." instance=ExtResource("5_aw3i6")]
 
@@ -174,4 +175,4 @@ script = ExtResource("6_pje2u")
 target = NodePath("../Pebbles")
 
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(-45, 32)
+position = Vector2(167, 171)

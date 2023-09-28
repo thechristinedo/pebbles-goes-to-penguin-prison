@@ -40,9 +40,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_matj5"]
-radius = 122.147
+radius = 83.6002
 
 [node name="Fat Penguin Cop" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_rkrr8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -54,7 +56,10 @@ sprite_frames = SubResource("SpriteFrames_tm0al")
 animation = &"Idle"
 frame_progress = 0.851639
 
-[node name="Radius" type="Area2D" parent="."]
+[node name="Detection_Radius" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Radius"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Radius"]
 shape = SubResource("CircleShape2D_matj5")
+
+[connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_exited" from="Detection_Radius" to="." method="_on_detection_radius_body_exited"]
