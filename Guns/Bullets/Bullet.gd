@@ -10,6 +10,6 @@ func _physics_process(delta):
 		free()
 
 func _on_body_entered(body):
-	print("collision")
+	print("collided with: ", body)
 	queue_free()
 	

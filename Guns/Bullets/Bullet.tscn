@@ -1,21 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://dv75t1glvbda2"]
 
 [ext_resource type="Script" path="res://Guns/Bullets/Bullet.gd" id="1_jw3w2"]
+[ext_resource type="Texture2D" uid="uid://dn57gfh30pjtc" path="res://Guns/Bullets/Sprites/bullet.png" id="2_koa7i"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_uyq13"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_47ssk"]
-radius = 2.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwh4c"]
+size = Vector2(4, 2)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_jw3w2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(3.5, 3.5)
-texture = SubResource("CanvasTexture_uyq13")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_koa7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_47ssk")
+shape = SubResource("RectangleShape2D_qwh4c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
