@@ -48,3 +48,5 @@ func shoot():
 	bullet.global_position = get_node("Gun/Muzzle").global_position
 	bullet.rotation = get_node("Gun").rotation
 	owner.add_child(bullet)
+
+
