@@ -22,8 +22,9 @@ func _physics_process(delta):
 
 
 func _on_detection_radius_body_entered(body):
-	pebbles = body
-	pebbles_chase = true
+	if body.name == "Pebbles":
+		pebbles = body
+		pebbles_chase = true
 	
 	
 
