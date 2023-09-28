@@ -9,4 +9,4 @@ offset = Vector2(5, 2)
 script = ExtResource("2_xiheq")
 
 [node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(26, -1)
+position = Vector2(25, 0)
