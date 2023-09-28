@@ -17,4 +17,7 @@ texture = ExtResource("2_koa7i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qwh4c")
 
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
