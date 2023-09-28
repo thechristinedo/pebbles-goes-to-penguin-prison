@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfyn5xxip2okh"]
+
+[ext_resource type="Script" path="res://Enemies/fat_penguin_cop.gd" id="1_rkrr8"]
+[ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="2_2gou8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x8rt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0e5a"]
+atlas = ExtResource("2_2gou8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igyoi"]
+atlas = ExtResource("2_2gou8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6i58"]
+atlas = ExtResource("2_2gou8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tm0al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0e5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igyoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6i58")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_matj5"]
+radius = 83.6002
+
+[node name="Fat Penguin Cop" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rkrr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7x8rt")
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tm0al")
+animation = &"Idle"
+frame_progress = 0.851639
+
+[node name="Detection_Radius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Radius"]
+shape = SubResource("CircleShape2D_matj5")
+
+[connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_exited" from="Detection_Radius" to="." method="_on_detection_radius_body_exited"]
