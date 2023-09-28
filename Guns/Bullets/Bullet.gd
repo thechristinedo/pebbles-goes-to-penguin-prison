@@ -1,10 +1,20 @@
 extends Area2D
 
-@export var speed = 750
-@export var life_frames = 10
+@export var speed = 1000
+@export var damage: int = 25
+
+@onready var lifetime: Timer = $Lifetime
+
+func _ready():
+	lifetime.start()
 
 func _physics_process(delta):
-	position += transform.x * speed * delta
-	life_frames -= 1
-	if life_frames == 0:
-		free()
+	if lifetime.is_stopped(): queue_free()
+	else: position += transform.x * speed * delta
+
+func _on_body_entered(body):
+	print("collided with: ", body)
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
+	queue_free()
+	
