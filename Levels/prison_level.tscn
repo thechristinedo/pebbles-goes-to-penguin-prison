@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=10 format=3 uid="uid://7yfwdhr36eyq"]
 
+[ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
 [ext_resource type="PackedScene" uid="uid://dqm2yvq2vyimg" path="res://Scenes/Bed.tscn" id="3_id7cy"]
 [ext_resource type="PackedScene" uid="uid://ktujw2iocqb3" path="res://Scenes/Toilet.tscn" id="4_om7kv"]
@@ -13,7 +14,7 @@ script/source = "extends Node2D
 @export var player: CharacterBody2D
 
 func _ready():
-	pass
+	$Pebbles.health_update.connect($UI/HealthBarContainer.update_health)
 
 func _physics_process(_delta):
 	pass
@@ -149,6 +150,8 @@ y_sort_enabled = true
 script = SubResource("GDScript_vtapm")
 tilemap = NodePath("TileMap")
 player = NodePath("Pebbles")
+
+[node name="UI" parent="." instance=ExtResource("1_hmlgx")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
