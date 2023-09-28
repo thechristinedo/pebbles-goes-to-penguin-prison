@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://tdf8iqs82nqm"]
+[gd_scene load_steps=19 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
 [ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
 [ext_resource type="Texture2D" uid="uid://bm87nqm22na2i" path="res://Characters/Pebbles/Sprites/pebbles-idle.png" id="2_oo8pk"]
 [ext_resource type="PackedScene" uid="uid://w6vnu6g7xefs" path="res://Guns/Gun.tscn" id="3_uhnfq"]
 [ext_resource type="Texture2D" uid="uid://d2c78aft3tu7e" path="res://Characters/Pebbles/Sprites/pebble-run.png" id="4_cnw0k"]
+[ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="6_3mnqa"]
+[ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="7_afbpb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17j5c"]
 radius = 8.0
@@ -195,3 +197,14 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/conditions/moving = false
 parameters/conditions/not_moving = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="walking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3mnqa")
+volume_db = 7.924
+
+[node name="gunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_afbpb")
+volume_db = -0.495

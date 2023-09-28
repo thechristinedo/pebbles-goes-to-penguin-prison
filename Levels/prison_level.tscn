@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=11 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
 [ext_resource type="PackedScene" uid="uid://dqm2yvq2vyimg" path="res://Scenes/Bed.tscn" id="3_id7cy"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
 [ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
+[ext_resource type="AudioStream" uid="uid://do8cyc1bt2rph" path="res://Audio/backgroundmusic.mp3" id="7_yvnlm"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
@@ -177,7 +178,6 @@ layer_2/tile_data = PackedInt32Array(65534, 65536, 4, -2, 0, 4, -65538, 0, 4, -1
 
 [node name="Bed" parent="." instance=ExtResource("3_id7cy")]
 position = Vector2(40, -52)
-freeze = false
 
 [node name="Toilet" parent="." instance=ExtResource("4_om7kv")]
 position = Vector2(-42, -64)
@@ -193,3 +193,8 @@ target = NodePath("../Pebbles")
 
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
 position = Vector2(167, 171)
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yvnlm")
+volume_db = -8.901
+autoplay = true

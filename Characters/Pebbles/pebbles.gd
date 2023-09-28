@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var animation_tree: AnimationTree
 @export var bullet_scene: PackedScene
 
+@onready var gunShot = $gunShot
+
 const LEFT = Vector2(-1, 1)
 const RIGHT = Vector2(1 ,1)
 
@@ -29,6 +31,15 @@ func _physics_process(_delta):
 	
 	velocity = direction * move_speed
 	
+	if velocity.length() == 0:
+		$walking.stop()
+	else:
+		if $Timer.is_stopped():
+			$walking.pitch_scale = randf_range(0.8, 1.2)
+			$walking.play()
+			$Timer.start(0.2)
+	
+	
 	move_and_slide()
 	pick_new_animation_state()
 	
@@ -44,6 +55,7 @@ func pick_new_animation_state():
 		animation_tree["parameters/conditions/moving"] = true
 
 func shoot():
+	gunShot.play()
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = get_node("Gun/Muzzle").global_position
 	bullet.rotation = get_node("Gun").rotation
