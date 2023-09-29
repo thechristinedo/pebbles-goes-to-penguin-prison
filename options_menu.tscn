@@ -13,16 +13,16 @@ grow_vertical = 2
 script = ExtResource("1_6fw7g")
 
 [node name="TempOptionsScreen" type="Sprite2D" parent="."]
-position = Vector2(477.5, 279.5)
-scale = Vector2(0.984879, 1.03058)
+position = Vector2(958.5, 531)
+scale = Vector2(1.95464, 1.93525)
 texture = ExtResource("2_01q0u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 290.0
-offset_top = 245.0
-offset_right = 659.0
-offset_bottom = 407.0
+offset_left = 562.0
+offset_top = 381.0
+offset_right = 1321.0
+offset_bottom = 769.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
