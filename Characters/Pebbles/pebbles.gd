@@ -45,6 +45,12 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	if Input.is_action_just_pressed("slap"):
+		slap()
+	
+	print("Current Animation: ", $AnimationPlayer.current_animation)
+	print("Sprite Frame: ", $Sprite2D.frame)
+
 
 func pick_new_animation_state():
 	if abs(velocity.x) < FLOAT_TOL && abs(velocity.y) < FLOAT_TOL:
@@ -60,5 +66,11 @@ func shoot():
 	bullet.global_position = get_node("Gun/Muzzle").global_position
 	bullet.rotation = get_node("Gun").rotation
 	owner.add_child(bullet)
+	
+func slap():
+	$AnimationPlayer.play("slap")
+	
 
-
+func _on_slap_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		area.take_damage()
