@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfyn5xxip2okh"]
+[gd_scene load_steps=10 format=3 uid="uid://cfyn5xxip2okh"]
 
 [ext_resource type="Script" path="res://Enemies/fat_penguin_cop.gd" id="1_rkrr8"]
 [ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="2_2gou8"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_g3ud3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x8rt"]
 
@@ -57,9 +58,25 @@ animation = &"Idle"
 frame_progress = 0.851639
 
 [node name="Detection_Radius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Radius"]
 shape = SubResource("CircleShape2D_matj5")
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -19.0
+offset_right = 94.0
+offset_bottom = 8.0
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("3_g3ud3")
+max_value = 250.0
+show_percentage = false
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection_Radius" to="." method="_on_detection_radius_body_exited"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
