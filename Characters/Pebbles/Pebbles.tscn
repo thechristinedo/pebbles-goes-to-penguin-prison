@@ -51,9 +51,6 @@ tracks/2/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_tk5jd"]
-resource_name = "attack"
-
 [sub_resource type="Animation" id="Animation_0hiao"]
 resource_name = "idle"
 length = 0.3
@@ -136,12 +133,15 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 0]
 }
 
+[sub_resource type="Animation" id="Animation_kwo2w"]
+resource_name = "slap"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ap2"]
 _data = {
 "RESET": SubResource("Animation_pfgd8"),
-"attack": SubResource("Animation_tk5jd"),
 "idle": SubResource("Animation_0hiao"),
-"running": SubResource("Animation_gvmgd")
+"running": SubResource("Animation_gvmgd"),
+"slap": SubResource("Animation_kwo2w")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83gxc"]
