@@ -19,6 +19,8 @@ func _ready():
 
 func _physics_process(_delta):
 	pass
+	
+	
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd6w"]
