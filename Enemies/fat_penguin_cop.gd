@@ -22,8 +22,9 @@ func _physics_process(delta):
 		move_and_collide(Vector2.ZERO)
 
 func take_damage(damage: int) -> void:
+	#take damage 
 	health -= damage
-	
+	#if health reaches 0 then delete from scene
 	if health <= 0:
 		queue_free()
 
