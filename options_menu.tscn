@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c76l8i1sc5pct"]
+[gd_scene load_steps=3 format=3 uid="uid://c76l8i1sc5pct"]
 
 [ext_resource type="Script" path="res://options_menu.gd" id="1_6fw7g"]
+[ext_resource type="Texture2D" uid="uid://b7g8o8f5bemjq" path="res://temp_options_screen.PNG" id="2_01q0u"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,46 +12,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6fw7g")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 989.0
-offset_bottom = 598.0
-color = Color(0.14902, 0.109804, 0.313726, 1)
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_top = 107.0
-offset_right = 989.0
-offset_bottom = 284.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
-layout_mode = 2
-
-[node name="Options_Label" type="Label" parent="MarginContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TempOptionsScreen" type="Sprite2D" parent="."]
+position = Vector2(477.5, 279.5)
+scale = Vector2(0.984879, 1.03058)
+texture = ExtResource("2_01q0u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_top = 283.0
-offset_right = 987.0
-offset_bottom = 598.0
+offset_left = 290.0
+offset_top = 245.0
+offset_right = 659.0
+offset_bottom = 407.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
 text = "Volume"
 
 [node name="Brightness" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
 text = "Brightness"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
 text = "Back to Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
