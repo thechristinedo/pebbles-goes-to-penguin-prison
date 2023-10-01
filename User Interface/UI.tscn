@@ -1,72 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://rmujglsn8iev"]
+[gd_scene load_steps=2 format=3 uid="uid://rmujglsn8iev"]
 
-[ext_resource type="Script" path="res://User Interface/HealthBar.gd" id="1_20mkp"]
-[ext_resource type="Texture2D" uid="uid://nvqcrtj2c3d" path="res://User Interface/Sprites/ui-portrait-mask.png" id="2_cv7ry"]
-[ext_resource type="Texture2D" uid="uid://bwav7q7ueswpj" path="res://User Interface/Sprites/ui-portrait.png" id="2_oy7xy"]
-[ext_resource type="Texture2D" uid="uid://m2kfh6iaatj1" path="res://pebbles.png" id="2_qqssd"]
-[ext_resource type="Shader" path="res://User Interface/pebbles_portrait.gdshader" id="2_uy2a6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mp7ub"]
-shader = ExtResource("2_uy2a6")
-shader_parameter/mask = ExtResource("2_cv7ry")
+[ext_resource type="PackedScene" uid="uid://bsoksr3gujxxx" path="res://User Interface/heart-container-ui.tscn" id="1_so4eh"]
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Press Backspace/Delete to take damage"
-
-[node name="Pebbles" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_mp7ub")
-anchors_preset = 2
-anchor_top = 1.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -182.0
-offset_right = 190.0
-offset_bottom = -12.0
-grow_vertical = 0
-texture = ExtResource("2_qqssd")
-
-[node name="PebblesFrame" type="TextureRect" parent="Pebbles"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -98.0
-offset_right = 90.0
-offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_oy7xy")
 
-[node name="HealthBarContainer" type="ColorRect" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 190.0
-offset_top = -49.0
-offset_right = 390.0
-offset_bottom = -29.0
-grow_vertical = 0
-color = Color(0.286275, 0.505882, 0.301961, 1)
-script = ExtResource("1_20mkp")
-
-[node name="HealthBar" type="ColorRect" parent="HealthBarContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -8.0
-offset_right = 97.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.980392, 0, 1)
+[node name="HeartsContainer" parent="." instance=ExtResource("1_so4eh")]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 12.0

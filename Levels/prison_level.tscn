@@ -10,11 +10,14 @@
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
 
-@export var tilemap: TileMap
-@export var player: CharacterBody2D
+@onready var player = $Pebbles
+@onready var player_health_bar = $UI/HeartsContainer
 
 func _ready():
-	$Pebbles.health_update.connect($UI/HealthBarContainer.update_health)
+	player.health_update.connect(player_health_bar.set_health)
+	
+	# health bar needs to be initialized here for some reason
+	player.emit_signal(\"health_update\", player.max_health, player.max_health)
 
 func _physics_process(_delta):
 	pass
@@ -145,11 +148,9 @@ terrain_set_0/terrain_0/color = Color(0.721569, 0.0117647, 0.160784, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_gbd6w")
 
-[node name="PrisonLevel" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+[node name="PrisonLevel" type="Node2D"]
 y_sort_enabled = true
 script = SubResource("GDScript_vtapm")
-tilemap = NodePath("TileMap")
-player = NodePath("Pebbles")
 
 [node name="UI" parent="." instance=ExtResource("1_hmlgx")]
 
