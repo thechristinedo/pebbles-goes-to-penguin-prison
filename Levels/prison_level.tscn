@@ -1,5 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://7yfwdhr36eyq"]
 
+[ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
 [ext_resource type="PackedScene" uid="uid://dqm2yvq2vyimg" path="res://Scenes/Bed.tscn" id="3_id7cy"]
 [ext_resource type="PackedScene" uid="uid://ktujw2iocqb3" path="res://Scenes/Toilet.tscn" id="4_om7kv"]
@@ -11,11 +12,14 @@
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
 
-@export var tilemap: TileMap
-@export var player: CharacterBody2D
+@onready var player = $Pebbles
+@onready var player_health_bar = $UI/Panel/HeartsContainer
 
 func _ready():
-	pass
+	player.health_update.connect(player_health_bar.set_health)
+	
+	# health bar needs to be initialized here for some reason
+	player.emit_signal(\"health_update\", player.max_health, player.max_health)
 
 func _physics_process(_delta):
 	pass
@@ -148,11 +152,11 @@ terrain_set_0/terrain_0/color = Color(0.721569, 0.0117647, 0.160784, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_gbd6w")
 
-[node name="PrisonLevel" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+[node name="PrisonLevel" type="Node2D"]
 y_sort_enabled = true
 script = SubResource("GDScript_vtapm")
-tilemap = NodePath("TileMap")
-player = NodePath("Pebbles")
+
+[node name="UI" parent="." instance=ExtResource("1_hmlgx")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

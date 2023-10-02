@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://drqy4qgcnsi51"]
+
+[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://User Interface/Sprites/shotgun-shells.png" id="1_ys4yq"]
+
+[node name="ammo-ui" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(15, 16)
+offset_right = 15.0
+offset_bottom = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ys4yq")
+centered = false

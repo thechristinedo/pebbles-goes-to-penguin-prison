@@ -1,17 +1,21 @@
 extends CharacterBody2D
 
+@export var max_health: int = 10
 @export var move_speed: float = 250
-
 @export var sprite_2d: Sprite2D
 @export var animation_tree: AnimationTree
 @export var bullet_scene: PackedScene
 
+@onready var health: int = max_health
 @onready var gunShot = $gunShot
 
 const LEFT = Vector2(-1, 1)
 const RIGHT = Vector2(1 ,1)
-
 const FLOAT_TOL = 0.001
+
+
+signal health_update
+signal pebbles_death
 
 func _ready():
 	animation_tree.active = true
@@ -45,6 +49,10 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		take_damage(1)
+	
 
 func pick_new_animation_state():
 	if abs(velocity.x) < FLOAT_TOL && abs(velocity.y) < FLOAT_TOL:
@@ -56,9 +64,16 @@ func pick_new_animation_state():
 
 func shoot():
 	gunShot.play()
-	var bullet = bullet_scene.instantiate()
+	var bullet: Area2D = bullet_scene.instantiate()
+
 	bullet.global_position = get_node("Gun/Muzzle").global_position
 	bullet.rotation = get_node("Gun").rotation
 	owner.add_child(bullet)
 
-
+func take_damage(damage: int) -> void:
+	health -= damage
+	if health <= 0:
+		health = 0
+		print("dead")
+		pebbles_death.emit()
+	health_update.emit(health, max_health)
