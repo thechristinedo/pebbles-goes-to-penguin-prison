@@ -8,7 +8,7 @@ var health = 250
 
 
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_health()
 	if pebbles_chase:
 		player = get_node("../Pebbles")
@@ -52,6 +52,6 @@ func _on_regen_timer_timeout():
 	if health <= 0:
 		health = 0
 
-func _on_detection_radius_body_exited(body):
+func _on_detection_radius_body_exited(_body):
 	pass
 	

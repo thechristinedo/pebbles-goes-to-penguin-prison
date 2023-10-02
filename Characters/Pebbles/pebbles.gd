@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var max_health: int = 10
+@export var ammo: int = 50
 @export var move_speed: float = 250
 @export var sprite_2d: Sprite2D
 @export var animation_tree: AnimationTree
@@ -16,6 +17,7 @@ const FLOAT_TOL = 0.001
 
 signal health_update
 signal pebbles_death
+signal pebbles_shoot
 
 func _ready():
 	animation_tree.active = true
@@ -63,6 +65,10 @@ func pick_new_animation_state():
 		animation_tree["parameters/conditions/moving"] = true
 
 func shoot():
+	if ammo <= 0: return
+	ammo -= 1
+	pebbles_shoot.emit(ammo)
+	
 	gunShot.play()
 	var bullet: Area2D = bullet_scene.instantiate()
 
