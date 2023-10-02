@@ -1,23 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://rc0lpw2dncxp"]
+[gd_scene load_steps=10 format=3 uid="uid://rc0lpw2dncxp"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_lnxl3"]
-[ext_resource type="Texture2D" uid="uid://bl5krkhby31ab" path="res://temp_title_screen.PNG" id="2_bu6sm"]
+[ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Parallax/bg0.png" id="2_0gssu"]
+[ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Parallax/skybg.png" id="2_no1h3"]
+[ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Parallax/bg1.png" id="3_oofks"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_qkkwg"]
+[ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="4_6mrbk"]
+[ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="5_gypor"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="7_r4elv"]
+
+[sub_resource type="GDScript" id="GDScript_1o5ty"]
+script/source = "extends ParallaxBackground
+
+@export var scrolling_speed = 250
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	scroll_offset.x -= scrolling_speed*delta
+"
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lnxl3")
 
-[node name="TempTitleScreen" type="Sprite2D" parent="."]
-position = Vector2(960, 538)
-scale = Vector2(1.94529, 1.94946)
-texture = ExtResource("2_bu6sm")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = SubResource("GDScript_1o5ty")
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(960, 540)
+scale = Vector2(6.531, 6.75)
+texture = ExtResource("2_no1h3")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(960, 540)
+scale = Vector2(6.53061, 6.75)
+texture = ExtResource("2_0gssu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(960, 540)
+scale = Vector2(6.531, 6.75)
+texture = ExtResource("3_oofks")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(960, 540)
+scale = Vector2(6.531, 6.75)
+texture = ExtResource("4_6mrbk")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(960, 540)
+scale = Vector2(6.531, 6.75)
+texture = ExtResource("5_gypor")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 336.0
+offset_top = 339.0
+offset_right = 1661.0
+offset_bottom = 440.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_r4elv")
+theme_override_font_sizes/font_size = 100
+text = "Pebbles Goes To Penguin Prison"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -33,23 +105,20 @@ layout_mode = 2
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_qkkwg")
-theme_override_colors/font_color = Color(0.537255, 0.486275, 0.968627, 1)
+theme_override_constants/outline_size = 3
 text = "Play"
-flat = true
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_qkkwg")
-theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
+theme_override_constants/outline_size = 3
 text = "Options"
-flat = true
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_qkkwg")
-theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
+theme_override_constants/outline_size = 3
 text = "Exit"
-flat = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
