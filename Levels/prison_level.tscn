@@ -11,7 +11,7 @@
 script/source = "extends Node2D
 
 @onready var player = $Pebbles
-@onready var player_health_bar = $UI/HeartsContainer
+@onready var player_health_bar = $UI/Panel/HeartsContainer
 
 func _ready():
 	player.health_update.connect(player_health_bar.set_health)
