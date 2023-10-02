@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=12 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
@@ -201,6 +201,9 @@ target = NodePath("../Pebbles")
 position = Vector2(167, 171)
 
 [node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 stream = ExtResource("7_yvnlm")
 volume_db = -8.901
 autoplay = true
