@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=13 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
 [ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
+[ext_resource type="PackedScene" uid="uid://ctevosc6td0cu" path="res://pause_menu.tscn" id="7_lb3r2"]
 [ext_resource type="AudioStream" uid="uid://do8cyc1bt2rph" path="res://Audio/backgroundmusic.mp3" id="7_yvnlm"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
@@ -26,6 +27,32 @@ func _ready():
 
 func _physics_process(_delta):
 	pass
+	
+func _process(delta):
+	if Input.is_action_just_pressed(\"pause\"):
+		pause()
+		
+func pause():
+	get_tree().paused = true
+	$TileMap.hide()
+	$Bed.hide()
+	$Toilet.hide()
+	$Pebbles.hide()
+	if $\"Fat Penguin Cop\" != null:
+		$\"Fat Penguin Cop\".hide()
+	$Camera2D/pause_menu.show()
+	
+func unpause():
+	$TileMap.show()
+	$Bed.show()
+	$Toilet.show()
+	$Pebbles.show()
+	if $\"Fat Penguin Cop\" != null:
+		$\"Fat Penguin Cop\".show()
+	$Camera2D/pause_menu.hide()
+	get_tree().paused = false
+
+
 	
 	
 "
@@ -199,6 +226,9 @@ zoom = Vector2(3, 3)
 position_smoothing_speed = 6.0
 script = ExtResource("6_pje2u")
 target = NodePath("../Pebbles")
+
+[node name="pause_menu" parent="Camera2D" instance=ExtResource("7_lb3r2")]
+visible = false
 
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
 position = Vector2(167, 171)
