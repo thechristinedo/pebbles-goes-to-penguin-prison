@@ -14,10 +14,8 @@ func _ready():
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_AnimatedSprite2D_animation_finished"))
 	# ... you can add any other initialization logic for this enemy here
 	
-func _physics_process(delta):
-	# Combat
-	deal_with_damage()
-	
+func _physics_process(_delta):
+  deal_with_damage()
 	update_health()
 	if pebbles_chase:
 		player = get_node("../Pebbles")
@@ -65,7 +63,7 @@ func _on_regen_timer_timeout():
 	if health <= 0:
 		health = 0
 
-func _on_detection_radius_body_exited(body):
+func _on_detection_radius_body_exited(_body):
 	pass
 	
 func fat_penguin_cop():

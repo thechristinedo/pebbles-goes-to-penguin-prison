@@ -1,24 +1,58 @@
-[gd_scene load_steps=11 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=13 format=3 uid="uid://7yfwdhr36eyq"]
 
+[ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
 [ext_resource type="PackedScene" uid="uid://dqm2yvq2vyimg" path="res://Scenes/Bed.tscn" id="3_id7cy"]
 [ext_resource type="PackedScene" uid="uid://ktujw2iocqb3" path="res://Scenes/Toilet.tscn" id="4_om7kv"]
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
 [ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
+[ext_resource type="PackedScene" uid="uid://ctevosc6td0cu" path="res://pause_menu.tscn" id="7_lb3r2"]
 [ext_resource type="AudioStream" uid="uid://do8cyc1bt2rph" path="res://Audio/backgroundmusic.mp3" id="7_yvnlm"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
 
-@export var tilemap: TileMap
-@export var player: CharacterBody2D
+@onready var player = $Pebbles
+@onready var player_health_bar_ui = $UI/Panel/HeartsContainer
+@onready var player_ammo_ui = $\"UI/Panel/Ammo Amount\"
 
 func _ready():
-	pass
+	player.health_update.connect(player_health_bar_ui.set_health)
+	player.pebbles_shoot.connect(player_ammo_ui.set_ammo_amount)
+	
+	# health bar needs to be initialized here for some reason
+	player.emit_signal(\"health_update\", player.max_health, player.max_health)
+	player.emit_signal(\"pebbles_shoot\", player.ammo)
 
 func _physics_process(_delta):
 	pass
+	
+func _process(delta):
+	if Input.is_action_just_pressed(\"pause\"):
+		pause()
+		
+func pause():
+	get_tree().paused = true
+	$TileMap.hide()
+	$Bed.hide()
+	$Toilet.hide()
+	$Pebbles.hide()
+	if $\"Fat Penguin Cop\" != null:
+		$\"Fat Penguin Cop\".hide()
+	$Camera2D/pause_menu.show()
+	
+func unpause():
+	$TileMap.show()
+	$Bed.show()
+	$Toilet.show()
+	$Pebbles.show()
+	if $\"Fat Penguin Cop\" != null:
+		$\"Fat Penguin Cop\".show()
+	$Camera2D/pause_menu.hide()
+	get_tree().paused = false
+
+
 	
 	
 "
@@ -148,11 +182,11 @@ terrain_set_0/terrain_0/color = Color(0.721569, 0.0117647, 0.160784, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_gbd6w")
 
-[node name="PrisonLevel" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+[node name="PrisonLevel" type="Node2D"]
 y_sort_enabled = true
 script = SubResource("GDScript_vtapm")
-tilemap = NodePath("TileMap")
-player = NodePath("Pebbles")
+
+[node name="UI" parent="." instance=ExtResource("1_hmlgx")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -193,10 +227,16 @@ position_smoothing_speed = 6.0
 script = ExtResource("6_pje2u")
 target = NodePath("../Pebbles")
 
+[node name="pause_menu" parent="Camera2D" instance=ExtResource("7_lb3r2")]
+visible = false
+
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
 position = Vector2(167, 171)
 
 [node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 stream = ExtResource("7_yvnlm")
 volume_db = -8.901
 autoplay = true
