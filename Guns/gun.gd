@@ -30,3 +30,4 @@ func __scale_gun_and_player() -> void:
 	else:
 		scale = GUN_LEFT
 		sprite_2d["scale"] = PLAYER_LEFT
+

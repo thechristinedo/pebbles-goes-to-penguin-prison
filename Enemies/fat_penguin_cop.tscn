@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfyn5xxip2okh"]
+[gd_scene load_steps=15 format=3 uid="uid://cfyn5xxip2okh"]
 
 [ext_resource type="Script" path="res://Enemies/fat_penguin_cop.gd" id="1_rkrr8"]
 [ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="2_2gou8"]
+[ext_resource type="Texture2D" uid="uid://d25u4luifj0pd" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death1.png" id="3_a8v5y"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_g3ud3"]
+[ext_resource type="Texture2D" uid="uid://d1fskg8ypleek" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death2.png" id="4_pibk3"]
+[ext_resource type="Texture2D" uid="uid://dg0rnllf2bv80" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death3.png" id="5_bhrn7"]
+[ext_resource type="Texture2D" uid="uid://biwmbpmxmqiyd" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death4.png" id="6_btskl"]
+[ext_resource type="Texture2D" uid="uid://dsrputjkimjfu" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death5.png" id="7_lcgnq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x8rt"]
 
@@ -34,6 +39,26 @@ animations = [{
 "name": &"Idle",
 "speed": 15.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a8v5y")
+}, {
+"duration": 0.6,
+"texture": ExtResource("4_pibk3")
+}, {
+"duration": 0.6,
+"texture": ExtResource("5_bhrn7")
+}, {
+"duration": 0.6,
+"texture": ExtResource("6_btskl")
+}, {
+"duration": 0.6,
+"texture": ExtResource("7_lcgnq")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -54,8 +79,7 @@ one_way_collision_margin = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tm0al")
-animation = &"Idle"
-frame_progress = 0.851639
+animation = &"death"
 
 [node name="Detection_Radius" type="Area2D" parent="."]
 visible = false

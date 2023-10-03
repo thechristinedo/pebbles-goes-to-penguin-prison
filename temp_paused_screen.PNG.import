@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8jme7fywmc"
-path="res://.godot/imported/pebbles_slap.png-fe9b99b4ac4268af7c16cbe1c2cebaa0.ctex"
+uid="uid://7r73kafhs3js"
+path="res://.godot/imported/temp_paused_screen.PNG-30a41ed8d3396d191e94b650883265bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Pebbles/Sprites/pebbles_slap.png"
-dest_files=["res://.godot/imported/pebbles_slap.png-fe9b99b4ac4268af7c16cbe1c2cebaa0.ctex"]
+source_file="res://temp_paused_screen.PNG"
+dest_files=["res://.godot/imported/temp_paused_screen.PNG-30a41ed8d3396d191e94b650883265bf.ctex"]
 
 [params]
 

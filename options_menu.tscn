@@ -23,6 +23,7 @@ func _process(delta):
 	scroll_offset.x -= scrolling_speed*delta
 "
 
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -100,25 +101,40 @@ offset_bottom = 588.0
 scale = Vector2(2, 2)
 theme = ExtResource("3_cw5mr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1078.0
+
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Volume" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cw5mr")
+
 theme_override_constants/outline_size = 2
 text = "Volume"
 
-[node name="Brightness" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Brightness" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cw5mr")
+
 theme_override_constants/outline_size = 2
 text = "Brightness"
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cw5mr")
+
 theme_override_constants/outline_size = 2
 text = "Back to Menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="TempTitleScreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 538)
+scale = Vector2(1.94529, 1.94946)
+texture = ExtResource("4_o3sjc")
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Back" to="." method="_on_back_pressed"]

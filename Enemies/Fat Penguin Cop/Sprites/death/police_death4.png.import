@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rhhje7iaubrq"
-path="res://.godot/imported/pebbles-slap.png-c34606252621a9c85002c846717c63fc.ctex"
+uid="uid://biwmbpmxmqiyd"
+path="res://.godot/imported/police_death4.png-714ea6e44915511d720032596292ba5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Pebbles/Sprites/pebbles-slap.png"
-dest_files=["res://.godot/imported/pebbles-slap.png-c34606252621a9c85002c846717c63fc.ctex"]
+source_file="res://Enemies/Fat Penguin Cop/Sprites/death/police_death4.png"
+dest_files=["res://.godot/imported/police_death4.png-714ea6e44915511d720032596292ba5e.ctex"]
 
 [params]
 
