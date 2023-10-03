@@ -28,6 +28,9 @@ func _physics_process(_delta):
 			get_node("AnimatedSprite2D").flip_h = false
 		
 		move_and_collide(Vector2.ZERO)
+	
+	
+		
 
 func _on_detection_radius_body_entered(body):
 	if body.name == "Pebbles":
@@ -73,6 +76,7 @@ func fat_penguin_cop():
 func _on_enemy_hitbox_body_entered(body):
 	if body.has_method("pebbles"):
 		pebbles_inattack_zone = true
+		
 
 func _on_enemy_hitbox_body_exited(body):
 	if body.has_method("pebbles"):
@@ -88,6 +92,8 @@ func deal_with_damage():
 			if health <= 0:
 				self.queue_free()
 
+func attackAnimation():
+	$AnimatedSprite2D.play("attack")
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true

@@ -39,6 +39,7 @@ scale = Vector2(1.71875, 1.71875)
 texture = ExtResource("2_lmdw2")
 
 [node name="Ammo Amount" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = 46.0
 offset_right = 93.0

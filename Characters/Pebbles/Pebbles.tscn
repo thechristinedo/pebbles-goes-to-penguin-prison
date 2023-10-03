@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://tdf8iqs82nqm"]
+[gd_scene load_steps=26 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
 [ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="7_afbpb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckj3u"]
-size = Vector2(10, 28)
+size = Vector2(23, 29)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17j5c"]
 radius = 8.0
@@ -221,6 +221,8 @@ states/slap/position = Vector2(484.6, 211.645)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_8mluq"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_yvevq"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_1q40i"), "running", "slap", SubResource("AnimationNodeStateMachineTransition_tlxbl"), "slap", "running", SubResource("AnimationNodeStateMachineTransition_5xotp")]
 graph_offset = Vector2(112.463, 50.6175)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2kjh"]
+
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "animation_tree")]
 script = ExtResource("1_cxbe1")
 sprite_2d = NodePath("Sprite2D")
@@ -235,7 +237,7 @@ frame = 1
 [node name="Slap" type="Area2D" parent="Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Slap"]
-position = Vector2(14, 2)
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_ckj3u")
 
 [node name="Gun" parent="." node_paths=PackedStringArray("sprite_2d", "player") instance=ExtResource("3_uhnfq")]
@@ -270,4 +272,16 @@ volume_db = 7.924
 stream = ExtResource("7_afbpb")
 volume_db = -0.495
 
+[node name="pebbles_hitbox" type="Area2D" parent="."]
+
+[node name="radius" type="CollisionShape2D" parent="pebbles_hitbox"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_n2kjh")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
+[connection signal="body_entered" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_entered"]
+[connection signal="body_exited" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -9,6 +9,11 @@ extends CharacterBody2D
 
 @onready var health: int = max_health
 @onready var gunShot = $gunShot
+@onready var fat_cop = $fat_penguin_cop
+
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+
 
 const LEFT = Vector2(-1, 1)
 const RIGHT = Vector2(1 ,1)
@@ -21,6 +26,7 @@ signal pebbles_shoot
 
 func _ready():
 	animation_tree.active = true
+	
 
 func _physics_process(_delta):
 	var horizontal_movement = \
@@ -59,9 +65,10 @@ func _physics_process(_delta):
 	#print("Sprite Frame: ", $Sprite2D.frame)
 
 	
-	if Input.is_action_just_pressed("ui_text_backspace"):
-		take_damage(1)
-
+	#if Input.is_action_just_pressed("ui_text_backspace"):
+		#take_damage(1)
+	
+	take_damage(1) 
 
 func pick_new_animation_state():
 	if abs(velocity.x) < FLOAT_TOL && abs(velocity.y) < FLOAT_TOL:
@@ -92,10 +99,30 @@ func _on_slap_area_entered(area):
 		area.take_damage()
 
 func take_damage(damage: int) -> void:
-	health -= damage
-	if health <= 0:
-		health = 0
-		print("dead")
-		pebbles_death.emit()
-	health_update.emit(health, max_health)
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		health -= damage
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		if health <= 0:
+			health = 0
+			print("dead")
+			pebbles_death.emit()
+		print(health)
+		health_update.emit(health, max_health)
 
+func pebbles():
+	pass
+
+func _on_pebbles_hitbox_body_entered(body):
+	if body.has_method("fat_penguin_cop"):
+		enemy_inattack_range = true
+
+
+func _on_pebbles_hitbox_body_exited(body):
+	if body.has_method("fat_penguin_cop"):
+		enemy_inattack_range = false
+
+
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
