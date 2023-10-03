@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tdf8iqs82nqm"]
+[gd_scene load_steps=25 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
 [ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://w6vnu6g7xefs" path="res://Guns/Gun.tscn" id="3_uhnfq"]
 [ext_resource type="Texture2D" uid="uid://d2c78aft3tu7e" path="res://Characters/Pebbles/Sprites/pebble-run.png" id="4_cnw0k"]
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="6_3mnqa"]
+[ext_resource type="Texture2D" uid="uid://s8jme7fywmc" path="res://Characters/Pebbles/Sprites/pebbles_slap.png" id="6_gnr27"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="7_afbpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckj3u"]
+size = Vector2(10, 28)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17j5c"]
 radius = 8.0
@@ -135,6 +139,43 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_kwo2w"]
 resource_name = "slap"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_gnr27")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ap2"]
 _data = {
@@ -150,6 +191,9 @@ animation = &"idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ywhf"]
 animation = &"running"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vwmge"]
+animation = &"slap"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mluq"]
 advance_mode = 2
 
@@ -161,13 +205,21 @@ advance_condition = &"moving"
 advance_mode = 2
 advance_condition = &"not_moving"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tlxbl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5xotp"]
+reset = false
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_prp0b"]
 states/Start/position = Vector2(171, 124)
 states/idle/node = SubResource("AnimationNodeAnimation_83gxc")
 states/idle/position = Vector2(298, 111)
 states/running/node = SubResource("AnimationNodeAnimation_6ywhf")
 states/running/position = Vector2(484.5, 114.5)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_8mluq"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_yvevq"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_1q40i")]
+states/slap/node = SubResource("AnimationNodeAnimation_vwmge")
+states/slap/position = Vector2(484.6, 211.645)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_8mluq"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_yvevq"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_1q40i"), "running", "slap", SubResource("AnimationNodeStateMachineTransition_tlxbl"), "slap", "running", SubResource("AnimationNodeStateMachineTransition_5xotp")]
+graph_offset = Vector2(112.463, 50.6175)
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "animation_tree")]
 script = ExtResource("1_cxbe1")
@@ -179,6 +231,12 @@ bullet_scene = ExtResource("2_nt858")
 texture = ExtResource("2_oo8pk")
 hframes = 3
 frame = 1
+
+[node name="Slap" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Slap"]
+position = Vector2(14, 2)
+shape = SubResource("RectangleShape2D_ckj3u")
 
 [node name="Gun" parent="." node_paths=PackedStringArray("sprite_2d", "player") instance=ExtResource("3_uhnfq")]
 position = Vector2(0, 6)
@@ -211,3 +269,5 @@ volume_db = 7.924
 [node name="gunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_afbpb")
 volume_db = -0.495
+
+[connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
