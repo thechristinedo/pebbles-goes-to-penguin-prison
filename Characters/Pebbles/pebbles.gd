@@ -99,7 +99,6 @@ func shoot():
 	
 func slap():
 	$AnimationPlayer.play("slap")
-	
 
 func _on_slap_area_entered(area):
 	if area.is_in_group("hurtbox"):

@@ -34,21 +34,14 @@ func _process(_delta):
 		
 func pause():
 	get_tree().paused = true
-	$TileMap.hide()
-	$Bed.hide()
-	$Toilet.hide()
-	$Pebbles.hide()
-	if $\"Fat Penguin Cop\" != null:
-		$\"Fat Penguin Cop\".hide()
+	for child in get_children():
+		child.hide()
+	$Camera2D.show()
 	$Camera2D/pause_menu.show()
 	
 func unpause():
-	$TileMap.show()
-	$Bed.show()
-	$Toilet.show()
-	$Pebbles.show()
-	if $\"Fat Penguin Cop\" != null:
-		$\"Fat Penguin Cop\".show()
+	for child in get_children():
+		child.show()
 	$Camera2D/pause_menu.hide()
 	get_tree().paused = false
 
@@ -233,7 +226,13 @@ visible = false
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
 position = Vector2(167, 171)
 
-[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="Control"]
 process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
