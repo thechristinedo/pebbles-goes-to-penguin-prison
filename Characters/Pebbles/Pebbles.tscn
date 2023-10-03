@@ -278,8 +278,9 @@ volume_db = -0.495
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_n2kjh")
 
-[node name="attack_cooldown" type="Timer" parent="."]
-wait_time = 0.5
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
 
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
 [connection signal="body_entered" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_entered"]
