@@ -48,8 +48,8 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("slap"):
 		slap()
 	
-	print("Current Animation: ", $AnimationPlayer.current_animation)
-	print("Sprite Frame: ", $Sprite2D.frame)
+	#print("Current Animation: ", $AnimationPlayer.current_animation)
+	#print("Sprite Frame: ", $Sprite2D.frame)
 
 
 func pick_new_animation_state():
