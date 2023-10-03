@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c76l8i1sc5pct"]
+[gd_scene load_steps=5 format=3 uid="uid://c76l8i1sc5pct"]
 
 [ext_resource type="Script" path="res://options_menu.gd" id="1_6fw7g"]
 [ext_resource type="Texture2D" uid="uid://b7g8o8f5bemjq" path="res://temp_options_screen.PNG" id="2_01q0u"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_cw5mr"]
+[ext_resource type="Texture2D" uid="uid://bl5krkhby31ab" path="res://temp_title_screen.PNG" id="4_o3sjc"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,40 +14,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6fw7g")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1078.0
+
 [node name="TempOptionsScreen" type="Sprite2D" parent="."]
-position = Vector2(958.5, 531)
-scale = Vector2(1.95464, 1.93525)
+position = Vector2(961, 535.5)
+scale = Vector2(1.94355, 1.95144)
 texture = ExtResource("2_01q0u")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 562.0
-offset_top = 381.0
-offset_right = 1321.0
-offset_bottom = 769.0
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_left = 440.0
+offset_top = 361.0
+offset_right = 940.0
+offset_bottom = 540.0
+scale = Vector2(2, 2)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Volume" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cw5mr")
-theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
+theme_override_colors/font_color = Color(0.537255, 0.486275, 0.968627, 1)
+theme_override_font_sizes/font_size = 30
 text = "Volume"
 flat = true
 
-[node name="Brightness" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Brightness" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cw5mr")
 theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
+theme_override_font_sizes/font_size = 30
 text = "Brightness"
 flat = true
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cw5mr")
 theme_override_colors/font_color = Color(0.537255, 0.52549, 0.968627, 1)
+theme_override_font_sizes/font_size = 30
 text = "Back to Menu"
 flat = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="TempTitleScreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 538)
+scale = Vector2(1.94529, 1.94946)
+texture = ExtResource("4_o3sjc")
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Back" to="." method="_on_back_pressed"]
