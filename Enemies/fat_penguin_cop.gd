@@ -15,7 +15,7 @@ func _ready():
 	# ... you can add any other initialization logic for this enemy here
 	
 func _physics_process(_delta):
-  deal_with_damage()
+	deal_with_damage()
 	update_health()
 	if pebbles_chase:
 		player = get_node("../Pebbles")
