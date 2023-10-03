@@ -72,20 +72,33 @@ func pick_new_animation_state():
 		animation_tree["parameters/conditions/moving"] = true
 
 func shoot():
+	if !$ShootCooldown.is_stopped():
+		print($ShootCooldown.time_left)
+		return
+	$ShootCooldown.start()
 	if ammo <= 0: return
 	ammo -= 1
 	pebbles_shoot.emit(ammo)
 	
 	gunShot.play()
-	var bullet: Area2D = bullet_scene.instantiate()
+	var bullet1: Area2D = bullet_scene.instantiate()
+	var bullet2: Area2D = bullet_scene.instantiate()
+	var bullet3: Area2D = bullet_scene.instantiate()
 
-	bullet.global_position = get_node("Gun/Muzzle").global_position
-	bullet.rotation = get_node("Gun").rotation
-	owner.add_child(bullet)
+	bullet1.global_position = get_node("Gun/Muzzle").global_position
+	bullet2.global_position = get_node("Gun/Muzzle").global_position
+	bullet3.global_position = get_node("Gun/Muzzle").global_position
+	
+	bullet1.rotation = get_node("Gun").rotation + 0.1
+	bullet2.rotation = get_node("Gun").rotation
+	bullet3.rotation = get_node("Gun").rotation - 0.1
+	
+	owner.add_child(bullet1)
+	owner.add_child(bullet2)
+	owner.add_child(bullet3)
 	
 func slap():
 	$AnimationPlayer.play("slap")
-	
 
 func _on_slap_area_entered(area):
 	if area.is_in_group("hurtbox"):

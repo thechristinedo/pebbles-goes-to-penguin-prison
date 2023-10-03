@@ -270,4 +270,8 @@ volume_db = 7.924
 stream = ExtResource("7_afbpb")
 volume_db = -0.495
 
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
