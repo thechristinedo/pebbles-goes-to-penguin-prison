@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=17 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="10_4klk4"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="11_2hvd6"]
 [ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="12_yp355"]
+[ext_resource type="PackedScene" uid="uid://b7dts4c4mcnyo" path="res://Enemies/Seal/seal.tscn" id="13_kyrvk"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
@@ -425,6 +426,9 @@ theme = ExtResource("11_2hvd6")
 theme_override_constants/outline_size = 2
 text = "Back
 "
+
+[node name="Seal" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(-90, 201)
 
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
