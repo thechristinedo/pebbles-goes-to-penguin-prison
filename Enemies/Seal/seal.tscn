@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cmdsq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -134,7 +134,7 @@ script = ExtResource("1_c2je5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cefw2")
-animation = &"Walk"
+animation = &"Death"
 
 [node name="detection_area" type="Area2D" parent="."]
 
@@ -149,9 +149,9 @@ wait_time = 5.0
 autostart = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -5.0
+offset_left = -10.0
 offset_top = -23.0
-offset_right = 100.0
+offset_right = 95.0
 offset_bottom = 4.0
 scale = Vector2(0.2, 0.2)
 theme = ExtResource("5_0ismb")
