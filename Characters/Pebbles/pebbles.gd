@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var sprite_2d: Sprite2D
 @export var animation_tree: AnimationTree
 @export var bullet_scene: PackedScene
-
+@export var damage: int = 1
 @onready var health: int = max_health
 @onready var gunShot = $gunShot
 
@@ -113,8 +113,10 @@ func _on_slap_area_entered(area):
 		area.take_damage()
 
 func take_damage(damage: int) -> void:
-	health -= damage
-	enemy_attack_cooldown = false
+	#damage is only going to be 1 for pebbles 
+	health -= 1
+	
+	#enemy_attack_cooldown = false
 	# $attack_cooldown.start()
 	if health <= 0:
 		health = 0

@@ -80,12 +80,28 @@ func fat_penguin_cop():
 	
 	
 func shoot_pebbles():
-	var bullet: Area2D = bullet_scene.instantiate()
-	bullet.global_position = get_node("Shotgun/Muzzle").global_position
-	bullet.look_at(player.global_position)  # Rotate the bullet towards the player's position
-	bullet.rotation = get_node("Shotgun").rotation
-	owner.add_child(bullet)
-	can_shoot = false
+	if can_shoot == true:
+		var bullet1: Area2D = bullet_scene.instantiate()
+		var bullet2: Area2D = bullet_scene.instantiate()
+		var bullet3: Area2D = bullet_scene.instantiate()
+		
+		bullet1.global_position = get_node("Shotgun/Muzzle").global_position
+		bullet2.global_position = get_node("Shotgun/Muzzle").global_position
+		bullet3.global_position = get_node("Shotgun/Muzzle").global_position
+		
+		bullet1.look_at(player.global_position)  # Rotate the bullet towards the player's position
+		bullet2.look_at(player.global_position)  # Rotate the bullet towards the player's position
+		bullet3.look_at(player.global_position)  # Rotate the bullet towards the player's position
+		
+		bullet1.rotation = get_node("Shotgun").rotation + 0.1
+		bullet2.rotation = get_node("Shotgun").rotation
+		bullet3.rotation = get_node("Shotgun").rotation + -0.1
+		
+		owner.add_child(bullet1)
+		owner.add_child(bullet2)
+		owner.add_child(bullet3)
+		can_shoot = false
+		$Reload_Timer.start()
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
@@ -94,3 +110,7 @@ func _on_AnimatedSprite2D_animation_finished():
 	if $AnimatedSprite2D.animation == "death":
 		# Add any logic here that should run after the death animation completes
 		queue_free()
+
+
+func _on_reload_timer_timeout():
+	can_shoot = true

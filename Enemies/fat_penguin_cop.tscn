@@ -215,7 +215,9 @@ script = ExtResource("11_anauf")
 position = Vector2(31, -2)
 
 [node name="Reload_Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection_Radius" to="." method="_on_detection_radius_body_exited"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
+[connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
