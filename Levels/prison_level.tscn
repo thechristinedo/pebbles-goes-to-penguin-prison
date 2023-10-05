@@ -224,7 +224,7 @@ target = NodePath("../Pebbles")
 visible = false
 
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(-9, 405)
+position = Vector2(192, 468)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
