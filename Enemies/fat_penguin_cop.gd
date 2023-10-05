@@ -10,6 +10,10 @@ var pebbles = null
 var health = 250
 var can_shoot = true
 
+# Hit Flash Shader
+@onready var sprite = $AnimatedSprite2D
+@onready var flashTimer = $FlashHitTimer
+
 # Combat
 var pebbles_inattack_zone = false
 var can_take_damage = true
@@ -46,6 +50,7 @@ func _on_detection_radius_body_entered(body):
 func take_damage(damage: int) -> void:
 	#take damage 
 	health -= damage
+	flash()
 	#if health reaches 0 then delete from scene
 	if health <= 0:
 		$AnimatedSprite2D.play("death")  # Assumes the animation's name is "death"
@@ -53,6 +58,13 @@ func take_damage(damage: int) -> void:
 		set_physics_process(false)  # Optional: stops other logic from processing during death animation
 		await $AnimatedSprite2D.animation_finished
 		#queue_free()
+
+func flash():
+	sprite.material.set_shader_parameter("flash_modifier", 0.7)
+	flashTimer.start()
+
+func _on_FlashTimer_timeout():
+	sprite.material.set_shader_parameter("flash_modifier", 0)
 
 func update_health():
 	var healthbar = $HealthBar
