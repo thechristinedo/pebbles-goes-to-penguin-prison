@@ -116,7 +116,7 @@ func take_damage(damage: int) -> void:
 	if enemy_inattack_range and enemy_attack_cooldown == true:
 		health -= damage
 		enemy_attack_cooldown = false
-		$attack_cooldown.start()
+		# $attack_cooldown.start()
 		if health <= 0:
 			health = 0
 			print("dead")

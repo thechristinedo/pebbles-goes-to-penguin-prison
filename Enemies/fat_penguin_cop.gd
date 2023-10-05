@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var player
-var speed = 50
+var speed = 200
 var pebbles_chase = false
 var pebbles = null
 var health = 250
@@ -19,7 +19,7 @@ func _physics_process(_delta):
 	if pebbles_chase:
 		player = get_node("../Pebbles")
 		position += (pebbles.position - position)/speed
-		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D.play("running")
 		var direction = (player.position - self.position).normalized()
 		if direction.x < 0:
 			get_node("AnimatedSprite2D").flip_h = true
@@ -27,6 +27,9 @@ func _physics_process(_delta):
 			get_node("AnimatedSprite2D").flip_h = false
 		
 		move_and_collide(Vector2.ZERO)
+	else:
+		$AnimatedSprite2D.play("Idle")
+		
 	
 	
 		
@@ -35,6 +38,7 @@ func _on_detection_radius_body_entered(body):
 	if body.name == "Pebbles":
 		pebbles = body
 		pebbles_chase = true
+		#CALL the shoot function here when he gets detected shoot_pebbles()
 
 func take_damage(damage: int) -> void:
 	#take damage 
@@ -70,7 +74,8 @@ func _on_detection_radius_body_exited(_body):
 	
 func fat_penguin_cop():
 	pass
-
+func shoot_pebbles():
+	pass
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true

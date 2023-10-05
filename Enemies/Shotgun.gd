@@ -13,5 +13,6 @@ func _ready():
 	player = get_parent().get_node(player_path)  # Assign the correct node to player
 
 func _physics_process(_delta):
+	
 	if player:
 		look_at(player.global_position)
