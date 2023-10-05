@@ -270,7 +270,7 @@ volume_db = 7.924
 
 [node name="gunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_afbpb")
-volume_db = -0.495
+volume_db = -7.858
 
 [node name="pebbles_hitbox" type="Area2D" parent="."]
 
@@ -285,4 +285,3 @@ one_shot = true
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
 [connection signal="body_entered" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_entered"]
 [connection signal="body_exited" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_exited"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
