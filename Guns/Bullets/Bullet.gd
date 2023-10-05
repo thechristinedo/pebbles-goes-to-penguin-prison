@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 1000
+@export var speed = 500
 @export var damage: int = 25
 
 @onready var lifetime: Timer = $Lifetime

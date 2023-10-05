@@ -13,9 +13,9 @@ script = ExtResource("1_htcy7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_otf2s")
-hframes = 6
-vframes = 6
-frame = 21
+hframes = 11
+vframes = 9
+frame = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

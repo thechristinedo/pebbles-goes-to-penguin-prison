@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://tdf8iqs82nqm"]
+[gd_scene load_steps=27 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
 [ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="6_3mnqa"]
 [ext_resource type="Texture2D" uid="uid://s8jme7fywmc" path="res://Characters/Pebbles/Sprites/pebbles_slap.png" id="6_gnr27"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="7_afbpb"]
+[ext_resource type="PackedScene" uid="uid://ky0ajf56l7cj" path="res://game_over_screen.tscn" id="9_phe7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckj3u"]
 size = Vector2(23, 29)
@@ -267,12 +268,10 @@ one_shot = true
 [node name="walking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_3mnqa")
 volume_db = 7.924
-bus = &"Sound Effects"
 
 [node name="gunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_afbpb")
 volume_db = -6.052
-bus = &"Sound Effects"
 
 [node name="pebbles_hitbox" type="Area2D" parent="."]
 
@@ -283,6 +282,9 @@ shape = SubResource("CapsuleShape2D_n2kjh")
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.35
 one_shot = true
+
+[node name="GameOverScreen" parent="." instance=ExtResource("9_phe7c")]
+visible = false
 
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
 [connection signal="body_entered" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_entered"]
