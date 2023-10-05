@@ -7,13 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
 [ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
-
 [ext_resource type="AudioStream" uid="uid://do8cyc1bt2rph" path="res://Audio/backgroundmusic.mp3" id="7_yvnlm"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="9_yq5fn"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="10_4klk4"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="11_2hvd6"]
 [ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="12_yp355"]
-[ext_resource type="PackedScene" uid="uid://ctevosc6td0cu" path="res://pause_menu.tscn" id="7_lb3r2"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D

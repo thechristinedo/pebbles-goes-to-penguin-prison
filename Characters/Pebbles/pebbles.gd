@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var damage: int = 1
 @onready var health: int = max_health
 @onready var gunShot = $gunShot
-
+@onready var gameOver = $GameOverScreen
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -120,6 +120,9 @@ func take_damage(damage: int) -> void:
 	# $attack_cooldown.start()
 	if health <= 0:
 		health = 0
+		get_tree().paused = true
+		sprite_2d.visible = false
+		gameOver.visible = true
 		print("dead")
 		pebbles_death.emit()
 	print(health)
