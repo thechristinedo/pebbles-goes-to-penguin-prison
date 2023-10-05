@@ -1,10 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://b7dts4c4mcnyo"]
+[gd_scene load_steps=25 format=3 uid="uid://b7dts4c4mcnyo"]
 
 [ext_resource type="Texture2D" uid="uid://dhlnlqufvc7ur" path="res://Enemies/Seal/seal_walking.png" id="1_37iev"]
 [ext_resource type="Script" path="res://Enemies/Seal/seal.gd" id="1_c2je5"]
+[ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="2_d07ir"]
 [ext_resource type="Texture2D" uid="uid://bqiuhpohg1nn1" path="res://Enemies/Seal/seal_death_frames_new.png" id="2_ewul5"]
 [ext_resource type="Texture2D" uid="uid://uwf6uq3ji8w0" path="res://Enemies/Seal/slap_seal.png" id="4_ijjct"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="5_0ismb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3yn3"]
+resource_local_to_scene = true
+shader = ExtResource("2_d07ir")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heto7"]
 atlas = ExtResource("2_ewul5")
@@ -133,6 +140,7 @@ radius = 12.0
 script = ExtResource("1_c2je5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_g3yn3")
 sprite_frames = SubResource("SpriteFrames_cefw2")
 animation = &"Death"
 
@@ -168,5 +176,9 @@ shape = SubResource("CircleShape2D_y7g2x")
 position = Vector2(3, 6)
 shape = SubResource("CircleShape2D_5hpsu")
 
+[node name="FlashHitTimer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]

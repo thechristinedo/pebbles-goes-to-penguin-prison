@@ -19,6 +19,7 @@
 height = 34.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4cui"]
+resource_local_to_scene = true
 shader = ExtResource("2_ob8wy")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
