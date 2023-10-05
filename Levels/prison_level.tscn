@@ -224,7 +224,7 @@ target = NodePath("../Pebbles")
 visible = false
 
 [node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(191, 309)
+position = Vector2(-9, 405)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -239,6 +239,3 @@ process_thread_messages = 0
 stream = ExtResource("7_yvnlm")
 volume_db = -8.901
 autoplay = true
-
-[node name="Fat Penguin Cop2" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(-190, 308)

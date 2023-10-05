@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
+@export var bullet_scene: PackedScene
+
+
 var player
 var speed = 200
 var pebbles_chase = false
 var pebbles = null
 var health = 250
+var can_shoot = true
 
 # Combat
 var pebbles_inattack_zone = false
@@ -12,12 +16,13 @@ var can_take_damage = true
 
 func _ready():
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_AnimatedSprite2D_animation_finished"))
-	# ... you can add any other initialization logic for this enemy here
 	
 func _physics_process(_delta):
 	update_health()
+	
 	if pebbles_chase:
 		player = get_node("../Pebbles")
+		shoot_pebbles()
 		position += (pebbles.position - position)/speed
 		$AnimatedSprite2D.play("running")
 		var direction = (player.position - self.position).normalized()
@@ -30,14 +35,12 @@ func _physics_process(_delta):
 	else:
 		$AnimatedSprite2D.play("Idle")
 		
-	
-	
-		
 
 func _on_detection_radius_body_entered(body):
 	if body.name == "Pebbles":
 		pebbles = body
 		pebbles_chase = true
+		#shoot_pebbles()
 		#CALL the shoot function here when he gets detected shoot_pebbles()
 
 func take_damage(damage: int) -> void:
@@ -74,8 +77,15 @@ func _on_detection_radius_body_exited(_body):
 	
 func fat_penguin_cop():
 	pass
+	
+	
 func shoot_pebbles():
-	pass
+	var bullet: Area2D = bullet_scene.instantiate()
+	bullet.global_position = get_node("Shotgun/Muzzle").global_position
+	bullet.look_at(player.global_position)  # Rotate the bullet towards the player's position
+	bullet.rotation = get_node("Shotgun").rotation
+	owner.add_child(bullet)
+	can_shoot = false
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true

@@ -66,10 +66,10 @@ func _physics_process(_delta):
 	#print("Sprite Frame: ", $Sprite2D.frame)
 
 	
-	#if Input.is_action_just_pressed("ui_text_backspace"):
-		#take_damage(1)
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		take_damage(1)
 	
-	take_damage(1) 
+	
 
 func pick_new_animation_state():
 	if abs(velocity.x) < FLOAT_TOL && abs(velocity.y) < FLOAT_TOL:
@@ -113,16 +113,15 @@ func _on_slap_area_entered(area):
 		area.take_damage()
 
 func take_damage(damage: int) -> void:
-	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health -= damage
-		enemy_attack_cooldown = false
-		# $attack_cooldown.start()
-		if health <= 0:
-			health = 0
-			print("dead")
-			pebbles_death.emit()
-		print(health)
-		health_update.emit(health, max_health)
+	health -= damage
+	enemy_attack_cooldown = false
+	# $attack_cooldown.start()
+	if health <= 0:
+		health = 0
+		print("dead")
+		pebbles_death.emit()
+	print(health)
+	health_update.emit(health, max_health)
 
 func pebbles():
 	pass

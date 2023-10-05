@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfyn5xxip2okh"]
+[gd_scene load_steps=32 format=3 uid="uid://cfyn5xxip2okh"]
 
 [ext_resource type="Script" path="res://Enemies/fat_penguin_cop.gd" id="1_rkrr8"]
 [ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="2_2gou8"]
+[ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_81ude"]
 [ext_resource type="Texture2D" uid="uid://d25u4luifj0pd" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death1.png" id="3_a8v5y"]
 [ext_resource type="Texture2D" uid="uid://dtkj5cimi878f" path="res://Enemies/Fat Penguin Cop/Sprites/police_guard_slap_frames.png" id="3_c4i3h"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_g3ud3"]
@@ -158,7 +159,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_matj5"]
-radius = 176.003
+radius = 80.2247
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybixe"]
 height = 34.0
@@ -167,6 +168,7 @@ height = 34.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_rkrr8")
+bullet_scene = ExtResource("2_81ude")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 1)
@@ -208,6 +210,11 @@ shape = SubResource("CapsuleShape2D_ybixe")
 position = Vector2(8, 4)
 texture = ExtResource("10_uu1ws")
 script = ExtResource("11_anauf")
+
+[node name="Muzzle" type="Node2D" parent="Shotgun"]
+position = Vector2(31, -2)
+
+[node name="Reload_Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection_Radius" to="." method="_on_detection_radius_body_exited"]
