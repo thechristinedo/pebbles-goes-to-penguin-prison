@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Enemies/fat_penguin_cop.gd" id="1_rkrr8"]
 [ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="2_2gou8"]
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="2_ob8wy"]
+[ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_81ude"]
+
 [ext_resource type="Texture2D" uid="uid://d25u4luifj0pd" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death1.png" id="3_a8v5y"]
 [ext_resource type="Texture2D" uid="uid://dtkj5cimi878f" path="res://Enemies/Fat Penguin Cop/Sprites/police_guard_slap_frames.png" id="3_c4i3h"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_g3ud3"]
@@ -10,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dg0rnllf2bv80" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death3.png" id="5_bhrn7"]
 [ext_resource type="Texture2D" uid="uid://biwmbpmxmqiyd" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death4.png" id="6_btskl"]
 [ext_resource type="Texture2D" uid="uid://dsrputjkimjfu" path="res://Enemies/Fat Penguin Cop/Sprites/death/police_death5.png" id="7_lcgnq"]
+[ext_resource type="Texture2D" uid="uid://cfa07nvk34x4o" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police-run.png" id="9_th507"]
+[ext_resource type="Texture2D" uid="uid://b6sb5ingbsp6k" path="res://Guns/shotgun.png" id="10_uu1ws"]
+[ext_resource type="Script" path="res://Enemies/Shotgun.gd" id="11_anauf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x8rt"]
 height = 34.0
@@ -50,6 +55,30 @@ region = Rect2(138, 0, 45, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_swdpx"]
 atlas = ExtResource("3_c4i3h")
 region = Rect2(184, 0, 45, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myx3i"]
+atlas = ExtResource("9_th507")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ujle"]
+atlas = ExtResource("9_th507")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfw84"]
+atlas = ExtResource("9_th507")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keo6e"]
+atlas = ExtResource("9_th507")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rltti"]
+atlas = ExtResource("9_th507")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hio3x"]
+atlas = ExtResource("9_th507")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tm0al"]
 animations = [{
@@ -111,10 +140,33 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myx3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ujle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfw84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keo6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rltti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hio3x")
+}],
+"loop": true,
+"name": &"running",
+"speed": 30.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_matj5"]
-radius = 83.6002
+radius = 319.061
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybixe"]
 height = 34.0
@@ -123,6 +175,7 @@ height = 34.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_rkrr8")
+bullet_scene = ExtResource("2_81ude")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 1)
@@ -132,10 +185,12 @@ one_way_collision_margin = 0.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_h4cui")
 sprite_frames = SubResource("SpriteFrames_tm0al")
-animation = &"Idle"
+
+animation = &"running"
+frame = 4
+frame_progress = 0.742994
 
 [node name="Detection_Radius" type="Area2D" parent="."]
-visible = false
 
 [node name="follow_radius" type="CollisionShape2D" parent="Detection_Radius"]
 shape = SubResource("CircleShape2D_matj5")
@@ -163,7 +218,22 @@ wait_time = 0.2
 position = Vector2(-3, 1)
 shape = SubResource("CapsuleShape2D_ybixe")
 
+[node name="Shotgun" type="Sprite2D" parent="."]
+position = Vector2(8, 4)
+texture = ExtResource("10_uu1ws")
+script = ExtResource("11_anauf")
+
+[node name="Muzzle" type="Node2D" parent="Shotgun"]
+position = Vector2(31, -2)
+
+[node name="Reload_Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection_Radius" to="." method="_on_detection_radius_body_exited"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
+
 [connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]
+[connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
+

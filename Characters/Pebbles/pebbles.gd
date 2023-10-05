@@ -6,10 +6,10 @@ extends CharacterBody2D
 @export var sprite_2d: Sprite2D
 @export var animation_tree: AnimationTree
 @export var bullet_scene: PackedScene
-
+@export var damage: int = 1
 @onready var health: int = max_health
 @onready var gunShot = $gunShot
-@onready var fat_cop = $fat_penguin_cop
+
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -24,9 +24,10 @@ signal health_update
 signal pebbles_death
 signal pebbles_shoot
 
+
 func _ready():
 	animation_tree.active = true
-	
+	#print(self.get_path())
 
 func _physics_process(_delta):
 	var horizontal_movement = \
@@ -65,10 +66,10 @@ func _physics_process(_delta):
 	#print("Sprite Frame: ", $Sprite2D.frame)
 
 	
-	#if Input.is_action_just_pressed("ui_text_backspace"):
-		#take_damage(1)
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		take_damage(1)
 	
-	take_damage(1) 
+	
 
 func pick_new_animation_state():
 	if abs(velocity.x) < FLOAT_TOL && abs(velocity.y) < FLOAT_TOL:
@@ -96,7 +97,7 @@ func shoot():
 	bullet2.global_position = get_node("Gun/Muzzle").global_position
 	bullet3.global_position = get_node("Gun/Muzzle").global_position
 	
-	bullet1.rotation = get_node("Gun").rotation + 0.1
+	bullet1.rotation = get_node("Gun").rotation + 0.1 
 	bullet2.rotation = get_node("Gun").rotation
 	bullet3.rotation = get_node("Gun").rotation - 0.1
 	
@@ -112,16 +113,17 @@ func _on_slap_area_entered(area):
 		area.take_damage()
 
 func take_damage(damage: int) -> void:
-	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health -= damage
-		enemy_attack_cooldown = false
-		$attack_cooldown.start()
-		if health <= 0:
-			health = 0
-			print("dead")
-			pebbles_death.emit()
-		print(health)
-		health_update.emit(health, max_health)
+	#damage is only going to be 1 for pebbles 
+	health -= 1
+	
+	#enemy_attack_cooldown = false
+	# $attack_cooldown.start()
+	if health <= 0:
+		health = 0
+		print("dead")
+		pebbles_death.emit()
+	print(health)
+	health_update.emit(health, max_health)
 
 func pebbles():
 	pass
@@ -135,7 +137,6 @@ func _on_pebbles_hitbox_body_exited(body):
 	if body.has_method("fat_penguin_cop"):
 		enemy_inattack_range = false
 
-
-
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+
