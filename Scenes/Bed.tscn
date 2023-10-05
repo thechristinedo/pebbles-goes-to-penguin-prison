@@ -13,6 +13,7 @@ script = ExtResource("1_htcy7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_otf2s")
+offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 6
 vframes = 6
 frame = 21

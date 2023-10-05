@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://w6i02hhlrsuh"]
+
+[ext_resource type="Script" path="res://Objects/Resources/resource_node_rock_tall.gd" id="1_r4s0n"]
+[ext_resource type="Texture2D" uid="uid://dkifw4603gu7h" path="res://8bit barrel pixel art.webp" id="2_1tcwt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk3jc"]
+radius = 15.0
+height = 36.0
+
+[node name="ResourceNode_RockTall" type="StaticBody2D"]
+script = ExtResource("1_r4s0n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-62.6282, 207.322)
+scale = Vector2(0.0542789, 0.0419845)
+texture = ExtResource("2_1tcwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-63, 208)
+shape = SubResource("CapsuleShape2D_jk3jc")

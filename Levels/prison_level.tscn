@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=17 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
 [ext_resource type="PackedScene" uid="uid://dqm2yvq2vyimg" path="res://Scenes/Bed.tscn" id="3_id7cy"]
 [ext_resource type="PackedScene" uid="uid://ktujw2iocqb3" path="res://Scenes/Toilet.tscn" id="4_om7kv"]
+[ext_resource type="PackedScene" uid="uid://w6i02hhlrsuh" path="res://Objects/Resources/resource_node_rock_tall.tscn" id="4_xdcdu"]
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
 [ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
@@ -214,6 +215,21 @@ position = Vector2(40, -52)
 [node name="Toilet" parent="." instance=ExtResource("4_om7kv")]
 position = Vector2(-42, -64)
 scale = Vector2(1.00083, 1)
+
+[node name="Barrel" parent="." instance=ExtResource("4_xdcdu")]
+position = Vector2(-25, 45)
+
+[node name="Barrel2" parent="." instance=ExtResource("4_xdcdu")]
+position = Vector2(153, 45)
+
+[node name="Barrel5" parent="." instance=ExtResource("4_xdcdu")]
+position = Vector2(156, 322)
+
+[node name="Barrel3" parent="." instance=ExtResource("4_xdcdu")]
+position = Vector2(-42, 266)
+
+[node name="Barrel4" parent="." instance=ExtResource("4_xdcdu")]
+position = Vector2(88, 171)
 
 [node name="Pebbles" parent="." instance=ExtResource("5_aw3i6")]
 
