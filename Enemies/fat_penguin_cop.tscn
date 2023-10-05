@@ -184,6 +184,7 @@ one_way_collision_margin = 0.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_h4cui")
 sprite_frames = SubResource("SpriteFrames_tm0al")
+animation = &"death"
 animation = &"running"
 frame = 4
 frame_progress = 0.742994
