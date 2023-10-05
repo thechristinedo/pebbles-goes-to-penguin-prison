@@ -74,7 +74,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cmdsq")
 }],
 "loop": false,
-"name": &"Death",
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -82,7 +82,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ig7ns")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -102,7 +102,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6yef6")
 }],
 "loop": true,
-"name": &"Slap",
+"name": &"slap",
 "speed": 5.0
 }, {
 "frames": [{
@@ -116,7 +116,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_oo7hv")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -134,7 +134,7 @@ script = ExtResource("1_c2je5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cefw2")
-animation = &"Death"
+animation = &"idle"
 
 [node name="detection_area" type="Area2D" parent="."]
 

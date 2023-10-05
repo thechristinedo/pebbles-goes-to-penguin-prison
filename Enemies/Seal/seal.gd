@@ -20,7 +20,7 @@ func _physics_process(_delta):
 	if pebbles_chase:
 		player = get_node("../Pebbles")
 		position += (pebbles.position - position)/speed
-		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D.play("idle")
 		var direction = (player.position - self.position).normalized()
 		if direction.x < 0:
 			get_node("AnimatedSprite2D").flip_h = true
@@ -41,7 +41,7 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	#if health reaches 0 then delete from scene
 	if health <= 0:
-		$AnimatedSprite2D.play("Death")  # Assumes the animation's name is "death"
+		$AnimatedSprite2D.play("death")  # Assumes the animation's name is "death"
 		health = 0
 		set_physics_process(false)  # Optional: stops other logic from processing during death animation
 		await $AnimatedSprite2D.animation_finished
@@ -94,8 +94,7 @@ func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
 
 func _on_AnimatedSprite2D_animation_finished():
-	if $AnimatedSprite2D.animation == "Death":
+	if $AnimatedSprite2D.animation == "death":
 		# Add any logic here that should run after the death animation completes
 		queue_free()
-
 

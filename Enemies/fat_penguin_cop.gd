@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 
 var player
-var speed = 200
+var speed = 50
 var pebbles_chase = false
 var pebbles = null
 var health = 250
@@ -37,7 +37,7 @@ func _physics_process(_delta):
 		
 		move_and_collide(Vector2.ZERO)
 	else:
-		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D.play("idle")
 		
 
 func _on_detection_radius_body_entered(body):
