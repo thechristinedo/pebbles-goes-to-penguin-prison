@@ -559,10 +559,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -92.0
-offset_right = 108.0
-offset_bottom = 68.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.34259, 1.37415)
@@ -599,6 +599,11 @@ text = "Sound Effects"
 [node name="soundeffects_slider" parent="PauseMenu/Volume/MarginContainer/VBoxContainer" instance=ExtResource("12_yp355")]
 layout_mode = 2
 bus_name = "Sound Effects"
+
+[node name="HSeparator" type="HSeparator" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="Back" type="Button" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
