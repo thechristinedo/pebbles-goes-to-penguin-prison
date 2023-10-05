@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var max_health: int = 10
-@export var ammo: int = 50
+@export var ammo: int = 999
 @export var move_speed: float = 250
 @export var sprite_2d: Sprite2D
 @export var animation_tree: AnimationTree
