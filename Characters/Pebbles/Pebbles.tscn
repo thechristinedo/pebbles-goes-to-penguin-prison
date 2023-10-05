@@ -267,12 +267,10 @@ one_shot = true
 [node name="walking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_3mnqa")
 volume_db = 7.924
-bus = &"Sound Effects"
 
 [node name="gunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_afbpb")
 volume_db = -6.052
-bus = &"Sound Effects"
 
 [node name="pebbles_hitbox" type="Area2D" parent="."]
 
