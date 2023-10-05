@@ -15,7 +15,6 @@ func _ready():
 	# ... you can add any other initialization logic for this enemy here
 	
 func _physics_process(_delta):
-	deal_with_damage()
 	update_health()
 	if pebbles_chase:
 		player = get_node("../Pebbles")
@@ -72,28 +71,6 @@ func _on_detection_radius_body_exited(_body):
 func fat_penguin_cop():
 	pass
 
-
-func _on_enemy_hitbox_body_entered(body):
-	if body.has_method("pebbles"):
-		pebbles_inattack_zone = true
-		
-
-func _on_enemy_hitbox_body_exited(body):
-	if body.has_method("pebbles"):
-		pebbles_inattack_zone = false
-		
-func deal_with_damage():
-	if pebbles_inattack_zone and global.pebbles_current_attack == true:
-		if can_take_damage == true:
-			health = health - 20
-			$take_damage_cooldown.start()
-			can_take_damage = false
-			print("cop health = ", health)
-			if health <= 0:
-				self.queue_free()
-
-func attackAnimation():
-	$AnimatedSprite2D.play("attack")
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true

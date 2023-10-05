@@ -285,4 +285,3 @@ one_shot = true
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
 [connection signal="body_entered" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_entered"]
 [connection signal="body_exited" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_exited"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

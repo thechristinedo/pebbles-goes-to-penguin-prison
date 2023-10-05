@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 @onready var health: int = max_health
 @onready var gunShot = $gunShot
-@onready var fat_cop = $fat_penguin_cop
+
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -24,9 +24,10 @@ signal health_update
 signal pebbles_death
 signal pebbles_shoot
 
+
 func _ready():
 	animation_tree.active = true
-	
+	#print(self.get_path())
 
 func _physics_process(_delta):
 	var horizontal_movement = \
@@ -96,7 +97,7 @@ func shoot():
 	bullet2.global_position = get_node("Gun/Muzzle").global_position
 	bullet3.global_position = get_node("Gun/Muzzle").global_position
 	
-	bullet1.rotation = get_node("Gun").rotation + 0.1
+	bullet1.rotation = get_node("Gun").rotation + 0.1 
 	bullet2.rotation = get_node("Gun").rotation
 	bullet3.rotation = get_node("Gun").rotation - 0.1
 	
@@ -135,7 +136,6 @@ func _on_pebbles_hitbox_body_exited(body):
 	if body.has_method("fat_penguin_cop"):
 		enemy_inattack_range = false
 
-
-
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+
