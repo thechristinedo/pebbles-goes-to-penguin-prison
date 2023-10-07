@@ -132,7 +132,7 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tuetc"]
 radius = 27.0185
 
-[node name="Seal" type="CharacterBody2D"]
+[node name="seal-slap" type="CharacterBody2D"]
 script = ExtResource("1_c2je5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

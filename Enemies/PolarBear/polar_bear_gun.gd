@@ -123,3 +123,4 @@ func _on_reload_timer_timeout():
 
 func _on_flash_hit_timer_timeout():
 	pass # Replace with function body.
+
