@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf0afnepahqfn"]
+
+[ext_resource type="Script" path="res://Storyboard.gd" id="1_10rir"]
+[ext_resource type="Texture2D" uid="uid://dyvmrwqwmqob1" path="res://Storyboard/sb1.png" id="2_3lhdw"]
+
+[node name="Storyboard" type="Node2D"]
+script = ExtResource("1_10rir")
+
+[node name="Image" type="TextureRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1081.0
+texture = ExtResource("2_3lhdw")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="WhiteBackground" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -50.0
+offset_top = -35.0
+offset_right = 1980.0
+offset_bottom = 1126.0
