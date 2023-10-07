@@ -19,7 +19,7 @@ func next_image():
 func end_of_story():
 	# Load your main game or any other scene
 	get_tree().change_scene_to_file("res://menu.tscn")
-	
+
 func _input(event):
 	if event.is_action_pressed("ui_accept"):  # 'ui_accept' is the Enter key by default. You can set to any other key in the Input Map.
 		next_image()
