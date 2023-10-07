@@ -1,6 +1,5 @@
 extends CharacterBody2D
-
-@export var bullet_scene: PackedScene
+@export var bullet_scene: PackedScene = preload("res://Guns/Bullets/Bullet.tscn")
 
 
 var player
@@ -60,8 +59,9 @@ func take_damage(damage: int) -> void:
 		#queue_free()
 
 func flash():
-	sprite.material.set_shader_parameter("flash_modifier", 0.7)
-	flashTimer.start()
+	if sprite and sprite.material:
+		sprite.material.set_shader_parameter("flash_modifier", 0.7)
+		flashTimer.start()
 
 func _on_FlashTimer_timeout():
 	sprite.material.set_shader_parameter("flash_modifier", 0)
@@ -119,3 +119,7 @@ func _on_AnimatedSprite2D_animation_finished():
 
 func _on_reload_timer_timeout():
 	can_shoot = true
+
+
+func _on_flash_hit_timer_timeout():
+	pass # Replace with function body.
