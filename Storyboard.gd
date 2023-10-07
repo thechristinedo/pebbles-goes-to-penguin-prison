@@ -24,3 +24,8 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):  # 'ui_accept' is the Enter key by default. You can set to any other key in the Input Map.
 		next_image()
 
+func _on_next_pressed():
+	next_image()
+
+func _on_skip_pressed():
+	end_of_story()
