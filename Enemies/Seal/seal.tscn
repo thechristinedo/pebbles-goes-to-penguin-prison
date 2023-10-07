@@ -182,4 +182,3 @@ shape = SubResource("CircleShape2D_tuetc")
 
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]
-[connection signal="body_exited" from="slap_radius" to="." method="_on_slap_radius_body_exited"]

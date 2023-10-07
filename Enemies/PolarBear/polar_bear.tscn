@@ -181,15 +181,12 @@ shape = SubResource("CircleShape2D_smgpj")
 wait_time = 2.0
 one_shot = true
 
-[node name="RegenTimer2" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="slap_radius" type="Area2D" parent="."]
 
 [node name="slap_shape" type="CollisionShape2D" parent="slap_radius"]
 position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_1550s")
 
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]

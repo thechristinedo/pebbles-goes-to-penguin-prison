@@ -190,12 +190,10 @@ script = ExtResource("7_strj3")
 [node name="Muzzle" type="Node2D" parent="Shotgun"]
 position = Vector2(31, -2)
 
-[node name="Reload_Timer2" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="FlashHitTimer" type="Timer" parent="."]
 wait_time = 0.2
 
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_flash_hit_timer_timeout"]
