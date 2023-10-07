@@ -128,16 +128,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jewoi"]
-radius = 137.295
+radius = 126.004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpfbp"]
 radius = 17.0294
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smgpj"]
-radius = 17.0294
+radius = 16.0312
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1550s"]
-radius = 76.0
+radius = 37.0
 
 [node name="PolarBear" type="CharacterBody2D"]
 script = ExtResource("1_w8qpw")
@@ -164,8 +164,8 @@ show_percentage = false
 
 [node name="detection_radius" type="Area2D" parent="."]
 
-[node name="radius" type="CollisionShape2D" parent="detection_radius"]
-position = Vector2(-4, 3)
+[node name="detection_shape" type="CollisionShape2D" parent="detection_radius"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_jewoi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -173,7 +173,8 @@ shape = SubResource("CircleShape2D_cpfbp")
 
 [node name="hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(5, -1)
 shape = SubResource("CircleShape2D_smgpj")
 
 [node name="Reload_Timer" type="Timer" parent="."]
@@ -186,11 +187,9 @@ autostart = true
 
 [node name="slap_radius" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slap_radius"]
-position = Vector2(5, 2)
+[node name="slap_shape" type="CollisionShape2D" parent="slap_radius"]
+position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_1550s")
 
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
-[connection signal="body_exited" from="detection_radius" to="." method="_on_detection_radius_body_exited"]
 [connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]
-[connection signal="body_exited" from="slap_radius" to="." method="_on_slap_radius_body_exited"]

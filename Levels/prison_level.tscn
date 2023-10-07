@@ -363,9 +363,6 @@ position_smoothing_speed = 6.0
 script = ExtResource("6_pje2u")
 target = NodePath("../Pebbles")
 
-[node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(999, 445)
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -565,43 +562,10 @@ text = "Back
 "
 
 [node name="PolarBear" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(-75, 345)
+position = Vector2(-10, 410)
 
 [node name="Seal" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(114, 348)
-
-[node name="PolarBear2" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(90, 738)
-
-[node name="Seal2" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(560, 347)
-
-[node name="PolarBear3" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(-537, 358)
-
-[node name="PolarBear4" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(765, 338)
-
-[node name="Seal3" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(1050, 1073)
-
-[node name="PolarBear5" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(-619, 1932)
-
-[node name="Fat Penguin Cop2" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(73, 1052)
-
-[node name="Seal4" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(869, 540)
-
-[node name="PolarBear6" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(679, 757)
-
-[node name="Fat Penguin Cop3" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(647, 1083)
-
-[node name="PolarBear7" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(1056, 661)
+position = Vector2(1045, 430)
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -625,6 +589,15 @@ position = Vector2(466, -52)
 [node name="Toilet3" parent="Objects" instance=ExtResource("4_om7kv")]
 position = Vector2(384, -64)
 scale = Vector2(1.00083, 1)
+
+[node name="PolarBear2" parent="." instance=ExtResource("14_1fwjd")]
+position = Vector2(955, 661)
+
+[node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
+position = Vector2(520, 600)
+
+[node name="Fat Penguin Cop2" parent="." instance=ExtResource("6_ignc1")]
+position = Vector2(166, 1051)
 
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
