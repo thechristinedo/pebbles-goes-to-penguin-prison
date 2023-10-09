@@ -31,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -664.0
-offset_top = -188.0
-offset_right = 661.0
-offset_bottom = -87.0
+offset_left = -656.0
+offset_top = -198.0
+offset_right = 669.0
+offset_bottom = -97.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -44,7 +44,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("1_ndso5")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 100
 text = "You Died"
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOver"]
@@ -54,13 +54,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -91.9999
-offset_right = 148.0
+offset_left = -208.0
+offset_top = -92.0
+offset_right = 92.0
 offset_bottom = 68.0001
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.997762, 1.00244)
+scale = Vector2(1.369, 1.374)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer"]
 layout_mode = 2
@@ -68,15 +68,13 @@ layout_mode = 2
 [node name="Play Again" type="Button" parent="GameOver/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_y8r4e")
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 2
 text = "Play Again"
 
 [node name="Quit" type="Button" parent="GameOver/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_y8r4e")
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 2
 text = "Quit"
 
 [connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]

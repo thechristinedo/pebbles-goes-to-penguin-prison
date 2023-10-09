@@ -7,7 +7,8 @@ extends Control
 @onready var volume_menu = $Volume
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Levels/prison_level.tscn")
+	$TextureRect.visible = true
+	SceneTransition.change_scene("res://Levels/prison_level.tscn", 'dissolve')
 
 func _on_options_pressed():
 	main_label.visible = false
