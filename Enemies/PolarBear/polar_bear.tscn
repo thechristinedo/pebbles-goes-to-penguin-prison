@@ -128,16 +128,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jewoi"]
-radius = 126.004
+radius = 144.003
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpfbp"]
 radius = 17.0294
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smgpj"]
-radius = 16.0312
+radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1550s"]
-radius = 37.0
+radius = 71.007
 
 [node name="polar-bear-slap" type="CharacterBody2D"]
 script = ExtResource("1_w8qpw")
@@ -147,8 +147,8 @@ wait_time = 5.0
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, -2.5)
-scale = Vector2(1.14286, 1.1)
+position = Vector2(-4.76837e-07, -1)
+scale = Vector2(1.30989, 1.31)
 sprite_frames = SubResource("SpriteFrames_1btrm")
 animation = &"slap"
 
@@ -165,16 +165,15 @@ show_percentage = false
 [node name="detection_radius" type="Area2D" parent="."]
 
 [node name="detection_shape" type="CollisionShape2D" parent="detection_radius"]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_jewoi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_cpfbp")
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(5, -1)
 shape = SubResource("CircleShape2D_smgpj")
 
 [node name="Reload_Timer" type="Timer" parent="."]
@@ -184,9 +183,12 @@ one_shot = true
 [node name="slap_radius" type="Area2D" parent="."]
 
 [node name="slap_shape" type="CollisionShape2D" parent="slap_radius"]
-position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_1550s")
+
+[node name="slap_timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]
+[connection signal="body_exited" from="slap_radius" to="." method="_on_slap_radius_body_exited"]
+[connection signal="timeout" from="slap_timer" to="." method="_on_slap_timer_timeout"]

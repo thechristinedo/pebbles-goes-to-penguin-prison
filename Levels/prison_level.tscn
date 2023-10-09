@@ -565,10 +565,10 @@ text = "Back
 "
 
 [node name="polar_bear_slap" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(-24, 661)
+position = Vector2(396, 1165)
 
 [node name="seal-slap1" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(215, 637)
+position = Vector2(35, 415)
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -600,10 +600,10 @@ position = Vector2(819, 585)
 position = Vector2(1038, 701)
 
 [node name="penguin_cop-gun" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(102, 1149)
+position = Vector2(-20, 1159)
 
 [node name="polar_bear_slap1" parent="." instance=ExtResource("14_1fwjd")]
-position = Vector2(529, 1141)
+position = Vector2(409, 445)
 
 [node name="seal-gun2" parent="." instance=ExtResource("16_x8joo")]
 position = Vector2(776, 347)
@@ -612,13 +612,13 @@ position = Vector2(776, 347)
 position = Vector2(978, 353)
 
 [node name="seal-slap" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(-71, 415)
+position = Vector2(897, 485)
 
 [node name="polar_bear_gun" parent="." instance=ExtResource("17_ivn1y")]
 position = Vector2(825, 1064)
 
 [node name="penguin_cop_slap" parent="." instance=ExtResource("18_8mmr7")]
-position = Vector2(208, 415)
+position = Vector2(150, 993)
 
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
