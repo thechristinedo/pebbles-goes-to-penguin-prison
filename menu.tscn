@@ -1,14 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://rc0lpw2dncxp"]
+[gd_scene load_steps=14 format=3 uid="uid://rc0lpw2dncxp"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_lnxl3"]
 [ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Parallax/bg0.png" id="2_0gssu"]
 [ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Parallax/skybg.png" id="2_no1h3"]
+[ext_resource type="Shader" path="res://pixel.gdshader" id="2_rmub7"]
+[ext_resource type="Texture2D" uid="uid://bm0ho20i4mbmh" path="res://white.png" id="3_curif"]
 [ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Parallax/bg1.png" id="3_oofks"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_qkkwg"]
 [ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="4_6mrbk"]
 [ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="5_gypor"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="7_r4elv"]
-[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="9_jjw07"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="9_jjw07"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
+shader = ExtResource("2_rmub7")
+shader_parameter/size_x = 0.01
+shader_parameter/size_y = 0.01
 
 [sub_resource type="GDScript" id="GDScript_1o5ty"]
 script/source = "extends ParallaxBackground
@@ -32,6 +39,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lnxl3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_5hykk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_curif")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = SubResource("GDScript_1o5ty")
