@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="4_6mrbk"]
 [ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="5_gypor"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="7_r4elv"]
-[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="9_jjw07"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="9_jjw07"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
 shader = ExtResource("2_rmub7")
