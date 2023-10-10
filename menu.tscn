@@ -14,8 +14,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
 shader = ExtResource("2_rmub7")
-shader_parameter/size_x = 0.01
-shader_parameter/size_y = 0.01
+shader_parameter/size_x = 0.001
+shader_parameter/size_y = 0.015
 
 [sub_resource type="GDScript" id="GDScript_1o5ty"]
 script/source = "extends ParallaxBackground
@@ -49,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_curif")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
