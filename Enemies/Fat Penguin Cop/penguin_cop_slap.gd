@@ -6,7 +6,6 @@ func _get_target_name():
 	
 func attack():
 	$AnimatedSprite2D.play("slap")
-	target.take_damage(damage)
 
 func _on_animated_sprite_2d_frame_changed():
 	var damage = 5

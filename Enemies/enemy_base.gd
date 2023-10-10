@@ -83,7 +83,7 @@ func _on_AnimatedSprite2D_animation_finished():
 		queue_free()
 		
 func _on_slap_radius_body_entered(body):
-	if body.name == "Pebbles":
+	if body.name == "Pebbles" && health > 0:
 			inSlapRadius = true
 			target = body
 			attack()
@@ -98,7 +98,7 @@ func _on_slap_radius_body_exited(body):
 		
 
 func _on_slap_timer_timeout():
-	if inSlapRadius:
+	if inSlapRadius && health > 0:
 		attack()
 		
 func attack():
