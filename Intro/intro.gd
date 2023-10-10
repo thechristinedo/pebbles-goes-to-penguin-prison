@@ -8,7 +8,7 @@ func _ready():
 	$AnimationPlayer.play("Fade Out")
 	await(get_tree().create_timer(3).timeout)
 	#get_tree().change_scene_to_file("res://Storyboard//storyboard.tscn")
-	get_tree().change_scene_to_file("res://intro_cutscene.tscn")
+	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 	
 
 
