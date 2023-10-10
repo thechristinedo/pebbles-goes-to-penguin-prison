@@ -163,7 +163,7 @@ radius = 124.036
 height = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vytme"]
-radius = 57.0351
+radius = 31.0
 
 [node name="penguin_cop_slap" type="CharacterBody2D"]
 collision_layer = 3
@@ -211,7 +211,7 @@ shape = SubResource("CapsuleShape2D_ybixe")
 [node name="slap_radius" type="Area2D" parent="."]
 
 [node name="slap_shape" type="CollisionShape2D" parent="slap_radius"]
-position = Vector2(0, 2)
+position = Vector2(-9, 2)
 shape = SubResource("CircleShape2D_vytme")
 
 [node name="slap_timer" type="Timer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7dts4c4mcnyo"]
+[gd_scene load_steps=26 format=3 uid="uid://b7dts4c4mcnyo"]
 
 [ext_resource type="Texture2D" uid="uid://dhlnlqufvc7ur" path="res://Enemies/Seal/seal_walking.png" id="1_37iev"]
 [ext_resource type="Script" path="res://Enemies/Seal/seal.gd" id="1_c2je5"]
@@ -137,7 +137,7 @@ radius = 13.0384
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tuetc"]
-radius = 68.0074
+radius = 31.0
 
 [node name="seal-slap" type="CharacterBody2D"]
 script = ExtResource("1_c2je5")
@@ -145,7 +145,7 @@ script = ExtResource("1_c2je5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_g3yn3")
 sprite_frames = SubResource("SpriteFrames_cefw2")
-animation = &"slap"
+animation = &"death"
 
 [node name="detection_radius" type="Area2D" parent="."]
 
@@ -185,18 +185,15 @@ shape = SubResource("CircleShape2D_5hpsu")
 [node name="slap_radius" type="Area2D" parent="."]
 
 [node name="slap_shape" type="CollisionShape2D" parent="slap_radius"]
-position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_tuetc")
 
 [node name="slap_timer" type="Timer" parent="."]
+
+[node name="FlashHitTimer" type="Timer" parent="."]
+wait_time = 0.2
 
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]
 [connection signal="body_exited" from="slap_radius" to="." method="_on_slap_radius_body_exited"]
 [connection signal="timeout" from="slap_timer" to="." method="_on_slap_timer_timeout"]
-[node name="FlashHitTimer" type="Timer" parent="."]
-wait_time = 0.2
-
-[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]

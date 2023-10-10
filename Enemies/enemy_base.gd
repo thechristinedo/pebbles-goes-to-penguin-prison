@@ -50,11 +50,11 @@ func _on_detection_radius_body_entered(body):
 
 func take_damage(damage: int) -> void:
 	health -= damage
+	health = max(health, 0) # Ensure health does not go below 0
+	update_health() # Update the health bar after changing health value
 	flash() # Flash hit
 	if health <= 0:
-		$AnimatedSprite2D.play(_get_death_animation_name())
-		health = 0
-		set_physics_process(false)
+		die()
 
 func flash():
 	sprite.material.set_shader_parameter("flash_modifier", 0.7)
@@ -96,3 +96,9 @@ func _on_slap_timer_timeout():
 		
 func attack():
 	pass
+
+func die():
+	$AnimatedSprite2D.stop()  # Stop any currently playing animation
+	$AnimatedSprite2D.play(_get_death_animation_name())
+	health = 0
+	set_physics_process(false)
