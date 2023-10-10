@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var health: int = max_health
 @onready var gunShot = $gunShot
 @onready var gameOver = $GameOverScreen
+@onready var sprite2 = $Sprite2D
+@onready var flashTimer = $FlashHitTimer
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -116,6 +118,7 @@ func take_damage(damage: int) -> void:
 	#damage is only going to be 1 for pebbles 
 	health -= 1
 	
+	flash()
 	#enemy_attack_cooldown = false
 	# $attack_cooldown.start()
 	if health <= 0:
@@ -127,6 +130,14 @@ func take_damage(damage: int) -> void:
 		pebbles_death.emit()
 	print(health)
 	health_update.emit(health, max_health)
+	
+func flash():
+	if sprite2 and sprite2.material:
+		sprite2.material.set_shader_parameter("flash_modifier", 0.7)
+		flashTimer.start()
+
+func _on_FlashTimer_timeout():
+	sprite2.material.set_shader_parameter("flash_modifier", 0)
 
 func pebbles():
 	pass
