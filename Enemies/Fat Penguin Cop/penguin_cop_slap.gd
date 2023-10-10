@@ -8,6 +8,3 @@ func attack():
 	var damage = 5
 	$AnimatedSprite2D.play("slap")
 	target.take_damage(damage)
-
-
-

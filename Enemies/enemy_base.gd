@@ -53,6 +53,13 @@ func take_damage(damage: int) -> void:
 	health = max(health, 0) # Ensure health does not go below 0
 	update_health() # Update the health bar after changing health value
 	flash() # Flash hit
+	
+	# Make the enemy chase Pebbles when taking damage
+	if target == null or target.name != _get_target_name():
+		pebbles_chase = true
+		player = get_node("../" + _get_target_name())
+		target = player
+	
 	if health <= 0:
 		die()
 
