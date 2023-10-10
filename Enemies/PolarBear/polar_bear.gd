@@ -1,17 +1,19 @@
 extends "res://Enemies/enemy_base.gd"
-
+@onready var polarSlap = $polarSlap
 
 func _get_target_name():
 	return "Pebbles"
 	
 func attack():
+	polarSlap.play()
+	var damage = 10
 	$AnimatedSprite2D.play("slap")
+	target.take_damage(damage)
 	
 func _on_animated_sprite_2d_frame_changed():
 	var damage = 10
 	if $AnimatedSprite2D.frame == 2 && $AnimatedSprite2D.animation == "slap":
 		target.take_damage(damage)
-
 
 # Hit Flash Shader
 #@onready var sprite = $AnimatedSprite2D

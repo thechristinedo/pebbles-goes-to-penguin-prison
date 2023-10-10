@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://rc0lpw2dncxp"]
+[gd_scene load_steps=16 format=3 uid="uid://rc0lpw2dncxp"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_lnxl3"]
 [ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Parallax/bg0.png" id="2_0gssu"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="4_6mrbk"]
 [ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="5_gypor"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="7_r4elv"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="9_jjw07"]
+[ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="12_tav4u"]
+[ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="13_rtylw"]
 [ext_resource type="PackedScene" path="res://volume_slider.tscn" id="9_jjw07"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
@@ -280,6 +283,13 @@ theme = ExtResource("3_qkkwg")
 theme_override_constants/outline_size = 2
 text = "Back
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_tav4u")
+autoplay = true
+
+[node name="selectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_rtylw")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

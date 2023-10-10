@@ -1,5 +1,5 @@
 extends "res://Enemies/enemy_base.gd"
-
+@onready var sealSlap = $sealSlap
 
 
 
@@ -7,6 +7,8 @@ func _get_target_name():
 	return "Pebbles"
 	
 func attack():
+	sealSlap.play()
+	var damage = 7
 	$AnimatedSprite2D.play("slap")
 
 

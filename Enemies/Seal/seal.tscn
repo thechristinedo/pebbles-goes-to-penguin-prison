@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7dts4c4mcnyo"]
+[gd_scene load_steps=27 format=3 uid="uid://b7dts4c4mcnyo"]
 
 [ext_resource type="Texture2D" uid="uid://dhlnlqufvc7ur" path="res://Enemies/Seal/seal_walking.png" id="1_37iev"]
 [ext_resource type="Script" path="res://Enemies/Seal/seal.gd" id="1_c2je5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqiuhpohg1nn1" path="res://Enemies/Seal/seal_death_frames_new.png" id="2_ewul5"]
 [ext_resource type="Texture2D" uid="uid://uwf6uq3ji8w0" path="res://Enemies/Seal/slap_seal.png" id="4_ijjct"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="5_0ismb"]
+[ext_resource type="AudioStream" uid="uid://c0fv5u8jhjex8" path="res://Audio/sealSlap.mp3" id="7_j474t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g3yn3"]
 resource_local_to_scene = true
@@ -191,6 +192,10 @@ shape = SubResource("CircleShape2D_tuetc")
 
 [node name="FlashHitTimer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="sealSlap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_j474t")
+volume_db = 1.0
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]

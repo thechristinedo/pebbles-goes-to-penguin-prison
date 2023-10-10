@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
+@onready var lightGunShot = $lightGunShot
 
 
 var player
@@ -106,6 +107,8 @@ func shoot_pebbles():
 		owner.add_child(bullet1)
 		owner.add_child(bullet2)
 		owner.add_child(bullet3)
+		lightGunShot.play()
+		
 		can_shoot = false
 		$Reload_Timer.start()
 
