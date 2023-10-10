@@ -1,14 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://tdf8iqs82nqm"]
+[gd_scene load_steps=29 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
 [ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
 [ext_resource type="Texture2D" uid="uid://bm87nqm22na2i" path="res://Characters/Pebbles/Sprites/pebbles-idle.png" id="2_oo8pk"]
+[ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="3_gq510"]
 [ext_resource type="PackedScene" uid="uid://w6vnu6g7xefs" path="res://Guns/Gun.tscn" id="3_uhnfq"]
 [ext_resource type="Texture2D" uid="uid://d2c78aft3tu7e" path="res://Characters/Pebbles/Sprites/pebble-run.png" id="4_cnw0k"]
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="6_3mnqa"]
 [ext_resource type="Texture2D" uid="uid://s8jme7fywmc" path="res://Characters/Pebbles/Sprites/pebbles_slap.png" id="6_gnr27"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="7_afbpb"]
 [ext_resource type="PackedScene" uid="uid://ky0ajf56l7cj" path="res://game_over_screen.tscn" id="9_phe7c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q66h"]
+shader = ExtResource("3_gq510")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckj3u"]
 size = Vector2(23, 29)
@@ -231,6 +237,7 @@ animation_tree = NodePath("AnimationTree")
 bullet_scene = ExtResource("2_nt858")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2q66h")
 texture = ExtResource("2_oo8pk")
 hframes = 3
 frame = 1
@@ -286,6 +293,10 @@ one_shot = true
 [node name="GameOverScreen" parent="." instance=ExtResource("9_phe7c")]
 visible = false
 
+[node name="FlashHitTimer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="area_entered" from="Sprite2D/Slap" to="." method="_on_slap_area_entered"]
 [connection signal="body_entered" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_entered"]
 [connection signal="body_exited" from="pebbles_hitbox" to="." method="_on_pebbles_hitbox_body_exited"]
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]
