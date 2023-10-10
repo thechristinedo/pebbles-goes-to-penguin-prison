@@ -620,10 +620,10 @@ position = Vector2(35, 415)
 
 [node name="PolarBear" parent="." instance=ExtResource("14_1fwjd")]
 material = SubResource("ShaderMaterial_ymboh")
-position = Vector2(-84, 307)
+position = Vector2(398, 57)
 
 [node name="Seal" parent="." instance=ExtResource("13_kyrvk")]
-position = Vector2(114, 348)
+position = Vector2(-46, 254)
 
 [node name="PolarBear2" parent="." instance=ExtResource("14_1fwjd")]
 material = SubResource("ShaderMaterial_rn4th")
