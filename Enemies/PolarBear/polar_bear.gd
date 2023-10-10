@@ -15,6 +15,9 @@ func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.frame == 2 && $AnimatedSprite2D.animation == "slap":
 		target.take_damage(damage)
 
+func _on_slap_timer_timeout():
+	pass
+
 # Hit Flash Shader
 #@onready var sprite = $AnimatedSprite2D
 #@onready var flashTimer = $FlashHitTimer

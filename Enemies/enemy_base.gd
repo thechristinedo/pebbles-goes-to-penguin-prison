@@ -27,7 +27,7 @@ func _get_death_animation_name():
 # Common logic
 func _ready():
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_AnimatedSprite2D_animation_finished"))
-	$AnimatedSprite2D.connect("slap_timer", Callable(self, "_on_slap_timer_timeout"))
+	#$AnimatedSprite2D.connect("slap_timer", Callable(self, "_on_slap_timer_timeout"))
 
 func _physics_process(_delta):
 	update_health()
