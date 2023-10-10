@@ -1,72 +1,67 @@
-[gd_scene load_steps=27 format=3 uid="uid://c1j8acm6ymuju"]
+[gd_scene load_steps=26 format=3 uid="uid://5rihimiyy7ha"]
 
-[ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="1_gk0nd"]
-[ext_resource type="Texture2D" uid="uid://ds1rqwa2cldf1" path="res://Enemies/PolarBear/polar_bear_death2.png" id="1_qq04s"]
-[ext_resource type="Script" path="res://Enemies/PolarBear/polar_bear.gd" id="1_w8qpw"]
-[ext_resource type="Texture2D" uid="uid://cfvm5wq7q5yci" path="res://Enemies/PolarBear/polar_bear_walking.png" id="2_sbjkr"]
-[ext_resource type="Texture2D" uid="uid://ciwea3dily156" path="res://Enemies/PolarBear/polar_bear_2.png" id="3_fkkvj"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="4_p6t7c"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne1sd"]
-resource_local_to_scene = true
-shader = ExtResource("1_gk0nd")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = 0.0
+[ext_resource type="Script" path="res://Enemies/PolarBear/polar_bear_gun.gd" id="1_xaw3o"]
+[ext_resource type="Texture2D" uid="uid://ds1rqwa2cldf1" path="res://Enemies/PolarBear/polar_bear_death2.png" id="2_yixlk"]
+[ext_resource type="Texture2D" uid="uid://cfvm5wq7q5yci" path="res://Enemies/PolarBear/polar_bear_walking.png" id="3_srv5p"]
+[ext_resource type="Texture2D" uid="uid://ciwea3dily156" path="res://Enemies/PolarBear/polar_bear_2.png" id="4_r8p6v"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="5_5a6pg"]
+[ext_resource type="Texture2D" uid="uid://b6sb5ingbsp6k" path="res://Guns/shotgun.png" id="6_77xwi"]
+[ext_resource type="Script" path="res://Enemies/Shotgun.gd" id="7_strj3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3l2x"]
-atlas = ExtResource("1_qq04s")
+atlas = ExtResource("2_yixlk")
 region = Rect2(0, 0, 56, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikhoc"]
-atlas = ExtResource("1_qq04s")
+atlas = ExtResource("2_yixlk")
 region = Rect2(56, 0, 56, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qqeb"]
-atlas = ExtResource("1_qq04s")
+atlas = ExtResource("2_yixlk")
 region = Rect2(112, 0, 56, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbafe"]
-atlas = ExtResource("1_qq04s")
+atlas = ExtResource("2_yixlk")
 region = Rect2(168, 0, 56, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3gxv"]
-atlas = ExtResource("2_sbjkr")
+atlas = ExtResource("3_srv5p")
 region = Rect2(0, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8llq7"]
-atlas = ExtResource("3_fkkvj")
+atlas = ExtResource("4_r8p6v")
 region = Rect2(0, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rt4tv"]
-atlas = ExtResource("3_fkkvj")
+atlas = ExtResource("4_r8p6v")
 region = Rect2(65, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_juh7k"]
-atlas = ExtResource("3_fkkvj")
+atlas = ExtResource("4_r8p6v")
 region = Rect2(130, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64a20"]
-atlas = ExtResource("3_fkkvj")
+atlas = ExtResource("4_r8p6v")
 region = Rect2(195, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t88y5"]
-atlas = ExtResource("3_fkkvj")
+atlas = ExtResource("4_r8p6v")
 region = Rect2(260, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10c47"]
-atlas = ExtResource("2_sbjkr")
+atlas = ExtResource("3_srv5p")
 region = Rect2(0, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0itmo"]
-atlas = ExtResource("2_sbjkr")
+atlas = ExtResource("3_srv5p")
 region = Rect2(50, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ycfa"]
-atlas = ExtResource("2_sbjkr")
+atlas = ExtResource("3_srv5p")
 region = Rect2(100, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbafe"]
-atlas = ExtResource("2_sbjkr")
+atlas = ExtResource("3_srv5p")
 region = Rect2(150, 0, 50, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1btrm"]
@@ -135,30 +130,26 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jewoi"]
-radius = 144.003
+radius = 126.004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpfbp"]
 radius = 17.0294
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbeyq"]
-size = Vector2(33, 22)
+[sub_resource type="CircleShape2D" id="CircleShape2D_smgpj"]
+radius = 16.0312
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1550s"]
-radius = 29.0172
-
-[node name="polar-bear-slap" type="CharacterBody2D"]
-script = ExtResource("1_w8qpw")
+[node name="polar_bear_gun" type="CharacterBody2D"]
+script = ExtResource("1_xaw3o")
 
 [node name="RegenTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_ne1sd")
-position = Vector2(5, -2)
+position = Vector2(4, -2.5)
 scale = Vector2(1.14286, 1.1)
 sprite_frames = SubResource("SpriteFrames_1btrm")
-animation = &"death"
+animation = &"slap"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -10.0
@@ -166,44 +157,43 @@ offset_top = -23.0
 offset_right = 95.0
 offset_bottom = 4.0
 scale = Vector2(0.2, 0.2)
-theme = ExtResource("4_p6t7c")
+theme = ExtResource("5_5a6pg")
 max_value = 250.0
 show_percentage = false
 
 [node name="detection_radius" type="Area2D" parent="."]
 
 [node name="detection_shape" type="CollisionShape2D" parent="detection_radius"]
+position = Vector2(2, -2)
 shape = SubResource("CircleShape2D_jewoi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_cpfbp")
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(2.5, 2)
-shape = SubResource("RectangleShape2D_lbeyq")
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_smgpj")
 
 [node name="Reload_Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
-[node name="slap_radius" type="Area2D" parent="."]
+[node name="Shotgun" type="Sprite2D" parent="."]
+position = Vector2(10, 1)
+scale = Vector2(0.875, 0.9375)
+texture = ExtResource("6_77xwi")
+offset = Vector2(8, 2.08165e-12)
+script = ExtResource("7_strj3")
 
-[node name="slap_shape" type="CollisionShape2D" parent="slap_radius"]
-position = Vector2(2, 1)
-shape = SubResource("CircleShape2D_1550s")
-
-[node name="slap_timer" type="Timer" parent="."]
+[node name="Muzzle" type="Node2D" parent="Shotgun"]
+position = Vector2(31, -2)
 
 [node name="FlashHitTimer" type="Timer" parent="."]
 wait_time = 0.2
 
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
-[connection signal="body_exited" from="detection_radius" to="." method="_on_detection_radius_body_exited"]
-[connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]
-[connection signal="body_exited" from="slap_radius" to="." method="_on_slap_radius_body_exited"]
-[connection signal="timeout" from="slap_timer" to="." method="_on_slap_timer_timeout"]
-[connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]
+[connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_flash_hit_timer_timeout"]

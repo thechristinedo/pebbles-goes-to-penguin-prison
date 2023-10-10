@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=30 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
@@ -6,16 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://ktujw2iocqb3" path="res://Scenes/Toilet.tscn" id="4_om7kv"]
 [ext_resource type="PackedScene" uid="uid://w6i02hhlrsuh" path="res://Objects/Resources/resource_node_rock_tall.tscn" id="4_xdcdu"]
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
-[ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/fat_penguin_cop.tscn" id="6_ignc1"]
+[ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/Fat Penguin Cop/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
 [ext_resource type="AudioStream" uid="uid://do8cyc1bt2rph" path="res://Audio/backgroundmusic.mp3" id="7_yvnlm"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="9_yq5fn"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="10_4klk4"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="11_2hvd6"]
-[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="12_yp355"]
+[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="12_yp355"]
 [ext_resource type="PackedScene" uid="uid://b7dts4c4mcnyo" path="res://Enemies/Seal/seal.tscn" id="13_kyrvk"]
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="13_ubx7j"]
 [ext_resource type="PackedScene" uid="uid://c1j8acm6ymuju" path="res://Enemies/PolarBear/polar_bear.tscn" id="14_1fwjd"]
+[ext_resource type="PackedScene" uid="uid://cihror7ta6bov" path="res://Enemies/Seal/seal-gun.tscn" id="16_x8joo"]
+[ext_resource type="PackedScene" uid="uid://5rihimiyy7ha" path="res://Enemies/PolarBear/polar_bear_gun.tscn" id="17_ivn1y"]
+[ext_resource type="PackedScene" uid="uid://bhwnrdyqc8fay" path="res://Enemies/Fat Penguin Cop/penguin_cop_slap.tscn" id="18_8mmr7"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
@@ -36,14 +39,14 @@ func _physics_process(_delta):
 	pass
 	
 #func _process(_delta):
-#	if Input.is_action_just_pressed(\"pause\"):
+#	if Input.is_aaction_just_pressed(\"pause\"):
 #		pause()
 		
 #func pause():
 #	get_tree().paused = true
 #	for child in get_children():
 #		child.hide()
-#	$Camera2D.show()
+#	$Camera2D.show()a
 #	$Camera2D/pause_menu.show()
 
 #func unpause():
@@ -406,9 +409,6 @@ position_smoothing_speed = 6.0
 script = ExtResource("6_pje2u")
 target = NodePath("../Pebbles")
 
-[node name="Fat Penguin Cop" parent="." instance=ExtResource("6_ignc1")]
-position = Vector2(999, 445)
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -612,6 +612,12 @@ theme_override_constants/outline_size = 2
 text = "Back
 "
 
+[node name="polar_bear_slap" parent="." instance=ExtResource("14_1fwjd")]
+position = Vector2(396, 1165)
+
+[node name="seal-slap1" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(35, 415)
+
 [node name="PolarBear" parent="." instance=ExtResource("14_1fwjd")]
 material = SubResource("ShaderMaterial_ymboh")
 position = Vector2(-84, 307)
@@ -680,6 +686,33 @@ position = Vector2(466, -52)
 [node name="Toilet3" parent="Objects" instance=ExtResource("4_om7kv")]
 position = Vector2(384, -64)
 scale = Vector2(1.00083, 1)
+
+[node name="polar_bear_slap2" parent="." instance=ExtResource("14_1fwjd")]
+position = Vector2(819, 585)
+
+[node name="penguin_cop_gun1" parent="." instance=ExtResource("6_ignc1")]
+position = Vector2(1038, 701)
+
+[node name="penguin_cop-gun" parent="." instance=ExtResource("6_ignc1")]
+position = Vector2(-20, 1159)
+
+[node name="polar_bear_slap1" parent="." instance=ExtResource("14_1fwjd")]
+position = Vector2(409, 445)
+
+[node name="seal-gun2" parent="." instance=ExtResource("16_x8joo")]
+position = Vector2(776, 347)
+
+[node name="seal-gun" parent="." instance=ExtResource("16_x8joo")]
+position = Vector2(978, 353)
+
+[node name="seal-slap" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(897, 485)
+
+[node name="polar_bear_gun" parent="." instance=ExtResource("17_ivn1y")]
+position = Vector2(825, 1064)
+
+[node name="penguin_cop_slap" parent="." instance=ExtResource("18_8mmr7")]
+position = Vector2(150, 993)
 
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
