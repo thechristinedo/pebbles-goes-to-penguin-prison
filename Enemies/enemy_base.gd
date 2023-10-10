@@ -8,6 +8,8 @@ var target = null
 var health = 250
 var can_shoot = false
 var inSlapRadius = false
+var is_dead = false
+
 
 # Flash Hit
 @onready var sprite = $AnimatedSprite2D
@@ -49,6 +51,9 @@ func _on_detection_radius_body_entered(body):
 		pebbles_chase = true
 
 func take_damage(damage: int) -> void:
+	if is_dead:  # If the enemy is already dead, don't process further damage
+		return
+	
 	health -= damage
 	health = max(health, 0) # Ensure health does not go below 0
 	update_health() # Update the health bar after changing health value
@@ -83,6 +88,9 @@ func _on_AnimatedSprite2D_animation_finished():
 		queue_free()
 		
 func _on_slap_radius_body_entered(body):
+	if is_dead:
+		return
+
 	if body.name == "Pebbles" && health > 0:
 			inSlapRadius = true
 			target = body
@@ -92,12 +100,18 @@ func _on_slap_radius_body_entered(body):
 
 			
 func _on_slap_radius_body_exited(body):
+	if is_dead:
+		return
+	
 	if body.name == "Pebbles":
 		inSlapRadius = false
 		$slap_timer.stop()
 		
 
 func _on_slap_timer_timeout():
+	if is_dead:
+		return
+	
 	if inSlapRadius && health > 0:
 		attack()
 		
@@ -105,6 +119,7 @@ func attack():
 	pass
 
 func die():
+	is_dead = true  # Mark the enemy as dead
 	$AnimatedSprite2D.stop()  # Stop any currently playing animation
 	$AnimatedSprite2D.play(_get_death_animation_name())
 	health = 0
