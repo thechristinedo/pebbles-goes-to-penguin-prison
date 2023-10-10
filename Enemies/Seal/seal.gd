@@ -1,13 +1,21 @@
 extends "res://Enemies/enemy_base.gd"
 
 
+
+
 func _get_target_name():
 	return "Pebbles"
 	
 func attack():
-	var damage = 7
 	$AnimatedSprite2D.play("slap")
-	target.take_damage(damage)
+
+
+func _on_animated_sprite_2d_frame_changed():
+	var damage = 7
+	if $AnimatedSprite2D.frame == 2 && $AnimatedSprite2D.animation == "slap":
+		target.take_damage(damage)
+
+
 
 # Flash Hit
 #@onready var sprite = $AnimatedSprite2D
@@ -113,5 +121,7 @@ func attack():
 #	if $AnimatedSprite2D.animation == "Death":
 #		# Add any logic here that should run after the death animation completes
 #		queue_free()
+
+
 
 
