@@ -9,6 +9,9 @@ var health = 250
 var can_shoot = false
 var inSlapRadius = false
 
+# Flash Hit
+@onready var sprite = $AnimatedSprite2D
+@onready var flashTimer = $FlashHitTimer
 
 func _get_target_name():
 	return "Player"  
@@ -47,10 +50,18 @@ func _on_detection_radius_body_entered(body):
 
 func take_damage(damage: int) -> void:
 	health -= damage
+	flash() # Flash hit
 	if health <= 0:
 		$AnimatedSprite2D.play(_get_death_animation_name())
 		health = 0
 		set_physics_process(false)
+
+func flash():
+	sprite.material.set_shader_parameter("flash_modifier", 0.7)
+	flashTimer.start()
+
+func _on_FlashTimer_timeout():
+	sprite.material.set_shader_parameter("flash_modifier", 0)
 
 func update_health():
 	var healthbar = $HealthBar

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://7yfwdhr36eyq"]
+[gd_scene load_steps=27 format=3 uid="uid://7yfwdhr36eyq"]
 
 [ext_resource type="PackedScene" uid="uid://rmujglsn8iev" path="res://User Interface/UI.tscn" id="1_hmlgx"]
 [ext_resource type="Texture2D" uid="uid://456sgy3xdq6t" path="res://Tilesheets/prison-tileset.png" id="1_qtpx2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="11_2hvd6"]
 [ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="12_yp355"]
 [ext_resource type="PackedScene" uid="uid://b7dts4c4mcnyo" path="res://Enemies/Seal/seal.tscn" id="13_kyrvk"]
+[ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="13_ubx7j"]
 [ext_resource type="PackedScene" uid="uid://c1j8acm6ymuju" path="res://Enemies/PolarBear/polar_bear.tscn" id="14_1fwjd"]
 [ext_resource type="PackedScene" uid="uid://cihror7ta6bov" path="res://Enemies/Seal/seal-gun.tscn" id="16_x8joo"]
 [ext_resource type="PackedScene" uid="uid://5rihimiyy7ha" path="res://Enemies/PolarBear/polar_bear_gun.tscn" id="17_ivn1y"]
@@ -312,6 +313,48 @@ terrain_set_0/terrain_0/color = Color(0.721569, 0.0117647, 0.160784, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_gbd6w")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymboh"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn4th"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50hvr"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fqv7"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq874"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgonr"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qr5ug"]
+resource_local_to_scene = true
+shader = ExtResource("13_ubx7j")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
 [node name="PrisonLevel" type="Node2D"]
 y_sort_enabled = true
 script = SubResource("GDScript_vtapm")
@@ -516,10 +559,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -92.0
-offset_right = 108.0
-offset_bottom = 68.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.34259, 1.37415)
@@ -557,6 +600,11 @@ text = "Sound Effects"
 layout_mode = 2
 bus_name = "Sound Effects"
 
+[node name="HSeparator" type="HSeparator" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
 [node name="Back" type="Button" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("11_2hvd6")
@@ -569,6 +617,51 @@ position = Vector2(396, 1165)
 
 [node name="seal-slap1" parent="." instance=ExtResource("13_kyrvk")]
 position = Vector2(35, 415)
+[node name="PolarBear" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_ymboh")
+position = Vector2(-84, 307)
+
+[node name="Seal" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(114, 348)
+
+[node name="PolarBear2" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_rn4th")
+position = Vector2(90, 738)
+
+[node name="Seal2" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(560, 347)
+
+[node name="PolarBear3" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_50hvr")
+position = Vector2(-71, 561)
+
+[node name="PolarBear4" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_1fqv7")
+position = Vector2(765, 338)
+
+[node name="Seal3" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(1050, 1073)
+
+[node name="PolarBear5" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_jq874")
+position = Vector2(287, 578)
+
+[node name="Fat Penguin Cop2" parent="." instance=ExtResource("6_ignc1")]
+position = Vector2(73, 1052)
+
+[node name="Seal4" parent="." instance=ExtResource("13_kyrvk")]
+position = Vector2(869, 540)
+
+[node name="PolarBear6" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_mgonr")
+position = Vector2(679, 757)
+
+[node name="Fat Penguin Cop3" parent="." instance=ExtResource("6_ignc1")]
+position = Vector2(647, 1083)
+
+[node name="PolarBear7" parent="." instance=ExtResource("14_1fwjd")]
+material = SubResource("ShaderMaterial_qr5ug")
+position = Vector2(1056, 661)
 
 [node name="Objects" type="Node2D" parent="."]
 

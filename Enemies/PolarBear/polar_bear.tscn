@@ -1,10 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1j8acm6ymuju"]
+[gd_scene load_steps=26 format=3 uid="uid://c1j8acm6ymuju"]
 
+[ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="1_gk0nd"]
 [ext_resource type="Texture2D" uid="uid://ds1rqwa2cldf1" path="res://Enemies/PolarBear/polar_bear_death2.png" id="1_qq04s"]
 [ext_resource type="Script" path="res://Enemies/PolarBear/polar_bear.gd" id="1_w8qpw"]
 [ext_resource type="Texture2D" uid="uid://cfvm5wq7q5yci" path="res://Enemies/PolarBear/polar_bear_walking.png" id="2_sbjkr"]
 [ext_resource type="Texture2D" uid="uid://ciwea3dily156" path="res://Enemies/PolarBear/polar_bear_2.png" id="3_fkkvj"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="4_p6t7c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne1sd"]
+resource_local_to_scene = true
+shader = ExtResource("1_gk0nd")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3l2x"]
 atlas = ExtResource("1_qq04s")
@@ -149,6 +156,9 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.76837e-07, -1)
 scale = Vector2(1.30989, 1.31)
+material = SubResource("ShaderMaterial_ne1sd")
+position = Vector2(4, -2.5)
+scale = Vector2(1.14286, 1.1)
 sprite_frames = SubResource("SpriteFrames_1btrm")
 animation = &"slap"
 
@@ -192,3 +202,9 @@ shape = SubResource("CircleShape2D_1550s")
 [connection signal="body_entered" from="slap_radius" to="." method="_on_slap_radius_body_entered"]
 [connection signal="body_exited" from="slap_radius" to="." method="_on_slap_radius_body_exited"]
 [connection signal="timeout" from="slap_timer" to="." method="_on_slap_timer_timeout"]
+[node name="FlashHitTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_exited" from="detection_radius" to="." method="_on_detection_radius_body_exited"]
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]
