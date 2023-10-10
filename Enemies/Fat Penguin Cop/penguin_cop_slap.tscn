@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bhwnrdyqc8fay"]
+[gd_scene load_steps=33 format=3 uid="uid://bhwnrdyqc8fay"]
 
 [ext_resource type="Script" path="res://Enemies/Fat Penguin Cop/penguin_cop_slap.gd" id="1_ln71g"]
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="3_m1vvd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="10_qyy3d"]
 [ext_resource type="Texture2D" uid="uid://cfa07nvk34x4o" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police-run.png" id="11_qjj5o"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="12_o1nuu"]
+[ext_resource type="AudioStream" uid="uid://c0fv5u8jhjex8" path="res://Audio/sealSlap.mp3" id="12_pi5bf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x8rt"]
 height = 34.0
@@ -215,6 +216,10 @@ position = Vector2(-9, 2)
 shape = SubResource("CircleShape2D_vytme")
 
 [node name="slap_timer" type="Timer" parent="."]
+
+[node name="penguinSlap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pi5bf")
+pitch_scale = 2.88
 
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]

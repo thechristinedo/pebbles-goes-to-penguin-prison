@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cumfo5tnpir4h"]
+[gd_scene load_steps=8 format=3 uid="uid://cumfo5tnpir4h"]
 
 [ext_resource type="Script" path="res://Intro/intro.gd" id="1_qeup7"]
 [ext_resource type="Texture2D" uid="uid://v48gfkaravpj" path="res://Intro/intro.png" id="2_jhwde"]
+[ext_resource type="AudioStream" uid="uid://ckj3oluplofce" path="res://Audio/loadingSound.mp3" id="3_iughv"]
 
 [sub_resource type="Animation" id="Animation_jt0fx"]
 resource_name = "Fade In"
@@ -77,3 +78,7 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_tlbsj")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iughv")
+autoplay = true

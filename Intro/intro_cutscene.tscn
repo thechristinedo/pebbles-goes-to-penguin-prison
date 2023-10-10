@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1it1to6ngg3i"]
+[gd_scene load_steps=14 format=3 uid="uid://c1it1to6ngg3i"]
 
 [ext_resource type="Script" path="res://Intro/intro_cutscene.gd" id="1_45tkm"]
 [ext_resource type="Texture2D" uid="uid://dyvmrwqwmqob1" path="res://Intro/Storyboard/sb1.png" id="2_yiqmd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dr7c6rvjfs5b0" path="res://Intro/Storyboard/sb6.png" id="7_km2vt"]
 [ext_resource type="Texture2D" uid="uid://bahkl4qnscpa4" path="res://Intro/intro_background.jpg" id="8_v5mix"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="9_p87sr"]
+[ext_resource type="AudioStream" uid="uid://iymdbbvxfkpu" path="res://Audio/storySound.mp3" id="10_ervw8"]
 
 [sub_resource type="Animation" id="Animation_hvetj"]
 resource_name = "Intro"
@@ -913,5 +914,9 @@ text = "Skip"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 544)
 scale = Vector2(0.699739, 0.629452)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ervw8")
+autoplay = true
 
 [connection signal="pressed" from="Control/skip_button" to="." method="_on_button_pressed"]

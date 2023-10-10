@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfyn5xxip2okh"]
+[gd_scene load_steps=35 format=3 uid="uid://cfyn5xxip2okh"]
 
 [ext_resource type="Script" path="res://Enemies/Fat Penguin Cop/fat_penguin_cop.gd" id="1_rkrr8"]
 [ext_resource type="Texture2D" uid="uid://cbt25cu4v7qkf" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police.png" id="2_2gou8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cfa07nvk34x4o" path="res://Enemies/Fat Penguin Cop/Sprites/penguin-police-run.png" id="9_th507"]
 [ext_resource type="Texture2D" uid="uid://b6sb5ingbsp6k" path="res://Guns/shotgun.png" id="10_uu1ws"]
 [ext_resource type="Script" path="res://Enemies/Shotgun.gd" id="11_anauf"]
+[ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="15_3gbfu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x8rt"]
 height = 34.0
@@ -222,6 +223,10 @@ position = Vector2(31, -2)
 [node name="Reload_Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="lightGunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_3gbfu")
+pitch_scale = 3.5
 
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
