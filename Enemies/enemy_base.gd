@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
 var player
-var speed = 50
+var speed = 150
 var pebbles_chase = false
 var target = null
 var health = 250
@@ -34,8 +34,14 @@ func _physics_process(_delta):
 
 	if pebbles_chase:
 		player = get_node("../" + _get_target_name())
-		position += (target.position - position)/speed
-		var direction = (player.position - self.position).normalized()
+		# Old Speed calculation
+		#position += (target.position - position)/speed
+		#var direction = (player.position - self.position).normalized()
+		
+		# New Speed calculation
+		var direction = (target.position - position).normalized()
+		position += direction * speed * _delta
+
 		if direction.x < 0:
 			get_node("AnimatedSprite2D").flip_h = true
 		else:
