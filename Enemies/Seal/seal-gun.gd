@@ -1,10 +1,9 @@
 extends CharacterBody2D
-
-@export var bullet_scene: PackedScene
+@export var bullet_scene: PackedScene = preload("res://Guns/Bullets/Bullet.tscn")
 
 
 var player
-var speed = 200
+var speed = 50
 var pebbles_chase = false
 var pebbles = null
 var health = 250
@@ -28,7 +27,7 @@ func _physics_process(_delta):
 		player = get_node("../Pebbles")
 		shoot_pebbles()
 		position += (pebbles.position - position)/speed
-		$AnimatedSprite2D.play("running")
+		$AnimatedSprite2D.play("walk")
 		var direction = (player.position - self.position).normalized()
 		if direction.x < 0:
 			get_node("AnimatedSprite2D").flip_h = true
@@ -37,7 +36,7 @@ func _physics_process(_delta):
 		
 		move_and_collide(Vector2.ZERO)
 	else:
-		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D.play("idle")
 		
 
 func _on_detection_radius_body_entered(body):
@@ -60,8 +59,9 @@ func take_damage(damage: int) -> void:
 		#queue_free()
 
 func flash():
-	sprite.material.set_shader_parameter("flash_modifier", 0.7)
-	flashTimer.start()
+	if sprite and sprite.material:
+		sprite.material.set_shader_parameter("flash_modifier", 0.7)
+		flashTimer.start()
 
 func _on_FlashTimer_timeout():
 	sprite.material.set_shader_parameter("flash_modifier", 0)
@@ -83,13 +83,6 @@ func _on_regen_timer_timeout():
 	
 	if health <= 0:
 		health = 0
-
-func _on_detection_radius_body_exited(_body):
-	pass
-	
-func fat_penguin_cop():
-	pass
-	
 	
 func shoot_pebbles():
 	if can_shoot == true:
@@ -126,3 +119,7 @@ func _on_AnimatedSprite2D_animation_finished():
 
 func _on_reload_timer_timeout():
 	can_shoot = true
+
+
+func _on_flash_hit_timer_timeout():
+	pass # Replace with function body.
