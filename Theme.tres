@@ -28,3 +28,7 @@ Label/constants/outline_size = 4
 Label/fonts/font = ExtResource("1_86ab8")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_8b7na")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_mvd14")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 3
+RichTextLabel/fonts/normal_font = ExtResource("1_86ab8")
