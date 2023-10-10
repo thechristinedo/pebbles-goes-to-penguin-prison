@@ -123,6 +123,7 @@ func take_damage(damage: int) -> void:
 	# $attack_cooldown.start()
 	if health <= 0:
 		health = 0
+		sprite2.material.set_shader_parameter("flash_modifier", 0)
 		get_tree().paused = true
 		sprite_2d.visible = false
 		gameOver.visible = true
