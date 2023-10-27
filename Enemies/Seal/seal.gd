@@ -8,9 +8,9 @@ func _get_target_name():
 	
 func attack():
 	sealSlap.play()
-	var damage = 7
+	var damage = 10
 	$AnimatedSprite2D.play("slap")
-
+	target.take_damage(damage)
 
 func _on_animated_sprite_2d_frame_changed():
 	var damage = 7

@@ -24,10 +24,14 @@ func _get_idle_animation_name():
 func _get_death_animation_name():
 	return "death" 
 
+func _get_walk_animation_name():
+	return "walk"
+
+
 # Common logic
 func _ready():
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_AnimatedSprite2D_animation_finished"))
-	#$AnimatedSprite2D.connect("slap_timer", Callable(self, "_on_slap_timer_timeout"))
+#	$AnimatedSprite2D.connect("slap_timer", Callable(self, "_on_slap_timer_timeout"))
 
 func _physics_process(_delta):
 	update_health()
@@ -46,10 +50,12 @@ func _physics_process(_delta):
 			get_node("AnimatedSprite2D").flip_h = true
 		else:
 			get_node("AnimatedSprite2D").flip_h = false
-
+#		$AnimatedSprite2D.play(_get_walk_animation_name())
 		move_and_collide(Vector2.ZERO)
 	else:
-		$AnimatedSprite2D.play(_get_idle_animation_name())
+		if $AnimatedSprite2D.animation != _get_idle_animation_name():
+			$AnimatedSprite2D.play(_get_idle_animation_name())
+
 
 func _on_detection_radius_body_entered(body):
 	if body.name == _get_target_name():
