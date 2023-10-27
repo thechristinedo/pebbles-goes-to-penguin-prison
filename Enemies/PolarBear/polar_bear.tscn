@@ -159,7 +159,7 @@ material = SubResource("ShaderMaterial_ne1sd")
 position = Vector2(5, -2)
 scale = Vector2(1.14286, 1.1)
 sprite_frames = SubResource("SpriteFrames_1btrm")
-animation = &"death"
+animation = &"walk"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -10.0
@@ -204,7 +204,6 @@ wait_time = 0.2
 [node name="polarSlap" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_l2txk")
 
-[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="detection_radius" to="." method="_on_detection_radius_body_exited"]
