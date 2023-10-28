@@ -4,8 +4,8 @@ extends Sprite2D
 @export var sprite_2d: Sprite2D
 @export var player: CharacterBody2D
 
-const GUN_LEFT: Vector2 = Vector2(0.75, -0.75)
-const GUN_RIGHT: Vector2 = Vector2(0.75, 0.75)
+const GUN_LEFT: Vector2 = Vector2(1, -1)
+const GUN_RIGHT: Vector2 = Vector2(1, 1)
 
 const PLAYER_LEFT: Vector2 = Vector2(-1, 1)
 const PLAYER_RIGHT: Vector2 = Vector2(1, 1)
