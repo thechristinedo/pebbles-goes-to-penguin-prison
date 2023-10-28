@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_health: int = 1000 # TODO: Change health back to 10
+@export var max_health: int = 100 # TODO: Change health back to 10
 @export var ammo: int = 999
 @export var move_speed: float = 250
 @export var sprite_2d: Sprite2D
