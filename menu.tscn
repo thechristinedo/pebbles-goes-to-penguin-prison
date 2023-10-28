@@ -1,21 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://rc0lpw2dncxp"]
+[gd_scene load_steps=15 format=3 uid="uid://rc0lpw2dncxp"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_lnxl3"]
+[ext_resource type="Script" path="res://User Interface/UI_menus/Menu.gd" id="1_i4i88"]
 [ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Parallax/bg0.png" id="2_0gssu"]
 [ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Parallax/skybg.png" id="2_no1h3"]
-[ext_resource type="Shader" path="res://pixel.gdshader" id="2_rmub7"]
-[ext_resource type="Texture2D" uid="uid://bm0ho20i4mbmh" path="res://white.png" id="3_curif"]
+[ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_vu6x2"]
 [ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Parallax/bg1.png" id="3_oofks"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="3_qkkwg"]
 [ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="4_6mrbk"]
 [ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="5_gypor"]
-[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="7_r4elv"]
-[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="9_jjw07"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="8_qx75b"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="9_jjw07"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_p51c5"]
 [ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="12_tav4u"]
 [ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="13_rtylw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
-shader = ExtResource("2_rmub7")
+shader = ExtResource("2_vu6x2")
 shader_parameter/size_x = 0.001
 shader_parameter/size_y = 0.015
 
@@ -40,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lnxl3")
+script = ExtResource("1_i4i88")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -52,7 +51,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_curif")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = SubResource("GDScript_1o5ty")
@@ -109,7 +107,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("7_r4elv")
+theme_override_fonts/font = ExtResource("8_qx75b")
 theme_override_font_sizes/font_size = 100
 text = "Pebbles Goes To Penguin Prison"
 
@@ -126,19 +124,19 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 3
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 3
 text = "Options"
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 3
 text = "Exit"
 
@@ -163,7 +161,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("7_r4elv")
+theme_override_fonts/font = ExtResource("8_qx75b")
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
@@ -178,19 +176,13 @@ layout_mode = 2
 
 [node name="Volume" type="Button" parent="Option/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 3
 text = "Volume"
 
-[node name="Brightness" type="Button" parent="Option/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_qkkwg")
-theme_override_constants/outline_size = 3
-text = "Brightness"
-
 [node name="Back" type="Button" parent="Option/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 3
 text = "Back	"
 
@@ -219,7 +211,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("7_r4elv")
+theme_override_fonts/font = ExtResource("8_qx75b")
 theme_override_font_sizes/font_size = 100
 text = "Volume"
 
@@ -243,7 +235,7 @@ layout_mode = 2
 
 [node name="master_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 2
 text = "Master"
 
@@ -253,7 +245,7 @@ bus_name = "Master"
 
 [node name="background_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 2
 text = "Background"
 
@@ -263,7 +255,7 @@ bus_name = "Background"
 
 [node name="soundeffects_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 2
 text = "Sound Effects"
 
@@ -278,7 +270,7 @@ layout_mode = 2
 
 [node name="Back" type="Button" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_qkkwg")
+theme = ExtResource("9_p51c5")
 theme_override_constants/outline_size = 2
 text = "Back
 "
@@ -287,9 +279,11 @@ text = "Back
 stream = ExtResource("12_tav4u")
 volume_db = -6.0
 autoplay = true
+bus = &"Background"
 
 [node name="selectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_rtylw")
+bus = &"Background"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

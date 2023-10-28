@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm0ho20i4mbmh"
-path="res://.godot/imported/white.png-d8533361663a5f8fe5200e5b5262a62d.ctex"
+uid="uid://b1rdim7hc2jmb"
+path="res://.godot/imported/PixelPushers_Blue_NoShadow.png-6943f3f2d88a5e14aab0b9c4de035f1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://white.png"
-dest_files=["res://.godot/imported/white.png-d8533361663a5f8fe5200e5b5262a62d.ctex"]
+source_file="res://Misc/PixelPushers_Blue_NoShadow.png"
+dest_files=["res://.godot/imported/PixelPushers_Blue_NoShadow.png-6943f3f2d88a5e14aab0b9c4de035f1c.ctex"]
 
 [params]
 

@@ -8,17 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://tdf8iqs82nqm" path="res://Characters/Pebbles/Pebbles.tscn" id="5_aw3i6"]
 [ext_resource type="PackedScene" uid="uid://cfyn5xxip2okh" path="res://Enemies/Fat Penguin Cop/fat_penguin_cop.tscn" id="6_ignc1"]
 [ext_resource type="Script" path="res://Characters/camera_movement.gd" id="6_pje2u"]
+[ext_resource type="Script" path="res://User Interface/UI_menus/pause_menu.gd" id="7_rqukn"]
 [ext_resource type="AudioStream" uid="uid://do8cyc1bt2rph" path="res://Audio/backgroundmusic.mp3" id="7_yvnlm"]
-[ext_resource type="Script" path="res://pause_menu.gd" id="9_yq5fn"]
-[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="10_4klk4"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="11_2hvd6"]
-[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="12_yp355"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="8_jsly6"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_8lxtn"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="12_yp355"]
 [ext_resource type="PackedScene" uid="uid://b7dts4c4mcnyo" path="res://Enemies/Seal/seal.tscn" id="13_kyrvk"]
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="13_ubx7j"]
 [ext_resource type="PackedScene" uid="uid://c1j8acm6ymuju" path="res://Enemies/PolarBear/polar_bear.tscn" id="14_1fwjd"]
 [ext_resource type="PackedScene" uid="uid://cihror7ta6bov" path="res://Enemies/Seal/seal-gun.tscn" id="16_x8joo"]
-[ext_resource type="PackedScene" uid="uid://5rihimiyy7ha" path="res://Enemies/PolarBear/polar_bear_gun.tscn" id="17_ivn1y"]
-[ext_resource type="PackedScene" uid="uid://bhwnrdyqc8fay" path="res://Enemies/Fat Penguin Cop/penguin_cop_slap.tscn" id="18_8mmr7"]
+[ext_resource type="PackedScene" uid="uid://bpmfq35fvjb7b" path="res://Enemies/PolarBear/polar_bear_gun.tscn" id="17_ivn1y"]
+[ext_resource type="PackedScene" uid="uid://ccn3vg5d8us3c" path="res://Enemies/Fat Penguin Cop/penguin_cop_slap.tscn" id="18_8mmr7"]
 
 [sub_resource type="GDScript" id="GDScript_vtapm"]
 script/source = "extends Node2D
@@ -446,9 +446,10 @@ process_thread_messages = 0
 stream = ExtResource("7_yvnlm")
 volume_db = -8.901
 autoplay = true
+bus = &"Background"
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
-script = ExtResource("9_yq5fn")
+script = ExtResource("7_rqukn")
 
 [node name="Pause" type="Control" parent="PauseMenu"]
 process_mode = 3
@@ -488,7 +489,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("10_4klk4")
+theme_override_fonts/font = ExtResource("8_jsly6")
 theme_override_font_sizes/font_size = 100
 text = "Pause"
 
@@ -512,25 +513,19 @@ layout_mode = 2
 
 [node name="Resume" type="Button" parent="PauseMenu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Resume"
 
 [node name="Volume" type="Button" parent="PauseMenu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Volume"
 
-[node name="Brightness" type="Button" parent="PauseMenu/Pause/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("11_2hvd6")
-theme_override_constants/outline_size = 2
-text = "Brightness"
-
 [node name="Quit" type="Button" parent="PauseMenu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Quit"
 
@@ -572,7 +567,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("10_4klk4")
+theme_override_fonts/font = ExtResource("8_jsly6")
 theme_override_font_sizes/font_size = 100
 text = "Volume"
 
@@ -596,7 +591,7 @@ layout_mode = 2
 
 [node name="master_vol" type="Label" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Master"
 
@@ -606,7 +601,7 @@ bus_name = "Master"
 
 [node name="background_vol" type="Label" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Background"
 
@@ -616,7 +611,7 @@ bus_name = "Background"
 
 [node name="soundeffects_vol" type="Label" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Sound Effects"
 
@@ -631,7 +626,7 @@ layout_mode = 2
 
 [node name="Back" type="Button" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("11_2hvd6")
+theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Back
 "

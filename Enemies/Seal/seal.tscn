@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="2_d07ir"]
 [ext_resource type="Texture2D" uid="uid://bqiuhpohg1nn1" path="res://Enemies/Seal/seal_death_frames_new.png" id="2_ewul5"]
 [ext_resource type="Texture2D" uid="uid://uwf6uq3ji8w0" path="res://Enemies/Seal/slap_seal.png" id="4_ijjct"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="5_0ismb"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_0ismb"]
 [ext_resource type="AudioStream" uid="uid://c0fv5u8jhjex8" path="res://Audio/sealSlap.mp3" id="7_j474t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g3yn3"]
@@ -196,6 +196,7 @@ wait_time = 0.2
 [node name="sealSlap" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_j474t")
 volume_db = 1.0
+bus = &"Sound Effects"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]
