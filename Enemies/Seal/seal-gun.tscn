@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dhlnlqufvc7ur" path="res://Enemies/Seal/seal_walking.png" id="3_4k4e5"]
 [ext_resource type="Script" path="res://Enemies/Shotgun.gd" id="3_v7gub"]
 [ext_resource type="Texture2D" uid="uid://uwf6uq3ji8w0" path="res://Enemies/Seal/slap_seal.png" id="4_ykrai"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="5_ktk2k"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_ktk2k"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="9_idpxf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3265y"]
@@ -199,6 +199,7 @@ wait_time = 0.2
 [node name="lightGunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_idpxf")
 pitch_scale = 3.5
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered" flags=18]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

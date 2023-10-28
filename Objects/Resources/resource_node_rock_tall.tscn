@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://w6i02hhlrsuh"]
 
 [ext_resource type="Script" path="res://Objects/Resources/resource_node_rock_tall.gd" id="1_r4s0n"]
-[ext_resource type="Texture2D" uid="uid://dkifw4603gu7h" path="res://8bit barrel pixel art.webp" id="2_1tcwt"]
+[ext_resource type="Texture2D" uid="uid://dkifw4603gu7h" path="res://Misc/8bit barrel pixel art.webp" id="2_1tcwt"]
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="2_t3r3v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g3qgj"]

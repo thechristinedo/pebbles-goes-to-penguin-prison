@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m2kfh6iaatj1"
-path="res://.godot/imported/pebbles.png-7db4ce4ca577019b268cf43301a96d56.ctex"
+uid="uid://caciejpkap7up"
+path="res://.godot/imported/icon.svg-84f5038d67719b27c01b08e569fc15e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pebbles.png"
-dest_files=["res://.godot/imported/pebbles.png-7db4ce4ca577019b268cf43301a96d56.ctex"]
+source_file="res://Misc/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-84f5038d67719b27c01b08e569fc15e5.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

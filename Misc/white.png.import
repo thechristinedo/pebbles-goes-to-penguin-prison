@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkifw4603gu7h"
-path="res://.godot/imported/8bit barrel pixel art.webp-f78f1e14d772cc3f617a52933d356672.ctex"
+uid="uid://bm0ho20i4mbmh"
+path="res://.godot/imported/white.png-19e253c9e51e22c7089c7ff4469976eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://8bit barrel pixel art.webp"
-dest_files=["res://.godot/imported/8bit barrel pixel art.webp-f78f1e14d772cc3f617a52933d356672.ctex"]
+source_file="res://Misc/white.png"
+dest_files=["res://.godot/imported/white.png-19e253c9e51e22c7089c7ff4469976eb.ctex"]
 
 [params]
 

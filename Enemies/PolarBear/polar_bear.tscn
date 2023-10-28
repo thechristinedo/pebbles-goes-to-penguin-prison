@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Enemies/PolarBear/polar_bear.gd" id="1_w8qpw"]
 [ext_resource type="Texture2D" uid="uid://cfvm5wq7q5yci" path="res://Enemies/PolarBear/polar_bear_walking.png" id="2_sbjkr"]
 [ext_resource type="Texture2D" uid="uid://ciwea3dily156" path="res://Enemies/PolarBear/polar_bear_2.png" id="3_fkkvj"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Theme.tres" id="4_p6t7c"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="4_p6t7c"]
 [ext_resource type="AudioStream" uid="uid://dfsp13wh0lwrc" path="res://Audio/polarSlap.mp3" id="7_l2txk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ne1sd"]
@@ -203,6 +203,7 @@ wait_time = 0.2
 
 [node name="polarSlap" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_l2txk")
+bus = &"Sound Effects"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered"]

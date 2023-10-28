@@ -13,13 +13,17 @@ config_version=5
 config/name="Rogue Test"
 run/main_scene="res://Intro/intro.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-boot_splash/image="res://PixelPushers_Blue_NoShadow.png"
-config/icon="res://icon.svg"
+boot_splash/image="res://Misc/PixelPushers_Blue_NoShadow.png"
+config/icon="res://Misc/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Volume/default_bus_layout.tres"
 
 [autoload]
 
 global="*res://global.gd"
-SceneTransition="*res://scene_transition.tscn"
+SceneTransition="*res://Scene Transition/scene_transition.tscn"
 
 [display]
 

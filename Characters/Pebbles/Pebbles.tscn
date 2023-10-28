@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://tdf8iqs82nqm"]
 
 [ext_resource type="Script" path="res://Characters/Pebbles/pebbles.gd" id="1_cxbe1"]
-[ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Guns/Bullets/Bullet.tscn" id="2_nt858"]
+[ext_resource type="PackedScene" uid="uid://dv75t1glvbda2" path="res://Misc/Bullet.tscn" id="2_m4lns"]
 [ext_resource type="Texture2D" uid="uid://bm87nqm22na2i" path="res://Characters/Pebbles/Sprites/pebbles-idle.png" id="2_oo8pk"]
 [ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="3_gq510"]
 [ext_resource type="PackedScene" uid="uid://w6vnu6g7xefs" path="res://Guns/Gun.tscn" id="3_uhnfq"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="6_3mnqa"]
 [ext_resource type="Texture2D" uid="uid://s8jme7fywmc" path="res://Characters/Pebbles/Sprites/pebbles_slap.png" id="6_gnr27"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="7_afbpb"]
-[ext_resource type="PackedScene" uid="uid://ky0ajf56l7cj" path="res://game_over_screen.tscn" id="9_phe7c"]
+[ext_resource type="PackedScene" uid="uid://ky0ajf56l7cj" path="res://User Interface/UI_menu_scenes/game_over_screen.tscn" id="10_y2euk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2q66h"]
 shader = ExtResource("3_gq510")
@@ -234,7 +234,7 @@ graph_offset = Vector2(112.463, 50.6175)
 script = ExtResource("1_cxbe1")
 sprite_2d = NodePath("Sprite2D")
 animation_tree = NodePath("AnimationTree")
-bullet_scene = ExtResource("2_nt858")
+bullet_scene = ExtResource("2_m4lns")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_2q66h")
@@ -275,10 +275,12 @@ one_shot = true
 [node name="walking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_3mnqa")
 volume_db = 7.924
+bus = &"Sound Effects"
 
 [node name="gunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_afbpb")
 volume_db = -6.052
+bus = &"Sound Effects"
 
 [node name="pebbles_hitbox" type="Area2D" parent="."]
 
@@ -290,7 +292,7 @@ shape = SubResource("CapsuleShape2D_n2kjh")
 wait_time = 0.35
 one_shot = true
 
-[node name="GameOverScreen" parent="." instance=ExtResource("9_phe7c")]
+[node name="GameOverScreen" parent="." instance=ExtResource("10_y2euk")]
 visible = false
 
 [node name="FlashHitTimer" type="Timer" parent="."]

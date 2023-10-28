@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dap64i2o0ns0x"]
 
-[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://ChiKareGo2.ttf" id="1_86ab8"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="1_86ab8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b7na"]
 bg_color = Color(1, 0, 0, 1)
