@@ -159,7 +159,7 @@ material = SubResource("ShaderMaterial_ne1sd")
 position = Vector2(5, -2)
 scale = Vector2(1.14286, 1.1)
 sprite_frames = SubResource("SpriteFrames_1btrm")
-animation = &"walk"
+animation = &"slap"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -10.0

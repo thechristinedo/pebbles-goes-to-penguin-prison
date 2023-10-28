@@ -145,7 +145,7 @@ script = ExtResource("1_en865")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_3265y")
 sprite_frames = SubResource("SpriteFrames_cefw2")
-animation = &"walk"
+animation = &"slap"
 
 [node name="detection_radius" type="Area2D" parent="."]
 

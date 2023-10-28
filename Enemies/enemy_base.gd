@@ -50,7 +50,9 @@ func _physics_process(_delta):
 			get_node("AnimatedSprite2D").flip_h = true
 		else:
 			get_node("AnimatedSprite2D").flip_h = false
-#		$AnimatedSprite2D.play(_get_walk_animation_name())
+		if $AnimatedSprite2D.animation != "slap":
+			$AnimatedSprite2D.play(_get_walk_animation_name())
+
 		move_and_collide(Vector2.ZERO)
 	else:
 		if $AnimatedSprite2D.animation != _get_idle_animation_name():
@@ -96,9 +98,14 @@ func update_health():
 		healthbar.visible = true
 
 func _on_AnimatedSprite2D_animation_finished():
-	if $AnimatedSprite2D.animation == _get_death_animation_name():
+	if $AnimatedSprite2D.animation == "slap":
+		if pebbles_chase:
+			$AnimatedSprite2D.play(_get_walk_animation_name())
+		else:
+			$AnimatedSprite2D.play(_get_idle_animation_name())
+	elif $AnimatedSprite2D.animation == _get_death_animation_name():
 		queue_free()
-		
+
 func _on_slap_radius_body_entered(body):
 	if is_dead:
 		return
@@ -128,7 +135,7 @@ func _on_slap_timer_timeout():
 		attack()
 		
 func attack():
-	pass
+	$AnimatedSprite2D.play("slap")
 
 func die():
 	is_dead = true  # Mark the enemy as dead
