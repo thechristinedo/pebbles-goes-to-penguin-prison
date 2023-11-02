@@ -12,8 +12,8 @@ extends CharacterBody2D
 func _physics_process(_delta):
 	update_animation()
 	handle_player_movement()
-	move_and_slide()
 	handle_player_shoot()
+	move_and_slide()
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())

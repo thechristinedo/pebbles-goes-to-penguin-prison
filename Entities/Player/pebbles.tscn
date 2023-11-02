@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Entities/Player/player_camera.gd" id="4_otm1v"]
 [ext_resource type="Script" path="res://Guns/gun.gd" id="5_qqioc"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
-[ext_resource type="Script" path="res://Entities/Components/ranged_attack.gd" id="7_hlggu"]
+[ext_resource type="PackedScene" uid="uid://cm2vffgb81e7n" path="res://Entities/Components/ranged_attack_component.tscn" id="7_4rer2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ncl5"]
 radius = 8.0
@@ -203,9 +203,7 @@ parameters/conditions/is_running = false
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_6pra7")
 
-[node name="RangedAttackComponent" type="Node" parent="."]
-script = ExtResource("7_hlggu")
-
-[node name="Firerate" type="Timer" parent="RangedAttackComponent"]
+[node name="RangedAttackComponent" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("7_4rer2")]
+gun = NodePath("../Gun")
 
 [connection signal="timeout" from="Camera2D/ShakeTimer" to="Camera2D" method="_on_shake_cooldown_timeout"]
