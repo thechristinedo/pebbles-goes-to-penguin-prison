@@ -6,12 +6,32 @@ extends Control
 @onready var option_menu = $Option
 @onready var volume_menu = $Volume
 @onready var selectSound = $selectSound
+@onready var saveslot = $SaveSlot
 
 func _on_play_pressed():
 	#$TextureRect.visible = true
 	selectSound.play()
 	
+	#SceneTransition.change_scene("res://Levels/prison_level.tscn", 'dissolve')
+	main_label.visible = false
+	main_buttons.visible = false
+	saveslot.visible = true
+
+func _on_save_slot_1_pressed():
+	#$TextureRect.visible = true
+	selectSound.play()
 	SceneTransition.change_scene("res://Levels/prison_level.tscn", 'dissolve')
+
+func _on_save_slot_2_pressed():
+	#$TextureRect.visible = true
+	selectSound.play()
+	SceneTransition.change_scene("res://Levels/prison_level.tscn", 'dissolve')
+
+func _on_save_slot_3_pressed():
+	#$TextureRect.visible = true
+	selectSound.play()
+	SceneTransition.change_scene("res://Levels/prison_level.tscn", 'dissolve')
+	
 
 func _on_options_pressed():
 	selectSound.play()
@@ -36,3 +56,6 @@ func _on_back_pressed():
 	main_buttons.visible = true
 	option_menu.visible = false
 	volume_menu.visible = false
+	saveslot.visible = false
+
+
