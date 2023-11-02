@@ -201,6 +201,7 @@ stream = ExtResource("9_idpxf")
 pitch_scale = 3.5
 bus = &"Sound Effects"
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered" flags=18]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
