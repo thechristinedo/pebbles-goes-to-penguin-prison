@@ -126,3 +126,10 @@ func _on_reload_timer_timeout():
 func _on_flash_hit_timer_timeout():
 	pass # Replace with function body.
 
+
+
+
+func _on_animated_sprite_2d_frame_changed():
+	if $AnimatedSprite2D.frame == 1 && $AnimatedSprite2D.animation == "death":
+		$CollisionShape2D.disabled = true
+
