@@ -523,6 +523,12 @@ theme = ExtResource("9_8lxtn")
 theme_override_constants/outline_size = 2
 text = "Volume"
 
+[node name="BacktoMainMenu" type="Button" parent="PauseMenu/Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_8lxtn")
+theme_override_constants/outline_size = 2
+text = "Back to Main Menu"
+
 [node name="Quit" type="Button" parent="PauseMenu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_8lxtn")
@@ -735,5 +741,6 @@ position = Vector2(-56, 299)
 
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
+[connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/BacktoMainMenu" to="PauseMenu" method="_on_backto_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/Pause/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="pressed" from="PauseMenu/Volume/MarginContainer/VBoxContainer/Back" to="PauseMenu" method="_on_back_pressed"]
