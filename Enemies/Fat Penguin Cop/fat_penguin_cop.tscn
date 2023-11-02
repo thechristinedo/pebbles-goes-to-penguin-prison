@@ -174,6 +174,7 @@ script = ExtResource("1_rkrr8")
 bullet_scene = ExtResource("2_81ude")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_7x8rt")
 one_way_collision_margin = 0.0
@@ -181,7 +182,7 @@ one_way_collision_margin = 0.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_h4cui")
 sprite_frames = SubResource("SpriteFrames_tm0al")
-animation = &"slap"
+animation = &"death"
 
 [node name="Detection_Radius" type="Area2D" parent="."]
 
@@ -229,6 +230,7 @@ stream = ExtResource("15_3gbfu")
 pitch_scale = 3.5
 bus = &"Sound Effects"
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="Detection_Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]

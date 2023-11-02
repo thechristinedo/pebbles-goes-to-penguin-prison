@@ -123,3 +123,9 @@ func _on_AnimatedSprite2D_animation_finished():
 
 func _on_reload_timer_timeout():
 	can_shoot = true
+
+
+func _on_animated_sprite_2d_frame_changed():
+	if $AnimatedSprite2D.frame == 1 && $AnimatedSprite2D.animation == "death":
+		$CollisionShape2D.disabled = true
+

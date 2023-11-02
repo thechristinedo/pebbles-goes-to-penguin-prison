@@ -14,6 +14,9 @@ func _on_animated_sprite_2d_frame_changed():
 	var damage = 10
 	if $AnimatedSprite2D.frame == 2 && $AnimatedSprite2D.animation == "slap":
 		target.take_damage(damage)
+	if $AnimatedSprite2D.frame == 1 && $AnimatedSprite2D.animation == "death":
+		$CollisionShape2D.disabled = true
+
 
 
 # Hit Flash Shader
