@@ -1,0 +1,24 @@
+extends Node
+
+@onready var firerate_timer = $Firerate
+@onready var gun: Gun = $"../Gun"
+
+@export var _firerate: float = 0.3
+
+var _can_fire: bool = true
+
+func _ready():
+	firerate_timer.connect("timeout", _set_can_fire)
+
+func set_fire_rate(firerate: float) -> void:
+	_firerate = firerate
+
+func shoot() -> bool:
+	if _can_fire: 
+		_can_fire = false
+		firerate_timer.start(_firerate)
+		return gun.shoot()
+	return false
+
+func _set_can_fire() -> void:
+	_can_fire = true

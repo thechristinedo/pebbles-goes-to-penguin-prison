@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://tm20eyj2c0k"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_6ucm3"]
+[ext_resource type="Resource" uid="uid://codfld5m353ww" path="res://Guns/GunShooterResources/shotgun_shooter.tres" id="2_52ji7"]
+[ext_resource type="Texture2D" uid="uid://dxdunjmfu5a76" path="res://Assets/Guns/shotgun.png" id="2_ernqn"]
+
+[resource]
+script = ExtResource("1_6ucm3")
+name = "Shotgun"
+texture = ExtResource("2_ernqn")
+stackable = false
+shooter = ExtResource("2_52ji7")

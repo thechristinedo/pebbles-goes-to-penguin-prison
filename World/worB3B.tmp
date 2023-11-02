@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci32sgtk14rae"]
+
+[ext_resource type="PackedScene" uid="uid://oka46aerxr4w" path="res://World/Rooms/starting_room.tscn" id="2_dms30"]
+[ext_resource type="PackedScene" uid="uid://ccv6yqwo4nigb" path="res://Animations/room_transition.tscn" id="2_five8"]
+
+[node name="World" type="Node"]
+
+[node name="Room" type="Node" parent="."]
+
+[node name="RoomTransition" parent="Room" instance=ExtResource("2_five8")]
+
+[node name="StartingRoom" parent="Room" instance=ExtResource("2_dms30")]

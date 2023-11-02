@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://codfld5m353ww"]
+
+[ext_resource type="Script" path="res://Guns/GunShooterResources/shotgun_shooter.gd" id="1_sxgip"]
+
+[resource]
+script = ExtResource("1_sxgip")

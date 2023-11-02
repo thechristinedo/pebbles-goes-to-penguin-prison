@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://d4i82kw6b16uc"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_oif6o"]
+[ext_resource type="Texture2D" uid="uid://10h11gv74qn2" path="res://Assets/Guns/revolver.png" id="2_glu3e"]
+[ext_resource type="Resource" uid="uid://cas1xwtaima0a" path="res://Guns/GunShooterResources/revolver_shooter.tres" id="2_qyb31"]
+
+[resource]
+script = ExtResource("1_oif6o")
+name = "Revolver"
+texture = ExtResource("2_glu3e")
+stackable = false
+shooter = ExtResource("2_qyb31")

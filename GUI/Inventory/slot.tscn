@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c04bavlpx3imm"]
+
+[ext_resource type="Script" path="res://GUI/Inventory/slot.gd" id="1_aihwk"]
+[ext_resource type="Texture2D" uid="uid://cwg2x0tafmsas" path="res://Assets/GUI/Inventory/inventory-slot.png" id="1_xfioj"]
+
+[node name="Slot1" type="Panel"]
+script = ExtResource("1_aihwk")
+
+[node name="InventorySlotTexture" type="Sprite2D" parent="."]
+texture = ExtResource("1_xfioj")
+hframes = 2
+
+[node name="ItemTexture" type="Sprite2D" parent="."]
+rotation = -0.785398
