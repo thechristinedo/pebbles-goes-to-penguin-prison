@@ -15,6 +15,4 @@ shape = SubResource("CircleShape2D_emi5m")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_c318u")
-
-[node name="AnimationTree" parent="." index="3"]
-active = true
+offset = Vector2(2.08165e-12, -5)

@@ -10,3 +10,4 @@ name = "Revolver"
 texture = ExtResource("2_glu3e")
 stackable = false
 shooter = ExtResource("2_qyb31")
+path_to_collectable_scene = "res://Collectables/Guns/revolver_collectable.tscn"
