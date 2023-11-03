@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var gun: Gun = $Gun
 @onready var character_sprite: Sprite2D = $PebblesSprite
-@onready var ranged_attack_component = $RangedAttackComponent
-@onready var inventory_node = $Inventory
+@onready var ranged_attack_component: Node = $RangedAttackComponent
+@onready var inventory_node: Node = $Inventory
 
 @export var speed: float = 200
 
@@ -43,7 +43,6 @@ func handle_player_interactions() -> void:
 	# pickup gun
 	if collectables.size() and Input.is_action_just_pressed("pickup gun"):
 		inventory_node.insert_gun(collectables.pop_back().collect())
-		
 	
 	# drop gun
 	if Input.is_action_just_pressed("drop gun"):
@@ -62,7 +61,6 @@ func handle_player_interactions() -> void:
 		inventory_node.scroll_up()
 	if Input.is_action_just_pressed("scroll down"):
 		inventory_node.scroll_down()
-	
 
 func update_animation() -> void:
 	match velocity:
@@ -76,7 +74,6 @@ func update_animation() -> void:
 func _on_pickup_area_area_entered(area):
 	if area.has_method("collect"): 
 		collectables.append(area)
-
 
 func _on_pickup_area_area_exited(area):
 	if collectables.size() and area == collectables[collectables.size()-1]:
