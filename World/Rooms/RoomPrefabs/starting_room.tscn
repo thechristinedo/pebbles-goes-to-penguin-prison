@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://oka46aerxr4w"]
+[gd_scene load_steps=5 format=3 uid="uid://oka46aerxr4w"]
 
 [ext_resource type="Script" path="res://World/Rooms/room_behavior.gd" id="1_o8cgn"]
 [ext_resource type="PackedScene" uid="uid://npijgj41cd8l" path="res://Tileset/tile_map.tscn" id="2_t6qsh"]
+[ext_resource type="PackedScene" uid="uid://3npb3tvfm4h7" path="res://Collectables/Guns/shotgun_collectable.tscn" id="3_b4xab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gw0"]
 size = Vector2(228, 376)
@@ -17,7 +18,11 @@ position = Vector2(47, 240)
 layer_0/tile_data = PackedInt32Array(0, 65536, 3, 65536, 65536, 3, 131072, 65536, 3, 196608, 65536, 3, 262144, 65536, 3, 327680, 65536, 3, 393216, 65536, 3, 458752, 65536, 3, 524288, 65536, 3, 589824, 65536, 4, 1, 0, 6, 65537, 131072, 1, 131073, 65536, 3, 196609, 65536, 3, 262145, 65536, 3, 327681, 65536, 3, 393217, 65536, 3, 458753, 65536, 3, 524289, 65536, 3, 589825, 65536, 4, 2, 65536, 0, 65538, 131072, 1, 131074, 65536, 3, 196610, 65536, 3, 262146, 65536, 3, 327682, 65536, 3, 393218, 65536, 3, 458754, 65536, 3, 524290, 65536, 3, 589826, 65536, 4, 3, 327680, 0, 65539, 327680, 1, 131075, 327680, 1, 196611, 327680, 1, 262147, 327680, 1, 327683, 327680, 1, 393219, 327680, 1, 458755, 327680, 1, 524291, 327680, 1, 589827, 327680, 4, 65533, 0, 0, 131069, 0, 1, 196605, 0, 1, 262141, 0, 1, 327677, 0, 1, 393213, 0, 1, 458749, 0, 1, 524285, 0, 1, 589821, 0, 1, 655357, 0, 4, 65534, 65536, 0, 131070, 131072, 1, 196606, 65536, 3, 262142, 65536, 3, 327678, 65536, 3, 393214, 65536, 3, 458750, 65536, 3, 524286, 65536, 3, 589822, 65536, 3, 655358, 65536, 4, 65535, 65536, 6, 131071, 131072, 1, 196607, 65536, 3, 262143, 65536, 3, 327679, 65536, 3, 393215, 65536, 3, 458751, 65536, 3, 524287, 65536, 3, 589823, 65536, 3, 655359, 65536, 4)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(19, 154)
 shape = SubResource("RectangleShape2D_w8gw0")
+
+[node name="ShotgunCollectable" parent="." instance=ExtResource("3_b4xab")]
+position = Vector2(-22, 168)

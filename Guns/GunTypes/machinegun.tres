@@ -10,3 +10,4 @@ name = "Machine Gun"
 texture = ExtResource("2_vdafb")
 stackable = false
 shooter = ExtResource("2_or8o4")
+path_to_collectable_scene = "res://Collectables/Guns/machinegun_collectable.tscn"

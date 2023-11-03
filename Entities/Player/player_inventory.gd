@@ -4,16 +4,46 @@ extends Node
 @onready var _inventory: Inventory = preload("res://Inventory/inventory.tres")
 @onready var firerate = $"../RangedAttackComponent/Firerate"
 
-var _current_inventory_index: int = 0
-
 func _ready():
 	player_select_slot()
 
-func get_selected_gun() -> InventoryItem:
-	return _inventory.items[_current_inventory_index]
+func is_full() -> bool:
+	if null in _inventory.items:
+		return false
+	return true
 
-func player_select_slot(index: int = _current_inventory_index) -> void:
-	_current_inventory_index = index
+func scroll_up() -> void:
+	_inventory.selected_slot = wrapi(_inventory.selected_slot - 1, 0, 5)
+	player_select_slot()
+
+func scroll_down() -> void:
+	_inventory.selected_slot = wrapi(_inventory.selected_slot + 1, 0, 5)
+	player_select_slot()
+
+func insert_gun(resource: InventoryItem) -> bool:
+	if _inventory.items[_inventory.selected_slot] == null:
+		_inventory.items[_inventory.selected_slot] = resource
+		player_select_slot()
+		return true
+	
+	for i in range(_inventory.items.size()):
+		if !_inventory.items[i]: 
+			_inventory.items[i] = resource
+			player_select_slot()
+			return true
+	return false
+
+func drop_gun(index: int = _inventory.selected_slot) -> InventoryItem:
+	var item = _inventory.items[index]
+	_inventory.items[index] = null
+	player_select_slot()
+	return item
+
+func get_selected_gun() -> InventoryItem:
+	return _inventory.items[_inventory.selected_slot]
+
+func player_select_slot(index: int = _inventory.selected_slot) -> void:
+	_inventory.selected_slot = index
 	gun.inventory_item = _inventory.items[index]
 	gun.update_texture()
 
