@@ -62,3 +62,5 @@ offset_left = 200.0
 offset_top = 28.0
 offset_right = 200.0
 offset_bottom = 28.0
+
+[node name="CursorAnimationTimer" type="Timer" parent="."]
