@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 @export var speed: float = 200
 
-var collectable: Area2D
+var collectables: Array[Area2D]
 
 func _physics_process(_delta):
 	update_animation()
@@ -41,8 +41,9 @@ func handle_player_movement() -> void:
 
 func handle_player_interactions() -> void:
 	# pickup gun
-	if collectable and Input.is_action_just_pressed("pickup gun"):
-		inventory_node.insert_gun(collectable.collect())
+	if collectables.size() and Input.is_action_just_pressed("pickup gun"):
+		inventory_node.insert_gun(collectables.pop_back().collect())
+		
 	
 	# drop gun
 	if Input.is_action_just_pressed("drop gun"):
@@ -74,9 +75,9 @@ func update_animation() -> void:
 
 func _on_pickup_area_area_entered(area):
 	if area.has_method("collect"): 
-		collectable = area
+		collectables.append(area)
 
 
 func _on_pickup_area_area_exited(area):
-	if area == collectable:
-		collectable = null
+	if collectables.size() and area == collectables[collectables.size()-1]:
+		collectables.pop_back()

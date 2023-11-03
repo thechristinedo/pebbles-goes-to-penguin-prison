@@ -18,8 +18,10 @@ func collect() -> InventoryItem:
 	queue_free()
 	return inventory_item
 
-func _on_area_entered(_area):
-	collect_key.visible = true
+func _on_area_entered(area):
+	if area.name == "PlayerPickupArea":
+		collect_key.visible = true
 
-func _on_area_exited(_area):
-	collect_key.visible = false
+func _on_area_exited(area):
+	if area.name == "PlayerPickupArea":
+		collect_key.visible = false
