@@ -74,11 +74,9 @@ func update_animation() -> void:
 
 func _on_pickup_area_area_entered(area):
 	if area.has_method("collect"): 
-		print("colect")
 		collectable = area
 
 
 func _on_pickup_area_area_exited(area):
 	if area == collectable:
-		print("no colect")
 		collectable = null
