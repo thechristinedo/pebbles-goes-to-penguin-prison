@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://oka46aerxr4w"]
+[gd_scene load_steps=5 format=3 uid="uid://oka46aerxr4w"]
 
 [ext_resource type="Script" path="res://World/Rooms/room_behavior.gd" id="1_o8cgn"]
 [ext_resource type="PackedScene" uid="uid://npijgj41cd8l" path="res://Tileset/tile_map.tscn" id="2_t6qsh"]
+[ext_resource type="PackedScene" uid="uid://3npb3tvfm4h7" path="res://Collectables/Guns/shotgun_collectable.tscn" id="3_b4xab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gw0"]
 size = Vector2(228, 376)
@@ -21,3 +22,6 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 3, 65536, 65536, 3, 131072, 65536
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(19, 154)
 shape = SubResource("RectangleShape2D_w8gw0")
+
+[node name="ShotgunCollectable" parent="." instance=ExtResource("3_b4xab")]
+position = Vector2(-22, 168)

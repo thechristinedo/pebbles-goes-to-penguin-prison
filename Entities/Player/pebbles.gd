@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @export var speed: float = 200
 
+
 func _physics_process(_delta):
 	update_animation()
 	handle_player_movement()
@@ -45,3 +46,5 @@ func update_animation() -> void:
 			animation_tree["parameters/conditions/is_running"] = true
 			animation_tree["parameters/conditions/is_not_running"] = false
 
+func _on_area_entered() -> void:
+	print("hello")
