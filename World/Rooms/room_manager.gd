@@ -11,6 +11,7 @@ static var _next_room_path: String
 var current_room: Node2D
 
 func _ready() -> void:
+	get_tree().get_root().connect("size_changed", _window_size_changed)
 	switch_room(starting_room)
 
 func switch_room(room_path: String) -> void:
@@ -49,3 +50,5 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 			call_deferred("_deferred_switch_room")
 			animation_player.play("fade_out")
 
+func _window_size_changed() -> void:
+	if current_room: set_camera_bounds(current_room.get_node("Area2D/CollisionShape2D"))

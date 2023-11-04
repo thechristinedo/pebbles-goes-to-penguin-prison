@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_1qc3q")
 recoil = 3.0
-firerate = 0.04
+firerate = 0.18
