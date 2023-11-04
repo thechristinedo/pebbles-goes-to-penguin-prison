@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=26 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
 [ext_resource type="Texture2D" uid="uid://dp6qlaxjnh1bd" path="res://Assets/Entities/Player/pebble-run.png" id="2_0hke7"]
+[ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="2_63tet"]
 [ext_resource type="Script" path="res://Entities/Player/player_camera.gd" id="4_otm1v"]
 [ext_resource type="Script" path="res://Guns/gun.gd" id="5_qqioc"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
@@ -201,6 +202,12 @@ color_ramp = SubResource("GradientTexture1D_c3qxj")
 [node name="Pebbles" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_2fbo2")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(0, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_63tet")
 
 [node name="PebblesSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_7v67i")
