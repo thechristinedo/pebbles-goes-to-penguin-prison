@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=25 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -168,6 +168,36 @@ states/running/node = SubResource("AnimationNodeAnimation_p3hug")
 states/running/position = Vector2(633, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky")]
 
+[sub_resource type="Gradient" id="Gradient_owbeb"]
+offsets = PackedFloat32Array(0.674074, 1)
+colors = PackedColorArray(0.359069, 0.359069, 0.359069, 1, 0.490196, 0.490196, 0.490196, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c3qxj"]
+gradient = SubResource("Gradient_owbeb")
+
+[sub_resource type="Curve" id="Curve_tyntg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.650602, 0.768421), -1.05901, -1.05901, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rw4f0"]
+curve = SubResource("Curve_tyntg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qewu5"]
+emission_shape = 1
+emission_sphere_radius = 6.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 20.37
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_rw4f0")
+color_ramp = SubResource("GradientTexture1D_c3qxj")
+
 [node name="Pebbles" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_2fbo2")
@@ -215,6 +245,13 @@ script = ExtResource("6_6pra7")
 
 [node name="RangedAttackComponent" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("7_4rer2")]
 gun = NodePath("../Gun")
+
+[node name="MovementParticles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 15)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_qewu5")
+lifetime = 0.3
 
 [connection signal="area_entered" from="PlayerPickupArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PlayerPickupArea" to="." method="_on_pickup_area_area_exited"]

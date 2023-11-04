@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var character_sprite: Sprite2D = $PebblesSprite
 @onready var ranged_attack_component: Node = $RangedAttackComponent
 @onready var inventory_node: Node = $Inventory
+@onready var movement_particles: GPUParticles2D = $MovementParticles
 
 @export var speed: float = 200
 
@@ -32,7 +33,7 @@ func handle_player_shoot() -> void:
 func handle_player_movement() -> void:
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
-	
+	movement_particles.emitting = true if velocity else false
 	var angle_to_mouse = get_angle_to(get_global_mouse_position())
 	if angle_to_mouse < PI/2 and angle_to_mouse > -PI/2:
 		character_sprite.flip_h = false # right
