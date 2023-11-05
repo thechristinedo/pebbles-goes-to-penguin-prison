@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=34 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Guns/gun.gd" id="5_qqioc"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
 [ext_resource type="PackedScene" uid="uid://cm2vffgb81e7n" path="res://Entities/Components/ranged_attack_component.tscn" id="7_4rer2"]
+[ext_resource type="Texture2D" uid="uid://dyv1ed3cu662c" path="res://Assets/Entities/Player/pebbles_slide.png" id="7_pxkbe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ncl5"]
 radius = 8.0
@@ -137,11 +138,58 @@ tracks/2/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_n6ajx"]
+resource_name = "slide"
+length = 1.15
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PebblesSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_pxkbe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PebblesSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PebblesSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_itukp"]
+resource_name = "standing"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgk60"]
 _data = {
 "RESET": SubResource("Animation_t47us"),
 "idle": SubResource("Animation_ekktp"),
-"running": SubResource("Animation_boo2t")
+"running": SubResource("Animation_boo2t"),
+"slide": SubResource("Animation_n6ajx"),
+"standing": SubResource("Animation_itukp")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ndbtt"]
@@ -149,6 +197,9 @@ animation = &"idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p3hug"]
 animation = &"running"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntwe1"]
+animation = &"slide"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gkknf"]
 advance_mode = 2
@@ -161,13 +212,24 @@ advance_condition = &"is_running"
 advance_mode = 2
 advance_condition = &"is_not_running"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dx8v7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ompl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b5b4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5vc1e"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l3rut"]
 states/End/position = Vector2(844, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_ndbtt")
-states/idle/position = Vector2(384, 100)
+states/idle/position = Vector2(383.5, 99.75)
 states/running/node = SubResource("AnimationNodeAnimation_p3hug")
 states/running/position = Vector2(633, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky")]
+states/slide/node = SubResource("AnimationNodeAnimation_ntwe1")
+states/slide/position = Vector2(525.1, 0.360001)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky"), "running", "slide", SubResource("AnimationNodeStateMachineTransition_dx8v7"), "slide", "running", SubResource("AnimationNodeStateMachineTransition_3ompl"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_6b5b4"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_5vc1e")]
+graph_offset = Vector2(81.5848, -73.9575)
 
 [sub_resource type="Gradient" id="Gradient_owbeb"]
 offsets = PackedFloat32Array(0.674074, 1)
@@ -228,7 +290,7 @@ shape = SubResource("CapsuleShape2D_3ncl5")
 collision_mask = 129
 
 [node name="PickupCollisionShape" type="CollisionShape2D" parent="PlayerInteractArea"]
-position = Vector2(0, 12)
+position = Vector2(0, 15)
 shape = SubResource("CircleShape2D_dk2rq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -258,6 +320,7 @@ script = ExtResource("6_6pra7")
 gun = NodePath("../Gun")
 
 [node name="MovementParticles" type="GPUParticles2D" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2(0, 15)
 amount = 9
