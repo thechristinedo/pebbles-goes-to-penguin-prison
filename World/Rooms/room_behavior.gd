@@ -1,7 +1,5 @@
 extends Node
 
-@onready var room_area: CollisionShape2D = get_node("Area2D/CollisionShape2D")
-
 @export var next_room: String
 
 func _process(_delta) -> void:

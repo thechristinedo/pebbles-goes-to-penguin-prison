@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $ItemSprite
 @onready var collect_key: Sprite2D = $CollectKey
 
 @export var inventory_item: InventoryItem

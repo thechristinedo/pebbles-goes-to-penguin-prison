@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/path = NodePath("ItemSprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/path = NodePath("ItemSprite:offset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,6 +106,7 @@ states/float/position = Vector2(324.5, 62.5)
 transitions = ["Start", "float", SubResource("AnimationNodeStateMachineTransition_lwuwe")]
 
 [node name="Collectable" type="Area2D"]
+y_sort_enabled = true
 collision_layer = 129
 script = ExtResource("1_lbqsw")
 
@@ -118,7 +119,8 @@ position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_r7nox")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ItemSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
 offset = Vector2(2.08165e-12, -5)
 
 [node name="CollectKey" type="Sprite2D" parent="."]

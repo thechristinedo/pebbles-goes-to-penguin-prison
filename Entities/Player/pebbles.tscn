@@ -201,10 +201,12 @@ color_ramp = SubResource("GradientTexture1D_c3qxj")
 
 [node name="Pebbles" type="CharacterBody2D"]
 z_index = 1
+position = Vector2(0, -5)
 script = ExtResource("1_2fbo2")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
+y_sort_enabled = true
 position = Vector2(0, 15)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_63tet")
