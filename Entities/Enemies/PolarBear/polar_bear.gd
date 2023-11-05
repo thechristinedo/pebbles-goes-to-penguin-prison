@@ -1,4 +1,4 @@
-extends "res://Enemies/enemy_base.gd"
+extends "res://Entities/Enemies/enemy_base.gd"
 @onready var polarSlap = $polarSlap
 
 func _get_target_name():
