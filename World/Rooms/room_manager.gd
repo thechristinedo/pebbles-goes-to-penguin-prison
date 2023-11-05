@@ -42,7 +42,7 @@ func _deferred_switch_room() -> void:
 	pebbles.position = current_room.get_node("PebblesSpawn").position
 	if pebbles.get_parent() != room_manager_node:
 		room_manager_node.add_child(pebbles)
-	set_camera_bounds(current_room.get_node("Area2D/CollisionShape2D"))
+	set_camera_bounds(current_room.get_node("CameraArea/CameraBounds"))
 
 func _on_animation_player_animation_finished(anim_name) -> void:
 	match anim_name:
@@ -51,4 +51,4 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 			animation_player.play("fade_out")
 
 func _window_size_changed() -> void:
-	if current_room: set_camera_bounds(current_room.get_node("Area2D/CollisionShape2D"))
+	if current_room: set_camera_bounds(current_room.get_node("CameraArea/CameraBounds"))
