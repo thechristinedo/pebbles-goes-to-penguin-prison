@@ -19,18 +19,20 @@ func _on_play_pressed():
 
 func _on_save_slot_1_pressed():
 	#$TextureRect.visible = true
+	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 	selectSound.play()
-	SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
 
 func _on_save_slot_2_pressed():
 	#$TextureRect.visible = true
 	selectSound.play()
-	SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
+	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
+	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
 
 func _on_save_slot_3_pressed():
 	#$TextureRect.visible = true
 	selectSound.play()
-	SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
+	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
+	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
 	
 
 func _on_options_pressed():
