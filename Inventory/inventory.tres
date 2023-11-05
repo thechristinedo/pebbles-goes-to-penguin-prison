@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://c4l51p5oavfc2"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://c4l51p5oavfc2"]
 
+[ext_resource type="Resource" uid="uid://bo2yxn03ftaxq" path="res://Guns/GunTypes/machinegun.tres" id="1_sxdot"]
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="4_m42ny"]
 
 [resource]
 script = ExtResource("4_m42ny")
-items = Array[Resource("res://Inventory/inventory_item.gd")]([null, null, null, null, null])
+items = Array[Resource("res://Inventory/inventory_item.gd")]([ExtResource("1_sxdot"), null, null, null, null])

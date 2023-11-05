@@ -26,6 +26,12 @@ func aim(target: Vector2) -> float:
 
 func shoot() -> bool:
 	if inventory_item and inventory_item.shooter: 
-		inventory_item.shooter.shoot()
-		return true
+		var bullets = inventory_item.shooter.shoot() as Array[Bullet]
+		if bullets.size():
+			for bullet in bullets:
+				bullet.rotation += rotation
+				bullet.position += Vector2(0, inventory_item.muzzle.y)
+				bullet.position += (Vector2.RIGHT * inventory_item.muzzle.x).rotated(rotation)
+				owner.add_child(bullet)
+			return true
 	return false

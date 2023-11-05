@@ -202,6 +202,8 @@ color_ramp = SubResource("GradientTexture1D_c3qxj")
 [node name="Pebbles" type="CharacterBody2D"]
 z_index = 1
 position = Vector2(0, -5)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_2fbo2")
 
 [node name="Shadow" type="Sprite2D" parent="."]

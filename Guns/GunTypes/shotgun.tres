@@ -10,4 +10,5 @@ name = "Shotgun"
 texture = ExtResource("2_ernqn")
 stackable = false
 shooter = ExtResource("2_52ji7")
+muzzle = Vector2(30, 5)
 path_to_collectable_scene = "res://Collectables/Guns/shotgun_collectable.tscn"
