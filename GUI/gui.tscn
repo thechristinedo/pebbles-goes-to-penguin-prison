@@ -21,12 +21,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = -198.0
-offset_right = 269.0
-offset_bottom = -142.0
+offset_left = 26.0
+offset_top = -145.0
+offset_right = 259.0
+offset_bottom = -89.0
 grow_vertical = 0
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 
 [node name="Slot1" parent="Inventory/GridContainer" instance=ExtResource("1_k0a7i")]
 layout_mode = 2
