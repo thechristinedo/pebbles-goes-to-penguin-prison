@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dla7quolv17fq"
-path="res://.godot/imported/sb4.png-2c46ee112ba2e0f9a0da5b1097058d5c.ctex"
+uid="uid://456sgy3xdq6t"
+path="res://.godot/imported/prison-tileset.png-f00a98d7a3c543a56e6e456dfe7326db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Intro/Storyboard/sb4.png"
-dest_files=["res://.godot/imported/sb4.png-2c46ee112ba2e0f9a0da5b1097058d5c.ctex"]
+source_file="res://Tileset/prison-tileset.png"
+dest_files=["res://.godot/imported/prison-tileset.png-f00a98d7a3c543a56e6e456dfe7326db.ctex"]
 
 [params]
 
