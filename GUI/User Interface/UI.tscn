@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://rmujglsn8iev"]
 
-[ext_resource type="PackedScene" uid="uid://bsoksr3gujxxx" path="res://User Interface/heart-container-ui.tscn" id="1_so4eh"]
-[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://User Interface/Sprites/shotgun-shells.png" id="2_lmdw2"]
-[ext_resource type="FontFile" uid="uid://b8v2tt42dl1fd" path="res://User Interface/PublicPixel-z84yD.ttf" id="3_5hdyl"]
-[ext_resource type="Script" path="res://User Interface/ammo-amount-ui.gd" id="4_ls00w"]
+[ext_resource type="PackedScene" uid="uid://bsoksr3gujxxx" path="res://GUI/User Interface/heart-container-ui.tscn" id="1_so4eh"]
+[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://GUI/User Interface/Sprites/shotgun-shells.png" id="2_lmdw2"]
+[ext_resource type="FontFile" uid="uid://b8v2tt42dl1fd" path="res://GUI/User Interface/PublicPixel-z84yD.ttf" id="3_5hdyl"]
+[ext_resource type="Script" path="res://GUI/User Interface/ammo-amount-ui.gd" id="4_ls00w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v4yq"]
 bg_color = Color(0.47451, 0.568627, 0.556863, 0.427451)

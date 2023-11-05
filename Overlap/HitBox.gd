@@ -1,3 +1,4 @@
+# TODO: Do we need this file? - Richer
 class_name HitBox
 extends Area2D
 

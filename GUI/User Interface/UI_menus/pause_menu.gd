@@ -38,4 +38,4 @@ func _on_back_pressed():
 
 func _on_backto_main_menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://menu.tscn")
+	get_tree().change_scene_to_file("res://Menu/menu.tscn")

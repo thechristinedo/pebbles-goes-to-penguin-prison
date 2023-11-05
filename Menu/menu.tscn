@@ -1,20 +1,20 @@
 [gd_scene load_steps=15 format=3 uid="uid://2gsuh1kyuipl"]
 
-[ext_resource type="Script" path="res://User Interface/UI_menus/Menu.gd" id="1_i4i88"]
-[ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_vu6x2"]
-[ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Assets/Parallax/skybg.png" id="3_eitfq"]
-[ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Assets/Parallax/bg0.png" id="4_p1q53"]
-[ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Assets/Parallax/bg1.png" id="5_3cqrg"]
-[ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Assets/Parallax/bg2.png" id="6_mbtdl"]
-[ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Assets/Parallax/bg3.png" id="7_id608"]
-[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="8_qx75b"]
-[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="9_jjw07"]
-[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_p51c5"]
-[ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="12_tav4u"]
-[ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="13_rtylw"]
+[ext_resource type="Script" path="res://GUI/User Interface/UI_menus/Menu.gd" id="1_tgxhm"]
+[ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_3itbe"]
+[ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Assets/Parallax/skybg.png" id="3_qvpyg"]
+[ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Assets/Parallax/bg0.png" id="4_swp5k"]
+[ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Assets/Parallax/bg1.png" id="5_fhn0h"]
+[ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Assets/Parallax/bg2.png" id="6_s7r16"]
+[ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Assets/Parallax/bg3.png" id="7_i5gdn"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="8_dxhl1"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_ts0n3"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="10_3ymch"]
+[ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="11_p6ei1"]
+[ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="12_1rcud"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
-shader = ExtResource("2_vu6x2")
+shader = ExtResource("2_3itbe")
 shader_parameter/size_x = 0.001
 shader_parameter/size_y = 0.015
 
@@ -39,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_i4i88")
+script = ExtResource("1_tgxhm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -58,7 +58,7 @@ script = SubResource("GDScript_1o5ty")
 [node name="Background" type="Sprite2D" parent="ParallaxBackground"]
 position = Vector2(960, 540)
 scale = Vector2(6.531, 6.75)
-texture = ExtResource("3_eitfq")
+texture = ExtResource("3_qvpyg")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
@@ -67,7 +67,7 @@ motion_mirroring = Vector2(1920, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(960, 540)
 scale = Vector2(6.53061, 6.75)
-texture = ExtResource("4_p1q53")
+texture = ExtResource("4_swp5k")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
@@ -76,7 +76,7 @@ motion_mirroring = Vector2(1920, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(960, 540)
 scale = Vector2(6.531, 6.75)
-texture = ExtResource("5_3cqrg")
+texture = ExtResource("5_fhn0h")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)
@@ -85,7 +85,7 @@ motion_mirroring = Vector2(1920, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(960, 540)
 scale = Vector2(6.531, 6.75)
-texture = ExtResource("6_mbtdl")
+texture = ExtResource("6_s7r16")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1920, 0)
@@ -93,7 +93,7 @@ motion_mirroring = Vector2(1920, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(960, 540)
 scale = Vector2(6.531, 6.75)
-texture = ExtResource("7_id608")
+texture = ExtResource("7_i5gdn")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
@@ -107,7 +107,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("8_qx75b")
+theme_override_fonts/font = ExtResource("8_dxhl1")
 theme_override_font_sizes/font_size = 100
 text = "Pebbles Goes To Penguin Prison"
 
@@ -124,19 +124,19 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 3
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 3
 text = "Options"
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 3
 text = "Exit"
 
@@ -161,7 +161,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("8_qx75b")
+theme_override_fonts/font = ExtResource("8_dxhl1")
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
@@ -176,13 +176,13 @@ layout_mode = 2
 
 [node name="Volume" type="Button" parent="Option/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 3
 text = "Volume"
 
 [node name="Back" type="Button" parent="Option/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 3
 text = "Back	"
 
@@ -211,7 +211,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("8_qx75b")
+theme_override_fonts/font = ExtResource("8_dxhl1")
 theme_override_font_sizes/font_size = 100
 text = "Volume"
 
@@ -235,31 +235,31 @@ layout_mode = 2
 
 [node name="master_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Master"
 
-[node name="master_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("9_jjw07")]
+[node name="master_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("10_3ymch")]
 layout_mode = 2
 bus_name = "Master"
 
 [node name="background_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Background"
 
-[node name="background_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("9_jjw07")]
+[node name="background_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("10_3ymch")]
 layout_mode = 2
 bus_name = "Background"
 
 [node name="soundeffects_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Sound Effects"
 
-[node name="soundeffects_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("9_jjw07")]
+[node name="soundeffects_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("10_3ymch")]
 layout_mode = 2
 bus_name = "Sound Effects"
 
@@ -270,7 +270,7 @@ layout_mode = 2
 
 [node name="Back" type="Button" parent="Volume/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Back
 "
@@ -301,7 +301,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("8_qx75b")
+theme_override_fonts/font = ExtResource("8_dxhl1")
 theme_override_font_sizes/font_size = 100
 text = "Choose Save Slot"
 
@@ -331,32 +331,32 @@ layout_mode = 2
 [node name="SaveSlot1" type="Button" parent="SaveSlot/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Save Slot 1
 "
 
 [node name="SaveSlot2" type="Button" parent="SaveSlot/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Save Slot 2
 "
 
 [node name="SaveSlot3" type="Button" parent="SaveSlot/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("9_p51c5")
+theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Save Slot 3
 "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_tav4u")
+stream = ExtResource("11_p6ei1")
 volume_db = -6.0
 autoplay = true
 
 [node name="selectSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_rtylw")
+stream = ExtResource("12_1rcud")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

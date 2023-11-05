@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nvqcrtj2c3d"
-path="res://.godot/imported/ui-portrait-mask.png-5f7f237e02fdfad2e57b39a30148431f.ctex"
+uid="uid://b2nij24rn0jq6"
+path="res://.godot/imported/shotgun-shells.png-9a475b9980cbbdb773bc85e01d828dc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://User Interface/Sprites/ui-portrait-mask.png"
-dest_files=["res://.godot/imported/ui-portrait-mask.png-5f7f237e02fdfad2e57b39a30148431f.ctex"]
+source_file="res://GUI/User Interface/Sprites/shotgun-shells.png"
+dest_files=["res://.godot/imported/shotgun-shells.png-9a475b9980cbbdb773bc85e01d828dc4.ctex"]
 
 [params]
 

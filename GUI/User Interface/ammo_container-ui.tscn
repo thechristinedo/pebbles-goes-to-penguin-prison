@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6w7hgdtj7djg"]
 
-[ext_resource type="PackedScene" uid="uid://drqy4qgcnsi51" path="res://User Interface/ammo-ui.tscn" id="1_vwpox"]
-[ext_resource type="Script" path="res://User Interface/ammo_container.gd" id="1_y620t"]
+[ext_resource type="PackedScene" uid="uid://drqy4qgcnsi51" path="res://GUI/User Interface/ammo-ui.tscn" id="1_vwpox"]
+[ext_resource type="Script" path="res://GUI/User Interface/ammo_container.gd" id="1_y620t"]
 
 [node name="AmmoContainer" type="HBoxContainer"]
 offset_right = 149.0

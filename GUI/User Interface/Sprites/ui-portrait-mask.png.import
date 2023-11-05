@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwav7q7ueswpj"
-path="res://.godot/imported/ui-portrait.png-f36ddee1f7ff8bad1373bd60ea1c3ca1.ctex"
+uid="uid://nvqcrtj2c3d"
+path="res://.godot/imported/ui-portrait-mask.png-cdcf3132d0a41486e1ac5520b611505c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://User Interface/Sprites/ui-portrait.png"
-dest_files=["res://.godot/imported/ui-portrait.png-f36ddee1f7ff8bad1373bd60ea1c3ca1.ctex"]
+source_file="res://GUI/User Interface/Sprites/ui-portrait-mask.png"
+dest_files=["res://.godot/imported/ui-portrait-mask.png-cdcf3132d0a41486e1ac5520b611505c.ctex"]
 
 [params]
 

@@ -13,12 +13,18 @@ config_version=5
 config/name="Pebbles Goes to Penguin Prison"
 run/main_scene="res://Intro/intro.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://Misc/PixelPushers_Blue_Shadow.png"
+boot_splash/description=""
+boot_splash/icon="res://Misc/PixelPushers_Blue_NoShadow.png"
+config/use_filter=true
 
 [autoload]
 
 RoomManager="*res://World/Rooms/room_manager.gd"
-SceneTransition="*res://Scene Transition/scene_transition.tscn"
+SceneTransition="*res://Menu/Scene Transition/scene_transition.tscn"
 
 [display]
 

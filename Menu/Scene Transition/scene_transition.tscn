@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2tm30ex20f6w"]
 
-[ext_resource type="Script" path="res://Scene Transition/scene_transition.gd" id="1_5jy20"]
-[ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_6ypcq"]
+[ext_resource type="Script" path="res://Menu/Scene Transition/scene_transition.gd" id="1_w3liy"]
+[ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_iy1x4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f7mci"]
 resource_local_to_scene = true
-shader = ExtResource("2_6ypcq")
+shader = ExtResource("2_iy1x4")
 shader_parameter/size_x = 0.002
 shader_parameter/size_y = 0.002
 
@@ -119,7 +119,7 @@ _data = {
 }
 
 [node name="scene_transition" type="CanvasLayer"]
-script = ExtResource("1_5jy20")
+script = ExtResource("1_w3liy")
 
 [node name="DissolveRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drqy4qgcnsi51"]
 
-[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://User Interface/Sprites/shotgun-shells.png" id="1_ys4yq"]
+[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://GUI/User Interface/Sprites/shotgun-shells.png" id="1_ys4yq"]
 
 [node name="ammo-ui" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
