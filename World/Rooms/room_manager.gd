@@ -1,18 +1,22 @@
 extends Node
 
-@onready var room_manager_node: Node = get_node("/root/World/RoomManager")
-@onready var animation_player: AnimationPlayer = room_manager_node.get_node("TransitionCanvas/AnimationPlayer")
-@onready var pebbles: CharacterBody2D = load("res://Entities/Player/pebbles.tscn").instantiate()
-@onready var camera: Camera2D = pebbles.get_node("Camera2D")
-
 @export var starting_room: String = "res://World/Rooms/RoomPrefabs/starting_room.tscn"
 
+static var room_manager_node: Node
+static var animation_player: AnimationPlayer
+static var pebbles: CharacterBody2D
+static var camera: Camera2D
 static var _next_room_path: String
 var current_room: Node2D
 
 func _ready() -> void:
 	get_tree().get_root().connect("size_changed", _window_size_changed)
-	switch_room(starting_room)
+
+func setup() -> void:
+	room_manager_node = get_node("/root/World/RoomManager")
+	animation_player = room_manager_node.get_node("TransitionCanvas/AnimationPlayer")
+	pebbles = load("res://Entities/Player/pebbles.tscn").instantiate()
+	camera = pebbles.get_node("Camera2D")
 
 func switch_room(room_path: String) -> void:
 	_next_room_path = room_path
