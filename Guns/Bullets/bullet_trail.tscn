@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c24yw6rq24dyl"]
+
+[ext_resource type="Script" path="res://Guns/Bullets/bullet_trail_behavior.gd" id="1_vd1gf"]
+
+[sub_resource type="Curve" id="Curve_es812"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BulletTrail" type="Line2D"]
+width = 4.0
+width_curve = SubResource("Curve_es812")
+default_color = Color(1, 1, 0, 0.584314)
+script = ExtResource("1_vd1gf")

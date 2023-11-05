@@ -1,9 +1,9 @@
 class_name Bullet
-extends Area2D
+extends RigidBody2D
 
-@onready var lifetime_timer = $Lifetime
+@onready var lifetime_timer: Timer = $Lifetime
 
-@export var speed: float = 30
+@export var speed: float = 800
 @export var lifetime: float = 3
 
 func _ready():
@@ -11,11 +11,11 @@ func _ready():
 	lifetime_timer.start()
 
 func _physics_process(delta):
-	position += Vector2.RIGHT.rotated(rotation) * speed
+	linear_velocity = Vector2.RIGHT.rotated(rotation) * speed
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Bullet": pass
+	destroy()
 
 func destroy():
 	queue_free()
-
-func _on_body_entered(body):
-	if body.name == "player_bullet": pass
-	destroy()
