@@ -6,22 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://iymdbbvxfkpu" path="res://Audio/storySound.mp3" id="10_ervw8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0eou3"]
-load_path = "res://.godot/imported/sb1.png-c398eb7026a5fa2784acf9fef293b6ac.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dfpv6"]
-load_path = "res://.godot/imported/sb2.png-07ce2c67a2f0f30e10d0c43008035955.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhlvp"]
-load_path = "res://.godot/imported/sb3.png-9f3d256d173221cf076516a5866fff51.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6lcul"]
-load_path = "res://.godot/imported/sb4.png-2c46ee112ba2e0f9a0da5b1097058d5c.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xk4in"]
-load_path = "res://.godot/imported/sb5.png-9d7c4b4770d389b9ee7b8f097cdf7b8e.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vvbn3"]
-load_path = "res://.godot/imported/sb6.png-4fafa4bb89c6e60ee5323ee0e192501d.ctex"
 
 [sub_resource type="Animation" id="Animation_hvetj"]
 resource_name = "Intro"
