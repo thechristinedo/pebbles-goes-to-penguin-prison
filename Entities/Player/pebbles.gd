@@ -63,6 +63,10 @@ func handle_player_interactions() -> void:
 		inventory_node.scroll_up()
 	if Input.is_action_just_pressed("scroll down"):
 		inventory_node.scroll_down()
+	
+	# dashing
+	if Input.is_action_just_pressed("dash"):
+		dash()
 
 func update_animation() -> void:
 	match velocity:
@@ -80,3 +84,8 @@ func _on_pickup_area_area_entered(area):
 func _on_pickup_area_area_exited(area):
 	if collectables.size() and area == collectables[collectables.size()-1]:
 		collectables.pop_back()
+		
+func dash():
+	speed *= 2
+	await get_tree().create_timer(0.15).timeout
+	speed /= 2
