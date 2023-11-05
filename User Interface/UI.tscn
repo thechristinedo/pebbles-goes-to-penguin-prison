@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://rmujglsn8iev"]
+
+[ext_resource type="PackedScene" uid="uid://bsoksr3gujxxx" path="res://User Interface/heart-container-ui.tscn" id="1_so4eh"]
+[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://User Interface/Sprites/shotgun-shells.png" id="2_lmdw2"]
+[ext_resource type="FontFile" uid="uid://b8v2tt42dl1fd" path="res://User Interface/PublicPixel-z84yD.ttf" id="3_5hdyl"]
+[ext_resource type="Script" path="res://User Interface/ammo-amount-ui.gd" id="4_ls00w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v4yq"]
+bg_color = Color(0.47451, 0.568627, 0.556863, 0.427451)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 200.0
+offset_bottom = 89.0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2v4yq")
+
+[node name="HeartsContainer" parent="Panel" instance=ExtResource("1_so4eh")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(25, 53)
+scale = Vector2(1.71875, 1.71875)
+texture = ExtResource("2_lmdw2")
+
+[node name="Ammo Amount" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 46.0
+offset_right = 93.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("3_5hdyl")
+theme_override_font_sizes/font_size = 14
+text = "45"
+script = ExtResource("4_ls00w")

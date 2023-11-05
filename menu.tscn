@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://rc0lpw2dncxp"]
+[gd_scene load_steps=15 format=3 uid="uid://2gsuh1kyuipl"]
 
 [ext_resource type="Script" path="res://User Interface/UI_menus/Menu.gd" id="1_i4i88"]
 [ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Parallax/bg0.png" id="2_0gssu"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="4_6mrbk"]
 [ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="5_gypor"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="8_qx75b"]
-[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="9_jjw07"]
+[ext_resource type="PackedScene" path="res://volume_slider.tscn" id="9_jjw07"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_p51c5"]
 [ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="12_tav4u"]
 [ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="13_rtylw"]
@@ -354,11 +354,9 @@ text = "Save Slot 3
 stream = ExtResource("12_tav4u")
 volume_db = -6.0
 autoplay = true
-bus = &"Background"
 
 [node name="selectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_rtylw")
-bus = &"Background"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
