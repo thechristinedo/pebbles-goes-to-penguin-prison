@@ -222,10 +222,10 @@ script = ExtResource("5_qqioc")
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_3ncl5")
 
-[node name="PlayerPickupArea" type="Area2D" parent="."]
+[node name="PlayerInteractArea" type="Area2D" parent="."]
 collision_mask = 129
 
-[node name="PickupCollisionShape" type="CollisionShape2D" parent="PlayerPickupArea"]
+[node name="PickupCollisionShape" type="CollisionShape2D" parent="PlayerInteractArea"]
 position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_dk2rq")
 
@@ -262,6 +262,6 @@ amount = 9
 process_material = SubResource("ParticleProcessMaterial_qewu5")
 lifetime = 0.3
 
-[connection signal="area_entered" from="PlayerPickupArea" to="." method="_on_pickup_area_area_entered"]
-[connection signal="area_exited" from="PlayerPickupArea" to="." method="_on_pickup_area_area_exited"]
+[connection signal="area_entered" from="PlayerInteractArea" to="." method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="PlayerInteractArea" to="." method="_on_pickup_area_area_exited"]
 [connection signal="timeout" from="Camera2D/ShakeTimer" to="Camera2D" method="_on_shake_cooldown_timeout"]

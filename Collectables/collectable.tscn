@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cseeelx4ymkmm"]
 
 [ext_resource type="Script" path="res://Collectables/collectable.gd" id="1_lbqsw"]
-[ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Inventory/Collectable/collect_key.png" id="2_62reh"]
+[ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="3_r4d65"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="3_r7nox"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_72cf0"]
@@ -127,7 +127,7 @@ offset = Vector2(2.08165e-12, -5)
 visible = false
 z_index = 2
 position = Vector2(0, -34)
-texture = ExtResource("2_62reh")
+texture = ExtResource("3_r4d65")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

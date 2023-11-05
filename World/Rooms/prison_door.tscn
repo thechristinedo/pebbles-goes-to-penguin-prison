@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgtt51gelur8x"]
+
+[ext_resource type="Texture2D" uid="uid://c8d0ju22ir6xv" path="res://Assets/Tilemap/prison-tilemap.png" id="1_1yes2"]
+[ext_resource type="Script" path="res://World/Rooms/door_behavior.gd" id="2_t5w5b"]
+[ext_resource type="Texture2D" uid="uid://bp83ls07ejosx" path="res://Assets/GUI/Keys/enter_key.png" id="3_84v11"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a7ffj"]
+texture = ExtResource("1_1yes2")
+texture_region_size = Vector2i(32, 32)
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o6qf2"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_a7ffj")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qx2sl"]
+radius = 23.0217
+
+[node name="PrisonDoor" type="TileMap"]
+tile_set = SubResource("TileSet_o6qf2")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 458752, 1)
+script = ExtResource("2_t5w5b")
+
+[node name="InteractableArea" type="Area2D" parent="."]
+
+[node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableArea"]
+visible = false
+position = Vector2(16, 32)
+shape = SubResource("CircleShape2D_qx2sl")
+
+[node name="OpenDoorKey" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(16, -26)
+texture = ExtResource("3_84v11")
+
+[connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
+[connection signal="area_exited" from="InteractableArea" to="." method="_on_interactable_area_area_exited"]

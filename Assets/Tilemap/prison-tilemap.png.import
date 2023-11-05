@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cakwqxt6ffxh3"
-path="res://.godot/imported/collect_key.png-3dcd501aa5c8f74295400b7514a1ceab.ctex"
+uid="uid://c8d0ju22ir6xv"
+path="res://.godot/imported/prison-tilemap.png-29fd511da6b5a13f76c3bbd9a01a55ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/Inventory/Collectable/collect_key.png"
-dest_files=["res://.godot/imported/collect_key.png-3dcd501aa5c8f74295400b7514a1ceab.ctex"]
+source_file="res://Assets/Tilemap/prison-tilemap.png"
+dest_files=["res://.godot/imported/prison-tilemap.png-29fd511da6b5a13f76c3bbd9a01a55ac.ctex"]
 
 [params]
 
