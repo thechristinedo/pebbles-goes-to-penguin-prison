@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bit0i4rljxkde"]
 
 [ext_resource type="Script" path="res://User Interface/UI_menus/options_menu.gd" id="1_yb1aj"]
-[ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Parallax/skybg.png" id="2_mb37l"]
-[ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Parallax/bg0.png" id="3_nnfw4"]
-[ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Parallax/bg1.png" id="4_buobj"]
-[ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Parallax/bg2.png" id="5_hkeco"]
-[ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Parallax/bg3.png" id="6_n1yyt"]
+[ext_resource type="Texture2D" uid="uid://de7ahrckvdrf4" path="res://Assets/Parallax/skybg.png" id="2_mb37l"]
+[ext_resource type="Texture2D" uid="uid://bqhq5upn518vt" path="res://Assets/Parallax/bg0.png" id="3_nnfw4"]
+[ext_resource type="Texture2D" uid="uid://ctj7buktwyi8s" path="res://Assets/Parallax/bg1.png" id="4_buobj"]
+[ext_resource type="Texture2D" uid="uid://dyq3qagtcjytv" path="res://Assets/Parallax/bg2.png" id="5_hkeco"]
+[ext_resource type="Texture2D" uid="uid://bcvje32iymegi" path="res://Assets/Parallax/bg3.png" id="6_n1yyt"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="7_g0s3v"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="8_r003g"]
 

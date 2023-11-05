@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyq3qagtcjytv"
-path="res://.godot/imported/bg2.png-72b9656686e4d19b1edc5968fa1760f0.ctex"
+uid="uid://456sgy3xdq6t"
+path="res://.godot/imported/prison-tileset.png-f3569f7be9b3e2d8052df03b69a3f0f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Parallax/bg2.png"
-dest_files=["res://.godot/imported/bg2.png-72b9656686e4d19b1edc5968fa1760f0.ctex"]
+source_file="res://Assets/Tilemap/prison-tileset.png"
+dest_files=["res://.godot/imported/prison-tileset.png-f3569f7be9b3e2d8052df03b69a3f0f3.ctex"]
 
 [params]
 

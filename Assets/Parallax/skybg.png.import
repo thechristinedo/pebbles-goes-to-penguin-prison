@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqhq5upn518vt"
-path="res://.godot/imported/bg0.png-9f06c223c6fd6c9d88eb0804c5143a88.ctex"
+uid="uid://de7ahrckvdrf4"
+path="res://.godot/imported/skybg.png-79466c1cd09007e74fbaadd0e4ad2c8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Parallax/bg0.png"
-dest_files=["res://.godot/imported/bg0.png-9f06c223c6fd6c9d88eb0804c5143a88.ctex"]
+source_file="res://Assets/Parallax/skybg.png"
+dest_files=["res://.godot/imported/skybg.png-79466c1cd09007e74fbaadd0e4ad2c8a.ctex"]
 
 [params]
 
