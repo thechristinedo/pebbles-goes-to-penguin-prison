@@ -306,6 +306,7 @@ theme_override_font_sizes/font_size = 100
 text = "Choose Save Slot"
 
 [node name="MarginContainer2" type="MarginContainer" parent="SaveSlot"]
+layout_mode = 0
 offset_left = 456.0
 offset_top = 469.0
 offset_right = 956.0
