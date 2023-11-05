@@ -1,0 +1,208 @@
+[gd_scene load_steps=28 format=3 uid="uid://cihror7ta6bov"]
+
+[ext_resource type="Script" path="res://Enemies/Seal/seal-gun.gd" id="1_en865"]
+[ext_resource type="Shader" path="res://Enemies/hit_flash.gdshader" id="2_4n3t5"]
+[ext_resource type="Texture2D" uid="uid://bqiuhpohg1nn1" path="res://Enemies/Seal/seal_death_frames_new.png" id="2_qe7kq"]
+[ext_resource type="Texture2D" uid="uid://b6sb5ingbsp6k" path="res://Guns/shotgun.png" id="2_v8sv6"]
+[ext_resource type="Texture2D" uid="uid://dhlnlqufvc7ur" path="res://Enemies/Seal/seal_walking.png" id="3_4k4e5"]
+[ext_resource type="Script" path="res://Enemies/Shotgun.gd" id="3_v7gub"]
+[ext_resource type="Texture2D" uid="uid://uwf6uq3ji8w0" path="res://Enemies/Seal/slap_seal.png" id="4_ykrai"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_ktk2k"]
+[ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/gunshot.mp3" id="9_idpxf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3265y"]
+resource_local_to_scene = true
+shader = ExtResource("2_4n3t5")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heto7"]
+atlas = ExtResource("2_qe7kq")
+region = Rect2(0, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4k6u"]
+atlas = ExtResource("2_qe7kq")
+region = Rect2(52, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnr36"]
+atlas = ExtResource("2_qe7kq")
+region = Rect2(104, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmdsq"]
+atlas = ExtResource("2_qe7kq")
+region = Rect2(156, 0, 52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig7ns"]
+atlas = ExtResource("3_4k4e5")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj0f3"]
+atlas = ExtResource("4_ykrai")
+region = Rect2(0, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3xrn"]
+atlas = ExtResource("4_ykrai")
+region = Rect2(48, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu7kv"]
+atlas = ExtResource("4_ykrai")
+region = Rect2(96, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxmcq"]
+atlas = ExtResource("4_ykrai")
+region = Rect2(144, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yef6"]
+atlas = ExtResource("4_ykrai")
+region = Rect2(192, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ueo"]
+atlas = ExtResource("3_4k4e5")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtknp"]
+atlas = ExtResource("3_4k4e5")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo7hv"]
+atlas = ExtResource("3_4k4e5")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cefw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heto7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4k6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnr36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmdsq")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig7ns")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj0f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3xrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu7kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxmcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yef6")
+}],
+"loop": false,
+"name": &"slap",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5ueo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtknp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo7hv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_738ip"]
+radius = 82.0061
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3gxy"]
+size = Vector2(31, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hpsu"]
+radius = 12.0
+
+[node name="seal-gun" type="CharacterBody2D"]
+script = ExtResource("1_en865")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_3265y")
+sprite_frames = SubResource("SpriteFrames_cefw2")
+animation = &"slap"
+
+[node name="detection_radius" type="Area2D" parent="."]
+
+[node name="detection_shape" type="CollisionShape2D" parent="detection_radius"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-1, 3)
+shape = SubResource("CircleShape2D_738ip")
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -23.0
+offset_right = 95.0
+offset_bottom = 4.0
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("5_ktk2k")
+max_value = 250.0
+show_percentage = false
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="hitbox_radius" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(2.5, 1.5)
+shape = SubResource("RectangleShape2D_h3gxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_5hpsu")
+
+[node name="Shotgun" type="Sprite2D" parent="."]
+position = Vector2(4, 7)
+scale = Vector2(0.875, 0.9375)
+texture = ExtResource("2_v8sv6")
+offset = Vector2(8, 2.08165e-12)
+script = ExtResource("3_v7gub")
+
+[node name="Muzzle" type="Node2D" parent="Shotgun"]
+position = Vector2(31, -2)
+
+[node name="Reload_Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="FlashHitTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="lightGunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_idpxf")
+pitch_scale = 3.5
+bus = &"Sound Effects"
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="detection_radius" to="." method="_on_detection_radius_body_entered" flags=18]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
+[connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashTimer_timeout"]
