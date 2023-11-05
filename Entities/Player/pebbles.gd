@@ -42,7 +42,7 @@ func handle_player_movement() -> void:
 
 func handle_player_interactions() -> void:
 	# pickup gun
-	if collectables.size() and Input.is_action_just_pressed("pickup gun"):
+	if collectables.size() and Input.is_action_just_pressed("interact"):
 		if !inventory_node.is_full(): 
 			inventory_node.insert_gun(collectables.pop_back().collect())
 	

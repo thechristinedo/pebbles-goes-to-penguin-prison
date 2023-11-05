@@ -9,7 +9,7 @@ var door_texture_frame: int = 0
 var interactable: bool = false
 
 func _physics_process(_delta):
-	if interactable and Input.is_action_just_pressed("enter"):
+	if interactable and Input.is_action_just_pressed("interact"):
 		RoomManager.switch_room(next_room)
 		
 
