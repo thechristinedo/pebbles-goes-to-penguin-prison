@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://oka46aerxr4w"]
+[gd_scene load_steps=6 format=3 uid="uid://oka46aerxr4w"]
 
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_t6qsh"]
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_x80hl"]
+[ext_resource type="PackedScene" uid="uid://bifalwg3ruadj" path="res://Entities/Enemies/Penguin Police/penguin_police.tscn" id="4_ksgf3"]
 [ext_resource type="PackedScene" uid="uid://cgtt51gelur8x" path="res://World/Rooms/prison_door.tscn" id="4_unjr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gw0"]
@@ -27,3 +28,6 @@ collision_layer = 0
 visible = false
 position = Vector2(79.5, -0.5)
 shape = SubResource("RectangleShape2D_w8gw0")
+
+[node name="PenguinPolice" parent="." instance=ExtResource("4_ksgf3")]
+position = Vector2(33, -42)
