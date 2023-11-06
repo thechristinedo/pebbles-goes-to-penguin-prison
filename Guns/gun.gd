@@ -3,7 +3,7 @@ extends Sprite2D
 class_name Gun
 
 @onready var bullet_trail_scene: PackedScene = preload("res://Guns/Bullets/bullet_trail.tscn")
-@onready var inventory_item: InventoryItem
+@export var inventory_item: InventoryItem
 
 func _ready():
 	position.y = position.y + 7

@@ -21,9 +21,9 @@ position = Vector2(64, -96)
 next_room = "res://World/Rooms/RoomPrefabs/test_room.tscn"
 
 [node name="CameraArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CameraBounds" type="CollisionShape2D" parent="CameraArea"]
+visible = false
 position = Vector2(79.5, -0.5)
 shape = SubResource("RectangleShape2D_w8gw0")
