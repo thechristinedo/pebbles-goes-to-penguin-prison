@@ -1,12 +1,58 @@
-[gd_scene load_steps=12 format=3 uid="uid://bifalwg3ruadj"]
+[gd_scene load_steps=14 format=3 uid="uid://bifalwg3ruadj"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/enemy_base.tscn" id="1_nhfw3"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/penguin-police-idle.png" id="2_2404h"]
+[ext_resource type="Shader" path="res://Entities/Enemies/Penguin Police/flash.gdshader" id="2_aym8g"]
 [ext_resource type="Texture2D" uid="uid://bikh14ur2a6rq" path="res://Assets/Entities/Enemies/penguin-police-run.png" id="3_g80vo"]
 [ext_resource type="PackedScene" uid="uid://pjwrbqlmgj5t" path="res://Entities/Components/MovementComponent.tscn" id="4_n0hko"]
 [ext_resource type="PackedScene" uid="uid://bb8xwn6qpp2de" path="res://Entities/Components/HealthComponent.tscn" id="5_ud36b"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="6_yplnt"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/EntityStates/Idle.tscn" id="7_wnx4q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6d1n8"]
+resource_local_to_scene = true
+shader = ExtResource("2_aym8g")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="Animation" id="Animation_gpt5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_2404h")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
 
 [sub_resource type="Animation" id="Animation_v1vft"]
 resource_name = "idle"
@@ -47,45 +93,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_gpt5y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EnemySprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_2404h")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EnemySprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_puvuc"]
@@ -143,6 +150,7 @@ position = Vector2(0.2, 15)
 scale = Vector2(0.7375, 0.6)
 
 [node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_6d1n8")
 texture = ExtResource("2_2404h")
 hframes = 6
 
@@ -163,7 +171,8 @@ entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="HealthComponent" parent="." index="7" node_paths=PackedStringArray("movement_component_node") instance=ExtResource("5_ud36b")]
+[node name="HealthComponent" parent="." index="7" node_paths=PackedStringArray("entity_sprite_node", "movement_component_node") instance=ExtResource("5_ud36b")]
+entity_sprite_node = NodePath("../EnemySprite")
 movement_component_node = NodePath("../MovementComponent")
 
 [node name="StateMachineComponent" parent="." index="8" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_yplnt")]
