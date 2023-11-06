@@ -88,6 +88,7 @@ grow_vertical = 2
 color = Color(0.141176, 0.141176, 0.141176, 0.686275)
 
 [node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 0
 offset_left = 296.0
 offset_top = 328.0
 offset_right = 1621.0
@@ -104,6 +105,7 @@ text = "Pause
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 0
 offset_left = 456.0
 offset_top = 469.0
 offset_right = 956.0
