@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b71kmqiplxyv0"]
+[gd_scene load_steps=7 format=3 uid="uid://b71kmqiplxyv0"]
 
 [ext_resource type="Script" path="res://Entities/Objects/Barrel.gd" id="1_4u3ma"]
+[ext_resource type="PackedScene" uid="uid://xxrk86c74hi3" path="res://Collectables/Pickup/PickupFish.tscn" id="2_7y3bb"]
 [ext_resource type="Texture2D" uid="uid://dvn0adliiqfho" path="res://Assets/s_barrel_0.png" id="2_k0jik"]
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="2_v5ijn"]
 
@@ -14,8 +15,8 @@ shader_parameter/flash_modifier = 0.0
 radius = 9.98338
 
 [node name="Barrel" type="StaticBody2D"]
-collision_layer = 2
 script = ExtResource("1_4u3ma")
+pickup_type = ExtResource("2_7y3bb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wbuxx")

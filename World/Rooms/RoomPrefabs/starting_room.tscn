@@ -1,12 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://oka46aerxr4w"]
+[gd_scene load_steps=10 format=3 uid="uid://oka46aerxr4w"]
 
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_t6qsh"]
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_x80hl"]
 [ext_resource type="PackedScene" uid="uid://cgtt51gelur8x" path="res://World/Rooms/prison_door.tscn" id="4_unjr5"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel.tscn" id="4_wo42d"]
+[ext_resource type="Script" path="res://Collectables/Pickup/pickup.gd" id="5_sgkcv"]
+[ext_resource type="Texture2D" uid="uid://rmghs4671cj4" path="res://Collectables/Pickup/blue fish.png" id="6_mnuo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gw0"]
 size = Vector2(173, 211)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_484xt"]
+radius = 16.0637
+height = 32.1274
+
+[sub_resource type="PackedScene" id="PackedScene_mh5xc"]
+resource_local_to_scene = true
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PickupFish", "z_index", "script", "Area2D", "Sprite2D", "texture", "CollisionShape2D", "position", "scale", "shape"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 1, 5, 2, 0, 0, 0, 6, 6, -1, 3, 7, 3, 8, 4, 9, 5, 0),
+"variants": [1, ExtResource("5_sgkcv"), ExtResource("6_mnuo0"), Vector2(0, 5.96046e-08), Vector2(0.460512, 0.324475), SubResource("CapsuleShape2D_484xt")],
+"version": 3
+}
 
 [node name="Room" type="Node2D"]
 
@@ -30,5 +50,5 @@ position = Vector2(79.5, -0.5)
 shape = SubResource("RectangleShape2D_w8gw0")
 
 [node name="Barrel" parent="." instance=ExtResource("4_wo42d")]
-position = Vector2(50, -67)
-collision_layer = 1
+position = Vector2(16, -61)
+pickup_type = SubResource("PackedScene_mh5xc")

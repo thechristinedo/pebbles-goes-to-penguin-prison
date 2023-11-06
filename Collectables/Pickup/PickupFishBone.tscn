@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccpkn8u7u73jq"]
+
+[ext_resource type="Script" path="res://Collectables/Pickup/pickup.gd" id="1_3babp"]
+[ext_resource type="Texture2D" uid="uid://by6upyrvfq4fr" path="res://Collectables/Pickup/fish skeleton.png" id="2_4t7li"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbmhq"]
+radius = 16.0637
+height = 32.1274
+
+[node name="PickupFish" type="Area2D"]
+z_index = 1
+script = ExtResource("1_3babp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4t7li")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(0.460512, 0.324475)
+shape = SubResource("CapsuleShape2D_vbmhq")
