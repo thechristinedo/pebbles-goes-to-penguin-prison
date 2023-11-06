@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b71kmqiplxyv0"]
+
+[ext_resource type="Script" path="res://Entities/Objects/Barrel.gd" id="1_4u3ma"]
+[ext_resource type="Texture2D" uid="uid://dvn0adliiqfho" path="res://Assets/s_barrel_0.png" id="2_k0jik"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jfpki"]
+radius = 9.98338
+
+[node name="Barrel" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_4u3ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_k0jik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.14176, 0.889223)
+shape = SubResource("CapsuleShape2D_jfpki")
+
+[node name="FlashHitTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashHitTimer_timeout"]
