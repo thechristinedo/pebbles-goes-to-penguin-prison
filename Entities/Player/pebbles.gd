@@ -70,31 +70,28 @@ func handle_player_interactions() -> void:
 		inventory_node.scroll_down()
 	
 	# dashing
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and not is_sliding:
 		dash()
 		
-	if Input.is_action_pressed("slide"):
+	if Input.is_action_pressed("slide") and not is_sliding:
 		if not is_sliding:  # Slide action is initiated
 			is_sliding = true
 			slide()
-	elif is_sliding:  # Slide action is released
-		is_sliding = false
-		stop_sliding()
 
 func update_animation() -> void:
-	match velocity:
-		Vector2.ZERO:
-			animation_tree["parameters/conditions/is_running"] = false
-			animation_tree["parameters/conditions/is_not_running"] = true
-		_:
-			animation_tree["parameters/conditions/is_running"] = true
-			animation_tree["parameters/conditions/is_not_running"] = false
-	if not is_sliding:  # Avoid updating the current animation if sliding
-		match velocity:
-			Vector2.ZERO:
-				current_animation = "idle"
-			_:
-				current_animation = "run"
+	# Make sure we only update the animation if we are not sliding
+	if is_sliding:
+		return
+
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	# Determine the appropriate animation based on velocity
+	if velocity == Vector2.ZERO:
+		current_animation = "idle"
+	else:
+		current_animation = "run"
+	
+	if anim_state.get_current_node() != current_animation:
+		anim_state.travel(current_animation)
 	
 	animation_tree["parameters/conditions/is_running"] = velocity != Vector2.ZERO
 	animation_tree["parameters/conditions/is_not_running"] = velocity == Vector2.ZERO
@@ -114,13 +111,18 @@ func dash():
 	speed /= 2
 
 func slide():
-	speed *= 2
+	speed *= 2.5
 	animation_tree.set("parameters/conditions/is_sliding", true)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	anim_state.travel("slide")
+	await get_tree().create_timer(0.25).timeout
+	reset_slide()
 	
-func stop_sliding():
-	speed /= 2
+func reset_slide():
+	speed /= 2.5
+	is_sliding = false
 	animation_tree.set("parameters/conditions/is_sliding", false)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
-	anim_state.travel(current_animation)  # Revert to the previous animation
+	anim_state.travel(current_animation)
+
+	
