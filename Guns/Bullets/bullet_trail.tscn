@@ -9,5 +9,5 @@ point_count = 2
 [node name="BulletTrail" type="Line2D"]
 width = 4.0
 width_curve = SubResource("Curve_es812")
-default_color = Color(1, 1, 0, 0.584314)
+default_color = Color(1, 1, 0.929412, 0.270588)
 script = ExtResource("1_vd1gf")
