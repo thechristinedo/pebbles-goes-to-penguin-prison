@@ -31,4 +31,3 @@ shape = SubResource("RectangleShape2D_w8gw0")
 
 [node name="Barrel" parent="." instance=ExtResource("4_wo42d")]
 position = Vector2(50, -67)
-collision_layer = 1
