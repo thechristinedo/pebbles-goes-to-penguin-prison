@@ -1,0 +1,238 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp53m2uyp2646"]
+
+[ext_resource type="Script" path="res://GUI/gui.gd" id="1_e6sdv"]
+[ext_resource type="PackedScene" uid="uid://c04bavlpx3imm" path="res://GUI/Inventory/slot.tscn" id="1_k0a7i"]
+[ext_resource type="Script" path="res://GUI/Inventory/inventory_gui.gd" id="1_ryxac"]
+[ext_resource type="Script" path="res://GUI/Pause Menu/pause_menu.gd" id="4_6d521"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="4_ks7nk"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_qhty0"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="7_xm40d"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_e6sdv")
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ryxac")
+
+[node name="GridContainer" type="Panel" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -145.0
+offset_right = 259.0
+offset_bottom = -89.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="Slot1" parent="Inventory/GridContainer" instance=ExtResource("1_k0a7i")]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 32.0
+offset_bottom = 28.0
+
+[node name="Slot2" parent="Inventory/GridContainer" instance=ExtResource("1_k0a7i")]
+layout_mode = 2
+offset_left = 74.0
+offset_top = 28.0
+offset_right = 74.0
+offset_bottom = 28.0
+
+[node name="Slot3" parent="Inventory/GridContainer" instance=ExtResource("1_k0a7i")]
+layout_mode = 2
+offset_left = 116.0
+offset_top = 28.0
+offset_right = 116.0
+offset_bottom = 28.0
+
+[node name="Slot4" parent="Inventory/GridContainer" instance=ExtResource("1_k0a7i")]
+layout_mode = 2
+offset_left = 158.0
+offset_top = 28.0
+offset_right = 158.0
+offset_bottom = 28.0
+
+[node name="Slot5" parent="Inventory/GridContainer" instance=ExtResource("1_k0a7i")]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 28.0
+offset_right = 200.0
+offset_bottom = 28.0
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_6d521")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.141176, 0.141176, 0.686275)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 328.0
+offset_right = 1621.0
+offset_bottom = 429.0
+
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_ks7nk")
+theme_override_font_sizes/font_size = 100
+text = "Pause
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 469.0
+offset_right = 956.0
+offset_bottom = 588.0
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Resume"
+
+[node name="Volume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Volume"
+
+[node name="Back To Main Menu" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Back To Main Menu"
+
+[node name="Quit" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Quit"
+
+[node name="Volume" type="Control" parent="PauseMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="PauseMenu/Volume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 780.0
+offset_top = 308.0
+offset_right = 1080.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Volume/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_ks7nk")
+theme_override_font_sizes/font_size = 100
+text = "Volume"
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Volume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 436.0
+offset_top = 428.0
+offset_right = 936.0
+offset_bottom = 599.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Volume/MarginContainer"]
+layout_mode = 2
+
+[node name="master_vol" type="Label" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 2
+text = "Master"
+
+[node name="master_slider" parent="PauseMenu/Volume/MarginContainer/VBoxContainer" instance=ExtResource("7_xm40d")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="background_vol" type="Label" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 2
+text = "Background"
+
+[node name="background_slider" parent="PauseMenu/Volume/MarginContainer/VBoxContainer" instance=ExtResource("7_xm40d")]
+layout_mode = 2
+bus_name = "Background"
+
+[node name="soundeffects_vol" type="Label" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 2
+text = "Sound Effects"
+
+[node name="soundeffects_slider" parent="PauseMenu/Volume/MarginContainer/VBoxContainer" instance=ExtResource("7_xm40d")]
+layout_mode = 2
+bus_name = "Sound Effects"
+
+[node name="HSeparator" type="HSeparator" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="PauseMenu/Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 2
+text = "Back
+"
+
+[node name="CursorAnimationTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Back To Main Menu" to="PauseMenu" method="_on_back_to_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseMenu/Volume/MarginContainer/VBoxContainer/Back" to="PauseMenu" method="_on_back_pressed"]

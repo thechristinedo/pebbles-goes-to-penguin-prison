@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bo2yxn03ftaxq"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_2xej0"]
+[ext_resource type="Resource" uid="uid://dxgaus3cnvsbm" path="res://Guns/GunShooterResources/machinegun_shooter.tres" id="2_or8o4"]
+[ext_resource type="Texture2D" uid="uid://cvm0dauvanai" path="res://Assets/Guns/machinegun.png" id="2_vdafb"]
+
+[resource]
+script = ExtResource("1_2xej0")
+name = "Machine Gun"
+texture = ExtResource("2_vdafb")
+stackable = false
+shooter = ExtResource("2_or8o4")
+muzzle = Vector2(30, 5)
+path_to_collectable_scene = "res://Collectables/Guns/machinegun_collectable.tscn"

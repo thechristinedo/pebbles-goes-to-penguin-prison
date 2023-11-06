@@ -1,0 +1,184 @@
+[gd_scene load_steps=5 format=3 uid="uid://3jt0gnk2fvjl"]
+
+[ext_resource type="Script" path="res://GUI/User Interface/UI_menus/pause_menu.gd" id="1_0ydei"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="2_1ew7c"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="3_8cx44"]
+[ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="4_vn0on"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_0ydei")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.313726)
+
+[node name="Pause" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -188.0
+offset_right = 661.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Pause/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ew7c")
+theme_override_font_sizes/font_size = 75
+text = "Pause"
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -91.9999
+offset_right = 148.0
+offset_bottom = 68.0001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.997762, 1.00244)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="Volume" type="Button" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+
+[node name="Brightness" type="Button" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_font_sizes/font_size = 30
+text = "Brightness"
+
+[node name="Quit" type="Button" parent="Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Volume" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="Volume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -661.0
+offset_top = -198.0
+offset_right = 664.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Volume/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_1ew7c")
+theme_override_font_sizes/font_size = 100
+text = "Volume"
+
+[node name="MarginContainer" type="MarginContainer" parent="Volume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -92.0
+offset_right = 108.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.34259, 1.37415)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Volume/MarginContainer"]
+layout_mode = 2
+
+[node name="master_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 2
+text = "Master"
+
+[node name="master_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("4_vn0on")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="background_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 2
+text = "Background"
+
+[node name="background_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("4_vn0on")]
+layout_mode = 2
+bus_name = "Background"
+
+[node name="soundeffects_vol" type="Label" parent="Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 2
+text = "Sound Effects"
+
+[node name="soundeffects_slider" parent="Volume/MarginContainer/VBoxContainer" instance=ExtResource("4_vn0on")]
+layout_mode = 2
+bus_name = "Sound Effects"
+
+[node name="Back" type="Button" parent="Volume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8cx44")
+theme_override_constants/outline_size = 2
+text = "Back
+"
+
+[connection signal="pressed" from="Pause/MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_pressed"]

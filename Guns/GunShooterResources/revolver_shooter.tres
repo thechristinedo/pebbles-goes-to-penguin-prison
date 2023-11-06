@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cas1xwtaima0a"]
+
+[ext_resource type="Script" path="res://Guns/GunShooterResources/revolver_shooter.gd" id="1_bodgj"]
+
+[resource]
+script = ExtResource("1_bodgj")

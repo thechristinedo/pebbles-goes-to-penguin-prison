@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://ky0ajf56l7cj"]
+
+[ext_resource type="Script" path="res://GUI/User Interface/UI_menus/game_over_screen.gd" id="1_j8sje"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="1_ndso5"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="2_y8r4e"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_j8sje")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.329412, 0.462745, 0.313726)
+
+[node name="GameOver" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -656.0
+offset_top = -198.0
+offset_right = 669.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_ndso5")
+theme_override_font_sizes/font_size = 100
+text = "You Died"
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -92.0
+offset_right = 92.0
+offset_bottom = 68.0001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.369, 1.374)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer"]
+layout_mode = 2
+
+[node name="Play Again" type="Button" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y8r4e")
+theme_override_constants/outline_size = 2
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y8r4e")
+theme_override_constants/outline_size = 2
+text = "Quit"
+
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dxgaus3cnvsbm"]
+
+[ext_resource type="Script" path="res://Guns/GunShooterResources/machingun_shooter.gd" id="1_1qc3q"]
+
+[resource]
+script = ExtResource("1_1qc3q")
+recoil = 3.0
+firerate = 0.18

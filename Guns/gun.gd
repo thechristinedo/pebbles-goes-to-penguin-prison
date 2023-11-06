@@ -1,33 +1,44 @@
 extends Sprite2D
 
+class_name Gun
 
-@export var sprite_2d: Sprite2D
-@export var player: CharacterBody2D
+@onready var bullet_trail_scene: PackedScene = preload("res://Guns/Bullets/bullet_trail.tscn")
+@export var inventory_item: InventoryItem
 
-const GUN_LEFT: Vector2 = Vector2(0.75, -0.75)
-const GUN_RIGHT: Vector2 = Vector2(0.75, 0.75)
+func _ready():
+	position.y = position.y + 7
+	offset.x = 7
+	update_texture()
 
-const PLAYER_LEFT: Vector2 = Vector2(-1, 1)
-const PLAYER_RIGHT: Vector2 = Vector2(1, 1)
-
-func _physics_process(_delta):
-	rotation = __wrap(rotation)
-	look_at(get_global_mouse_position())
-	__scale_gun_and_player()
-
-func __wrap(angle: float) -> float:
-	if angle < 0:
-		return angle + 2 * PI
-	elif angle > 2 * PI:
-		return angle - 2 * PI
+func update_texture() -> void:
+	if inventory_item: 
+		texture = inventory_item.texture
 	else:
-		return angle
+		texture = null
 
-func __scale_gun_and_player() -> void:
-	if rotation > 3 * PI / 2 || rotation < PI / 2:
-		scale = GUN_RIGHT
-		sprite_2d["scale"] = PLAYER_RIGHT
+func aim(target: Vector2) -> float:
+	look_at(target)
+	rotation = wrapf(rotation, -PI, PI)
+	if rotation < PI/2 and rotation > -PI/2:
+		flip_v = false # right
 	else:
-		scale = GUN_LEFT
-		sprite_2d["scale"] = PLAYER_LEFT
+		flip_v = true # left
+	return rotation
 
+func shoot() -> bool:
+	if inventory_item and inventory_item.shooter: 
+		var room_node = get_node("/root/World/RoomManager/Room")
+		var bullets = inventory_item.shooter.shoot() as Array[Bullet]
+		if bullets.size():
+			for bullet in bullets:
+				bullet.rotation += rotation
+				bullet.global_position = global_position + Vector2(0, inventory_item.muzzle.y)
+				bullet.global_position = global_position + (Vector2.RIGHT * inventory_item.muzzle.x).rotated(rotation)
+				
+				var bullet_trail = bullet_trail_scene.instantiate() as BulletTrail
+				bullet_trail.bullet_scene = bullet
+				
+				room_node.add_child(bullet)
+				room_node.add_child(bullet_trail)
+			return true
+	return false

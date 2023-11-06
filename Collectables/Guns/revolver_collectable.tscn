@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ibn8wniwg7b"]
+
+[ext_resource type="PackedScene" uid="uid://cseeelx4ymkmm" path="res://Collectables/collectable.tscn" id="1_0mk27"]
+[ext_resource type="Resource" uid="uid://d4i82kw6b16uc" path="res://Guns/GunTypes/revolver.tres" id="2_tbo0c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1mx8"]
+resource_local_to_scene = true
+
+[node name="RevolverCollectable" instance=ExtResource("1_0mk27")]
+inventory_item = ExtResource("2_tbo0c")
+
+[node name="CollectionCollisionShape" parent="." index="0"]
+shape = SubResource("CircleShape2D_u1mx8")
+
+[node name="Sprite2D" parent="." index="1"]
+offset = Vector2(2.08165e-12, -5)
