@@ -223,13 +223,13 @@ advance_condition = &"is_not_running"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l3rut"]
 states/End/position = Vector2(844, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_ndbtt")
-states/idle/position = Vector2(383.5, 99.75)
+states/idle/position = Vector2(383.5, 99.875)
 states/running/node = SubResource("AnimationNodeAnimation_p3hug")
 states/running/position = Vector2(633, 100)
 states/slide/node = SubResource("AnimationNodeAnimation_ntwe1")
 states/slide/position = Vector2(525.1, 0.360001)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky"), "running", "slide", SubResource("AnimationNodeStateMachineTransition_dx8v7"), "slide", "running", SubResource("AnimationNodeStateMachineTransition_3ompl"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_6b5b4"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_5vc1e")]
-graph_offset = Vector2(81.5848, -73.9575)
+graph_offset = Vector2(-2.29509, -32.2725)
 
 [sub_resource type="Gradient" id="Gradient_owbeb"]
 offsets = PackedFloat32Array(0.674074, 1)
@@ -309,7 +309,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_l3rut")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/conditions/is_not_running = false
 parameters/conditions/is_running = false
 

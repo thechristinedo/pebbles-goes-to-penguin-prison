@@ -9,8 +9,13 @@ extends CharacterBody2D
 @onready var movement_particles: GPUParticles2D = $MovementParticles
 
 @export var speed: float = 200
+var current_animation: String = "idle"
+var is_sliding = false 
 
 var collectables: Array[Area2D]
+
+func _ready():
+	animation_tree.active = true
 
 func _physics_process(_delta):
 	update_animation()
@@ -67,6 +72,14 @@ func handle_player_interactions() -> void:
 	# dashing
 	if Input.is_action_just_pressed("dash"):
 		dash()
+		
+	if Input.is_action_pressed("slide"):
+		if not is_sliding:  # Slide action is initiated
+			is_sliding = true
+			slide()
+	elif is_sliding:  # Slide action is released
+		is_sliding = false
+		stop_sliding()
 
 func update_animation() -> void:
 	match velocity:
@@ -76,6 +89,16 @@ func update_animation() -> void:
 		_:
 			animation_tree["parameters/conditions/is_running"] = true
 			animation_tree["parameters/conditions/is_not_running"] = false
+	if not is_sliding:  # Avoid updating the current animation if sliding
+		match velocity:
+			Vector2.ZERO:
+				current_animation = "idle"
+			_:
+				current_animation = "run"
+	
+	animation_tree["parameters/conditions/is_running"] = velocity != Vector2.ZERO
+	animation_tree["parameters/conditions/is_not_running"] = velocity == Vector2.ZERO
+
 
 func _on_pickup_area_area_entered(area):
 	if area.has_method("collect"): 
@@ -89,3 +112,15 @@ func dash():
 	speed *= 2
 	await get_tree().create_timer(0.15).timeout
 	speed /= 2
+
+func slide():
+	speed *= 2
+	animation_tree.set("parameters/conditions/is_sliding", true)
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	anim_state.travel("slide")
+	
+func stop_sliding():
+	speed /= 2
+	animation_tree.set("parameters/conditions/is_sliding", false)
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	anim_state.travel(current_animation)  # Revert to the previous animation
