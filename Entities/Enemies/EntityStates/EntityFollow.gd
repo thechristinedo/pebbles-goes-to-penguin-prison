@@ -7,7 +7,7 @@ extends State
 @export var health_component: HealthComponent
 @export var sight_radius: Area2D
 @export var navigation_node: NavigationAgent2D
-@export var engage_distance: float = 150
+@export var engage_distance: float = 100
 
 var _following: bool = false
 

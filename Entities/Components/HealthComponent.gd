@@ -9,10 +9,13 @@ class_name HealthComponent
 @export var take_knockback: bool = true
 @export var flash_on_hit: bool = true
 
+var _taken_damage: bool = false
+
 func is_dead() -> bool:
 	return health < 0
 
 func take_damage(damage: float, rotation: float) -> void:
+	_taken_damage = true
 	health -= damage
 	if take_knockback:
 		movement_component.knockback(rotation)
@@ -20,6 +23,9 @@ func take_damage(damage: float, rotation: float) -> void:
 		flash()
 	if health < 0:
 		_death()
+
+func has_taken_damage() -> bool:
+	return _taken_damage
 
 func flash() -> void:
 	get_tree().create_timer(0.15).connect("timeout", _flash_callback)

@@ -264,6 +264,5 @@ entity_node = NodePath("../..")
 movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
 shooting_component = NodePath("../../ShootingComponent")
-disengage_distance = 200.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="12"]

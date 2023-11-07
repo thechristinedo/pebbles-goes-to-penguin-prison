@@ -19,6 +19,12 @@ func random_wander():
 	movement_component.set_movement_direction(move_direction)
 	get_tree().create_timer(randf_range(1,2)).connect("timeout", pause_wander)
 
+func physics_update(delta: float):
+	if health_component.has_taken_damage():
+		target = get_node("/root/World/RoomManager/Pebbles")
+		_idling = false
+		Transitioned.emit(self, "Follow")
+
 func enter():
 	_idling = true
 	movement_component.walking = true

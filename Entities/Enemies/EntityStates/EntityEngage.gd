@@ -4,7 +4,7 @@ extends State
 @export var movement_component: MovementComponent
 @export var health_component: HealthComponent
 @export var shooting_component: ShootingComponent
-@export var disengage_distance: float
+@export var disengage_distance: float = 135
 
 var _engaging: bool = false
 
@@ -18,8 +18,9 @@ func physics_update(_delta: float):
 		if health_component.is_dead(): 
 			_engaging = false
 			shooting_component.hide_gun()
-		shooting_component.aim(target)
-		shooting_component.shoot()
+		else:
+			shooting_component.aim(target)
+			shooting_component.shoot()
 		
 
 func check_if_too_far() -> void:
