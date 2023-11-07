@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bda1slnwjii2v"
-path="res://.godot/imported/fish2.png-e75b7a20757d6903d42507ef59e45229.ctex"
+uid="uid://dn57gfh30pjtc"
+path="res://.godot/imported/bullet.png-addda25cd71dc452c6ee2411d0f07ffd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Collectables/Pickup/fish2.png"
-dest_files=["res://.godot/imported/fish2.png-e75b7a20757d6903d42507ef59e45229.ctex"]
+source_file="res://old-Guns/Bullets/Sprites/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-addda25cd71dc452c6ee2411d0f07ffd.ctex"]
 
 [params]
 

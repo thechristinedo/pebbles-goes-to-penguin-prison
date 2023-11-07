@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var bullet_scene: PackedScene = preload("res://Guns/Bullets/Bullet.tscn")
+#@export var bullet_scene: PackedScene = preload("res://Guns/Bullets/Bullet.tscn")
 @onready var lightGunShot = $lightGunShot
 
 var player
@@ -25,7 +25,6 @@ func _physics_process(_delta):
 	
 	if pebbles_chase:
 		player = get_node("../Pebbles")
-		shoot_pebbles()
 		position += (pebbles.position - position)/speed
 		$AnimatedSprite2D.play("walk")
 		var direction = (player.position - self.position).normalized()
@@ -84,32 +83,6 @@ func _on_regen_timer_timeout():
 	if health <= 0:
 		health = 0
 	
-func shoot_pebbles():
-	if can_shoot == true:
-		var bullet1: Area2D = bullet_scene.instantiate()
-		var bullet2: Area2D = bullet_scene.instantiate()
-		var bullet3: Area2D = bullet_scene.instantiate()
-		
-		bullet1.global_position = get_node("Shotgun/Muzzle").global_position
-		bullet2.global_position = get_node("Shotgun/Muzzle").global_position
-		bullet3.global_position = get_node("Shotgun/Muzzle").global_position
-		
-		bullet1.look_at(player.global_position)  # Rotate the bullet towards the player's position
-		bullet2.look_at(player.global_position)  # Rotate the bullet towards the player's position
-		bullet3.look_at(player.global_position)  # Rotate the bullet towards the player's position
-		
-		bullet1.rotation = get_node("Shotgun").rotation + 0.1
-		bullet2.rotation = get_node("Shotgun").rotation
-		bullet3.rotation = get_node("Shotgun").rotation + -0.1
-		
-		owner.add_child(bullet1)
-		owner.add_child(bullet2)
-		owner.add_child(bullet3)
-		lightGunShot.play()
-		
-		can_shoot = false
-		$Reload_Timer.start()
-
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
 

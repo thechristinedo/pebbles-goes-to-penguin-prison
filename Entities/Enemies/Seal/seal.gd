@@ -1,7 +1,5 @@
-extends "res://Enemies/enemy_base.gd"
+extends "res://Entities/Enemies/enemy_base.gd"
 @onready var sealSlap = $sealSlap
-
-
 
 func _get_target_name():
 	return "Pebbles"

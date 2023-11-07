@@ -26,6 +26,8 @@ func _physics_process(_delta):
 	handle_player_shoot()
 	handle_player_interactions()
 	move_and_slide()
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		take_damage(1)
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -111,3 +113,40 @@ func dash():
 	speed *= 2
 	await get_tree().create_timer(0.15).timeout
 	speed /= 2
+
+
+############################################################
+
+@export var max_health: int = 100 # TODO: Change health back to 10
+@export var sprite_2d: Sprite2D
+@export var damage: int = 1
+@onready var health: int = max_health
+#@onready var gameOver = $GameOverScreen
+@onready var sprite2 = $Sprite2D
+
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+
+signal health_update
+signal pebbles_death
+signal pebbles_shoot
+
+func take_damage(damage: int) -> void:
+	#damage is only going to be 1 for pebbles 
+	health -= 1
+	
+	#flash()
+	#enemy_attack_cooldown = false
+	# $attack_cooldown.start()
+	if health <= 0:
+		health = 0
+		sprite2.material.set_shader_parameter("flash_modifier", 0)
+		get_tree().paused = true
+		sprite_2d.visible = false
+		#gameOver.visible = true
+		print("dead")
+		pebbles_death.emit()
+	print(health)
+	health_update.emit(health, max_health)
+	
+

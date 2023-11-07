@@ -2,7 +2,8 @@ extends Sprite2D
 
 class_name Gun
 
-@onready var inventory_item: InventoryItem
+@onready var bullet_trail_scene: PackedScene = preload("res://Guns/Bullets/bullet_trail.tscn")
+@export var inventory_item: InventoryItem
 
 func _ready():
 	position.y = position.y + 7
@@ -30,12 +31,18 @@ func get_type():
 
 func shoot() -> bool:
 	if inventory_item and inventory_item.shooter: 
+		var room_node = get_node("/root/World/RoomManager/Room")
 		var bullets = inventory_item.shooter.shoot() as Array[Bullet]
 		if bullets.size():
 			for bullet in bullets:
 				bullet.rotation += rotation
-				bullet.position += Vector2(0, inventory_item.muzzle.y)
-				bullet.position += (Vector2.RIGHT * inventory_item.muzzle.x).rotated(rotation)
-				owner.add_child(bullet)
+				bullet.global_position = global_position + Vector2(0, inventory_item.muzzle.y)
+				bullet.global_position = global_position + (Vector2.RIGHT * inventory_item.muzzle.x).rotated(rotation)
+				
+				var bullet_trail = bullet_trail_scene.instantiate() as BulletTrail
+				bullet_trail.bullet_scene = bullet
+				
+				room_node.add_child(bullet)
+				room_node.add_child(bullet_trail)
 			return true
 	return false

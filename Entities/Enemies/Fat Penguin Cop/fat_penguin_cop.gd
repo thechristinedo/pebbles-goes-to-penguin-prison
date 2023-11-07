@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@export var bullet_scene: PackedScene
+@export var gun: InventoryItem = preload("res://Guns/GunTypes/revolver.tres")
 @onready var lightGunShot = $lightGunShot
-
 
 var player
 var speed = 50
@@ -39,7 +38,7 @@ func _physics_process(_delta):
 		move_and_collide(Vector2.ZERO)
 	else:
 		$AnimatedSprite2D.play("idle")
-		
+
 
 func _on_detection_radius_body_entered(body):
 	if body.name == "Pebbles":
@@ -88,25 +87,7 @@ func _on_regen_timer_timeout():
 	
 func shoot_pebbles():
 	if can_shoot == true:
-		var bullet1: Area2D = bullet_scene.instantiate()
-		var bullet2: Area2D = bullet_scene.instantiate()
-		var bullet3: Area2D = bullet_scene.instantiate()
-		
-		bullet1.global_position = get_node("Shotgun/Muzzle").global_position
-		bullet2.global_position = get_node("Shotgun/Muzzle").global_position
-		bullet3.global_position = get_node("Shotgun/Muzzle").global_position
-		
-		bullet1.look_at(player.global_position)  # Rotate the bullet towards the player's position
-		bullet2.look_at(player.global_position)  # Rotate the bullet towards the player's position
-		bullet3.look_at(player.global_position)  # Rotate the bullet towards the player's position
-		
-		bullet1.rotation = get_node("Shotgun").rotation + 0.1
-		bullet2.rotation = get_node("Shotgun").rotation
-		bullet3.rotation = get_node("Shotgun").rotation + -0.1
-		
-		owner.add_child(bullet1)
-		owner.add_child(bullet2)
-		owner.add_child(bullet3)
+		gun.shoot()
 		lightGunShot.play()
 		
 		can_shoot = false
