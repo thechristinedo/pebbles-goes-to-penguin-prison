@@ -17,7 +17,7 @@ extends StaticBody2D
 func take_damage(damage: int) -> void:
 	health -= damage
 	flash()
-	print("current health: ", health)
+	#print("current health: ", health)
 	if health <= 0:
 		queue_free()
 		spawn_resource()
