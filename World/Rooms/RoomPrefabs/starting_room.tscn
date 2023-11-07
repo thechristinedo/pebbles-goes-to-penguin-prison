@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://oka46aerxr4w"]
+[gd_scene load_steps=7 format=3 uid="uid://oka46aerxr4w"]
 
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_t6qsh"]
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_x80hl"]
@@ -7,6 +7,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gw0"]
 size = Vector2(173, 211)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_g4crv"]
+vertices = PackedVector2Array(4, -74, 160, -71, 158, 91, 2, 93)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4, -74, 160, -71, 158, 91, 2, 93)])
 
 [node name="Room" type="Node2D"]
 
@@ -31,3 +36,6 @@ shape = SubResource("RectangleShape2D_w8gw0")
 
 [node name="PenguinPolice" parent="." instance=ExtResource("4_ksgf3")]
 position = Vector2(33, -42)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_g4crv")

@@ -2,6 +2,7 @@ extends State
 
 @export var movement_component: MovementComponent
 @export var health_component: HealthComponent
+@export var sight_radius: Area2D
 
 func pause_wander():
 	movement_component.stop_movement()
@@ -17,4 +18,14 @@ func random_wander():
 
 func enter():
 	movement_component.walking = true
+	sight_radius.connect("body_entered", _is_pebbles)
+	get_tree().create_timer(1).connect("timeout", _enable_sight)
 	random_wander()
+
+func _is_pebbles(body) -> void:
+	if body.name == "Pebbles":
+		target = body
+		Transitioned.emit(self, "Follow")
+
+func _enable_sight() -> void:
+	sight_radius.monitoring = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqjis68gg0rhb"]
+[gd_scene load_steps=10 format=3 uid="uid://dqjis68gg0rhb"]
 
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_0glod"]
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_140m6"]
@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://b5ibn8wniwg7b" path="res://Collectables/Guns/revolver_collectable.tscn" id="4_rry6i"]
 [ext_resource type="PackedScene" uid="uid://3npb3tvfm4h7" path="res://Collectables/Guns/shotgun_collectable.tscn" id="5_14oas"]
 [ext_resource type="PackedScene" uid="uid://drxk1ac83qn5k" path="res://Collectables/Guns/machinegun_collectable.tscn" id="6_xvln1"]
+[ext_resource type="PackedScene" uid="uid://bifalwg3ruadj" path="res://Entities/Enemies/Penguin Police/penguin_police.tscn" id="7_lavgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gw0"]
 size = Vector2(684, 661)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_msa2o"]
+vertices = PackedVector2Array(439, 548, 630, 549, 632, 604, 6, 601, 265, 552, 230, 183, 8, 183, 13, 7, 250, 3, 250, 36, 452, 3, 537, 4, 534, 99, 452, 34, 267, 409, 7, 408, 8, 357, 228, 357, 665, 98, 665, 218, 441, 218, 441, 356, 632, 359, 632, 412, 441, 411, 8, 550)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(12, 18, 19, 20), PackedInt32Array(21, 22, 23, 24, 14, 17), PackedInt32Array(5, 9, 13, 12, 20, 17), PackedInt32Array(17, 20, 21), PackedInt32Array(14, 24, 0, 4), PackedInt32Array(4, 3, 25)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(13, 7, 8, 183, 230, 183, 228, 357, 8, 357, 7, 408, 267, 409, 265, 552, 8, 550, 6, 601, 632, 604, 630, 549, 439, 548, 441, 411, 632, 412, 632, 359, 441, 356, 441, 218, 665, 218, 665, 98, 534, 99, 537, 4, 452, 3, 452, 34, 250, 36, 250, 3)])
 
 [node name="Room" type="Node2D"]
 
@@ -49,3 +55,13 @@ position = Vector2(538, 394)
 
 [node name="ShotgunCollectable2" parent="." instance=ExtResource("5_14oas")]
 position = Vector2(368, 122)
+
+[node name="PenguinPolice" parent="." instance=ExtResource("7_lavgn")]
+position = Vector2(269, 134)
+
+[node name="PenguinPolice2" parent="." instance=ExtResource("7_lavgn")]
+position = Vector2(453, 168)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_msa2o")

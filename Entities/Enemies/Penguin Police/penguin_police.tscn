@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bifalwg3ruadj"]
+[gd_scene load_steps=18 format=3 uid="uid://bifalwg3ruadj"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/enemy_base.tscn" id="1_nhfw3"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/penguin-police-idle.png" id="2_2404h"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bb8xwn6qpp2de" path="res://Entities/Components/HealthComponent.tscn" id="5_ud36b"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="6_yplnt"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/EntityStates/Idle.tscn" id="7_wnx4q"]
+[ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/EntityStates/Follow.tscn" id="10_phw30"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6d1n8"]
 resource_local_to_scene = true
@@ -53,6 +54,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_exscx"]
+resource_name = "death"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_crewb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_v1vft"]
@@ -137,47 +179,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_exscx"]
-resource_name = "death"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemySprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_crewb")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EnemySprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EnemySprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yj1j"]
 _data = {
 "RESET": SubResource("Animation_gpt5y"),
@@ -185,6 +186,9 @@ _data = {
 "idle": SubResource("Animation_v1vft"),
 "running": SubResource("Animation_puvuc")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfjm8"]
+radius = 117.004
 
 [node name="PenguinPolice" instance=ExtResource("1_nhfw3")]
 
@@ -209,21 +213,37 @@ libraries = {
 active = true
 parameters/conditions/not_running = true
 
-[node name="MovementComponent" parent="." index="6" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree") instance=ExtResource("4_n0hko")]
+[node name="SightRadius" type="Area2D" parent="." index="6"]
+monitoring = false
+
+[node name="SightCollisionShape" type="CollisionShape2D" parent="SightRadius" index="0"]
+shape = SubResource("CircleShape2D_wfjm8")
+
+[node name="MovementComponent" parent="." index="7" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree") instance=ExtResource("4_n0hko")]
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="HealthComponent" parent="." index="7" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree") instance=ExtResource("5_ud36b")]
+[node name="HealthComponent" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree") instance=ExtResource("5_ud36b")]
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 health = 50.0
 
-[node name="StateMachineComponent" parent="." index="8" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_yplnt")]
+[node name="StateMachineComponent" parent="." index="9" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_yplnt")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" parent="StateMachineComponent" index="0" node_paths=PackedStringArray("movement_component", "health_component") instance=ExtResource("7_wnx4q")]
+[node name="Idle" parent="StateMachineComponent" index="0" node_paths=PackedStringArray("movement_component", "health_component", "sight_radius") instance=ExtResource("7_wnx4q")]
 movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
+sight_radius = NodePath("../../SightRadius")
+
+[node name="Follow" parent="StateMachineComponent" index="1" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "sight_radius", "navigation_node") instance=ExtResource("10_phw30")]
+entity_node = NodePath("../..")
+movement_component = NodePath("../../MovementComponent")
+health_component = NodePath("../../HealthComponent")
+sight_radius = NodePath("../../SightRadius")
+navigation_node = NodePath("../../NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="10"]

@@ -4,7 +4,7 @@ class_name MovementComponent
 @export var entity_node: CharacterBody2D
 @export var entity_sprite_node: Sprite2D
 @export var animation_tree: AnimationTree
-@export var speed: float = 30
+@export var speed: float = 60
 @export var knockback_effect: float = 250
 @export var knockback_recovery: float = 0.4
 
@@ -27,7 +27,7 @@ func set_movement_direction(direction: Vector2) -> void:
 	_curr_direction = direction
 	
 	entity_node.velocity = direction.normalized() * speed
-	if walking: entity_node.velocity /= 2
+	if walking: entity_node.velocity /= 4
 	
 	if direction.x < 0: entity_sprite_node.flip_h = true
 	else: 				entity_sprite_node.flip_h = false
