@@ -15,6 +15,7 @@ extends CharacterBody2D
 @onready var revolverShot = $revolverShot
 @onready var machinegunShot = $machinegunShot
 @onready var walkSound = $walkSound
+@onready var slideSound = $slideSound
 
 @export var speed: float = 200
 
@@ -65,7 +66,7 @@ func handle_player_movement() -> void:
 func handle_player_interactions() -> void:
 	# pickup gun
 	if collectables.size() and Input.is_action_just_pressed("interact"):
-		if !inventory_node.is_full(): 
+		if !inventory_node.is_full():
 			reload.play()
 			pickup.play()
 			inventory_node.insert_gun(collectables.pop_back().collect())
@@ -74,6 +75,7 @@ func handle_player_interactions() -> void:
 	if Input.is_action_just_pressed("drop gun"):
 		var dropped_gun_item = inventory_node.drop_gun()
 		if dropped_gun_item:
+			$dropSound.play()
 			var dropped_gun_collectable = load(dropped_gun_item.path_to_collectable_scene).instantiate()
 			dropped_gun_collectable.inventory_item = dropped_gun_item
 			dropped_gun_collectable.position = position
@@ -88,9 +90,19 @@ func handle_player_interactions() -> void:
 	if Input.is_action_just_pressed("scroll down"):
 		inventory_node.scroll_down()
 	
+<<<<<<< Updated upstream
 	# dashing
 	if Input.is_action_just_pressed("dash"):
 		dash()
+=======
+		
+	if Input.is_action_pressed("slide") and not is_sliding:
+		if not is_sliding:  # Slide action is initiated
+			is_sliding = true
+			slide()
+			slideSound.pitch_scale = randf_range(0.8, 1.2)
+			slideSound.play()
+>>>>>>> Stashed changes
 
 func update_animation() -> void:
 	match velocity:
@@ -108,12 +120,24 @@ func _on_pickup_area_area_entered(area):
 func _on_pickup_area_area_exited(area):
 	if collectables.size() and area == collectables[collectables.size()-1]:
 		collectables.pop_back()
-		
-func dash():
-	speed *= 2
-	await get_tree().create_timer(0.15).timeout
-	speed /= 2
 
+<<<<<<< Updated upstream
+=======
+func slide():
+	speed *= 1.5
+	animation_tree.set("parameters/conditions/is_sliding", true)
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	anim_state.travel("slide")
+	await get_tree().create_timer(0.25).timeout
+	reset_slide()
+	
+func reset_slide():
+	speed /= 1.5
+	is_sliding = false
+	animation_tree.set("parameters/conditions/is_sliding", false)
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	anim_state.travel(current_animation)
+>>>>>>> Stashed changes
 
 ############################################################
 

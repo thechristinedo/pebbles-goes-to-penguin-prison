@@ -12,6 +12,8 @@ extends StaticBody2D
 @onready var sprite = $Sprite2D
 @onready var flashTimer = $FlashHitTimer
 
+@onready var barrelbreak = $barrelbreak
+
 func take_damage(damage: int) -> void:
 	health -= damage
 	flash()
