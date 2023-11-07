@@ -1,15 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://bifalwg3ruadj"]
+[gd_scene load_steps=22 format=3 uid="uid://bifalwg3ruadj"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/enemy_base.tscn" id="1_nhfw3"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/penguin-police-idle.png" id="2_2404h"]
 [ext_resource type="Shader" path="res://Entities/Enemies/Penguin Police/flash.gdshader" id="2_aym8g"]
 [ext_resource type="Texture2D" uid="uid://bikh14ur2a6rq" path="res://Assets/Entities/Enemies/penguin-police-run.png" id="3_g80vo"]
 [ext_resource type="PackedScene" uid="uid://pjwrbqlmgj5t" path="res://Entities/Components/MovementComponent.tscn" id="4_n0hko"]
+[ext_resource type="Script" path="res://Guns/gun.gd" id="4_x1vnx"]
 [ext_resource type="Texture2D" uid="uid://iak4h3qx38ks" path="res://Assets/Entities/Enemies/penguin-death.png" id="5_crewb"]
+[ext_resource type="Resource" uid="uid://tm20eyj2c0k" path="res://Guns/GunTypes/shotgun.tres" id="5_ebvr6"]
 [ext_resource type="PackedScene" uid="uid://bb8xwn6qpp2de" path="res://Entities/Components/HealthComponent.tscn" id="5_ud36b"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="6_yplnt"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/EntityStates/Idle.tscn" id="7_wnx4q"]
+[ext_resource type="PackedScene" uid="uid://c68og1ij5la51" path="res://Entities/Components/ShootingComponent.tscn" id="8_acua1"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/EntityStates/Follow.tscn" id="10_phw30"]
+[ext_resource type="PackedScene" uid="uid://bnjjrwq6xpbe0" path="res://Entities/Enemies/EntityStates/Engage.tscn" id="12_0vsvk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6d1n8"]
 resource_local_to_scene = true
@@ -201,37 +205,46 @@ material = SubResource("ShaderMaterial_6d1n8")
 texture = ExtResource("2_2404h")
 hframes = 6
 
-[node name="Hitbox" parent="." index="2"]
+[node name="Gun" type="Sprite2D" parent="." index="2"]
+visible = false
+script = ExtResource("4_x1vnx")
+inventory_item = ExtResource("5_ebvr6")
+
+[node name="Hitbox" parent="." index="3"]
 position = Vector2(0, 2)
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_1yj1j")
 }
 
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="5"]
 active = true
 parameters/conditions/not_running = true
 
-[node name="SightRadius" type="Area2D" parent="." index="6"]
+[node name="SightRadius" type="Area2D" parent="." index="7"]
 monitoring = false
 
 [node name="SightCollisionShape" type="CollisionShape2D" parent="SightRadius" index="0"]
 shape = SubResource("CircleShape2D_wfjm8")
 
-[node name="MovementComponent" parent="." index="7" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree") instance=ExtResource("4_n0hko")]
+[node name="MovementComponent" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree") instance=ExtResource("4_n0hko")]
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="HealthComponent" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree") instance=ExtResource("5_ud36b")]
+[node name="HealthComponent" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree") instance=ExtResource("5_ud36b")]
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 health = 50.0
 
-[node name="StateMachineComponent" parent="." index="9" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_yplnt")]
+[node name="ShootingComponent" parent="." index="10" node_paths=PackedStringArray("entity_sprite", "gun") instance=ExtResource("8_acua1")]
+entity_sprite = NodePath("../EnemySprite")
+gun = NodePath("../Gun")
+
+[node name="StateMachineComponent" parent="." index="11" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_yplnt")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" parent="StateMachineComponent" index="0" node_paths=PackedStringArray("movement_component", "health_component", "sight_radius") instance=ExtResource("7_wnx4q")]
@@ -246,4 +259,11 @@ health_component = NodePath("../../HealthComponent")
 sight_radius = NodePath("../../SightRadius")
 navigation_node = NodePath("../../NavigationAgent2D")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="10"]
+[node name="Engage" parent="StateMachineComponent" index="2" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "shooting_component") instance=ExtResource("12_0vsvk")]
+entity_node = NodePath("../..")
+movement_component = NodePath("../../MovementComponent")
+health_component = NodePath("../../HealthComponent")
+shooting_component = NodePath("../../ShootingComponent")
+disengage_distance = 200.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="12"]
