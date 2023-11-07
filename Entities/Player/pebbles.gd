@@ -17,8 +17,13 @@ extends CharacterBody2D
 @onready var walkSound = $walkSound
 
 @export var speed: float = 200
+var current_animation: String = "idle"
+var is_sliding = false 
 
 var collectables: Array[Area2D]
+
+func _ready():
+	animation_tree.active = true
 
 func _physics_process(_delta):
 	update_animation()
@@ -89,17 +94,32 @@ func handle_player_interactions() -> void:
 		inventory_node.scroll_down()
 	
 	# dashing
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and not is_sliding:
 		dash()
+		
+	if Input.is_action_pressed("slide") and not is_sliding:
+		if not is_sliding:  # Slide action is initiated
+			is_sliding = true
+			slide()
 
 func update_animation() -> void:
-	match velocity:
-		Vector2.ZERO:
-			animation_tree["parameters/conditions/is_running"] = false
-			animation_tree["parameters/conditions/is_not_running"] = true
-		_:
-			animation_tree["parameters/conditions/is_running"] = true
-			animation_tree["parameters/conditions/is_not_running"] = false
+	# Make sure we only update the animation if we are not sliding
+	if is_sliding:
+		return
+
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	# Determine the appropriate animation based on velocity
+	if velocity == Vector2.ZERO:
+		current_animation = "idle"
+	else:
+		current_animation = "run"
+	
+	if anim_state.get_current_node() != current_animation:
+		anim_state.travel(current_animation)
+	
+	animation_tree["parameters/conditions/is_running"] = velocity != Vector2.ZERO
+	animation_tree["parameters/conditions/is_not_running"] = velocity == Vector2.ZERO
+
 
 func _on_pickup_area_area_entered(area):
 	if area.has_method("collect"): 
@@ -114,9 +134,24 @@ func dash():
 	await get_tree().create_timer(0.15).timeout
 	speed /= 2
 
+func slide():
+	speed *= 2.5
+	animation_tree.set("parameters/conditions/is_sliding", true)
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	anim_state.travel("slide")
+	await get_tree().create_timer(0.25).timeout
+	reset_slide()
+	
+func reset_slide():
+	speed /= 2.5
+	is_sliding = false
+	animation_tree.set("parameters/conditions/is_sliding", false)
+	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	anim_state.travel(current_animation)
 
-############################################################
+	
 
+# Added from old-main
 @export var max_health: int = 100 # TODO: Change health back to 10
 @export var sprite_2d: Sprite2D
 @export var damage: int = 1
