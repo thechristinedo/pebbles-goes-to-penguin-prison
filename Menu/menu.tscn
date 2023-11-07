@@ -347,7 +347,7 @@ text = "Back
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_p6ei1")
-volume_db = -6.0
+volume_db = -15.0
 autoplay = true
 bus = &"Background"
 
