@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyv1ed3cu662c"
-path="res://.godot/imported/pebbles_slide.png-13e332fcad4cbf5bc86cd855cb8b52c1.ctex"
+uid="uid://8fhxh3b2rdjs"
+path="res://.godot/imported/pebbles-dash.png-54c236bf35d0be5632adecd79991c194.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Player/pebbles_slide.png"
-dest_files=["res://.godot/imported/pebbles_slide.png-13e332fcad4cbf5bc86cd855cb8b52c1.ctex"]
+source_file="res://Assets/Entities/Player/pebbles-dash.png"
+dest_files=["res://.godot/imported/pebbles-dash.png-54c236bf35d0be5632adecd79991c194.ctex"]
 
 [params]
 
