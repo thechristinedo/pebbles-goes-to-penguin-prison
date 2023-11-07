@@ -25,8 +25,8 @@ func _physics_process(_delta):
 	update_health()
 	
 	if pebbles_chase:
-		player = get_node("../Pebbles")
-		shoot_pebbles()
+		player = load("res://Entities/Player/pebbles.tscn").instantiate()
+		#shoot_pebbles()
 		position += (pebbles.position - position)/speed
 		$AnimatedSprite2D.play("running")
 		var direction = (player.position - self.position).normalized()
@@ -85,13 +85,13 @@ func _on_regen_timer_timeout():
 	if health <= 0:
 		health = 0
 	
-func shoot_pebbles():
-	if can_shoot == true:
-		gun.shoot()
-		lightGunShot.play()
+#func shoot_pebbles():
+#	if can_shoot == true:
+#		gun.shoot()
+#		lightGunShot.play()
 		
-		can_shoot = false
-		$Reload_Timer.start()
+#		can_shoot = false
+#		$Reload_Timer.start()
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
