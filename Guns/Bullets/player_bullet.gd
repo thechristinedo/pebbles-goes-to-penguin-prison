@@ -5,6 +5,7 @@ extends RigidBody2D
 const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smoke.tscn")
 @export var speed: float = 800
 @export var lifetime: float = 3
+@export var damage: int = 25
 
 func _ready():
 	lifetime_timer.connect("timeout", destroy, lifetime)
@@ -15,7 +16,11 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Bullet": pass
+	print("Collided with: ", body)
+	if body.has_method("take_damage"):
+		body.take_damage(damage,self)
 	destroy()
+	
 
 func destroy():
 	var smoke = impact_smoke.instantiate()

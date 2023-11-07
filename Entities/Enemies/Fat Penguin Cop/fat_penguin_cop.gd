@@ -4,11 +4,12 @@ extends CharacterBody2D
 @onready var lightGunShot = $lightGunShot
 
 var player
-var speed = 50
+var speed = 200
 var pebbles_chase = false
 var pebbles = null
 var health = 250
 var can_shoot = true
+var knockback_val = 25
 
 # Hit Flash Shader
 @onready var sprite = $AnimatedSprite2D
@@ -47,10 +48,13 @@ func _on_detection_radius_body_entered(body):
 		#shoot_pebbles()
 		#CALL the shoot function here when he gets detected shoot_pebbles()
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, bullet: Bullet) -> void:
 	#take damage 
 	health -= damage
 	flash()
+	
+	var knockback = bullet.linear_velocity.normalized() * knockback_val
+	position += knockback
 	
 	#if health reaches 0 then delete from scene
 	if health <= 0:
