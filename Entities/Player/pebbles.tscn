@@ -384,6 +384,9 @@ parameters/conditions/is_running = false
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_6pra7")
 
+[node name="Fishventory" type="Node" parent="."]
+script = ExtResource("9_7it64")
+
 [node name="RangedAttackComponent" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("7_4rer2")]
 gun = NodePath("../Gun")
 
@@ -394,9 +397,6 @@ position = Vector2(0, 15)
 amount = 9
 process_material = SubResource("ParticleProcessMaterial_qewu5")
 lifetime = 0.3
-
-[node name="Fishventory" type="Node" parent="."]
-script = ExtResource("9_7it64")
 
 [node name="reload" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_bmfi5")
