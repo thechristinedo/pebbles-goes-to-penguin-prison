@@ -11,4 +11,4 @@ texture = ExtResource("3_gng5f")
 stackable = false
 shooter = ExtResource("2_2ia4h")
 muzzle = Vector2(30, 5)
-path_to_collectable_scene = ""
+path_to_collectable_scene = "res://Collectables/Guns/lasergun_collectable.tscn"
