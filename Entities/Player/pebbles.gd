@@ -183,5 +183,4 @@ func take_damage(damage: int) -> void:
 		pebbles_death.emit()
 	print(health)
 	health_update.emit(health, max_health)
-	
 
