@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var inventory_node: Node = $Inventory
 @onready var movement_particles: GPUParticles2D = $MovementParticles
 
+@export var resources : Dictionary = {}
+
 @export var speed: float = 200
 
 var collectables: Array[Area2D]
