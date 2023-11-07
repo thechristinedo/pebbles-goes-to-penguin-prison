@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var ranged_attack_component: Node = $RangedAttackComponent
 @onready var inventory_node: Node = $Inventory
 @onready var movement_particles: GPUParticles2D = $MovementParticles
+@onready var gameOver = load("res://GUI/User Interface/UI_menu_scenes/game_over_screen.tscn").instantiate()
 
 # Audio
 @onready var reload = $reload
@@ -174,7 +175,7 @@ func heal(amount: int):
 #@export var sprite_2d: Sprite2D
 @export var damage: int = 1
 #@onready var gameOver = $GameOverScreen
-@onready var sprite2 = $Sprite2D
+#@onready var sprite2 = $Sprite2D
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -194,8 +195,9 @@ func take_damage(damage: int) -> void:
 		health = 0
 		#sprite2.material.set_shader_parameter("flash_modifier", 0)
 		get_tree().paused = true
+		add_child(gameOver)
 		character_sprite.visible = false
-		#gameOver.visible = true
+		gameOver.visible = true
 		print("dead")
 		pebbles_death.emit()
 	print(health)
