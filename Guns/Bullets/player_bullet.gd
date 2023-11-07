@@ -1,24 +1,20 @@
 class_name Bullet
 extends RigidBody2D
 
-@onready var lifetime_timer: Timer = $Lifetime
-const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smoke.tscn")
 @export var speed: float = 800
-@export var lifetime: float = 3
-@export var damage: int = 25
+@export var lifetime: float = 0.1
+@export var damage: float = 20.01
 
-func _ready():
-	lifetime_timer.connect("timeout", destroy, lifetime)
-	lifetime_timer.start()
+const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smoke.tscn")
 
 func _physics_process(delta):
 	linear_velocity = Vector2.RIGHT.rotated(rotation) * speed
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Bullet": pass
-	print("Collided with: ", body)
-	if body.has_method("take_damage"):
-		body.take_damage(damage,self)
+	if body.get_node_or_null("HealthComponent"):
+		var body_health_component = body.get_node("HealthComponent") as HealthComponent
+		body_health_component.take_damage(damage, rotation)
 	destroy()
 	
 

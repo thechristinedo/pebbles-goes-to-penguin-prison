@@ -88,7 +88,7 @@ func _on_regen_timer_timeout():
 	
 	if health <= 0:
 		health = 0
-	
+
 #func shoot_pebbles():
 #	if can_shoot == true:
 #		gun.shoot()
