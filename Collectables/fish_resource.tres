@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ResourceItem" load_steps=3 format=3 uid="uid://bdq5nerxeborf"]
+[gd_resource type="Resource" script_class="FishItem" load_steps=3 format=3 uid="uid://bdq5nerxeborf"]
 
-[ext_resource type="Script" path="res://Collectables/resource_item.gd" id="1_6h1s0"]
+[ext_resource type="Script" path="res://Collectables/fish_resource.gd" id="1_6h1s0"]
 [ext_resource type="Texture2D" uid="uid://rmghs4671cj4" path="res://Collectables/Pickup/blue fish.png" id="2_cvj2g"]
 
 [resource]

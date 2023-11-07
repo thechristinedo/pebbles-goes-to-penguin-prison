@@ -8,8 +8,6 @@ extends CharacterBody2D
 @onready var inventory_node: Node = $Inventory
 @onready var movement_particles: GPUParticles2D = $MovementParticles
 
-@export var resources : Dictionary = {}
-
 @export var speed: float = 200
 
 var collectables: Array[Area2D]
@@ -91,3 +89,7 @@ func dash():
 	speed *= 2
 	await get_tree().create_timer(0.15).timeout
 	speed /= 2
+
+func restore_health():
+	#include animation of restoring health here for now?
+	pass

@@ -35,5 +35,5 @@ func _on_body_entered(body):
 	
 	if (inventory):
 		inventory.add_resources(resource_type, 1)
-		print("Collected fish!")
+		print("Collected fish! Total fish: ", inventory.get_fish_value())
 		queue_free()
