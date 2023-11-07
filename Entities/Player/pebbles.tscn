@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=32 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" path="res://Guns/gun.gd" id="5_qqioc"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
 [ext_resource type="PackedScene" uid="uid://cm2vffgb81e7n" path="res://Entities/Components/ranged_attack_component.tscn" id="7_4rer2"]
+[ext_resource type="AudioStream" uid="uid://ctvw6c5mfo1tt" path="res://Audio/reload.mp3" id="9_bmfi5"]
+[ext_resource type="AudioStream" uid="uid://d1e41god0o21b" path="res://Audio/pickup.mp3" id="10_n1smd"]
+[ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/shotgunShot.mp3" id="11_o5ie2"]
+[ext_resource type="AudioStream" uid="uid://dhj81cb8lgoco" path="res://Audio/revolver.mp3" id="12_ilv8r"]
+[ext_resource type="AudioStream" uid="uid://cdsq4evvx0ymr" path="res://Audio/machinegun.mp3" id="13_pg6ll"]
+[ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="14_aw3cd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ncl5"]
 radius = 8.0
@@ -263,6 +269,32 @@ position = Vector2(0, 15)
 amount = 9
 process_material = SubResource("ParticleProcessMaterial_qewu5")
 lifetime = 0.3
+
+[node name="reload" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_bmfi5")
+volume_db = -0.937
+pitch_scale = 0.9
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_n1smd")
+pitch_scale = 0.85
+
+[node name="shotgunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_o5ie2")
+
+[node name="revolverShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ilv8r")
+
+[node name="machinegunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_pg6ll")
+pitch_scale = 0.64
+
+[node name="walkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_aw3cd")
+volume_db = -9.984
+
+[node name="walkTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="PlayerInteractArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PlayerInteractArea" to="." method="_on_pickup_area_area_exited"]

@@ -8,6 +8,14 @@ extends CharacterBody2D
 @onready var inventory_node: Node = $Inventory
 @onready var movement_particles: GPUParticles2D = $MovementParticles
 
+# Audio
+@onready var reload = $reload
+@onready var pickup = $pickup
+@onready var shotgunShot = $shotgunShot
+@onready var revolverShot = $revolverShot
+@onready var machinegunShot = $machinegunShot
+@onready var walkSound = $walkSound
+
 @export var speed: float = 200
 
 var collectables: Array[Area2D]
@@ -30,9 +38,21 @@ func handle_player_shoot() -> void:
 			ranged_attack_component.set_fire_rate(current_gun.shooter.firerate)
 			var has_shot = ranged_attack_component.shoot()
 			if has_shot: 
+				var gunType = ranged_attack_component.get_type()
+				if gunType == "shotgun":
+					shotgunShot.play()
+				elif gunType == "revolver":
+					revolverShot.play()
+				elif gunType == "machinegun":
+					machinegunShot.play()
 				camera.shake(current_gun.shooter.recoil, 0.05)
 
 func handle_player_movement() -> void:
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
+		if $walkTimer.time_left <= 0:
+				walkSound.pitch_scale = randf_range(0.8, 1.2)
+				walkSound.play()
+				$walkTimer.start(0.2)
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
@@ -46,6 +66,8 @@ func handle_player_interactions() -> void:
 	# pickup gun
 	if collectables.size() and Input.is_action_just_pressed("interact"):
 		if !inventory_node.is_full(): 
+			reload.play()
+			pickup.play()
 			inventory_node.insert_gun(collectables.pop_back().collect())
 	
 	# drop gun
