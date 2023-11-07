@@ -238,7 +238,6 @@ entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
-health = 50.0
 
 [node name="ShootingComponent" parent="." index="10" node_paths=PackedStringArray("entity_sprite", "gun") instance=ExtResource("8_acua1")]
 entity_sprite = NodePath("../EnemySprite")

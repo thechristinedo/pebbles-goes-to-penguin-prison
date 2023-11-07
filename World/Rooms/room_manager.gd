@@ -1,8 +1,7 @@
 extends Node
 
 @export var starting_room: String = "res://World/Rooms/RoomPrefabs/starting_room.tscn"
-@export var room_list: Array[String] = ["res://World/Rooms/RoomPrefabs/big_room.tscn", "res://World/Rooms/RoomPrefabs/test_room.tscn"]
-
+@export var room_list: Array[String] = ["res://World/Rooms/RoomPrefabs/big_room_1.tscn", "res://World/Rooms/RoomPrefabs/small_room_1.tscn"]
 
 static var room_manager_node: Node
 static var animation_player: AnimationPlayer

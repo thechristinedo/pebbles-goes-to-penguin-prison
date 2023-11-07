@@ -12,7 +12,7 @@ class_name HealthComponent
 var _taken_damage: bool = false
 
 func is_dead() -> bool:
-	return health < 0
+	return health <= 0
 
 func take_damage(damage: float, rotation: float) -> void:
 	_taken_damage = true

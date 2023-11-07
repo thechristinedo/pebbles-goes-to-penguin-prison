@@ -3,7 +3,7 @@ extends RigidBody2D
 
 @export var speed: float = 800
 @export var lifetime: float = 0.1
-@export var damage: float = 10
+@export var damage: float = 20.01
 
 const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smoke.tscn")
 
