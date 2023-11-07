@@ -15,9 +15,9 @@ func add_resources(type : FishItem, amount : int):
 	if fish == null:
 		fish = type
 
-func eat_resource(type : FishItem):
+func eat_resource():
 	var fish_left = get_fish_value()
-	resources[type] = fish_left - 1
+	resources[fish] = fish_left - 1
 
 func get_fish_value() -> int:
 	if fish != null and resources.has(fish):

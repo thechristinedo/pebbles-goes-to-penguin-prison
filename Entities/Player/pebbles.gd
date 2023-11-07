@@ -18,7 +18,6 @@ extends CharacterBody2D
 @onready var slideSound = $slideSound
 
 # Health
-@export var resource_type : Resource
 @onready var fishventory = $Fishventory
 @export var max_health: int = 10
 @onready var health: int = max_health
@@ -114,9 +113,9 @@ func handle_player_interactions() -> void:
 		if fishventory.get_fish_value() > 0:
 			is_eating = true
 			heal(25)
-			fishventory.eat_resource(resource_type)
+			fishventory.eat_resource()
 			is_eating = false
-			#print("Fish left in inventory: ", fishventory.get_fish_value())
+			print("Fish left in inventory: ", fishventory.get_fish_value())
 		else:
 			print("No fish in fishventory! Collect some fish!")
 
