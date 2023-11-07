@@ -22,3 +22,6 @@ func shoot() -> Array[Bullet]:
 	bullets.append(bullet3)
 	
 	return bullets
+
+func type():
+	return "shotgun"

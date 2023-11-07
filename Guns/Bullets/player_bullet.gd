@@ -16,6 +16,7 @@ func _on_area_2d_body_entered(body):
 		var body_health_component = body.get_node("HealthComponent") as HealthComponent
 		body_health_component.take_damage(damage, rotation)
 	destroy()
+	
 
 func destroy():
 	var smoke = impact_smoke.instantiate()
