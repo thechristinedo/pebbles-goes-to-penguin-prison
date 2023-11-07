@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://xxrk86c74hi3"]
+[gd_scene load_steps=12 format=3 uid="uid://ccpkn8u7u73jq"]
 
-[ext_resource type="Script" path="res://Collectables/Pickup/pickup.gd" id="1_8yrs1"]
-[ext_resource type="Texture2D" uid="uid://rmghs4671cj4" path="res://Collectables/Pickup/blue fish.png" id="2_op3l6"]
-[ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="3_fbf26"]
-[ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="4_pswfr"]
+[ext_resource type="Script" path="res://Collectables/Pickup/pickup_bones.gd" id="1_yp5bf"]
+[ext_resource type="Texture2D" uid="uid://by6upyrvfq4fr" path="res://Collectables/Pickup/fish skeleton.png" id="2_jbrwg"]
+[ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="3_0aqhc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_484xt"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbmhq"]
 radius = 16.0637
 height = 32.1274
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ihhh1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihltp"]
 resource_local_to_scene = true
 
 [sub_resource type="Animation" id="Animation_na4k7"]
@@ -80,44 +79,37 @@ animation = &"float"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lwuwe"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_er1eu"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hugh4"]
 states/Start/position = Vector2(200, 100.25)
 states/float/node = SubResource("AnimationNodeAnimation_as2ib")
 states/float/position = Vector2(324.5, 62.5)
 transitions = ["Start", "float", SubResource("AnimationNodeStateMachineTransition_lwuwe")]
 
-[node name="PickupFish" type="Area2D"]
+[node name="PickupFishBone" type="Area2D"]
 z_index = 1
 collision_layer = 129
-script = ExtResource("1_8yrs1")
+script = ExtResource("1_yp5bf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_op3l6")
+texture = ExtResource("2_jbrwg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.96046e-08)
 scale = Vector2(0.460512, 0.324475)
-shape = SubResource("CapsuleShape2D_484xt")
+shape = SubResource("CapsuleShape2D_vbmhq")
 
 [node name="CollectionCollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ihhh1")
+shape = SubResource("CircleShape2D_ihltp")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_fbf26")
+texture = ExtResource("3_0aqhc")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 offset = Vector2(2.08165e-12, -5)
-
-[node name="CollectKey" type="Sprite2D" parent="."]
-visible = false
-z_index = 2
-position = Vector2(0, -34)
-texture = ExtResource("4_pswfr")
-offset = Vector2(0, -0.400039)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -125,7 +117,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_er1eu")
+tree_root = SubResource("AnimationNodeStateMachine_hugh4")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 
