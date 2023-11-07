@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@onready var heart_ui = preload("res://User Interface/heart-ui.tscn")
+@onready var heart_ui = preload("res://GUI/User Interface/heart-ui.tscn")
 
 var hearts_ready: bool = false
 

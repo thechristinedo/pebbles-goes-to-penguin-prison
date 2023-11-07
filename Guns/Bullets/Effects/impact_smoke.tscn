@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0aif20t7jlf3"]
+
+[ext_resource type="Texture2D" uid="uid://cjjnkmxwfcxeh" path="res://Assets/Guns/Bullets/Particles/bullet-smoke.png" id="1_g3jh7"]
+[ext_resource type="Script" path="res://Guns/Bullets/Effects/impact_smoke.gd" id="2_m1qiv"]
+
+[sub_resource type="Gradient" id="Gradient_cxbkc"]
+offsets = PackedFloat32Array(0.562963, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x7sqf"]
+gradient = SubResource("Gradient_cxbkc")
+
+[sub_resource type="Curve" id="Curve_7l2xj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.837349, 0.631579), -1.06547, -1.06547, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ap4m"]
+curve = SubResource("Curve_7l2xj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uh7wp"]
+emission_shape = 1
+emission_sphere_radius = 4.8
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 18.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 8.421
+damping_max = 11.533
+angle_min = -108.4
+angle_max = 121.3
+scale_min = 0.6
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_3ap4m")
+color = Color(0.862745, 0.862745, 0.862745, 0.607843)
+color_ramp = SubResource("GradientTexture1D_x7sqf")
+
+[node name="ImpactSmoke" type="GPUParticles2D"]
+process_material = SubResource("ParticleProcessMaterial_uh7wp")
+texture = ExtResource("1_g3jh7")
+lifetime = 0.6
+explosiveness = 1.0
+script = ExtResource("2_m1qiv")

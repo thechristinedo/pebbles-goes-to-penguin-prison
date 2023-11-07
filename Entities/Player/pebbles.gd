@@ -8,6 +8,14 @@ extends CharacterBody2D
 @onready var inventory_node: Node = $Inventory
 @onready var movement_particles: GPUParticles2D = $MovementParticles
 
+# Audio
+@onready var reload = $reload
+@onready var pickup = $pickup
+@onready var shotgunShot = $shotgunShot
+@onready var revolverShot = $revolverShot
+@onready var machinegunShot = $machinegunShot
+@onready var walkSound = $walkSound
+
 @export var speed: float = 200
 var current_animation: String = "idle"
 var is_sliding = false 
@@ -23,6 +31,8 @@ func _physics_process(_delta):
 	handle_player_shoot()
 	handle_player_interactions()
 	move_and_slide()
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		take_damage(1)
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -33,9 +43,21 @@ func handle_player_shoot() -> void:
 			ranged_attack_component.set_fire_rate(current_gun.shooter.firerate)
 			var has_shot = ranged_attack_component.shoot()
 			if has_shot: 
+				var gunType = ranged_attack_component.get_type()
+				if gunType == "shotgun":
+					shotgunShot.play()
+				elif gunType == "revolver":
+					revolverShot.play()
+				elif gunType == "machinegun":
+					machinegunShot.play()
 				camera.shake(current_gun.shooter.recoil, 0.05)
 
 func handle_player_movement() -> void:
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
+		if $walkTimer.time_left <= 0:
+				walkSound.pitch_scale = randf_range(0.8, 1.2)
+				walkSound.play()
+				$walkTimer.start(0.2)
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
@@ -49,6 +71,8 @@ func handle_player_interactions() -> void:
 	# pickup gun
 	if collectables.size() and Input.is_action_just_pressed("interact"):
 		if !inventory_node.is_full(): 
+			reload.play()
+			pickup.play()
 			inventory_node.insert_gun(collectables.pop_back().collect())
 	
 	# drop gun
@@ -126,3 +150,38 @@ func reset_slide():
 	anim_state.travel(current_animation)
 
 	
+
+# Added from old-main
+@export var max_health: int = 100 # TODO: Change health back to 10
+@export var sprite_2d: Sprite2D
+@export var damage: int = 1
+@onready var health: int = max_health
+#@onready var gameOver = $GameOverScreen
+@onready var sprite2 = $Sprite2D
+
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+
+signal health_update
+signal pebbles_death
+signal pebbles_shoot
+
+func take_damage(damage: int) -> void:
+	#damage is only going to be 1 for pebbles 
+	health -= 1
+	
+	#flash()
+	#enemy_attack_cooldown = false
+	# $attack_cooldown.start()
+	if health <= 0:
+		health = 0
+		sprite2.material.set_shader_parameter("flash_modifier", 0)
+		get_tree().paused = true
+		sprite_2d.visible = false
+		#gameOver.visible = true
+		print("dead")
+		pebbles_death.emit()
+	print(health)
+	health_update.emit(health, max_health)
+	
+

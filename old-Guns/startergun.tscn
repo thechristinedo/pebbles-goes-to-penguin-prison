@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://gu21devvbkwe"]
+
+[ext_resource type="Texture2D" uid="uid://kd1bvpg5cuef" path="res://Guns/startergun.png" id="1_nkvp6"]
+[ext_resource type="Script" path="res://Guns/startergun.gd" id="2_r4rr8"]
+
+[node name="startergun" type="Sprite2D"]
+texture = ExtResource("1_nkvp6")
+script = ExtResource("2_r4rr8")

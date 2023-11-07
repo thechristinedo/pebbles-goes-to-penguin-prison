@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var bullet_scene: PackedScene = preload("res://Guns/Bullets/Bullet.tscn")
+@export var bullet_scene: PackedScene = preload("res://Guns/Bullets/player_bullet.tscn")
 @onready var lightGunShot = $lightGunShot
 
 var player
