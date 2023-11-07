@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp53m2uyp2646"]
+[gd_scene load_steps=13 format=3 uid="uid://bp53m2uyp2646"]
 
 [ext_resource type="Script" path="res://GUI/gui.gd" id="1_e6sdv"]
 [ext_resource type="PackedScene" uid="uid://c04bavlpx3imm" path="res://GUI/Inventory/slot.tscn" id="1_k0a7i"]
@@ -7,6 +7,17 @@
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="4_ks7nk"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_qhty0"]
 [ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="7_xm40d"]
+[ext_resource type="PackedScene" uid="uid://bsoksr3gujxxx" path="res://GUI/User Interface/heart-container-ui.tscn" id="8_coqux"]
+[ext_resource type="Texture2D" uid="uid://b2nij24rn0jq6" path="res://GUI/User Interface/Sprites/shotgun-shells.png" id="9_3mk52"]
+[ext_resource type="FontFile" uid="uid://b8v2tt42dl1fd" path="res://GUI/User Interface/PublicPixel-z84yD.ttf" id="10_ydoat"]
+[ext_resource type="Script" path="res://GUI/User Interface/ammo-amount-ui.gd" id="11_bbeky"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc7xa"]
+bg_color = Color(0.47451, 0.568627, 0.556863, 0.427451)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_e6sdv")
@@ -230,6 +241,42 @@ text = "Back
 "
 
 [node name="CursorAnimationTimer" type="Timer" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 200.0
+offset_bottom = 89.0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fc7xa")
+
+[node name="HeartsContainer" parent="Panel" instance=ExtResource("8_coqux")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(25, 53)
+scale = Vector2(1.71875, 1.71875)
+texture = ExtResource("9_3mk52")
+
+[node name="Ammo Amount" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 46.0
+offset_right = 93.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("10_ydoat")
+theme_override_font_sizes/font_size = 14
+text = "45"
+script = ExtResource("11_bbeky")
 
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
