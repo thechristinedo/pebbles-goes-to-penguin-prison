@@ -281,12 +281,15 @@ pitch_scale = 0.85
 
 [node name="shotgunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_o5ie2")
+volume_db = -5.0
 
 [node name="revolverShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ilv8r")
+volume_db = -5.0
 
 [node name="machinegunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_pg6ll")
+volume_db = -3.0
 pitch_scale = 0.64
 
 [node name="walkSound" type="AudioStreamPlayer2D" parent="."]

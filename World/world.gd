@@ -6,3 +6,4 @@ func _ready():
 func init_room() -> void:
 	RoomManager.setup()
 	RoomManager.switch_room(RoomManager.starting_room)
+	$intenseMusic.play()
