@@ -1,3 +1,4 @@
+# Currently copied from machinegun_shooter.gd
 extends Resource
 
 @export var recoil: float = 3
@@ -13,6 +14,3 @@ func shoot() -> Array[Bullet]:
 	
 	bullets.append(bullet)
 	return bullets
-
-func type():
-	return "machinegun"
