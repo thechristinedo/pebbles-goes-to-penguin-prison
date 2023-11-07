@@ -12,11 +12,14 @@ extends StaticBody2D
 @onready var sprite = $Sprite2D
 @onready var flashTimer = $FlashHitTimer
 
+@onready var barrelbreak = $barrelbreak
+
 func take_damage(damage: int) -> void:
 	health -= damage
 	flash()
 	#print("current health: ", health)
 	if health <= 0:
+		barrelbreak.play()
 		queue_free()
 		spawn_resource()
 
