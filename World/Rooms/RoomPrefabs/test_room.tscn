@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://j4c6ktggpp42"]
+[gd_scene load_steps=10 format=3 uid="uid://j4c6ktggpp42"]
 
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_1vl2l"]
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_lsty8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://drxk1ac83qn5k" path="res://Collectables/Guns/machinegun_collectable.tscn" id="4_mn7ae"]
 [ext_resource type="PackedScene" uid="uid://3npb3tvfm4h7" path="res://Collectables/Guns/shotgun_collectable.tscn" id="5_f177f"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="6_begxr"]
+[ext_resource type="PackedScene" uid="uid://c1j8acm6ymuju" path="res://Entities/Enemies/PolarBear/polar_bear.tscn" id="8_a8ksv"]
 [ext_resource type="PackedScene" uid="uid://dnubvl46cxjvk" path="res://Entities/Objects/barrel_bone.tscn" id="11_gkyh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1hso"]
@@ -14,7 +15,7 @@ size = Vector2(331, 305)
 [node name="Room" type="Node2D"]
 
 [node name="PebblesSpawn" type="Node2D" parent="."]
-position = Vector2(81, 176)
+position = Vector2(142, 38)
 
 [node name="TileMap" parent="." instance=ExtResource("2_1vl2l")]
 tile_set = ExtResource("2_lsty8")
@@ -47,3 +48,9 @@ position = Vector2(-45, 158)
 
 [node name="Barrel2" parent="." instance=ExtResource("11_gkyh5")]
 position = Vector2(241, -2)
+
+[node name="polar-bear-slap" parent="." instance=ExtResource("8_a8ksv")]
+position = Vector2(-6, 209)
+
+[node name="polar-bear-slap2" parent="." instance=ExtResource("8_a8ksv")]
+position = Vector2(130, 230)

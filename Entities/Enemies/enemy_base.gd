@@ -37,7 +37,7 @@ func _physics_process(_delta):
 	update_health()
 
 	if pebbles_chase:
-		player = get_node("../" + _get_target_name())
+		player = load("res://Entities/Player/pebbles.tscn").instantiate()
 		# Old Speed calculation
 		#position += (target.position - position)/speed
 		#var direction = (player.position - self.position).normalized()
@@ -76,7 +76,7 @@ func take_damage(damage: int) -> void:
 	# Make the enemy chase Pebbles when taking damage
 	if target == null or target.name != _get_target_name():
 		pebbles_chase = true
-		player = get_node("../" + _get_target_name())
+		player = load("res://Entities/Player/pebbles.tscn").instantiate()
 		target = player
 	
 	if health <= 0:
