@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dis5nx7sgrhl1"
-path="res://.godot/imported/swordfish.png-23f9efb3bfadd155eccb33c2d1f15214.ctex"
+uid="uid://diiqwjynrjhs"
+path="res://.godot/imported/pb walking.png-7b545a37f899d82d0890fcfac7c8e800.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Melee/swordfish.png"
-dest_files=["res://.godot/imported/swordfish.png-23f9efb3bfadd155eccb33c2d1f15214.ctex"]
+source_file="res://Enemies/Polar Bear Guard/pb walking.png"
+dest_files=["res://.godot/imported/pb walking.png-7b545a37f899d82d0890fcfac7c8e800.ctex"]
 
 [params]
 
