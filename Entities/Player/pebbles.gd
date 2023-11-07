@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var shotgunShot = $shotgunShot
 @onready var revolverShot = $revolverShot
 @onready var machinegunShot = $machinegunShot
+@onready var walkSound = $walkSound
 
 @export var speed: float = 200
 
@@ -45,6 +46,11 @@ func handle_player_shoot() -> void:
 				camera.shake(current_gun.shooter.recoil, 0.05)
 
 func handle_player_movement() -> void:
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
+		if $walkTimer.time_left <= 0:
+				walkSound.pitch_scale = randf_range(0.8, 1.2)
+				walkSound.play()
+				$walkTimer.start(0.2)
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false

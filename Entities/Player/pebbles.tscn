@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=32 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/shotgunShot.mp3" id="11_o5ie2"]
 [ext_resource type="AudioStream" uid="uid://dhj81cb8lgoco" path="res://Audio/revolver.mp3" id="12_ilv8r"]
 [ext_resource type="AudioStream" uid="uid://cdsq4evvx0ymr" path="res://Audio/machinegun.mp3" id="13_pg6ll"]
+[ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="14_aw3cd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ncl5"]
 radius = 8.0
@@ -287,6 +288,13 @@ stream = ExtResource("12_ilv8r")
 [node name="machinegunShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_pg6ll")
 pitch_scale = 0.64
+
+[node name="walkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_aw3cd")
+volume_db = -9.984
+
+[node name="walkTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="PlayerInteractArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PlayerInteractArea" to="." method="_on_pickup_area_area_exited"]
