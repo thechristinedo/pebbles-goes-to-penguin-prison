@@ -108,11 +108,11 @@ theme = ExtResource("8_dn5yc")
 theme_override_constants/outline_size = 3
 text = "Volume"
 
-[node name="Brightness" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Input Type" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("8_dn5yc")
 theme_override_constants/outline_size = 3
-text = "Brightness"
+text = "Input Type"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -121,4 +121,5 @@ theme_override_constants/outline_size = 3
 text = "Back	"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Input Type" to="." method="_on_input_type_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

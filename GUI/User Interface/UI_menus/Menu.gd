@@ -5,6 +5,7 @@ extends Control
 
 @onready var option_menu = $Option
 @onready var volume_menu = $Volume
+@onready var input_type_menu = $InputType
 @onready var selectSound = $selectSound
 @onready var saveslot = $SaveSlot
 
@@ -34,7 +35,6 @@ func _on_save_slot_3_pressed():
 	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
 
-
 func _on_options_pressed():
 	selectSound.play()
 	main_label.visible = false
@@ -51,6 +51,10 @@ func _on_volume_pressed():
 	option_menu.visible = false
 	volume_menu.visible = true
 	
+func _on_input_type_pressed():
+	selectSound.play()
+	option_menu.visible = false
+	input_type_menu.visible = true
 
 func _on_back_pressed():
 	selectSound.play()
@@ -58,6 +62,9 @@ func _on_back_pressed():
 	main_buttons.visible = true
 	option_menu.visible = false
 	volume_menu.visible = false
+	input_type_menu.visible = false
 	saveslot.visible = false
 
 
+func _on_input_type_button_item_selected(index):
+	pass # Replace with function body.
