@@ -1,11 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1j8acm6ymuju"]
+[gd_scene load_steps=29 format=3 uid="uid://c1j8acm6ymuju"]
 
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="1_gk0nd"]
 [ext_resource type="Texture2D" uid="uid://ds1rqwa2cldf1" path="res://Entities/Enemies/PolarBear/polar_bear_death2.png" id="1_qq04s"]
 [ext_resource type="Script" path="res://Entities/Enemies/PolarBear/polar_bear.gd" id="1_w8qpw"]
-[ext_resource type="Texture2D" uid="uid://cfvm5wq7q5yci" path="res://Entities/Enemies/PolarBear/polar_bear_walking.png" id="2_sbjkr"]
-[ext_resource type="Texture2D" uid="uid://ciwea3dily156" path="res://Entities/Enemies/PolarBear/polar_bear_2.png" id="3_fkkvj"]
+[ext_resource type="Texture2D" uid="uid://c2akt0wppjqup" path="res://Enemies/Polar Bear Guard/idle pb.png" id="3_bigm2"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="4_p6t7c"]
+[ext_resource type="Texture2D" uid="uid://xm4iu353nad3" path="res://Enemies/Polar Bear Guard/pb slap.png" id="5_s5vqn"]
+[ext_resource type="Texture2D" uid="uid://27mwfe38jco2" path="res://Enemies/Polar Bear Guard/pb walking.png" id="6_i65li"]
 [ext_resource type="AudioStream" uid="uid://dfsp13wh0lwrc" path="res://Audio/polarSlap.mp3" id="7_l2txk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ne1sd"]
@@ -14,9 +15,9 @@ shader = ExtResource("1_gk0nd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3l2x"]
-atlas = ExtResource("1_qq04s")
-region = Rect2(0, 0, 56, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai8j1"]
+atlas = ExtResource("3_bigm2")
+region = Rect2(0, 0, 38, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikhoc"]
 atlas = ExtResource("1_qq04s")
@@ -30,51 +31,51 @@ region = Rect2(112, 0, 56, 50)
 atlas = ExtResource("1_qq04s")
 region = Rect2(168, 0, 56, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y3gxv"]
-atlas = ExtResource("2_sbjkr")
-region = Rect2(0, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq7a"]
+atlas = ExtResource("3_bigm2")
+region = Rect2(0, 0, 38, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8llq7"]
-atlas = ExtResource("3_fkkvj")
-region = Rect2(0, 0, 65, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvkx1"]
+atlas = ExtResource("3_bigm2")
+region = Rect2(38, 0, 38, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rt4tv"]
-atlas = ExtResource("3_fkkvj")
-region = Rect2(65, 0, 65, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4g7v"]
+atlas = ExtResource("5_s5vqn")
+region = Rect2(0, 0, 55, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_juh7k"]
-atlas = ExtResource("3_fkkvj")
-region = Rect2(130, 0, 65, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4j7y"]
+atlas = ExtResource("5_s5vqn")
+region = Rect2(55, 0, 55, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_64a20"]
-atlas = ExtResource("3_fkkvj")
-region = Rect2(195, 0, 65, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_k76bt"]
+atlas = ExtResource("5_s5vqn")
+region = Rect2(110, 0, 55, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t88y5"]
-atlas = ExtResource("3_fkkvj")
-region = Rect2(260, 0, 65, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3233"]
+atlas = ExtResource("5_s5vqn")
+region = Rect2(165, 0, 55, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_10c47"]
-atlas = ExtResource("2_sbjkr")
-region = Rect2(0, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n58vg"]
+atlas = ExtResource("6_i65li")
+region = Rect2(0, 0, 38, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0itmo"]
-atlas = ExtResource("2_sbjkr")
-region = Rect2(50, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_on8ob"]
+atlas = ExtResource("6_i65li")
+region = Rect2(38, 0, 38, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ycfa"]
-atlas = ExtResource("2_sbjkr")
-region = Rect2(100, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5sr4"]
+atlas = ExtResource("6_i65li")
+region = Rect2(76, 0, 38, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbafe"]
-atlas = ExtResource("2_sbjkr")
-region = Rect2(150, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v3sn"]
+atlas = ExtResource("6_i65li")
+region = Rect2(114, 0, 38, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1btrm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a3l2x")
+"texture": SubResource("AtlasTexture_ai8j1")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ikhoc")
@@ -91,7 +92,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y3gxv")
+"texture": SubResource("AtlasTexture_wtq7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvkx1")
 }],
 "loop": true,
 "name": &"idle",
@@ -99,19 +103,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8llq7")
+"texture": SubResource("AtlasTexture_d4g7v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rt4tv")
+"texture": SubResource("AtlasTexture_d4j7y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_juh7k")
+"texture": SubResource("AtlasTexture_k76bt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_64a20")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t88y5")
+"texture": SubResource("AtlasTexture_b3233")
 }],
 "loop": false,
 "name": &"slap",
@@ -119,16 +120,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_10c47")
+"texture": SubResource("AtlasTexture_n58vg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0itmo")
+"texture": SubResource("AtlasTexture_on8ob")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ycfa")
+"texture": SubResource("AtlasTexture_x5sr4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lbafe")
+"texture": SubResource("AtlasTexture_0v3sn")
 }],
 "loop": true,
 "name": &"walk",
@@ -159,7 +160,7 @@ material = SubResource("ShaderMaterial_ne1sd")
 position = Vector2(5, -2)
 scale = Vector2(1.14286, 1.1)
 sprite_frames = SubResource("SpriteFrames_1btrm")
-animation = &"slap"
+animation = &"death"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -10.0
