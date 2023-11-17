@@ -4,6 +4,10 @@ extends Node
 @onready var player_health_bar_ui = $GUI/Panel/HeartsContainer
 #@onready var player_ammo_ui = $"GUI/Panel/Ammo Amount"
 
+# Controller compatibility
+enum INPUT_SCHEMES { KEYBOARD_AND_MOUSE, GAMEPAD, TOUCH_SCREEN }
+static var INPUT_SCHEME: INPUT_SCHEMES = INPUT_SCHEMES.KEYBOARD_AND_MOUSE
+
 func _ready():
 	init_room()
 	
