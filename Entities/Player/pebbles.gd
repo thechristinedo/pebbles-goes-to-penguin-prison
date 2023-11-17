@@ -51,7 +51,7 @@ func handle_player_shoot() -> void:
 			ranged_attack_component.set_fire_rate(current_gun.shooter.firerate)
 			var has_shot = ranged_attack_component.shoot()
 			if has_shot: 
-				var gunType = ranged_attack_component.get_type()
+				var gunType = ranged_attack_component.gun.get_type()
 				if gunType == "shotgun":
 					shotgunShot.play()
 				elif gunType == "revolver":
