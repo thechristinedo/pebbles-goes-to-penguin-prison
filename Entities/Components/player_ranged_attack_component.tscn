@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4i5a3obxwe7e"]
+
+[ext_resource type="Script" path="res://Entities/Components/player_ranged_attack_component.gd" id="1_8wg6x"]
+
+[node name="RangedAttackComponent" type="Node"]
+script = ExtResource("1_8wg6x")
+
+[node name="Firerate" type="Timer" parent="."]

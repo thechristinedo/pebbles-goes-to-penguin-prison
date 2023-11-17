@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn5ln0ripgxu2"
-path="res://.godot/imported/prison-tilemap.png-29fd511da6b5a13f76c3bbd9a01a55ac.ctex"
+uid="uid://7hjdfd88hsrx"
+path="res://.godot/imported/penguin-death.png-fa612cf7bbbf7cd4085edfa0f8c18a6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilemap/prison-tilemap.png"
-dest_files=["res://.godot/imported/prison-tilemap.png-29fd511da6b5a13f76c3bbd9a01a55ac.ctex"]
+source_file="res://Assets/Entities/Enemies/penguin-death.png"
+dest_files=["res://.godot/imported/penguin-death.png-fa612cf7bbbf7cd4085edfa0f8c18a6c.ctex"]
 
 [params]
 

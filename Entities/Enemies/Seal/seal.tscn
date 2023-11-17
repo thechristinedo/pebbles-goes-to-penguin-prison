@@ -1,11 +1,12 @@
 [gd_scene load_steps=27 format=3 uid="uid://b7dts4c4mcnyo"]
 
-[ext_resource type="Texture2D" uid="uid://dhlnlqufvc7ur" path="res://Entities/Enemies/Seal/seal_walking.png" id="1_37iev"]
 [ext_resource type="Script" path="res://Entities/Enemies/Seal/seal.gd" id="1_c2je5"]
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="2_d07ir"]
 [ext_resource type="Texture2D" uid="uid://bqiuhpohg1nn1" path="res://Entities/Enemies/Seal/seal_death_frames_new.png" id="2_ewul5"]
-[ext_resource type="Texture2D" uid="uid://uwf6uq3ji8w0" path="res://Entities/Enemies/Seal/slap_seal.png" id="4_ijjct"]
+[ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Enemies/Seal Guard/idle seal.png" id="3_ohu7f"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_0ismb"]
+[ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Enemies/seal slap.png" id="5_0wuwg"]
+[ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Enemies/Seal Guard/walking seal.png" id="6_giq5v"]
 [ext_resource type="AudioStream" uid="uid://c0fv5u8jhjex8" path="res://Audio/sealSlap.mp3" id="7_j474t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g3yn3"]
@@ -14,9 +15,9 @@ shader = ExtResource("2_d07ir")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_heto7"]
-atlas = ExtResource("2_ewul5")
-region = Rect2(0, 0, 52, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2ykb"]
+atlas = ExtResource("3_ohu7f")
+region = Rect2(0, 0, 40, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4k6u"]
 atlas = ExtResource("2_ewul5")
@@ -30,47 +31,43 @@ region = Rect2(104, 0, 52, 50)
 atlas = ExtResource("2_ewul5")
 region = Rect2(156, 0, 52, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ig7ns"]
-atlas = ExtResource("1_37iev")
-region = Rect2(0, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta3y8"]
+atlas = ExtResource("3_ohu7f")
+region = Rect2(0, 0, 40, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gj0f3"]
-atlas = ExtResource("4_ijjct")
-region = Rect2(0, 0, 48, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dauq"]
+atlas = ExtResource("3_ohu7f")
+region = Rect2(40, 0, 40, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3xrn"]
-atlas = ExtResource("4_ijjct")
-region = Rect2(48, 0, 48, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge65s"]
+atlas = ExtResource("5_0wuwg")
+region = Rect2(0, 0, 53, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uu7kv"]
-atlas = ExtResource("4_ijjct")
-region = Rect2(96, 0, 48, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnes3"]
+atlas = ExtResource("5_0wuwg")
+region = Rect2(53, 0, 53, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxmcq"]
-atlas = ExtResource("4_ijjct")
-region = Rect2(144, 0, 48, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1utq"]
+atlas = ExtResource("5_0wuwg")
+region = Rect2(106, 0, 53, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yef6"]
-atlas = ExtResource("4_ijjct")
-region = Rect2(192, 0, 48, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6gxr"]
+atlas = ExtResource("6_giq5v")
+region = Rect2(0, 0, 40, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5ueo"]
-atlas = ExtResource("1_37iev")
-region = Rect2(0, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_48422"]
+atlas = ExtResource("6_giq5v")
+region = Rect2(40, 0, 40, 35)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtknp"]
-atlas = ExtResource("1_37iev")
-region = Rect2(50, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oo7hv"]
-atlas = ExtResource("1_37iev")
-region = Rect2(100, 0, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2hm4"]
+atlas = ExtResource("6_giq5v")
+region = Rect2(80, 0, 40, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cefw2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_heto7")
+"texture": SubResource("AtlasTexture_n2ykb")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i4k6u")
@@ -87,7 +84,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ig7ns")
+"texture": SubResource("AtlasTexture_ta3y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dauq")
 }],
 "loop": true,
 "name": &"idle",
@@ -95,19 +95,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gj0f3")
+"texture": SubResource("AtlasTexture_ge65s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b3xrn")
+"texture": SubResource("AtlasTexture_pnes3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uu7kv")
+"texture": SubResource("AtlasTexture_s1utq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kxmcq")
+"texture": SubResource("AtlasTexture_pnes3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yef6")
+"texture": SubResource("AtlasTexture_ge65s")
 }],
 "loop": false,
 "name": &"slap",
@@ -115,13 +115,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i5ueo")
+"texture": SubResource("AtlasTexture_t6gxr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gtknp")
+"texture": SubResource("AtlasTexture_48422")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oo7hv")
+"texture": SubResource("AtlasTexture_b2hm4")
 }],
 "loop": true,
 "name": &"walk",
@@ -146,7 +146,7 @@ script = ExtResource("1_c2je5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_g3yn3")
 sprite_frames = SubResource("SpriteFrames_cefw2")
-animation = &"walk"
+animation = &"death"
 
 [node name="detection_radius" type="Area2D" parent="."]
 
