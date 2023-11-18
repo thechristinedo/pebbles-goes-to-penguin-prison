@@ -1,4 +1,5 @@
 extends Node
+class_name World
 
 @onready var player = load("res://Entities/Player/pebbles.tscn").instantiate()
 @onready var player_health_bar_ui = $GUI/Panel/HeartsContainer
