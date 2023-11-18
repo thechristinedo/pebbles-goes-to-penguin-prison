@@ -67,4 +67,5 @@ func _on_back_pressed():
 
 
 func _on_input_type_button_item_selected(index):
-	pass # Replace with function body.
+	if index != -1:
+		World.INPUT_SCHEME = index
