@@ -1,0 +1,222 @@
+[gd_scene load_steps=16 format=3 uid="uid://cedpgh0klnx6y"]
+
+[ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_06o5o"]
+[ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="2_u61ii"]
+[ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Assets/Entities/Enemies/Seal Guard/walking seal.png" id="3_he1a1"]
+[ext_resource type="Script" path="res://Entities/Components/ShootingComponent.gd" id="5_pcvit"]
+[ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_irsci"]
+[ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="7_ymscf"]
+[ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="8_2ayuh"]
+[ext_resource type="PackedScene" uid="uid://bnjjrwq6xpbe0" path="res://Entities/Enemies/BaseEnemy/EntityStates/Engage.tscn" id="9_oxu8f"]
+[ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="10_2m638"]
+[ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="11_1b5v1"]
+
+[sub_resource type="Animation" id="Animation_7fptj"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u61ii")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_drp0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u61ii")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemySprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ts8ww"]
+resource_name = "running"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_he1a1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemySprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ys5ix"]
+_data = {
+"RESET": SubResource("Animation_drp0q"),
+"idle": SubResource("Animation_7fptj"),
+"running": SubResource("Animation_ts8ww")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3dqr"]
+radius = 129.19
+
+[node name="Enemy" instance=ExtResource("1_06o5o")]
+
+[node name="EnemySprite" parent="." index="1"]
+texture = ExtResource("2_u61ii")
+hframes = 2
+frame = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_ys5ix")
+}
+
+[node name="AnimationTree" parent="." index="4"]
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[node name="SightRadius" type="Area2D" parent="." index="6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0"]
+shape = SubResource("CircleShape2D_e3dqr")
+
+[node name="ShootingComponent" type="Node2D" parent="." index="7"]
+script = ExtResource("5_pcvit")
+
+[node name="HealthComponent" type="Node" parent="." index="8"]
+script = ExtResource("6_irsci")
+
+[node name="MovementComponent" type="Node" parent="." index="9"]
+script = ExtResource("7_ymscf")
+
+[node name="StateMachineComponent2" parent="." index="10" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_2ayuh")]
+initial_state = NodePath("")
+
+[node name="Engage" parent="StateMachineComponent2" index="0" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "shooting_component") instance=ExtResource("9_oxu8f")]
+entity_node = NodePath("")
+movement_component = NodePath("")
+health_component = NodePath("")
+shooting_component = NodePath("")
+
+[node name="Follow" parent="StateMachineComponent2" index="1" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "sight_radius", "navigation_node") instance=ExtResource("10_2m638")]
+entity_node = NodePath("")
+movement_component = NodePath("")
+health_component = NodePath("")
+sight_radius = NodePath("")
+navigation_node = NodePath("")
+
+[node name="Idle" parent="StateMachineComponent2" index="2" node_paths=PackedStringArray("movement_component", "health_component", "sight_radius") instance=ExtResource("11_1b5v1")]
+movement_component = NodePath("")
+health_component = NodePath("")
+sight_radius = NodePath("")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="11"]
+
+[node name="NavigationTimer" type="Timer" parent="." index="12"]

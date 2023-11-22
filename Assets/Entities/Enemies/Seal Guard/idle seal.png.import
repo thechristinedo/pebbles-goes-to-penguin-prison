@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xm4iu353nad3"
-path="res://.godot/imported/pb slap.png-31bed3991eb83262d2454dd848520631.ctex"
+uid="uid://clgx2nqq8to3k"
+path="res://.godot/imported/idle seal.png-9795bf7290b04506e57a1483ec7d7c64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Polar Bear Guard/pb slap.png"
-dest_files=["res://.godot/imported/pb slap.png-31bed3991eb83262d2454dd848520631.ctex"]
+source_file="res://Assets/Entities/Enemies/Seal Guard/idle seal.png"
+dest_files=["res://.godot/imported/idle seal.png-9795bf7290b04506e57a1483ec7d7c64.ctex"]
 
 [params]
 
