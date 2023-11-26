@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://27mwfe38jco2"
-path="res://.godot/imported/pb walking.png-7b545a37f899d82d0890fcfac7c8e800.ctex"
+uid="uid://c2akt0wppjqup"
+path="res://.godot/imported/idle pb.png-48b14aa8f2404bc5c1b931382fb7aa9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Polar Bear Guard/pb walking.png"
-dest_files=["res://.godot/imported/pb walking.png-7b545a37f899d82d0890fcfac7c8e800.ctex"]
+source_file="res://Assets/Entities/Enemies/Polar Bear Guard/idle pb.png"
+dest_files=["res://.godot/imported/idle pb.png-48b14aa8f2404bc5c1b931382fb7aa9a.ctex"]
 
 [params]
 

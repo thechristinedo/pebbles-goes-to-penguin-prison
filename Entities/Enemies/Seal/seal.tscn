@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Entities/Enemies/Seal/seal.gd" id="1_c2je5"]
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="2_d07ir"]
 [ext_resource type="Texture2D" uid="uid://bqiuhpohg1nn1" path="res://Entities/Enemies/Seal/seal_death_frames_new.png" id="2_ewul5"]
-[ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Enemies/Seal Guard/idle seal.png" id="3_ohu7f"]
+[ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="3_ohu7f"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="5_0ismb"]
-[ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Enemies/seal slap.png" id="5_0wuwg"]
-[ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Enemies/Seal Guard/walking seal.png" id="6_giq5v"]
+[ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Assets/Entities/Enemies/Seal Guard/seal slap.png" id="5_0wuwg"]
+[ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Assets/Entities/Enemies/Seal Guard/walking seal.png" id="6_giq5v"]
 [ext_resource type="AudioStream" uid="uid://c0fv5u8jhjex8" path="res://Audio/sealSlap.mp3" id="7_j474t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g3yn3"]
