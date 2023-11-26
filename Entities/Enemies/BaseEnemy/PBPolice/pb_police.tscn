@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_2bf6c"]
 [ext_resource type="Texture2D" uid="uid://c2akt0wppjqup" path="res://Assets/Entities/Enemies/Polar Bear Guard/idle pb.png" id="2_6h32t"]
 [ext_resource type="Script" path="res://Entities/Components/ShootingComponent.gd" id="2_lpn0e"]
-[ext_resource type="Script" path="res://Guns/gun.gd" id="3_op4bt"]
+[ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="3_6ljsl"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="3_tf8xl"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="4_1alht"]
-[ext_resource type="Resource" uid="uid://d4i82kw6b16uc" path="res://Guns/GunTypes/revolver.tres" id="4_6y1d1"]
+[ext_resource type="Resource" uid="uid://bo2yxn03ftaxq" path="res://Guns/GunTypes/machinegun.tres" id="4_q3him"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="5_g4sme"]
 [ext_resource type="Texture2D" uid="uid://27mwfe38jco2" path="res://Assets/Entities/Enemies/Polar Bear Guard/pb walking.png" id="5_o287c"]
 [ext_resource type="Texture2D" uid="uid://xm4iu353nad3" path="res://Assets/Entities/Enemies/Polar Bear Guard/pb slap.png" id="6_27s5a"]
@@ -236,9 +236,9 @@ offset = Vector2(0, -2)
 hframes = 2
 frame = 0
 
-[node name="Gun" type="Sprite2D" parent="." index="2"]
-script = ExtResource("3_op4bt")
-inventory_item = ExtResource("4_6y1d1")
+[node name="Gun" parent="." index="2" instance=ExtResource("3_6ljsl")]
+visible = false
+inventory_item = ExtResource("4_q3him")
 
 [node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
