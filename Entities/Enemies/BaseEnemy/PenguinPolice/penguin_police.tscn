@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_nhfw3"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/penguin-police-idle.png" id="2_2404h"]
+[ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="2_shtlg"]
 [ext_resource type="Texture2D" uid="uid://bikh14ur2a6rq" path="res://Assets/Entities/Enemies/penguin-police-run.png" id="3_g80vo"]
 [ext_resource type="PackedScene" uid="uid://pjwrbqlmgj5t" path="res://Entities/Components/MovementComponent.tscn" id="4_n0hko"]
 [ext_resource type="Script" path="res://Guns/gun.gd" id="4_x1vnx"]
@@ -237,9 +238,8 @@ radius = 150.0
 
 [node name="Enemy" instance=ExtResource("1_nhfw3")]
 
-[node name="Gun" type="Sprite2D" parent="." index="2"]
+[node name="Gun" parent="." index="2" instance=ExtResource("2_shtlg")]
 visible = false
-script = ExtResource("4_x1vnx")
 inventory_item = ExtResource("5_ebvr6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]

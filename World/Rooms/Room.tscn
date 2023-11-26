@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b8rqo3xqcfu1m"]
+
+[node name="Room" type="Node2D"]
+
+[node name="MapSprite" type="Sprite2D" parent="."]
+
+[node name="PebblesSpawn" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="CameraArea" type="Area2D" parent="."]
+
+[node name="CameraBounds" type="CollisionShape2D" parent="CameraArea"]
+
+[node name="RoomCollisions" type="StaticBody2D" parent="."]

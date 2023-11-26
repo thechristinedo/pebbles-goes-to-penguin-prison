@@ -15,6 +15,8 @@ func _on_area_2d_body_entered(body):
 	if body.get_node_or_null("HealthComponent"):
 		var body_health_component = body.get_node("HealthComponent") as HealthComponent
 		body_health_component.take_damage(damage, rotation)
+	if body.has_method("take_damage"):
+		body.take_damage()
 	destroy()
 
 func destroy():

@@ -31,6 +31,7 @@ var current_animation: String = "idle"
 var is_sliding = false 
 
 var collectables: Array[Area2D]
+var invincible: bool = false
 
 func _ready():
 	animation_tree.active = true
@@ -42,7 +43,7 @@ func _physics_process(_delta):
 	handle_player_interactions()
 	move_and_slide()
 	if Input.is_action_just_pressed("ui_text_backspace"):
-		take_damage(1)
+		take_damage()
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -186,8 +187,10 @@ signal health_update
 signal pebbles_death
 signal pebbles_shoot
 
-func take_damage(damage: int) -> void:
+func take_damage() -> void:
 	#damage is only going to be 1 for pebbles 
+	if invincible: return
+	
 	health -= 1
 	
 	#flash()
@@ -208,4 +211,13 @@ func take_damage(damage: int) -> void:
 		pebbles_death.emit()
 	print(health)
 	health_update.emit(health, max_health)
+	invincible_frames()
 
+func invincible_frames() -> void:
+	invincible = true
+	character_sprite.material.set_shader_parameter("flash_modifier", 0.8)
+	get_tree().create_timer(0.5).connect("timeout", invincible_reset)
+
+func invincible_reset() -> void:
+	invincible = false
+	character_sprite.material.set_shader_parameter("flash_modifier", 0)

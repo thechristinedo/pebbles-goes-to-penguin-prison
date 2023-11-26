@@ -31,6 +31,7 @@ func get_type():
 
 func shoot() -> bool:
 	if inventory_item and inventory_item.shooter: 
+		_muzzle_flash()
 		var room_node = get_node("/root/World/RoomManager/Room")
 		var bullets = inventory_item.shooter.shoot() as Array[Bullet]
 		if bullets.size():
@@ -46,3 +47,10 @@ func shoot() -> bool:
 				room_node.add_child(bullet_trail)
 			return true
 	return false
+
+func _muzzle_flash() -> void:
+	$MuzzleFlash.energy = 0.5
+	get_tree().create_timer(0.06).connect("timeout", _muzzle_flash_timeout)
+
+func _muzzle_flash_timeout() -> void:
+	$MuzzleFlash.energy = 0

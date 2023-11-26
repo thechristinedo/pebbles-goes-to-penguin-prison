@@ -1,6 +1,6 @@
 extends Node
 
-@export var starting_room: String = "res://World/Rooms/RoomPrefabs/starting_room.tscn"
+@export var starting_room: String = "res://World/Rooms/RoomPrefabs/prison_cell.tscn"
 
 static var room_manager_node: Node
 static var animation_player: AnimationPlayer
