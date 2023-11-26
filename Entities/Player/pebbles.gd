@@ -37,6 +37,8 @@ signal health_updated
 signal pebbles_death
 signal pebbles_shoot
 
+var last_health: int = 0
+
 var collectables: Array[Area2D]
 var invincible: bool = false
 
@@ -51,6 +53,9 @@ func _physics_process(_delta):
 	move_and_slide()
 	if Input.is_action_just_pressed("ui_text_backspace"):
 		take_damage()
+	if last_health != health:
+		last_health = health
+		get_node("/root/World").update_player_health(health, max_health)
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
