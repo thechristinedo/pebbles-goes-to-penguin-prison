@@ -1,9 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=56 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
 [ext_resource type="Texture2D" uid="uid://dp6qlaxjnh1bd" path="res://Assets/Entities/Player/pebble-run.png" id="2_0hke7"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="2_63tet"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/flash.gdshader" id="3_tpjt6"]
 [ext_resource type="Script" path="res://Entities/Player/player_camera.gd" id="4_otm1v"]
 [ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="4_tak5x"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
@@ -19,6 +20,12 @@
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="14_aw3cd"]
 [ext_resource type="AudioStream" uid="uid://bawoidr8iu42" path="res://Audio/slideSound.mp3" id="16_3ru8d"]
 [ext_resource type="AudioStream" uid="uid://cwgue21qev62b" path="res://Audio/dropSound.mp3" id="17_jl1ic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cx6u"]
+resource_local_to_scene = true
+shader = ExtResource("3_tpjt6")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ncl5"]
 radius = 8.0
@@ -354,6 +361,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_63tet")
 
 [node name="PebblesSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7cx6u")
 texture = ExtResource("1_7v67i")
 hframes = 3
 
