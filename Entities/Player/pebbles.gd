@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
@@ -25,6 +27,7 @@ extends CharacterBody2D
 @export var max_health: int = 10
 @onready var health: int = max_health
 var is_eating = false
+@onready var fish_count: int = 0
 
 @export var speed: float = 200
 var current_animation: String = "idle"
@@ -34,6 +37,7 @@ var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 
 signal health_updated
+signal fish_update
 signal pebbles_death
 signal pebbles_shoot
 
@@ -56,6 +60,8 @@ func _physics_process(_delta):
 	if last_health != health:
 		last_health = health
 		get_node("/root/World").update_player_health(health, max_health)
+	
+	fish_count = fishventory.get_fish_value()
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -134,6 +140,9 @@ func handle_player_interactions() -> void:
 			print("Fish left in inventory: ", fishventory.get_fish_value())
 		else:
 			print("No fish in fishventory! Collect some fish!")
+		
+		get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fishventory.get_fish_value(), -1)
+
 
 func update_animation() -> void:
 	# Make sure we only update the animation if we are not sliding or eating
