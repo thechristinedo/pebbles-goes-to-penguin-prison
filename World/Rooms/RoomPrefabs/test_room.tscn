@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8fp1do82l7ia"]
+[gd_scene load_steps=13 format=3 uid="uid://8fp1do82l7ia"]
 
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_1vl2l"]
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_lsty8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="6_begxr"]
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="8_ttpex"]
 [ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="9_qvci2"]
+[ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="10_cm6hq"]
 [ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="11_gkyh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1hso"]
@@ -70,3 +71,9 @@ position = Vector2(229, 211)
 
 [node name="Enemy4" parent="." instance=ExtResource("9_qvci2")]
 position = Vector2(161, 112)
+
+[node name="Enemy5" parent="." instance=ExtResource("10_cm6hq")]
+position = Vector2(160, 186)
+
+[node name="Enemy6" parent="." instance=ExtResource("10_cm6hq")]
+position = Vector2(47, 228)
