@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnubvl46cxjvk"]
+[gd_scene load_steps=8 format=3 uid="uid://cfrfa68vweth2"]
 
 [ext_resource type="Script" path="res://Entities/Objects/barrel_bone.gd" id="1_2lrlx"]
-[ext_resource type="PackedScene" uid="uid://ccpkn8u7u73jq" path="res://Collectables/Pickup/PickupBone.tscn" id="2_j12ta"]
+[ext_resource type="PackedScene" path="res://Collectables/Pickup/PickupBone.tscn" id="2_j12ta"]
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="3_ayxpw"]
 [ext_resource type="Texture2D" uid="uid://dvn0adliiqfho" path="res://Assets/s_barrel_0.png" id="4_lfbdl"]
 [ext_resource type="AudioStream" uid="uid://cerqyctck6638" path="res://Audio/barrelbreak.mp3" id="5_t8a4s"]

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="6_begxr"]
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="8_ttpex"]
 [ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="9_qvci2"]
-[ext_resource type="PackedScene" uid="uid://dnubvl46cxjvk" path="res://Entities/Objects/barrel_bone.tscn" id="11_gkyh5"]
+[ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="11_gkyh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1hso"]
 size = Vector2(331, 305)
