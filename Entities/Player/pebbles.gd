@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
+@onready var shadow: Sprite2D = $Shadow
 @onready var gun: Gun = $Gun
 @onready var character_sprite: Sprite2D = $PebblesSprite
 @onready var ranged_attack_component: Node = $RangedAttackComponent
@@ -195,9 +196,13 @@ func take_damage(damage: int) -> void:
 	if health <= 0:
 		health = 0
 		#sprite2.material.set_shader_parameter("flash_modifier", 0)
+		animation_player.play("death")
+		await animation_player.animation_finished
 		get_tree().paused = true
 		add_child(gameOver)
+		gun.visible = false
 		character_sprite.visible = false
+		shadow.visible = false
 		gameOver.visible = true
 		print("dead")
 		pebbles_death.emit()
