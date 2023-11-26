@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var gun: Gun = $Gun
 @onready var character_sprite: Sprite2D = $PebblesSprite
