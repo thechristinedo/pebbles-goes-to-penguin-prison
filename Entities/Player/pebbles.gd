@@ -28,6 +28,13 @@ var is_eating = false
 var current_animation: String = "idle"
 var is_sliding = false 
 
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+
+signal health_updated
+signal pebbles_death
+signal pebbles_shoot
+
 var collectables: Array[Area2D]
 var invincible: bool = false
 
@@ -172,39 +179,19 @@ func heal(amount: int):
 		health = max_health
 	#print("Health is: ", health)
 
-# Added from old-main
-#@export var sprite_2d: Sprite2D
-@export var damage: int = 1
-#@onready var gameOver = $GameOverScreen
-#@onready var sprite2 = $Sprite2D
-
-var enemy_inattack_range = false
-var enemy_attack_cooldown = true
-
-signal health_update
-signal pebbles_death
-signal pebbles_shoot
-
 func take_damage() -> void:
 	#damage is only going to be 1 for pebbles 
 	if invincible: return
-	
 	health -= 1
-	
-	#flash()
-	#enemy_attack_cooldown = false
-	# $attack_cooldown.start()
 	if health <= 0:
 		health = 0
-		#sprite2.material.set_shader_parameter("flash_modifier", 0)
 		get_tree().paused = true
 		add_child(gameOver)
 		character_sprite.visible = false
 		gameOver.visible = true
 		print("dead")
 		pebbles_death.emit()
-	print(health)
-	health_update.emit(health, max_health)
+	get_node("/root/World").update_player_health(health, max_health)
 	invincible_frames()
 
 func invincible_frames() -> void:
