@@ -40,7 +40,7 @@ func _physics_process(_delta):
 	handle_player_interactions()
 	move_and_slide()
 	if Input.is_action_just_pressed("ui_text_backspace"):
-		take_damage(1)
+		take_damage()
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -184,7 +184,7 @@ signal health_update
 signal pebbles_death
 signal pebbles_shoot
 
-func take_damage(damage: int) -> void:
+func take_damage() -> void:
 	#damage is only going to be 1 for pebbles 
 	health -= 1
 	
