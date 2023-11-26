@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=56 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c4i5a3obxwe7e" path="res://Entities/Components/player_ranged_attack_component.tscn" id="7_4rer2"]
 [ext_resource type="Texture2D" uid="uid://8fhxh3b2rdjs" path="res://Assets/Entities/Player/pebbles-dash.png" id="7_rtiva"]
 [ext_resource type="Script" path="res://Inventory/fishventory.gd" id="9_7it64"]
+[ext_resource type="Texture2D" uid="uid://7hjdfd88hsrx" path="res://Assets/Entities/Enemies/penguin-death.png" id="9_4416w"]
 [ext_resource type="AudioStream" uid="uid://ctvw6c5mfo1tt" path="res://Audio/reload.mp3" id="9_bmfi5"]
 [ext_resource type="AudioStream" uid="uid://d1e41god0o21b" path="res://Audio/pickup.mp3" id="10_n1smd"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/shotgunShot.mp3" id="11_o5ie2"]
@@ -71,6 +73,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PebblesSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_gidgm"]
@@ -238,9 +252,62 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_itukp"]
 resource_name = "standing"
 
+[sub_resource type="Animation" id="Animation_cluox"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PebblesSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_4416w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PebblesSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PebblesSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PebblesSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgk60"]
 _data = {
 "RESET": SubResource("Animation_t47us"),
+"death": SubResource("Animation_cluox"),
 "eat": SubResource("Animation_gidgm"),
 "idle": SubResource("Animation_ekktp"),
 "run": SubResource("Animation_boo2t"),
@@ -305,7 +372,7 @@ states/run/position = Vector2(633, 100)
 states/slide/node = SubResource("AnimationNodeAnimation_ntwe1")
 states/slide/position = Vector2(525.1, 0.360001)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky"), "run", "slide", SubResource("AnimationNodeStateMachineTransition_dx8v7"), "slide", "run", SubResource("AnimationNodeStateMachineTransition_3ompl"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_6b5b4"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_5vc1e"), "idle", "eat", SubResource("AnimationNodeStateMachineTransition_0pa17"), "eat", "idle", SubResource("AnimationNodeStateMachineTransition_6dohc"), "eat", "run", SubResource("AnimationNodeStateMachineTransition_p30wn"), "run", "eat", SubResource("AnimationNodeStateMachineTransition_w0ebd"), "eat", "slide", SubResource("AnimationNodeStateMachineTransition_s8go0"), "slide", "eat", SubResource("AnimationNodeStateMachineTransition_als5d")]
-graph_offset = Vector2(-2.29509, -76.0598)
+graph_offset = Vector2(-2.29509, -172.305)
 
 [sub_resource type="Gradient" id="Gradient_owbeb"]
 offsets = PackedFloat32Array(0.674074, 1)
