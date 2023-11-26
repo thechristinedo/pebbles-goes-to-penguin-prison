@@ -14,8 +14,8 @@ extends StaticBody2D
 
 @onready var barrelbreak = $barrelbreak
 
-func take_damage(damage: int, bullet: Bullet) -> void:
-	health -= damage
+func take_damage() -> void:
+	health -= 50
 	flash()
 	#print("current health: ", health)
 	if health <= 0:
