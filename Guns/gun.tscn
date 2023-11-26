@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjgtb3bv0peso"]
+
+[ext_resource type="Script" path="res://Guns/gun.gd" id="1_sig4i"]
+
+[sub_resource type="Gradient" id="Gradient_tl2uv"]
+offsets = PackedFloat32Array(0, 0.73913)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bixhd"]
+gradient = SubResource("Gradient_tl2uv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Gun" type="Sprite2D"]
+script = ExtResource("1_sig4i")
+
+[node name="MuzzleFlash" type="PointLight2D" parent="."]
+position = Vector2(21, 2)
+color = Color(1, 0.901961, 0.396078, 0.564706)
+energy = 0.0
+texture = SubResource("GradientTexture2D_bixhd")

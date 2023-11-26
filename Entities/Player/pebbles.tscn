@@ -1,13 +1,13 @@
-[gd_scene load_steps=52 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=54 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
 [ext_resource type="Texture2D" uid="uid://dp6qlaxjnh1bd" path="res://Assets/Entities/Player/pebble-run.png" id="2_0hke7"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="2_63tet"]
 [ext_resource type="Script" path="res://Entities/Player/player_camera.gd" id="4_otm1v"]
-[ext_resource type="Script" path="res://Guns/gun.gd" id="5_qqioc"]
+[ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="4_tak5x"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
-[ext_resource type="Texture2D" uid="uid://m3crtnklvp77" path="res://Assets/Entities/pebbles-eating-fish.png" id="6_ce7l5"]
+[ext_resource type="Texture2D" uid="uid://cxa0gskecbp13" path="res://Assets/Entities/pebbles-eating-fish.png" id="6_ce7l5"]
 [ext_resource type="PackedScene" uid="uid://c4i5a3obxwe7e" path="res://Entities/Components/player_ranged_attack_component.tscn" id="7_4rer2"]
 [ext_resource type="Texture2D" uid="uid://8fhxh3b2rdjs" path="res://Assets/Entities/Player/pebbles-dash.png" id="7_rtiva"]
 [ext_resource type="Script" path="res://Inventory/fishventory.gd" id="9_7it64"]
@@ -330,6 +330,15 @@ scale_max = 2.0
 scale_curve = SubResource("CurveTexture_rw4f0")
 color_ramp = SubResource("GradientTexture1D_c3qxj")
 
+[sub_resource type="Gradient" id="Gradient_einbi"]
+offsets = PackedFloat32Array(0, 0.256522, 0.721739)
+colors = PackedColorArray(0.721739, 0.721739, 0.721739, 1, 0.237539, 0.237539, 0.237539, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6oxwi"]
+gradient = SubResource("Gradient_einbi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Pebbles" type="CharacterBody2D"]
 z_index = 1
 position = Vector2(0, -5)
@@ -348,8 +357,7 @@ texture = ExtResource("2_63tet")
 texture = ExtResource("1_7v67i")
 hframes = 3
 
-[node name="Gun" type="Sprite2D" parent="."]
-script = ExtResource("5_qqioc")
+[node name="Gun" parent="." instance=ExtResource("4_tak5x")]
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -391,7 +399,6 @@ script = ExtResource("9_7it64")
 gun = NodePath("../Gun")
 
 [node name="MovementParticles" type="GPUParticles2D" parent="."]
-visible = false
 show_behind_parent = true
 position = Vector2(0, 15)
 amount = 9
@@ -436,6 +443,13 @@ pitch_scale = 1.45
 
 [node name="walkTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerLightAura" type="PointLight2D" parent="."]
+visible = false
+color = Color(1, 0.6, 0, 1)
+energy = 0.15
+texture = SubResource("GradientTexture2D_6oxwi")
+texture_scale = 3.0
 
 [connection signal="area_entered" from="PlayerInteractArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PlayerInteractArea" to="." method="_on_pickup_area_area_exited"]
