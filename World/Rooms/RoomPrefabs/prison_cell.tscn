@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://wy54al360bqf"]
+[gd_scene load_steps=19 format=3 uid="uid://wy54al360bqf"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_e6lsb"]
 [ext_resource type="Texture2D" uid="uid://ch1xerpsg7h0f" path="res://Assets/Maps/prison-cell-map-closed.png" id="2_qri7w"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_y8yxa"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="3_0vrse"]
-[ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="5_0gffp"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="5_uhpgq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bmf8s"]
@@ -57,6 +56,21 @@ turbulence_noise_scale = 1.12
 [sub_resource type="CircleShape2D" id="CircleShape2D_70p46"]
 radius = 19.0
 
+[sub_resource type="Animation" id="Animation_jgcjo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
 [sub_resource type="Animation" id="Animation_lesqm"]
 resource_name = "hover"
 length = 1.5
@@ -72,21 +86,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, -3), Vector2(0, 3), Vector2(0, -3)]
-}
-
-[sub_resource type="Animation" id="Animation_jgcjo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Button:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nb23"]
@@ -158,9 +157,6 @@ offset = Vector2(0, -5)
 libraries = {
 "": SubResource("AnimationLibrary_1nb23")
 }
-
-[node name="Enemy" parent="." index="9" instance=ExtResource("5_0gffp")]
-position = Vector2(-44, -45)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]

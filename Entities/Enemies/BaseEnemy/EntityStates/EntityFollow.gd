@@ -8,6 +8,7 @@ extends State
 @export var sight_radius: Area2D
 @export var navigation_node: NavigationAgent2D
 @export var engage_distance: float = 100
+@export var engage_state: String = "Engage"
 
 var _time_to_update_navigation: float = 0.05
 var _following: bool = false
@@ -32,7 +33,7 @@ func physics_update(_delta: float):
 		_following = false
 		navigation_timer.stop()
 		movement_component.stop_movement()
-		Transitioned.emit(self, "Engage")
+		Transitioned.emit(self, engage_state)
 	
 	if navigation_node.is_navigation_finished() or health_component.is_dead():
 		navigation_timer.stop()

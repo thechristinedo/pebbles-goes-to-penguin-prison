@@ -66,4 +66,4 @@ position = Vector2(-42, 231)
 position = Vector2(179, 49)
 
 [node name="Enemy6" parent="." instance=ExtResource("10_cm6hq")]
-position = Vector2(146, 211)
+position = Vector2(164, 220)

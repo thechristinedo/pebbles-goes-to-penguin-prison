@@ -1,16 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://xrolridxojk0"]
+[gd_scene load_steps=18 format=3 uid="uid://xrolridxojk0"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_2bf6c"]
 [ext_resource type="Texture2D" uid="uid://c2akt0wppjqup" path="res://Assets/Entities/Enemies/Polar Bear Guard/idle pb.png" id="2_6h32t"]
-[ext_resource type="Script" path="res://Entities/Components/ShootingComponent.gd" id="2_lpn0e"]
-[ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="3_6ljsl"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="3_tf8xl"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="4_1alht"]
-[ext_resource type="Resource" uid="uid://bo2yxn03ftaxq" path="res://Guns/GunTypes/machinegun.tres" id="4_q3him"]
+[ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="5_akwcr"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="5_g4sme"]
 [ext_resource type="Texture2D" uid="uid://27mwfe38jco2" path="res://Assets/Entities/Enemies/Polar Bear Guard/pb walking.png" id="5_o287c"]
 [ext_resource type="Texture2D" uid="uid://xm4iu353nad3" path="res://Assets/Entities/Enemies/Polar Bear Guard/pb slap.png" id="6_27s5a"]
-[ext_resource type="PackedScene" uid="uid://bnjjrwq6xpbe0" path="res://Entities/Enemies/BaseEnemy/EntityStates/Engage.tscn" id="11_l4wue"]
+[ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="9_q1aom"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="12_fegqk"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="13_to7my"]
 
@@ -223,11 +221,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8x3d"]
 radius = 129.19
 
-[node name="Enemy" instance=ExtResource("1_2bf6c")]
+[node name="PolarBearPolice" instance=ExtResource("1_2bf6c")]
 
 [node name="Shadow" parent="." index="0"]
-position = Vector2(5.96046e-08, 0)
-scale = Vector2(0.925, 0.675)
+position = Vector2(-0.702707, -2)
+scale = Vector2(1.0625, 0.675)
 offset = Vector2(-2.16216, 19.2593)
 
 [node name="EnemySprite" parent="." index="1"]
@@ -236,50 +234,44 @@ offset = Vector2(0, -2)
 hframes = 2
 frame = 0
 
-[node name="Gun" parent="." index="2" instance=ExtResource("3_6ljsl")]
-visible = false
-inventory_item = ExtResource("4_q3him")
-
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="3"]
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_bsbt5")
 }
 
-[node name="SightRadius" type="Area2D" parent="." index="7"]
+[node name="SightRadius" type="Area2D" parent="." index="6"]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0"]
 shape = SubResource("CircleShape2D_d8x3d")
 
-[node name="ShootingComponent" type="Node2D" parent="." index="8" node_paths=PackedStringArray("entity_sprite", "gun")]
-script = ExtResource("2_lpn0e")
+[node name="MeleeComponent" parent="." index="7" node_paths=PackedStringArray("entity_sprite") instance=ExtResource("5_akwcr")]
 entity_sprite = NodePath("../EnemySprite")
-gun = NodePath("../Gun")
 
-[node name="HealthComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
+[node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
 script = ExtResource("3_tf8xl")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="MovementComponent" type="Node" parent="." index="10" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree")]
+[node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree")]
 script = ExtResource("4_1alht")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="StateMachineComponent2" parent="." index="11" node_paths=PackedStringArray("initial_state") instance=ExtResource("5_g4sme")]
+[node name="StateMachineComponent2" parent="." index="10" node_paths=PackedStringArray("initial_state") instance=ExtResource("5_g4sme")]
 initial_state = NodePath("Idle")
 
-[node name="Engage" parent="StateMachineComponent2" index="0" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "shooting_component") instance=ExtResource("11_l4wue")]
+[node name="Melee" parent="StateMachineComponent2" index="0" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "melee_component") instance=ExtResource("9_q1aom")]
 entity_node = NodePath("../..")
 movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
-shooting_component = NodePath("../../ShootingComponent")
+melee_component = NodePath("../../MeleeComponent")
 
 [node name="Follow" parent="StateMachineComponent2" index="1" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "sight_radius", "navigation_node") instance=ExtResource("12_fegqk")]
 entity_node = NodePath("../..")
@@ -287,12 +279,14 @@ movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
 sight_radius = NodePath("../../SightRadius")
 navigation_node = NodePath("../../NavigationAgent2D")
+engage_distance = 40.0
+engage_state = "Melee"
 
 [node name="Idle" parent="StateMachineComponent2" index="2" node_paths=PackedStringArray("movement_component", "health_component", "sight_radius") instance=ExtResource("13_to7my")]
 movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
 sight_radius = NodePath("../../SightRadius")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="12"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="11"]
 
-[node name="NavigationTimer" type="Timer" parent="." index="13"]
+[node name="NavigationTimer" type="Timer" parent="." index="12"]

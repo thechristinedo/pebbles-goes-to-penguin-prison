@@ -58,8 +58,6 @@ func _physics_process(_delta):
 	handle_player_shoot()
 	handle_player_interactions()
 	move_and_slide()
-	if Input.is_action_just_pressed("ui_text_backspace"):
-		take_damage()
 	if last_health != health:
 		last_health = health
 		get_node("/root/World").update_player_health(health, max_health)
@@ -219,10 +217,10 @@ func heal(amount: int):
 func reset_heal():
 	is_eating = false
 	
-func take_damage() -> void:
+func take_damage(damage: int = 1) -> void:
 	#damage is only going to be 1 for pebbles 
 	if invincible: return
-	health -= 1
+	health -= damage
 	if health <= 0:
 		health = 0
 		#sprite2.material.set_shader_parameter("flash_modifier", 0)

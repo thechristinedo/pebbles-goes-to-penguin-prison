@@ -1,15 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://cedpgh0klnx6y"]
+[gd_scene load_steps=16 format=3 uid="uid://cedpgh0klnx6y"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_06o5o"]
 [ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="2_u61ii"]
-[ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="3_gy2kb"]
 [ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Assets/Entities/Enemies/Seal Guard/walking seal.png" id="3_he1a1"]
-[ext_resource type="Resource" uid="uid://d4i82kw6b16uc" path="res://Guns/GunTypes/revolver.tres" id="4_xhyiw"]
-[ext_resource type="Script" path="res://Entities/Components/ShootingComponent.gd" id="5_pcvit"]
+[ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="4_7hdnh"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_irsci"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="7_ymscf"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="8_2ayuh"]
-[ext_resource type="PackedScene" uid="uid://bnjjrwq6xpbe0" path="res://Entities/Enemies/BaseEnemy/EntityStates/Engage.tscn" id="9_oxu8f"]
+[ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="8_7ysro"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="10_2m638"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="11_1b5v1"]
 
@@ -168,57 +166,55 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3dqr"]
 radius = 129.19
 
-[node name="Enemy2" instance=ExtResource("1_06o5o")]
+[node name="SealPolice" instance=ExtResource("1_06o5o")]
+
+[node name="Shadow" parent="." index="0"]
+position = Vector2(-7.15256e-07, 14)
+scale = Vector2(1, 0.6)
 
 [node name="EnemySprite" parent="." index="1"]
 texture = ExtResource("2_u61ii")
 hframes = 2
 frame = 0
 
-[node name="Gun" parent="." index="2" instance=ExtResource("3_gy2kb")]
-visible = false
-inventory_item = ExtResource("4_xhyiw")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_ys5ix")
 }
 
-[node name="AnimationTree" parent="." index="5"]
+[node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
 active = true
 
-[node name="SightRadius" type="Area2D" parent="." index="7"]
+[node name="SightRadius" type="Area2D" parent="." index="6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0"]
 shape = SubResource("CircleShape2D_e3dqr")
 
-[node name="ShootingComponent" type="Node2D" parent="." index="8" node_paths=PackedStringArray("entity_sprite", "gun")]
-script = ExtResource("5_pcvit")
+[node name="MeleeComponent" parent="." index="7" node_paths=PackedStringArray("entity_sprite") instance=ExtResource("4_7hdnh")]
 entity_sprite = NodePath("../EnemySprite")
-gun = NodePath("../Gun")
 
-[node name="HealthComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
+[node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
 script = ExtResource("6_irsci")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="MovementComponent" type="Node" parent="." index="10" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree")]
+[node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree")]
 script = ExtResource("7_ymscf")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="StateMachineComponent2" parent="." index="11" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_2ayuh")]
+[node name="StateMachineComponent2" parent="." index="10" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_2ayuh")]
 initial_state = NodePath("Idle")
 
-[node name="Engage" parent="StateMachineComponent2" index="0" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "shooting_component") instance=ExtResource("9_oxu8f")]
+[node name="Melee" parent="StateMachineComponent2" index="0" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "melee_component") instance=ExtResource("8_7ysro")]
 entity_node = NodePath("../..")
 movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
-shooting_component = NodePath("../../ShootingComponent")
+melee_component = NodePath("../../MeleeComponent")
 
 [node name="Follow" parent="StateMachineComponent2" index="1" node_paths=PackedStringArray("entity_node", "movement_component", "health_component", "sight_radius", "navigation_node") instance=ExtResource("10_2m638")]
 entity_node = NodePath("../..")
@@ -226,12 +222,14 @@ movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
 sight_radius = NodePath("../../SightRadius")
 navigation_node = NodePath("../../NavigationAgent2D")
+engage_distance = 40.0
+engage_state = "Melee"
 
 [node name="Idle" parent="StateMachineComponent2" index="2" node_paths=PackedStringArray("movement_component", "health_component", "sight_radius") instance=ExtResource("11_1b5v1")]
 movement_component = NodePath("../../MovementComponent")
 health_component = NodePath("../../HealthComponent")
 sight_radius = NodePath("../../SightRadius")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="12"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="11"]
 
-[node name="NavigationTimer" type="Timer" parent="." index="13"]
+[node name="NavigationTimer" type="Timer" parent="." index="12"]
