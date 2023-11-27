@@ -27,7 +27,7 @@ class_name Player
 @export var max_health: int = 10
 @onready var health: int = max_health
 var is_eating = false
-@onready var fish_count: int = 0
+@onready var fish_count: int
 
 @export var speed: float = 200
 var current_animation: String = "idle"
@@ -62,6 +62,7 @@ func _physics_process(_delta):
 		get_node("/root/World").update_player_health(health, max_health)
 	
 	fish_count = fishventory.get_fish_value()
+	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -136,12 +137,11 @@ func handle_player_interactions() -> void:
 			is_eating = true
 			heal(25)
 			fishventory.eat_resource()
+			#print("Fish left in inventory: ", fishventory.get_fish_value())
+			get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, -1)
 			is_eating = false
-			print("Fish left in inventory: ", fishventory.get_fish_value())
 		else:
 			print("No fish in fishventory! Collect some fish!")
-		
-		get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fishventory.get_fish_value(), -1)
 
 
 func update_animation() -> void:

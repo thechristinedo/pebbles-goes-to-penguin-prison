@@ -13,8 +13,6 @@ func add_resources(type : FishItem, amount : int):
 	else:
 		resources[type] = amount
 	
-	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(player.fish_count, 1)
-	
 	# Update the fish if it hasn't been set yet
 	if fish == null:
 		fish = type
