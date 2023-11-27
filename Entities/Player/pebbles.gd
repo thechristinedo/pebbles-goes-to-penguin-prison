@@ -74,10 +74,14 @@ func _physics_process(_delta):
 		# Set the cooldown timer
 		current_slide_cooldown = slide_cooldown
 		
-	if is_sliding:
+	if is_sliding or is_eating:
 		invincible = true
+		$Gun.visible = false
 	else:
 		invincible = false
+		$Gun.visible = true
+	
+		
 	# press shift to heal (eat)
 	
 	if current_slide_cooldown > 0:
@@ -155,7 +159,6 @@ func handle_player_interactions() -> void:
 			fishventory.eat_resource()
 			#print("Fish left in inventory: ", fishventory.get_fish_value())
 			get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, -1)
-			is_eating = false
 		else:
 			print("No fish in fishventory! Collect some fish!")
 
@@ -210,7 +213,12 @@ func heal(amount: int):
 	if health > max_health:
 		health = max_health
 	#print("Health is: ", health)
-
+	await get_tree().create_timer(0.7).timeout
+	reset_heal()
+	
+func reset_heal():
+	is_eating = false
+	
 func take_damage() -> void:
 	#damage is only going to be 1 for pebbles 
 	if invincible: return

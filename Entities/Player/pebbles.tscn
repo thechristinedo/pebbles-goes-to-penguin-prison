@@ -395,7 +395,7 @@ states/run/position = Vector2(633, 100)
 states/slide/node = SubResource("AnimationNodeAnimation_ntwe1")
 states/slide/position = Vector2(525.1, 0.360001)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky"), "run", "slide", SubResource("AnimationNodeStateMachineTransition_dx8v7"), "slide", "run", SubResource("AnimationNodeStateMachineTransition_3ompl"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_6b5b4"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_5vc1e"), "idle", "eat", SubResource("AnimationNodeStateMachineTransition_0pa17"), "eat", "idle", SubResource("AnimationNodeStateMachineTransition_6dohc"), "eat", "run", SubResource("AnimationNodeStateMachineTransition_p30wn"), "run", "eat", SubResource("AnimationNodeStateMachineTransition_w0ebd"), "eat", "slide", SubResource("AnimationNodeStateMachineTransition_s8go0"), "slide", "eat", SubResource("AnimationNodeStateMachineTransition_als5d")]
-graph_offset = Vector2(-2.29509, -172.305)
+graph_offset = Vector2(-2.29509, 27.5897)
 
 [sub_resource type="Gradient" id="Gradient_owbeb"]
 offsets = PackedFloat32Array(0.674074, 1)
@@ -457,7 +457,6 @@ texture = ExtResource("1_7v67i")
 hframes = 3
 
 [node name="Gun" parent="." instance=ExtResource("4_tak5x")]
-visible = false
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
