@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cedpgh0klnx6y"]
+[gd_scene load_steps=18 format=3 uid="uid://cedpgh0klnx6y"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_06o5o"]
 [ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="2_u61ii"]
 [ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Assets/Entities/Enemies/Seal Guard/walking seal.png" id="3_he1a1"]
 [ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="4_7hdnh"]
+[ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Assets/Entities/Enemies/Seal Guard/seal slap.png" id="4_c82ya"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_irsci"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="7_ymscf"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="8_2ayuh"]
@@ -61,6 +62,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemySprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
 
 [sub_resource type="Animation" id="Animation_7fptj"]
 resource_name = "idle"
@@ -101,6 +114,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemySprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ts8ww"]
@@ -156,11 +181,64 @@ tracks/3/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_drnlo"]
+resource_name = "slap"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_c82ya")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemySprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ys5ix"]
 _data = {
 "RESET": SubResource("Animation_drp0q"),
 "idle": SubResource("Animation_7fptj"),
-"running": SubResource("Animation_ts8ww")
+"running": SubResource("Animation_ts8ww"),
+"slap": SubResource("Animation_drnlo")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3dqr"]
@@ -169,13 +247,19 @@ radius = 129.19
 [node name="SealPolice" instance=ExtResource("1_06o5o")]
 
 [node name="Shadow" parent="." index="0"]
-position = Vector2(-7.15256e-07, 14)
+position = Vector2(0, 11)
 scale = Vector2(1, 0.6)
+offset = Vector2(1, 1.66667)
 
 [node name="EnemySprite" parent="." index="1"]
+position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("2_u61ii")
+offset = Vector2(1, -2)
 hframes = 2
 frame = 0
+
+[node name="Hitbox" parent="." index="2"]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
@@ -184,14 +268,18 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
-active = true
+
+[node name="MovementParticles" parent="." index="5"]
+visible = false
 
 [node name="SightRadius" type="Area2D" parent="." index="6"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0"]
 shape = SubResource("CircleShape2D_e3dqr")
 
 [node name="MeleeComponent" parent="." index="7" node_paths=PackedStringArray("entity_sprite") instance=ExtResource("4_7hdnh")]
+visible = false
 entity_sprite = NodePath("../EnemySprite")
 
 [node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
@@ -201,11 +289,12 @@ entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree")]
+[node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree", "shadow_sprite_node")]
 script = ExtResource("7_ymscf")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
+shadow_sprite_node = NodePath("../Shadow")
 
 [node name="StateMachineComponent2" parent="." index="10" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_2ayuh")]
 initial_state = NodePath("Idle")
