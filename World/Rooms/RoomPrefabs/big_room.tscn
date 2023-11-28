@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://btlu6veu70cvt"]
+[gd_scene load_steps=7 format=3 uid="uid://btlu6veu70cvt"]
 
 [ext_resource type="TileSet" uid="uid://bp2iacl7yc504" path="res://Tileset/prison_tileset.tres" id="2_0glod"]
 [ext_resource type="PackedScene" uid="uid://ckn4oeyvujo0a" path="res://Tileset/tile_map.tscn" id="2_140m6"]
 [ext_resource type="PackedScene" uid="uid://cgtt51gelur8x" path="res://World/Rooms/prison_door.tscn" id="3_ohvqj"]
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="4_poc0m"]
-[ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Snowman/snowman.tscn" id="5_8l5po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pabvm"]
 size = Vector2(778, 755)
@@ -66,10 +65,3 @@ position = Vector2(736, 499)
 
 [node name="Enemy7" parent="." instance=ExtResource("4_poc0m")]
 position = Vector2(658, 583)
-
-[node name="snowman1" parent="." instance=ExtResource("5_8l5po")]
-position = Vector2(291, 55)
-scale = Vector2(1.01278, 1)
-
-[node name="snowman2" parent="." instance=ExtResource("5_8l5po")]
-position = Vector2(145, 189)

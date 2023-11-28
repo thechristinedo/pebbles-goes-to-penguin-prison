@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhf0kuub42tp7"
-path="res://.godot/imported/penguin-police-idle.png-06796cc8c77dc324950aa24bb6d5d715.ctex"
+uid="uid://7hjdfd88hsrx"
+path="res://.godot/imported/penguin-death.png-01fe555afa9b793ce646b1bd1945578d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/penguin-police-idle.png"
-dest_files=["res://.godot/imported/penguin-police-idle.png-06796cc8c77dc324950aa24bb6d5d715.ctex"]
+source_file="res://Assets/Entities/Enemies/Penguin Guard/penguin-death.png"
+dest_files=["res://.godot/imported/penguin-death.png-01fe555afa9b793ce646b1bd1945578d.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bikh14ur2a6rq"
-path="res://.godot/imported/penguin-police-run.png-ec5c129ac3ce35925fb98fb1b18b86f7.ctex"
+path="res://.godot/imported/penguin-police-run.png-80b49c8b16fc028b0b20aec4be2b2883.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/penguin-police-run.png"
-dest_files=["res://.godot/imported/penguin-police-run.png-ec5c129ac3ce35925fb98fb1b18b86f7.ctex"]
+source_file="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-run.png"
+dest_files=["res://.godot/imported/penguin-police-run.png-80b49c8b16fc028b0b20aec4be2b2883.ctex"]
 
 [params]
 
