@@ -2,8 +2,10 @@
 extends Node
 
 #const SAVE_PATH = "user://"
+var current_slot = null
 
 func save_game(slot, data):
+	current_slot = slot
 	print("Saved data in " + str(slot) + " and our data is ")
 	print(data)
 	var save_path = "user://save_slot_" + str(slot) + ".save"
@@ -13,6 +15,7 @@ func save_game(slot, data):
 		save_file.close()
 
 func load_game(slot):
+	current_slot = slot
 	var save_path = "user://save_slot_" + str(slot) + ".save"
 	if FileAccess.file_exists(save_path):
 		print("Loading Game on Slot " + str(slot))
@@ -24,6 +27,7 @@ func load_game(slot):
 	return null
 
 func slot_has_data(slot):
+	current_slot = slot
 	var save_path = "user://save_slot_" + str(slot) + ".save"
 	print("Already had saved data in Slot " + str(slot))
 	return FileAccess.file_exists(save_path)

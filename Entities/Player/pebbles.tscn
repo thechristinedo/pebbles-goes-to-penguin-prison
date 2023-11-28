@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c4i5a3obxwe7e" path="res://Entities/Components/player_ranged_attack_component.tscn" id="7_4rer2"]
 [ext_resource type="Texture2D" uid="uid://8fhxh3b2rdjs" path="res://Assets/Entities/Player/pebbles-dash.png" id="7_rtiva"]
 [ext_resource type="Script" path="res://Inventory/fishventory.gd" id="9_7it64"]
-[ext_resource type="Texture2D" uid="uid://7hjdfd88hsrx" path="res://Assets/Entities/Enemies/penguin-death.png" id="9_4416w"]
+[ext_resource type="Texture2D" uid="uid://7hjdfd88hsrx" path="res://Assets/Entities/Player/pebbles-death.png" id="9_4416w"]
 [ext_resource type="AudioStream" uid="uid://ctvw6c5mfo1tt" path="res://Audio/reload.mp3" id="9_bmfi5"]
 [ext_resource type="AudioStream" uid="uid://d1e41god0o21b" path="res://Audio/pickup.mp3" id="10_n1smd"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/shotgunShot.mp3" id="11_o5ie2"]

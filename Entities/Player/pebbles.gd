@@ -273,3 +273,6 @@ func _on_input_scheme_changed(scheme) -> void:
 		update_weapon_rotation(0, true)
 	else:
 		crosshair.hide()
+		
+func get_health() -> int:
+	return health

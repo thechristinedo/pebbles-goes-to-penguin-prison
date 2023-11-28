@@ -2,6 +2,12 @@ extends Control
 
 @onready var pausemenu = $"."
 @onready var volumemenu = $Volume
+var pebbles_scene = preload("res://Entities/Player/pebbles.tscn")
+var pebbles
+
+func _ready():
+	pebbles = pebbles_scene.instantiate()
+	add_child(pebbles)
 
 func _process(delta):
 	pass
@@ -32,3 +38,15 @@ func _on_back_pressed():
 	$CenterContainer.visible = true
 	$MarginContainer.visible = true
 	pausemenu.visible = true
+
+
+func _on_save_pressed():
+	var game_data = get_game_data()
+	SaveSystem.save_game(SaveSystem.current_slot, game_data)
+	
+func get_game_data():
+	var data = {
+		"player_health": pebbles.get_health(),
+		"player_position": pebbles.global_position
+	}
+	return data
