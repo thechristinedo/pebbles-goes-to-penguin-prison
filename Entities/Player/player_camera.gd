@@ -7,12 +7,6 @@ var _will_lerp: bool = true
 var _current_shake_strength: float = 0
 
 func _process(delta):
-#	if World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
-#		if target.crosshair:
-#			target_position = target.crosshair.global_position
-#		else:
-#			target_position = target.position
-	
 	if _will_lerp:
 		_current_shake_strength = lerpf(_current_shake_strength, 0, delta * lerp_strength)
 		if _current_shake_strength < 0.1: _current_shake_strength = 0

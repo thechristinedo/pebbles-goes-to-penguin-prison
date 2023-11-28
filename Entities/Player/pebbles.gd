@@ -140,6 +140,7 @@ func update_weapon_rotation(_delta, force_update_position = false) -> void:
 		if force_update_position || aim_direction != Vector2.ZERO:
 			var angle = aim_direction.angle()
 			gun.global_rotation = angle
+			# TODO: Update pebbles facing direction
 			crosshair.global_position = global_position + (Vector2(cos(angle), sin(angle)) * crosshair_range)
 		crosshair.global_rotation = 0
 
