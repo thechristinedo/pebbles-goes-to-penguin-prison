@@ -20,16 +20,22 @@ func _on_play_pressed():
 
 func _on_save_slot_1_pressed():
 	#$TextureRect.visible = true
-	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 	selectSound.play()
+	if SaveSystem.slot_has_data(1):
+		SaveSystem.load_game(1)
+	else:
+		SaveSystem.save_game(1, "Slot 1")
+		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_2_pressed():
+	SaveSystem.save_game(2, "Slot 2")
 	#$TextureRect.visible = true
 	selectSound.play()
 	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
 
 func _on_save_slot_3_pressed():
+	SaveSystem.save_game(3, "Slot 3")
 	#$TextureRect.visible = true
 	selectSound.play()
 	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
