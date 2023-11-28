@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d25u4luifj0pd"
-path="res://.godot/imported/police_death1.png-2f8547ff080cb09a6b684d1eb1dac1e0.ctex"
+uid="uid://biwmbpmxmqiyd"
+path="res://.godot/imported/police_death4.png-d4688149f8aa46aad7bab8e75c23b324.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Fat Penguin Cop/Sprites/death/police_death1.png"
-dest_files=["res://.godot/imported/police_death1.png-2f8547ff080cb09a6b684d1eb1dac1e0.ctex"]
+source_file="res://Assets/Entities/Enemies/Penguin Guard/death/police_death4.png"
+dest_files=["res://.godot/imported/police_death4.png-d4688149f8aa46aad7bab8e75c23b324.ctex"]
 
 [params]
 

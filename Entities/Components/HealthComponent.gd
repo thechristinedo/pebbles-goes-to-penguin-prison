@@ -8,8 +8,12 @@ class_name HealthComponent
 @export var health: float = 100
 @export var take_knockback: bool = true
 @export var flash_on_hit: bool = true
+@export var animation_player: AnimationPlayer
+
+#@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var _taken_damage: bool = false
+
 
 func is_dead() -> bool:
 	return health <= 0
@@ -22,6 +26,8 @@ func take_damage(damage: float, rotation: float) -> void:
 	if flash_on_hit:
 		flash()
 	if health < 0:
+		if animation_player.has_animation("death"):
+			animation_player.play("death")
 		_death()
 
 func has_taken_damage() -> bool:
@@ -37,7 +43,7 @@ func _flash_callback() -> void:
 func _death() -> void:
 	animation_tree["parameters/conditions/dead"] = true
 	entity_node.get_node("Hitbox").queue_free()
-	get_tree().create_timer(2).connect("timeout", _death_callback)
+	get_tree().create_timer(0.5).connect("timeout", _death_callback)
 
 func _death_callback() -> void:
 	entity_node.queue_free()

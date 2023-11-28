@@ -1,18 +1,21 @@
-[gd_scene load_steps=23 format=3 uid="uid://co48vtwnry2yr"]
+[gd_scene load_steps=26 format=3 uid="uid://co48vtwnry2yr"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_nhfw3"]
 [ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="2_shtlg"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-idle.png" id="4_1unws"]
 [ext_resource type="PackedScene" uid="uid://pjwrbqlmgj5t" path="res://Entities/Components/MovementComponent.tscn" id="4_n0hko"]
 [ext_resource type="Resource" uid="uid://tm20eyj2c0k" path="res://Guns/GunTypes/shotgun.tres" id="5_ebvr6"]
-[ext_resource type="Texture2D" uid="uid://7hjdfd88hsrx" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-death.png" id="5_h6ajq"]
 [ext_resource type="PackedScene" uid="uid://bb8xwn6qpp2de" path="res://Entities/Components/HealthComponent.tscn" id="5_ud36b"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="5_wdsq7"]
+[ext_resource type="Texture2D" uid="uid://d25u4luifj0pd" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death1.png" id="6_1jspc"]
 [ext_resource type="Texture2D" uid="uid://bikh14ur2a6rq" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-run.png" id="6_cxmxj"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="6_yplnt"]
+[ext_resource type="Texture2D" uid="uid://d1fskg8ypleek" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death2.png" id="7_7k5dq"]
+[ext_resource type="Texture2D" uid="uid://dg0rnllf2bv80" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death3.png" id="8_3i0ds"]
 [ext_resource type="PackedScene" uid="uid://c68og1ij5la51" path="res://Entities/Components/ShootingComponent.tscn" id="8_acua1"]
 [ext_resource type="Texture2D" uid="uid://d1vxsw745xw4x" path="res://Assets/Entities/Enemies/Penguin Guard/police_guard_slap_frames.png" id="8_n4l5n"]
 [ext_resource type="PackedScene" uid="uid://bnjjrwq6xpbe0" path="res://Entities/Enemies/BaseEnemy/EntityStates/Engage.tscn" id="8_qafxy"]
+[ext_resource type="Texture2D" uid="uid://biwmbpmxmqiyd" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death4.png" id="9_lsyd7"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="9_uk4pl"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="10_nlyvt"]
 
@@ -114,11 +117,34 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(4, 15)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EnemySprite:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Shadow:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fcio7"]
 resource_name = "death"
-length = 0.4
-loop_mode = 1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,10 +152,10 @@ tracks/0/path = NodePath("EnemySprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("5_h6ajq")]
+"values": [ExtResource("6_1jspc"), ExtResource("7_7k5dq"), ExtResource("8_3i0ds"), ExtResource("9_lsyd7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -138,82 +164,46 @@ tracks/1/path = NodePath("EnemySprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4]
+"values": [1, 1, 1, 1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EnemySprite:vframes")
+tracks/2/path = NodePath("EnemySprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [1]
+"values": [0, 0, 0, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("EnemySprite:frame")
+tracks/3/path = NodePath("EnemySprite:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [1, 1, 2, 3]
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Shadow:texture")
+tracks/4/path = NodePath("Shadow:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("5_wdsq7")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Shadow:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, 15)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Shadow:region_enabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("EnemySprite:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_gvak6"]
@@ -563,11 +553,12 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0"]
 shape = SubResource("CircleShape2D_yj871")
 
-[node name="HealthComponent" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree") instance=ExtResource("5_ud36b")]
+[node name="HealthComponent" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree", "animation_player") instance=ExtResource("5_ud36b")]
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="MovementComponent" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree", "shadow_sprite_node") instance=ExtResource("4_n0hko")]
 entity_node = NodePath("..")

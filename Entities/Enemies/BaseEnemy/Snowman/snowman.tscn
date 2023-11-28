@@ -253,12 +253,13 @@ shape = SubResource("CircleShape2D_d8x3d")
 [node name="MeleeComponent" parent="." index="7" node_paths=PackedStringArray("entity_sprite") instance=ExtResource("5_poco5")]
 entity_sprite = NodePath("../EnemySprite")
 
-[node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
+[node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree", "animation_player")]
 script = ExtResource("6_30n1q")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree", "shadow_sprite_node")]
 script = ExtResource("7_xfihx")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg0rnllf2bv80"
-path="res://.godot/imported/police_death3.png-27e77418ab930a50fb4f377b3106f6a0.ctex"
+uid="uid://g3le7parjafw"
+path="res://.godot/imported/walk_snowman.png-b7e29921a4d96d4fe5e8684713687082.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Fat Penguin Cop/Sprites/death/police_death3.png"
-dest_files=["res://.godot/imported/police_death3.png-27e77418ab930a50fb4f377b3106f6a0.ctex"]
+source_file="res://Assets/Entities/Enemies/Snowman/walk_snowman.png"
+dest_files=["res://.godot/imported/walk_snowman.png-b7e29921a4d96d4fe5e8684713687082.ctex"]
 
 [params]
 

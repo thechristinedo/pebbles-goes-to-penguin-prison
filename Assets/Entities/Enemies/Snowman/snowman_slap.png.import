@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7hjdfd88hsrx"
-path="res://.godot/imported/penguin-death.png-01fe555afa9b793ce646b1bd1945578d.ctex"
+uid="uid://ccxfwowo1add"
+path="res://.godot/imported/snowman_slap.png-2dbaac7b6335dd175daef55ecee29463.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/Penguin Guard/penguin-death.png"
-dest_files=["res://.godot/imported/penguin-death.png-01fe555afa9b793ce646b1bd1945578d.ctex"]
+source_file="res://Assets/Entities/Enemies/Snowman/snowman_slap.png"
+dest_files=["res://.godot/imported/snowman_slap.png-2dbaac7b6335dd175daef55ecee29463.ctex"]
 
 [params]
 
