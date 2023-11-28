@@ -260,11 +260,12 @@ entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree")]
+[node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree", "shadow_sprite_node")]
 script = ExtResource("7_xfihx")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
+shadow_sprite_node = NodePath("../Shadow")
 
 [node name="StateMachineComponent2" parent="." index="10" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_e7bcd")]
 initial_state = NodePath("Idle")
