@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=59 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Entities/Player/player_camera.gd" id="4_otm1v"]
 [ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="4_tak5x"]
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
+[ext_resource type="Texture2D" uid="uid://bo7mf1esy01ov" path="res://Assets/GUI/Cursor/cursor1.png" id="6_8quxb"]
 [ext_resource type="Texture2D" uid="uid://cxa0gskecbp13" path="res://Assets/Entities/pebbles-eating-fish.png" id="6_ce7l5"]
 [ext_resource type="PackedScene" uid="uid://c4i5a3obxwe7e" path="res://Entities/Components/player_ranged_attack_component.tscn" id="7_4rer2"]
 [ext_resource type="Texture2D" uid="uid://8fhxh3b2rdjs" path="res://Assets/Entities/Player/pebbles-dash.png" id="7_rtiva"]
@@ -457,6 +458,10 @@ texture = ExtResource("1_7v67i")
 hframes = 3
 
 [node name="Gun" parent="." instance=ExtResource("4_tak5x")]
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_8quxb")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

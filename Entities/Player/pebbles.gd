@@ -7,6 +7,8 @@ class_name Player
 @onready var camera: Camera2D = $Camera2D
 @onready var shadow: Sprite2D = $Shadow
 @onready var gun: Gun = $Gun
+@onready var crosshair = $Crosshair
+@export var crosshair_range := 50.0
 @onready var character_sprite: Sprite2D = $PebblesSprite
 @onready var ranged_attack_component: Node = $RangedAttackComponent
 @onready var inventory_node: Node = $Inventory
@@ -39,6 +41,9 @@ var current_slide_cooldown : float = 0.0
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 
+# Controller support
+const ROTATE_SPEED = 20
+
 signal health_updated
 signal fish_update
 signal pebbles_death
@@ -51,6 +56,7 @@ var invincible: bool = false
 
 func _ready():
 	animation_tree.active = true
+	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
 
 func _physics_process(_delta):
 	update_animation()
@@ -58,6 +64,8 @@ func _physics_process(_delta):
 	handle_player_shoot()
 	handle_player_interactions()
 	move_and_slide()
+	# Handle weapon rotation
+	update_weapon_rotation(_delta)
 	if last_health != health:
 		last_health = health
 		get_node("/root/World").update_player_health(health, max_health)
@@ -121,6 +129,19 @@ func handle_player_movement() -> void:
 		character_sprite.flip_h = false # right
 	else:
 		character_sprite.flip_h = true # left
+
+func update_weapon_rotation(_delta, force_update_position = false) -> void:
+	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
+		var mouse_pos = get_local_mouse_position()
+		var new_transform = gun.transform.looking_at(mouse_pos)
+		gun.transform = gun.transform.interpolate_with(new_transform, ROTATE_SPEED * _delta)
+	elif World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
+		var aim_direction := Input.get_vector("weapon aim left", "weapon aim right", "weapon aim up", "weapon aim down")
+		if force_update_position || aim_direction != Vector2.ZERO:
+			var angle = aim_direction.angle()
+			gun.global_rotation = angle
+			crosshair.global_position = global_position + (Vector2(cos(angle), sin(angle)) * crosshair_range)
+		crosshair.global_rotation = 0
 
 func handle_player_interactions() -> void:
 	# pickup gun
@@ -245,3 +266,10 @@ func invincible_frames() -> void:
 func invincible_reset() -> void:
 	invincible = false
 	character_sprite.material.set_shader_parameter("flash_modifier", 0)
+	
+func _on_input_scheme_changed(scheme) -> void:
+	if scheme == World.INPUT_SCHEMES.GAMEPAD:
+		crosshair.show()
+		update_weapon_rotation(0, true)
+	else:
+		crosshair.hide()

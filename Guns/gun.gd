@@ -34,6 +34,8 @@ func shoot() -> bool:
 		_muzzle_flash()
 		var room_node = get_node("/root/World/RoomManager/Room")
 		var bullets = inventory_item.shooter.shoot() as Array[Bullet]
+#		if World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
+#			Input.start_joy_vibration(0, .1, 0, .25)
 		if bullets.size():
 			for bullet in bullets:
 				bullet.rotation += rotation

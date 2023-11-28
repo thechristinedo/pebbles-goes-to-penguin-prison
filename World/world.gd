@@ -8,7 +8,7 @@ class_name World
 @onready var fish_count_ui = $GUI/Panel/FishAmount
 
 # Controller compatibility
-enum INPUT_SCHEMES { KEYBOARD_AND_MOUSE, GAMEPAD, TOUCH_SCREEN }
+enum INPUT_SCHEMES { KEYBOARD_AND_MOUSE, GAMEPAD }
 static var INPUT_SCHEME: INPUT_SCHEMES = INPUT_SCHEMES.KEYBOARD_AND_MOUSE
 
 func _ready():
