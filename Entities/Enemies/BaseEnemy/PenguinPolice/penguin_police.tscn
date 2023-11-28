@@ -263,10 +263,11 @@ entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
 
-[node name="MovementComponent" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree") instance=ExtResource("4_n0hko")]
+[node name="MovementComponent" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree", "shadow_sprite_node") instance=ExtResource("4_n0hko")]
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 animation_tree = NodePath("../AnimationTree")
+shadow_sprite_node = NodePath("../Shadow")
 
 [node name="ShootingComponent" parent="." index="10" node_paths=PackedStringArray("entity_sprite", "gun") instance=ExtResource("8_acua1")]
 entity_sprite = NodePath("../EnemySprite")

@@ -7,6 +7,7 @@ class_name MovementComponent
 @export var speed: float = 60
 @export var knockback_effect: float = 250
 @export var knockback_recovery: float = 0.4
+@export var shadow_sprite_node: Sprite2D
 
 var walking: bool = false
 var _curr_direction: Vector2
@@ -21,6 +22,9 @@ func _physics_process(_delta):
 	entity_node.velocity += _knockback
 	_current_knockback_strength *= knockback_recovery
 	entity_node.move_and_slide()
+	
+	#update_shadow_flip()
+	
 
 func set_movement_direction(direction: Vector2) -> void:
 	_stopped = false
@@ -29,8 +33,12 @@ func set_movement_direction(direction: Vector2) -> void:
 	entity_node.velocity = direction.normalized() * speed
 	if walking: entity_node.velocity /= 4
 	
-	if direction.x < 0: entity_sprite_node.flip_h = true
-	else: 				entity_sprite_node.flip_h = false
+	if direction.x < 0: 
+		entity_sprite_node.flip_h = true
+		shadow_sprite_node.flip_h = true
+	else: 				
+		entity_sprite_node.flip_h = false
+		shadow_sprite_node.flip_h = false
 	
 	animation_tree["parameters/conditions/is_running"] = true
 	animation_tree["parameters/conditions/not_running"] = false
@@ -44,3 +52,4 @@ func stop_movement() -> void:
 func knockback(rotation: float) -> void:
 	_last_knockback_rotation = rotation
 	_current_knockback_strength = knockback_effect
+

@@ -21,7 +21,10 @@ func attack() -> void:
 func _melee() -> void:
 	var distance_to_target = target.global_position.distance_to(owner.global_position)
 	melee_sprite.look_at(target.global_position)
-	animation_player.play("melee")
+	if owner.has_node("AnimationPlayer"):
+		var animation_player = owner.get_node("AnimationPlayer") as AnimationPlayer
+		if animation_player.has_animation("slap"):
+			animation_player.play("slap")
 	if target.has_method("take_damage") and distance_to_target < melee_range:
 		target.take_damage(damage)
 	get_tree().create_timer(ready_time).connect("timeout", _cooldown)
