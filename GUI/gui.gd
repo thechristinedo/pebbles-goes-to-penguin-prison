@@ -11,28 +11,15 @@ const ANIMATION_FRAMES = [
 @export var frames_per_second = 16.0
 var current_frame = 0
 
-@onready var game_input_scheme = preload("res://World/world.gd").INPUT_SCHEME
-
 func _ready():
-#	begin_load()
+	begin_load()
 	$AnimationPlayer.play("tutorial_dialog")
 	$CursorAnimationTimer.connect("timeout", Callable(self, "update_frame"))
-	
-	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
 	
 	Input.set_custom_mouse_cursor(
 		CURSOR, 
 		Input.CURSOR_ARROW, 
 		Vector2(16,16))
-
-func _on_input_scheme_changed(_scheme) -> void:
-	update_cursor()
-
-func update_cursor():
-	if game_input_scheme == World.INPUT_SCHEMES.GAMEPAD:
-		Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW)
-	else:
-		begin_load()
 
 func begin_load():
 	$CursorAnimationTimer.start(1.0/frames_per_second)
