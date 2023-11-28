@@ -69,3 +69,4 @@ func _on_back_pressed():
 func _on_input_type_button_item_selected(index):
 	if index != -1:
 		World.INPUT_SCHEME = index
+		EventBus.input_scheme_changed.emit(index)
