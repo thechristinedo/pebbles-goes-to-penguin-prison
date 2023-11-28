@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cedpgh0klnx6y"]
+[gd_scene load_steps=21 format=3 uid="uid://cedpgh0klnx6y"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_06o5o"]
 [ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="2_u61ii"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="4_7hdnh"]
 [ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Assets/Entities/Enemies/Seal Guard/seal slap.png" id="4_c82ya"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_irsci"]
+[ext_resource type="Texture2D" uid="uid://djflvvt61ynhd" path="res://Assets/Entities/Enemies/Seal Guard/seal_death.png" id="6_qtqdd"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="7_ymscf"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="8_2ayuh"]
 [ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="8_7ysro"]
@@ -122,6 +123,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Rect2(0.078, 0.273, 44, 31.713)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("EnemySprite:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -2)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Shadow:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7fptj"]
@@ -414,9 +439,98 @@ tracks/7/keys = {
 "values": [Vector2(6, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_c5jov"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_qtqdd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemySprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemySprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_yoe80")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ys5ix"]
 _data = {
 "RESET": SubResource("Animation_drp0q"),
+"death": SubResource("Animation_c5jov"),
 "idle": SubResource("Animation_7fptj"),
 "running": SubResource("Animation_ts8ww"),
 "slap": SubResource("Animation_drnlo")
@@ -428,6 +542,7 @@ radius = 129.19
 [node name="SealPolice" instance=ExtResource("1_06o5o")]
 
 [node name="Shadow" parent="." index="0"]
+visible = false
 position = Vector2(1, 11)
 scale = Vector2(1, 0.6)
 offset = Vector2(0, 1.90735e-06)
@@ -464,12 +579,13 @@ shape = SubResource("CircleShape2D_e3dqr")
 visible = false
 entity_sprite = NodePath("../EnemySprite")
 
-[node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree")]
+[node name="HealthComponent" type="Node" parent="." index="8" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "movement_component", "animation_tree", "animation_player")]
 script = ExtResource("6_irsci")
 entity_node = NodePath("..")
 entity_sprite_node = NodePath("../EnemySprite")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../AnimationTree")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="MovementComponent" type="Node" parent="." index="9" node_paths=PackedStringArray("entity_node", "entity_sprite_node", "animation_tree", "shadow_sprite_node")]
 script = ExtResource("7_ymscf")
