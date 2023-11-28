@@ -8,6 +8,8 @@ static var pebbles: CharacterBody2D
 static var camera: Camera2D
 static var _next_room_path: String
 var current_room: Node2D
+var current_room_path: String
+
 
 func _ready() -> void:
 	get_tree().get_root().connect("size_changed", _window_size_changed)
@@ -19,6 +21,7 @@ func setup() -> void:
 	camera = pebbles.get_node("Camera2D")
 
 func switch_room(room_path: String) -> void:
+	current_room_path = room_path 
 	_next_room_path = room_path
 	animation_player.play("fade_in")
 

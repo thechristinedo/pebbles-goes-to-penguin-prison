@@ -276,3 +276,6 @@ func _on_input_scheme_changed(scheme) -> void:
 		
 func get_health() -> int:
 	return health
+
+func get_fish_count() -> int:
+	return fish_count

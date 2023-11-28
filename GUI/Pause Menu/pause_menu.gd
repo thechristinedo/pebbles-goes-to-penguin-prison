@@ -2,16 +2,10 @@ extends Control
 
 @onready var pausemenu = $"."
 @onready var volumemenu = $Volume
-var pebbles_scene = preload("res://Entities/Player/pebbles.tscn")
-var pebbles
+@onready var room_manager = get_node("/root/World/RoomManager")
 
-func _ready():
-	pebbles = pebbles_scene.instantiate()
-	add_child(pebbles)
 
 func _process(delta):
-	pass
-	
 	if Input.is_action_pressed("ui_cancel"):
 		pausemenu.visible = true
 		get_tree().paused = true
@@ -45,8 +39,11 @@ func _on_save_pressed():
 	SaveSystem.save_game(SaveSystem.current_slot, game_data)
 	
 func get_game_data():
+	var pebbles_instance = room_manager.pebbles
 	var data = {
-		"player_health": pebbles.get_health(),
-		"player_position": pebbles.global_position
+		"player_health": pebbles_instance.get_health(),
+		"player_position": pebbles_instance.global_position,
+		"fish_count": pebbles_instance.get_fish_count(),
+		"current_room": room_manager.current_room
 	}
 	return data
