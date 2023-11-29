@@ -535,15 +535,14 @@ pitch_scale = 0.64
 
 [node name="walkSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_aw3cd")
-volume_db = -9.984
+volume_db = -5.0
 
 [node name="slideSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_3ru8d")
-volume_db = -20.0
+volume_db = -5.0
 
 [node name="dropSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_jl1ic")
-volume_db = -5.0
 pitch_scale = 1.45
 
 [node name="walkTimer" type="Timer" parent="."]

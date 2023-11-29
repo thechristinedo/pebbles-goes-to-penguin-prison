@@ -21,7 +21,8 @@ func aim(body: CharacterBody2D):
 			entity_sprite.flip_h = true # left
 
 func shoot():
-	if can_shoot: 
+	if can_shoot:
+		gun.bulletSpeed = 75
 		gun.shoot()
 		can_shoot = false
 		get_tree().create_timer(gun.inventory_item.shooter.firerate).connect("timeout", _enable_can_shoot)

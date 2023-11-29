@@ -9,6 +9,13 @@ const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smo
 
 func _physics_process(delta):
 	linear_velocity = Vector2.RIGHT.rotated(rotation) * speed
+	update_texture()
+
+func update_texture():
+	if speed < 800:
+		$Sprite2D.texture = load("res://Assets/Guns/Bullets/enemyBullet.png")
+	else:
+		$Sprite2D.texture = load("res://Assets/Guns/Bullets/bullet.png")
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Bullet": pass
