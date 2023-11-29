@@ -57,6 +57,7 @@ var invincible: bool = false
 func _ready():
 	animation_tree.active = true
 	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
+	print("Health: ", health, " Fish: ",fish_count)
 
 func _physics_process(_delta):
 	update_animation()
@@ -283,3 +284,6 @@ func get_fish_count() -> int:
 func get_inventory_data():
 	return inventory_node.get_inventory_data()
 	
+func set_new_data():
+	health = health
+	fish_count = fish_count

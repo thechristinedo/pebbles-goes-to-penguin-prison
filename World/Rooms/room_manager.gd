@@ -12,6 +12,7 @@ var current_room_path: String
 
 
 func _ready() -> void:
+	print("In Room Manager")
 	get_tree().get_root().connect("size_changed", _window_size_changed)
 
 func setup() -> void:
@@ -19,6 +20,8 @@ func setup() -> void:
 	animation_player = room_manager_node.get_node("TransitionCanvas/AnimationPlayer")
 	pebbles = load("res://Entities/Player/pebbles.tscn").instantiate()
 	camera = pebbles.get_node("Camera2D")
+	print("RoomManager: ", str(pebbles))
+
 
 func switch_room(room_path: String) -> void:
 	current_room_path = room_path 

@@ -39,10 +39,13 @@ func _on_save_pressed():
 func get_game_data():
 	var pebbles_instance = RoomManager.pebbles
 	var data = {
+		"filename" : pebbles_instance.get_scene_file_path(),
+		"parent" : pebbles_instance.get_parent().get_path(),
 		"player_health": pebbles_instance.get_health(),
 		"player_position": pebbles_instance.global_position,
 		"fish_count": pebbles_instance.get_fish_count(),
 		"current_room": RoomManager.current_room_path,
-		"inventory_data": pebbles_instance.get_inventory_data()
+		"inventory_data": pebbles_instance.get_inventory_data(),
+		"test": get_tree()
 	}
 	return data

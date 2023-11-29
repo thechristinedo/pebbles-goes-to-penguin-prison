@@ -131,7 +131,7 @@ _data = {
 "tutorial_dialog": SubResource("Animation_nmhev")
 }
 
-[node name="GUI" type="CanvasLayer"]
+[node name="GUI" type="CanvasLayer" groups=["Persist"]]
 script = ExtResource("1_e6sdv")
 
 [node name="Inventory" type="Control" parent="."]

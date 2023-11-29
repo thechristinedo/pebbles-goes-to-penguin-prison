@@ -23,7 +23,7 @@ func load_game(slot):
 		if save_file:
 			var data = save_file.get_var()
 			save_file.close()
-			return data
+			apply_game_data(data)
 	return null
 
 func slot_has_data(slot):
@@ -38,3 +38,32 @@ func slot_has_data(slot):
 #    if save_file.file_exists(path):
 #        save_file.remove(path)
 #
+func apply_game_data(data):
+	var world_scene_path = "res://World/world.tscn"
+	if get_tree().current_scene.name != world_scene_path:
+		var world_scene = load(world_scene_path) as PackedScene
+		var world_instance = world_scene.instantiate()
+		get_tree().root.add_child(world_instance)
+		get_tree().current_scene = world_instance
+		
+	RoomManager.switch_room(data["current_room"])
+	var player = RoomManager.pebbles
+	
+	player.health = data["player_health"]
+	player.global_position = data["player_position"]
+	player.set_new_data()
+	player.fish_count = data["fish_count"]
+	print("Applying data: ", str(player))
+	print("Set player health to: ", player.get_health())
+	#player.fish_count = data["fish_count"]
+	#player.global_position = data["player_position"]
+
+	#pebbles_instance.health = (data["player_health"])
+	#pebbles_instance.global_position = data["player_position"]
+	#pebbles_instance.fish_count = data["fish_count"]
+	# Set player health and position
+
+	
+	# Load the inventory
+	
+	
