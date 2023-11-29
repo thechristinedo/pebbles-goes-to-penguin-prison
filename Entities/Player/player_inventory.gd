@@ -58,3 +58,19 @@ func _input(event):
 			KEY_5: player_select_slot(4)
 			_: pass
 			
+
+func get_inventory_data() -> Array:
+	var inventory_data = []
+	for item in _inventory.items:
+		if item:
+			inventory_data.append({
+				"name": item.name,
+				"texture_path": item.texture.resource_path,
+				"stackable": item.stackable,
+				"shooter": item.shooter,
+				"muzzle": item.muzzle,
+				"path_to_collectable_scene": item.path_to_collectable_scene
+				})
+		else:
+			inventory_data.append(null)
+	return inventory_data

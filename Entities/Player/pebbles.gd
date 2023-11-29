@@ -279,3 +279,7 @@ func get_health() -> int:
 
 func get_fish_count() -> int:
 	return fish_count
+
+func get_inventory_data():
+	return inventory_node.get_inventory_data()
+	

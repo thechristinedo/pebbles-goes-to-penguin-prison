@@ -2,8 +2,6 @@ extends Control
 
 @onready var pausemenu = $"."
 @onready var volumemenu = $Volume
-@onready var room_manager = get_node("/root/World/RoomManager")
-
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
@@ -39,11 +37,12 @@ func _on_save_pressed():
 	SaveSystem.save_game(SaveSystem.current_slot, game_data)
 	
 func get_game_data():
-	var pebbles_instance = room_manager.pebbles
+	var pebbles_instance = RoomManager.pebbles
 	var data = {
 		"player_health": pebbles_instance.get_health(),
 		"player_position": pebbles_instance.global_position,
 		"fish_count": pebbles_instance.get_fish_count(),
-		"current_room": room_manager.current_room
+		"current_room": RoomManager.current_room_path,
+		"inventory_data": pebbles_instance.get_inventory_data()
 	}
 	return data
