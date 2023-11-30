@@ -7,6 +7,7 @@ extends Node
 
 func _ready():
 	player_select_slot()
+	print("ready...", _inventory)
 
 func is_full() -> bool:
 	if null in _inventory.items:
@@ -21,14 +22,13 @@ func scroll_down() -> void:
 	_inventory.selected_slot = wrapi(_inventory.selected_slot + 1, 0, 5)
 	player_select_slot()
 
-func clear_items():
-	for i in range(_inventory.items.size()):
-		_inventory.items[i] = null
-
 func insert_gun(resource: InventoryItem) -> bool:
 	for i in range(_inventory.items.size()):
 		if (!_inventory.items[i]):
 			_inventory.items[i] = resource
+			if (i == _inventory.selected_slot):
+				print(i ," ", _inventory.selected_slot)
+				player_select_slot()
 			return true  # Item successfully added
 	return false
 
@@ -75,8 +75,10 @@ func get_inventory_data() -> Array:
 	return inventory_data
 
 func set_inventory_data(data: Array):
-	_inventory = load("res://Inventory/inventory.tres")
-	clear_items()
+	if (!_inventory):
+		print("inventory null")
+		_inventory = load("res://Inventory/inventory.tres")
+	clear_inventory()
 	for item_data in data:
 		if item_data:
 			var new_item = InventoryItem.new()

@@ -7,7 +7,10 @@ class_name Gun
 
 @export var bulletSpeed: float = 800
 
+
 func _ready():
+	var myGun = preload("res://Guns/Gun.tscn")
+	print(myGun)
 	position.y = position.y + 7
 	offset.x = 7
 	update_texture()
@@ -32,7 +35,9 @@ func get_type():
 		return inventory_item.shooter.type()
 
 func shoot() -> bool:
+	print("Shooting with inventory item:", inventory_item)
 	if inventory_item and inventory_item.shooter: 
+		print("shoot function..." , inventory_item, " ", inventory_item.shooter)
 		_muzzle_flash()
 		var room_node = get_node("/root/World/RoomManager/Room")
 		var bullets = inventory_item.shooter.shoot() as Array[Bullet]
