@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cl0ixssag2vrj"]
+[gd_scene load_steps=32 format=3 uid="uid://cl0ixssag2vrj"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_648ik"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_5guae"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="6_1cobl"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="6_1hyae"]
 [ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="7_0n48h"]
+[ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_2af7x"]
+[ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="10_xwfak"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5d2s"]
 vertices = PackedVector2Array(222, 5, 221, 215, 175, 67, 164, 20, 184, -9, 83, -12, 85, 16, 184, 213, 167, -111, 176, -80, 82, -78, 76, -113, -223, 220, -220, 29, -180, 38, -144, 221, -176, -152, -225, -146, -224, -249, -74, -242, 214, -134, 170, -126, 166, -177, 219, -292, -12, -298, 78, -176, -13, -267, 94, 370, -98, 369, -97, 279, 95, 261, 124, 217, 85, 71, -170, -9, -120, 1, -165, -137, -134, -145, -70, -268, -102, -118, -106, 244, -104, -37, -113, -79)
@@ -274,6 +276,15 @@ offset = Vector2(0, -5)
 libraries = {
 "": SubResource("AnimationLibrary_1nb23")
 }
+
+[node name="Barrel" parent="." index="13" instance=ExtResource("9_2af7x")]
+position = Vector2(-207, 211)
+
+[node name="Barrel2" parent="." index="14" instance=ExtResource("10_xwfak")]
+position = Vector2(85, 280)
+
+[node name="Barrel3" parent="." index="15" instance=ExtResource("10_xwfak")]
+position = Vector2(209, -151)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]
