@@ -15,3 +15,4 @@ script = ExtResource("1_mvywn")
 [node name="intenseMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_2s5eg")
 volume_db = -15.0
+bus = &"Background"
