@@ -7,7 +7,7 @@ class_name Gun
 
 var bullet_count_label: Label = null
 @export var bulletSpeed: float = 800
-@export var max_bullet_count: int = 999
+@export var max_bullet_count: int = 30
 var current_bullet_count: int = 0
 
 
@@ -82,3 +82,7 @@ func _muzzle_flash_timeout() -> void:
 func decrease_bullet_count():
 	current_bullet_count -= 1
 	print("Current bullets left: " + str(current_bullet_count))
+
+func reload():
+	current_bullet_count = max_bullet_count
+	bullet_count_label.text = str(current_bullet_count)

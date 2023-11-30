@@ -460,7 +460,7 @@ offset_right = 93.0
 offset_bottom = 63.0
 theme_override_fonts/font = ExtResource("10_ydoat")
 theme_override_font_sizes/font_size = 14
-text = "999"
+text = "30"
 script = ExtResource("11_bbeky")
 
 [node name="FishSprite" type="Sprite2D" parent="Panel"]

@@ -104,7 +104,6 @@ func _physics_process(_delta):
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
 
-
 func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):
 		var current_gun = inventory_node.get_selected_gun()
@@ -142,7 +141,6 @@ func handle_player_movement() -> void:
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
-	
 
 func update_weapon_rotation(_delta, force_update_position = false) -> void:
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
@@ -211,6 +209,10 @@ func handle_player_interactions() -> void:
 			drop_fishbone()
 		else:
 			print("No fish in fishventory! Collect some fish!")
+	
+	if Input.is_action_just_pressed("reload"):
+		$reload.play()
+		gun.reload()
 
 func update_animation() -> void:
 	# Make sure we only update the animation if we are not sliding or eating
