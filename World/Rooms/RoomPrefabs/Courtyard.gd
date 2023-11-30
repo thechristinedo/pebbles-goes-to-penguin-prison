@@ -2,8 +2,6 @@ extends Node2D
 
 @export var open_door_map_texture: Texture2D
 @onready var map_sprite: Sprite2D = $MapSprite
-@onready var door_interactable_button: Sprite2D = $DoorInteractableArea/Button
-@onready var door_interactable_animation_player: AnimationPlayer = $DoorInteractableArea/AnimationPlayer
 @onready var enemies_container: Node2D = $Enemies
 @onready var victory_scene: CanvasLayer = load("res://GUI/User Interface/UI_menu_scenes/victory_screen.tscn").instantiate()
 
@@ -15,18 +13,11 @@ func _ready():
 	if !no_more_enemies(): 
 		room_start_with_enemies = true
 		door_opened = false
-	door_interactable_animation_player.play("hover")
 
 func _physics_process(_delta):
 	if !door_opened and room_start_with_enemies and no_more_enemies():
 		door_opened = true
 		map_sprite.texture = open_door_map_texture
-	if player_in_door_area and door_opened:
-		if Input.is_action_just_pressed("interact"):
-			next_scene_transition()
-		door_interactable_button.visible = true
-	else:
-		door_interactable_button.visible = false
 	if door_opened:
 		next_scene_transition()
 
