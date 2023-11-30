@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://b01cm40qmh1eh"]
+[gd_scene load_steps=6 format=3 uid="uid://b01cm40qmh1eh"]
 
 [ext_resource type="Script" path="res://Guns/Bullets/player_bullet.gd" id="1_le6ad"]
 [ext_resource type="Texture2D" uid="uid://cd3cucn4v8v4i" path="res://Assets/Guns/Bullets/bullet.png" id="1_wqmym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1i2ji"]
 size = Vector2(8, 5)
+
+[sub_resource type="Gradient" id="Gradient_p5m10"]
+offsets = PackedFloat32Array(0, 0.683871)
+colors = PackedColorArray(0.922581, 0.922581, 0.922581, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nudn8"]
+gradient = SubResource("Gradient_p5m10")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Bullet" type="RigidBody2D"]
 z_index = 1
@@ -29,6 +38,11 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_1i2ji")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0, 0, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_nudn8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -446,7 +446,6 @@ libraries = {
 position = Vector2(0, 34)
 
 [node name="SightRadius" type="Area2D" parent="." index="6"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0"]
 shape = SubResource("CircleShape2D_d8x3d")
@@ -501,7 +500,6 @@ sight_radius = NodePath("../../SightRadius")
 [node name="Rotater" type="Node2D" parent="." index="13"]
 
 [node name="ShootTimer" type="Timer" parent="." index="14"]
-autostart = true
 
 [node name="ShootTimer2" type="Timer" parent="." index="15"]
 wait_time = 5.0
@@ -510,4 +508,5 @@ one_shot = true
 [node name="icicleSound" type="AudioStreamPlayer2D" parent="." index="16"]
 stream = ExtResource("14_5nogk")
 
+[connection signal="body_entered" from="SightRadius" to="." method="_on_sight_radius_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
