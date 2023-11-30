@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvn0adliiqfho" path="res://Assets/s_barrel_0.png" id="2_k0jik"]
 [ext_resource type="PackedScene" uid="uid://xxrk86c74hi3" path="res://Collectables/Pickup/PickupFish.tscn" id="2_oxh6m"]
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="2_v5ijn"]
-[ext_resource type="AudioStream" uid="uid://cerqyctck6638" path="res://Audio/barrelbreak.mp3" id="5_qgb03"]
+[ext_resource type="AudioStream" uid="uid://bca7s0kvkkcix" path="res://Audio/barrel.mp3" id="5_ghs5h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbuxx"]
 resource_local_to_scene = true
@@ -32,7 +32,7 @@ shape = SubResource("CapsuleShape2D_jfpki")
 wait_time = 0.1
 
 [node name="barrelbreak" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_qgb03")
-volume_db = 24.0
+stream = ExtResource("5_ghs5h")
+volume_db = -1.405
 
 [connection signal="timeout" from="FlashHitTimer" to="." method="_on_FlashHitTimer_timeout"]

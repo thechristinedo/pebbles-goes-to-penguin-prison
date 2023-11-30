@@ -23,6 +23,7 @@ class_name Player
 @onready var machinegunShot = $machinegunShot
 @onready var walkSound = $walkSound
 @onready var slideSound = $slideSound
+@onready var eatSound = $eatSound
 
 # Fish
 @onready var fishventory = $Fishventory
@@ -176,6 +177,7 @@ func handle_player_interactions() -> void:
 		if fishventory.get_fish_value() > 0:
 			is_eating = true
 			heal(25)
+			eatSound.play()
 			fishventory.eat_resource()
 			#print("Fish left in inventory: ", fishventory.get_fish_value())
 			get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, -1)

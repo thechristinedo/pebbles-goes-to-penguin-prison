@@ -9,6 +9,7 @@ class_name MeleeComponent
 
 @onready var melee_sprite: Sprite2D = $MeleeSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var slapSound = $slap
 
 var target: CharacterBody2D
 var ready_to_melee: bool = true
@@ -26,6 +27,7 @@ func _melee() -> void:
 		if animation_player.has_animation("slap"):
 			animation_player.play("slap")
 	if target.has_method("take_damage") and distance_to_target < melee_range:
+		slapSound.play()
 		target.take_damage(damage)
 	get_tree().create_timer(ready_time).connect("timeout", _cooldown)
 
