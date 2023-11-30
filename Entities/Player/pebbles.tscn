@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=62 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -11,12 +11,12 @@
 [ext_resource type="Script" path="res://Entities/Player/player_inventory.gd" id="6_6pra7"]
 [ext_resource type="Texture2D" uid="uid://cxa0gskecbp13" path="res://Assets/Entities/pebbles-eating-fish.png" id="6_ce7l5"]
 [ext_resource type="PackedScene" uid="uid://c4i5a3obxwe7e" path="res://Entities/Components/player_ranged_attack_component.tscn" id="7_4rer2"]
-[ext_resource type="Texture2D" uid="uid://8fhxh3b2rdjs" path="res://Assets/Entities/Player/pebbles-dash.png" id="7_rtiva"]
 [ext_resource type="Script" path="res://Inventory/fishventory.gd" id="9_7it64"]
 [ext_resource type="Texture2D" uid="uid://7hjdfd88hsrx" path="res://Assets/Entities/Player/pebbles-death.png" id="9_4416w"]
 [ext_resource type="AudioStream" uid="uid://ctvw6c5mfo1tt" path="res://Audio/reload.mp3" id="9_bmfi5"]
 [ext_resource type="AudioStream" uid="uid://d1e41god0o21b" path="res://Audio/pickup.mp3" id="10_n1smd"]
 [ext_resource type="AudioStream" uid="uid://d3wk2f2csw6x4" path="res://Audio/shotgunShot.mp3" id="11_o5ie2"]
+[ext_resource type="Texture2D" uid="uid://dprucgr4jxw7x" path="res://Assets/Entities/Player/spritesheet.png" id="11_s7pma"]
 [ext_resource type="AudioStream" uid="uid://dhj81cb8lgoco" path="res://Audio/revolver.mp3" id="12_ilv8r"]
 [ext_resource type="AudioStream" uid="uid://cdsq4evvx0ymr" path="res://Audio/machinegun.mp3" id="13_pg6ll"]
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="14_aw3cd"]
@@ -288,7 +288,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_n6ajx"]
 resource_name = "slide"
-step = 0.07
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -299,7 +299,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_rtiva")]
+"values": [ExtResource("11_s7pma")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -311,7 +311,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [6]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -320,14 +320,57 @@ tracks/2/path = NodePath("PebblesSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.49, 0.56, 0.63, 0.7, 0.77, 0.84),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 11]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_itukp"]
 resource_name = "standing"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rhytv"]
+load_path = "res://.godot/imported/spritesheet (1).png-211d7c474487446b675fdb6921a1a924.ctex"
+
+[sub_resource type="Animation" id="Animation_6xri4"]
+resource_name = "slide1"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PebblesSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_rhytv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PebblesSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PebblesSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgk60"]
 _data = {
@@ -337,6 +380,7 @@ _data = {
 "idle": SubResource("Animation_ekktp"),
 "run": SubResource("Animation_boo2t"),
 "slide": SubResource("Animation_n6ajx"),
+"slide1": SubResource("Animation_6xri4"),
 "standing": SubResource("Animation_itukp")
 }
 
@@ -349,7 +393,7 @@ animation = &"idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p3hug"]
 animation = &"run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntwe1"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kaxiy"]
 animation = &"slide"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gkknf"]
@@ -363,14 +407,6 @@ advance_condition = &"is_running"
 advance_mode = 2
 advance_condition = &"is_not_running"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dx8v7"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ompl"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6b5b4"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5vc1e"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0pa17"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dohc"]
@@ -381,10 +417,17 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0ebd"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s8go0"]
-switch_mode = 1
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pmeij"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_als5d"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x01wm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rbtoi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ju5xi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ij4np"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7i6yh"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l3rut"]
 states/End/position = Vector2(844, 100)
@@ -394,10 +437,10 @@ states/idle/node = SubResource("AnimationNodeAnimation_ndbtt")
 states/idle/position = Vector2(384.5, 100)
 states/run/node = SubResource("AnimationNodeAnimation_p3hug")
 states/run/position = Vector2(633, 100)
-states/slide/node = SubResource("AnimationNodeAnimation_ntwe1")
-states/slide/position = Vector2(525.1, 0.360001)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky"), "run", "slide", SubResource("AnimationNodeStateMachineTransition_dx8v7"), "slide", "run", SubResource("AnimationNodeStateMachineTransition_3ompl"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_6b5b4"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_5vc1e"), "idle", "eat", SubResource("AnimationNodeStateMachineTransition_0pa17"), "eat", "idle", SubResource("AnimationNodeStateMachineTransition_6dohc"), "eat", "run", SubResource("AnimationNodeStateMachineTransition_p30wn"), "run", "eat", SubResource("AnimationNodeStateMachineTransition_w0ebd"), "eat", "slide", SubResource("AnimationNodeStateMachineTransition_s8go0"), "slide", "eat", SubResource("AnimationNodeStateMachineTransition_als5d")]
-graph_offset = Vector2(-2.29509, 27.5897)
+states/slide/node = SubResource("AnimationNodeAnimation_kaxiy")
+states/slide/position = Vector2(516.705, 9.76469)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkknf"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_rbtlr"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_d28ky"), "idle", "eat", SubResource("AnimationNodeStateMachineTransition_0pa17"), "eat", "idle", SubResource("AnimationNodeStateMachineTransition_6dohc"), "eat", "run", SubResource("AnimationNodeStateMachineTransition_p30wn"), "run", "eat", SubResource("AnimationNodeStateMachineTransition_w0ebd"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_pmeij"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_x01wm"), "slide", "eat", SubResource("AnimationNodeStateMachineTransition_rbtoi"), "eat", "slide", SubResource("AnimationNodeStateMachineTransition_ju5xi"), "slide", "run", SubResource("AnimationNodeStateMachineTransition_ij4np"), "run", "slide", SubResource("AnimationNodeStateMachineTransition_7i6yh")]
+graph_offset = Vector2(-2.29509, -30.2353)
 
 [sub_resource type="Gradient" id="Gradient_owbeb"]
 offsets = PackedFloat32Array(0.674074, 1)
