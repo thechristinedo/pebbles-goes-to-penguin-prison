@@ -8,7 +8,8 @@ Embark on a thrilling escape adventure in "Pebbles Goes to Penguin Prison". Pebb
 
 # Controls
 
-Choose between Keyboard or Gamepad within the settings menu.
+Default: Keyboard & Mouse
+Select Input Type in settings to change to Gamepad.
 
 ## Keyboard Controls
 | Action             | Key                   |
