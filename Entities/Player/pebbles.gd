@@ -109,9 +109,15 @@ func handle_player_shoot() -> void:
 	if Input.is_action_pressed("shoot"):
 		var current_gun = inventory_node.get_selected_gun()
 		if current_gun:
+			print("Cur Gun: ", current_gun)
+			print("Shooter: ", current_gun.shooter)
+			print("Firerate: ", current_gun.shooter.firerate)
 			ranged_attack_component.set_fire_rate(current_gun.shooter.firerate)
+			
 			var has_shot = ranged_attack_component.shoot()
+			print("has_shot: ", has_shot)
 			if has_shot: 
+				
 				var gunType = ranged_attack_component.gun.get_type()
 				if gunType == "shotgun":
 					shotgunShot.play()

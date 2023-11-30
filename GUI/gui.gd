@@ -23,9 +23,11 @@ func _ready():
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
 		Input.set_custom_mouse_cursor(null)
 	else:
-		begin_load()
-		$AnimationPlayer.play("tutorial_dialog")
-		$CursorAnimationTimer.connect("timeout", Callable(self, "update_frame"))
+		if get_tree().current_scene == preload("res://World/Rooms/RoomPrefabs/prison_cell.tscn"):
+			$Textbox.visible = true
+			begin_load()
+			$AnimationPlayer.play("tutorial_dialog")
+			$CursorAnimationTimer.connect("timeout", Callable(self, "update_frame"))
 
 #	Input.set_custom_mouse_cursor(
 #		CURSOR, 

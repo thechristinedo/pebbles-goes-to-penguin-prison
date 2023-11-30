@@ -47,15 +47,36 @@ func apply_game_data(data):
 		get_tree().root.add_child(world_instance)
 		get_tree().current_scene = world_instance
 		
-	RoomManager.switch_room(data["current_room"])
-	var player = RoomManager.pebbles
-	var fishventory = player.find_child("Fishventory")
-	var inventory = player.find_child("Inventory")
-	if data["fish_items"]:
-		data["fish_items"] = fishventory.deserialize(data["fish_items"])
-	if data["weapons"]:
-		data["weapons"] = inventory.set_inventory_data(data["weapons"])
-	player.saved_fish_count = data["fish_count"]
-	player.health = data["player_health"]
-	player.global_position = data["player_position"]
+	if (data["current_room"]):
+		RoomManager.switch_room(data["current_room"])
+		var player = RoomManager.pebbles
+		var fishventory = player.find_child("Fishventory")
+		var inventory = player.find_child("Inventory")
+		
+		if data["fish_items"]:
+			data["fish_items"] = fishventory.deserialize(data["fish_items"])
+		
+		if data["weapons"]:
+			data["weapons"] = inventory.set_inventory_data(data["weapons"])
+		
+		player.saved_fish_count = data["fish_count"]
+		player.health = data["player_health"]
 
+func apply_scene_tree_data(scene_tree_data: Array):
+	for node_data in scene_tree_data:
+		var node = _find_node_by_name_and_type(node_data["name"], node_data["type"])
+		print("FOUND NODES IN APPLY_SCENE " , node)
+		if node:
+			_apply_node_data(node, node_data)
+			
+func _find_node_by_name_and_type(name: String, type: String) -> Node:
+	var nodes = get_tree().get_nodes_in_group("savable") # Assuming you have a group for savable nodes
+	for node in nodes:
+		if node.name == name and node.get_class() == type:
+			return node
+	return null
+	
+func _apply_node_data(node: Node, node_data: Dictionary):
+	print("FOUND NODES IN APPLY NODE " , node)
+	if node is Node2D and "position" in node_data:
+		node.global_position = node_data["position"]
