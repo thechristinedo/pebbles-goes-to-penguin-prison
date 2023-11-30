@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="9_nlfnn"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="10_o272g"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="11_l65ai"]
-[ext_resource type="AudioStream" uid="uid://jcq0mvxk2bna" path="res://Audio/ice1.mp3" id="15_ee12f"]
+[ext_resource type="AudioStream" uid="uid://hplmmxhj0xir" path="res://Audio/shuriken2.mp3" id="14_7t3iv"]
 
 [sub_resource type="Animation" id="Animation_5aqcb"]
 length = 0.001
@@ -498,8 +498,8 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
-[node name="icicleSound" type="AudioStreamPlayer2D" parent="." index="16"]
-stream = ExtResource("15_ee12f")
+[node name="shurikenSound" type="AudioStreamPlayer2D" parent="." index="16"]
+stream = ExtResource("14_7t3iv")
 bus = &"Sound Effects"
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

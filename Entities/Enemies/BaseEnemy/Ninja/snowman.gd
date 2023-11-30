@@ -4,7 +4,7 @@ const snowball_scene = preload("res://Entities/Enemies/BaseEnemy/Ninja/snowball.
 const starReturn_scene = preload("res://Entities/Enemies/BaseEnemy/Ninja/starReturn.tscn") # Load the starReturn scene
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
-@onready var icicleSound = $icicleSound
+@onready var shurikenSound = $shurikenSound
 
 const rotate_speed = 200
 const shooter_timer_wait_time = 0.2
@@ -29,12 +29,13 @@ func _shoot():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		rotater.add_child(spawn_point)
-		icicleSound.play()
+		
 	
 	
 	# # of spirals we want to create
 	for i in range(3):
 		for s in rotater.get_children():
+			shurikenSound.play()
 			await get_tree().create_timer(0.2).timeout
 			var bullet = snowball_scene.instantiate()
 			get_tree().get_root().add_child(bullet)
