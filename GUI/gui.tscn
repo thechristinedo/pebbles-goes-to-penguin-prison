@@ -481,13 +481,14 @@ text = "0
 script = ExtResource("13_ob65g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_uih8p")
 }
 
 [node name="Textbox" type="MarginContainer" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.627451)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -522,7 +523,7 @@ theme = ExtResource("5_qhty0")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
-text = "Use keys 'WASD' to move."
+text = "Barrels may drop fish that heal. Press SHIFT to heal."
 vertical_alignment = 1
 autowrap_mode = 2
 visible_characters = 0
