@@ -5,8 +5,10 @@ class_name Pickup
 @export var resource_type : Resource
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
+
 func _ready():
 	connect("body_entered", _on_body_entered)
+	print("In pickup.gd: ", resource_type)
 
 var launch_velocity : Vector2 = Vector2.ZERO
 var move_duration : float = 0
@@ -37,3 +39,5 @@ func _on_body_entered(body):
 		inventory.add_resources(resource_type, 1)
 		print("Collected fish! Total fish: ", inventory.get_fish_value())
 		queue_free()
+		
+	

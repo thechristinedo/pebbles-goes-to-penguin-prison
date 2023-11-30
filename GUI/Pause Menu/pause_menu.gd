@@ -33,19 +33,23 @@ func _on_back_pressed():
 
 
 func _on_save_pressed():
+	var pebbles_instance = RoomManager.pebbles
 	var game_data = get_game_data()
+
 	SaveSystem.save_game(SaveSystem.current_slot, game_data)
 	
 func get_game_data():
 	var pebbles_instance = RoomManager.pebbles
+	var fishventory= pebbles_instance.get_node("Fishventory")
 	var data = {
 		"filename" : pebbles_instance.get_scene_file_path(),
 		"parent" : pebbles_instance.get_parent().get_path(),
 		"player_health": pebbles_instance.get_health(),
 		"player_position": pebbles_instance.global_position,
 		"fish_count": pebbles_instance.get_fish_count(),
+		"fish_items": fishventory.serialize(),
 		"current_room": RoomManager.current_room_path,
 		"inventory_data": pebbles_instance.get_inventory_data(),
-		"test": get_tree()
+		"test": get_tree(),
 	}
 	return data

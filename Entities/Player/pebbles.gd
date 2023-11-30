@@ -27,9 +27,11 @@ class_name Player
 # Health
 @onready var fishventory = $Fishventory
 @export var max_health: int = 10
-@onready var health: int = max_health
+
+var health: int = max_health
 var is_eating = false
-@onready var fish_count: int
+var fish_count: int
+var saved_fish_count: int = 0
 
 @export var speed: float = 200
 var current_animation: String = "idle"
@@ -57,7 +59,9 @@ var invincible: bool = false
 func _ready():
 	animation_tree.active = true
 	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
-	print("Health: ", health, " Fish: ",fish_count)
+	print("Health: ", health, " Fish: ",fishventory.get_fish_value())
+	#print("fishitem: ", fish_resource)
+	
 
 func _physics_process(_delta):
 	update_animation()
@@ -97,6 +101,7 @@ func _physics_process(_delta):
 	
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
+	
 
 func handle_player_shoot() -> void:
 	gun.aim(get_global_mouse_position())
@@ -279,11 +284,16 @@ func get_health() -> int:
 	return health
 
 func get_fish_count() -> int:
-	return fish_count
+	return fishventory.get_fish_value()
 
 func get_inventory_data():
 	return inventory_node.get_inventory_data()
+
+func get_fish_item():
+	return fishventory.save_fish_item()
 	
-func set_new_data():
-	health = health
-	fish_count = fish_count
+func set_new_data(fish_items):
+	
+	print("SET NEW DATA...", fish_items)
+	
+	
