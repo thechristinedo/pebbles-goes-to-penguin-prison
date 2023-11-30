@@ -527,7 +527,6 @@ _data = {
 radius = 150.0
 
 [node name="Enemy" instance=ExtResource("1_nhfw3")]
-platform_floor_layers = 4294967294
 
 [node name="Shadow" parent="." index="0"]
 position = Vector2(4, 15)
