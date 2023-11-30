@@ -39,9 +39,10 @@ func set_movement_direction(direction: Vector2) -> void:
 	else: 				
 		entity_sprite_node.flip_h = false
 		shadow_sprite_node.flip_h = false
-	
 	animation_tree["parameters/conditions/is_running"] = true
 	animation_tree["parameters/conditions/not_running"] = false
+	
+
 
 func stop_movement() -> void:
 	_stopped = true
