@@ -5,7 +5,7 @@ extends StaticBody2D
 #Fish Drops
 @export var pickup_type : PackedScene
 @onready var level_parent = get_parent()
-@export var launch_speed : float = 35
+@export var launch_speed : float = 17
 @export var launch_direction : float = 0.25
 
 #Hit Flash Shader
