@@ -441,7 +441,8 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Pebbles" type="CharacterBody2D"]
 z_index = 1
 position = Vector2(0, -5)
-collision_mask = 15
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_2fbo2")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -466,7 +467,6 @@ texture = ExtResource("6_2whds")
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_3ncl5")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="PlayerInteractArea" type="Area2D" parent="."]
 collision_mask = 129

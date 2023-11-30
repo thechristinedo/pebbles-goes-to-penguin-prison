@@ -3,14 +3,6 @@ extends Node2D
 const speed = 100
 const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smoke.tscn")
 
-func _ready():
-	add_to_group("bossBullets")
-	var player = get_tree().get_nodes_in_group("player")[0]
-	if player.animation_tree.get("parameters/conditions/is_sliding"):
-		# If yes, ignore the player layer
-		# set_collision_mask_value(1, false)
-		get_node("Area2D").set_collision_mask_value(1, false)
-
 func _process(delta):
 	position += transform.x * speed * delta
 	
