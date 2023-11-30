@@ -583,7 +583,6 @@ _data = {
 radius = 129.19
 
 [node name="PolarBearPolice" instance=ExtResource("1_2bf6c")]
-platform_floor_layers = 4294967294
 
 [node name="Shadow" parent="." index="0"]
 position = Vector2(-4, 6)
@@ -598,7 +597,7 @@ scale = Vector2(1, 0.983871)
 texture = ExtResource("2_6h32t")
 offset = Vector2(0, -5.9836)
 hframes = 2
-frame = 0
+frame = 1
 
 [node name="Hitbox" parent="." index="2"]
 visible = false
@@ -610,6 +609,7 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [node name="SightRadius" type="Area2D" parent="." index="6"]
 visible = false

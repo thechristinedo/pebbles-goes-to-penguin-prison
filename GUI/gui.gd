@@ -23,7 +23,7 @@ func _ready():
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
 		Input.set_custom_mouse_cursor(null)
 	else:
-		if get_tree().current_scene == preload("res://World/Rooms/RoomPrefabs/prison_cell.tscn"):
+		if (!RoomManager.room_check):
 			$Textbox.visible = true
 			begin_load()
 			$AnimationPlayer.play("tutorial_dialog")
