@@ -41,6 +41,7 @@ func destroy():
 
 func check_distance():
 	# Check the distance between the snowball and the snowman
+	if snowman == null: return
 	var dist = position.distance_to(snowman.position)
 	if dist > 125: # If the distance is greater than 300 pixels, set the recall state to true
 		recall = true
