@@ -22,11 +22,11 @@ func scroll_down() -> void:
 	player_select_slot()
 
 func clear_items():
-	for i in range(1,_inventory.items.size()):
+	for i in range(_inventory.items.size()):
 		_inventory.items[i] = null
 
 func insert_gun(resource: InventoryItem) -> bool:
-	for i in range(1,_inventory.items.size()):
+	for i in range(_inventory.items.size()):
 		if (!_inventory.items[i]):
 			_inventory.items[i] = resource
 			return true  # Item successfully added
@@ -59,7 +59,7 @@ func _input(event):
 
 func get_inventory_data() -> Array:
 	var inventory_data = []
-	for i in range(1, _inventory.items.size()):
+	for i in range(_inventory.items.size()):
 		var item = _inventory.items[i]
 		if item:
 			inventory_data.append({
