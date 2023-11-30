@@ -16,3 +16,5 @@
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.592157, 0.54902, 0.729412, 1)
+
+[node name="Enemies" type="Node2D" parent="."]

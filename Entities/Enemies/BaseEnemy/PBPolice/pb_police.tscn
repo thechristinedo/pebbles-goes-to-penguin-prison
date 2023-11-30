@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://xrolridxojk0"]
+[gd_scene load_steps=23 format=3 uid="uid://xrolridxojk0"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_2bf6c"]
 [ext_resource type="Texture2D" uid="uid://c2akt0wppjqup" path="res://Assets/Entities/Enemies/Polar Bear Guard/idle pb.png" id="2_6h32t"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/flash.gdshader" id="2_jjgj3"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="3_tf8xl"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="3_yapkx"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="4_1alht"]
@@ -13,6 +14,12 @@
 [ext_resource type="PackedScene" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="9_q1aom"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="12_fegqk"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="13_to7my"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxo10"]
+resource_local_to_scene = true
+shader = ExtResource("2_jjgj3")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_8u2fx"]
 length = 0.001
@@ -584,6 +591,7 @@ offset = Vector2(0.897621, -0.874449)
 region_rect = Rect2(0.453, 0.248, 51, 31)
 
 [node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_cxo10")
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(1, 0.983871)
 texture = ExtResource("2_6h32t")
