@@ -222,6 +222,10 @@ visible = false
 position = Vector2(-14, 9)
 shape = SubResource("RectangleShape2D_xlgjv")
 
+[node name="RoomCollisions" parent="." index="4"]
+collision_layer = 12
+collision_mask = 3
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollisions" index="0"]
 polygon = PackedVector2Array(-226, -142, -166, -142, -165, -115, -21, -115, -21, -144, 129, -144, 129, -127, 190, -127, 191.322, -162.266, 326, -278, -362, -270, -339, 308, 338, 287, 334, -278, 197, -156, 197, 118, 93, 118, 88, 124, 88, 222, -121, 222, -120, 125, -127, 118, -227, 118)
 

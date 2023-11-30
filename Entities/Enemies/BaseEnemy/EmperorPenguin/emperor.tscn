@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b76kr72jd2le5" path="res://Assets/Entities/Enemies/Snowman/snowman_death.png" id="5_5oorb"]
 [ext_resource type="Texture2D" uid="uid://g3le7parjafw" path="res://Assets/Entities/Enemies/Snowman/walk_snowman.png" id="6_m5xed"]
 [ext_resource type="Texture2D" uid="uid://ccxfwowo1add" path="res://Assets/Entities/Enemies/Snowman/snowman_slap.png" id="7_scncg"]
-[ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="8_eh7yf"]
+[ext_resource type="PackedScene" uid="uid://b1mma4h8fmwl5" path="res://Entities/Components/MeleeComponent.tscn" id="8_eh7yf"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="9_q4y8f"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="10_cbtju"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="11_d5gs4"]
