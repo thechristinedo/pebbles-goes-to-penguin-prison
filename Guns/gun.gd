@@ -10,7 +10,10 @@ var bullet_count_label: Label = null
 @export var max_bullet_count: int = 999
 var current_bullet_count: int = 0
 
+
 func _ready():
+	var myGun = preload("res://Guns/Gun.tscn")
+	print(myGun)
 	position.y = position.y + 7
 	offset.x = 7
 	update_texture()	
@@ -43,8 +46,9 @@ func get_type():
 func shoot() -> bool:
 	if current_bullet_count <= 0:
 		return false
-	
+	print("Shooting with inventory item:", inventory_item)
 	if inventory_item and inventory_item.shooter: 
+		print("shoot function..." , inventory_item, " ", inventory_item.shooter)
 		_muzzle_flash()
 		var room_node = get_node("/root/World/RoomManager/Room")
 		var bullets = inventory_item.shooter.shoot() as Array[Bullet]

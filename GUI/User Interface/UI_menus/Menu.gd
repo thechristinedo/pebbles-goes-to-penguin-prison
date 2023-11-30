@@ -22,6 +22,7 @@ func _on_play_pressed():
 
 func _on_save_slot_1_pressed():
 	#$TextureRect.visible = true
+	SaveSystem.current_slot = 1
 	selectSound.play()
 	saveslot.visible = false
 	if SaveSystem.slot_has_data(1):
@@ -34,6 +35,7 @@ func _on_save_slot_1_pressed():
 		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_2_pressed():
+	SaveSystem.current_slot = 2
 	selectSound.play()
 	saveslot.visible = false
 	if SaveSystem.slot_has_data(2):
@@ -45,6 +47,7 @@ func _on_save_slot_2_pressed():
 		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_3_pressed():
+	SaveSystem.current_slot = 3
 	selectSound.play()
 	saveslot.visible = false
 	if SaveSystem.slot_has_data(3):
@@ -93,7 +96,6 @@ func _on_input_type_button_item_selected(index):
 
 func _on_trash_1_pressed():
 	var error = SaveSystem.delete_save(1)
-	print(error)
 	if error != OK:
 		success_label.visible = false
 		error_label.visible = true
@@ -102,8 +104,21 @@ func _on_trash_1_pressed():
 		error_label.visible = false
 
 func _on_trash_2_pressed():
-	SaveSystem.delete_save(2)
+	var error = SaveSystem.delete_save(2)
+	if error != OK:
+		success_label.visible = false
+		error_label.visible = true
+	else: 
+		success_label.visible = true
+		error_label.visible = false
+
 
 
 func _on_trash_3_pressed():
-	SaveSystem.delete_save(3)
+	var error = SaveSystem.delete_save(3)
+	if error != OK:
+		success_label.visible = false
+		error_label.visible = true
+	else: 
+		success_label.visible = true
+		error_label.visible = false
