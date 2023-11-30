@@ -555,7 +555,6 @@ active = true
 visible = false
 
 [node name="SightRadius" type="Area2D" parent="." index="7"]
-visible = false
 collision_layer = 3
 collision_mask = 3
 

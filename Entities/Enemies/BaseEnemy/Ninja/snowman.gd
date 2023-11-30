@@ -13,10 +13,6 @@ const radius = 25
 
 var player # The player reference
 
-func _ready():
-	_shoot()
-	player = RoomManager.pebbles # Assign the player reference
-
 func _process(delta: float) -> void:
 	var new_rotation = rotater.rotation_degrees + rotate_speed * delta
 	rotater.rotation_degrees = fmod(new_rotation, 360)
@@ -29,9 +25,7 @@ func _shoot():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		rotater.add_child(spawn_point)
-		
-	
-	
+
 	# # of spirals we want to create
 	for i in range(3):
 		for s in rotater.get_children():
@@ -65,3 +59,8 @@ func angle_to_player():
 	# Calculate the angle between the snowman and the player
 	var diff = player.position - position # Get the difference vector
 	return atan2(diff.y, diff.x) # Return the angle using atan2
+
+func _on_sight_radius_body_entered(body):
+	if body.name == "Pebbles":
+		print("ENTERED")
+		_shoot()
