@@ -1,14 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcy38limnheyy"]
+[gd_scene load_steps=22 format=3 uid="uid://dcy38limnheyy"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_d03o8"]
 [ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.gd" id="2_yfx8t"]
-[ext_resource type="Texture2D" uid="uid://g7vd3clwdaeq" path="res://Assets/Entities/Enemies/Snowman/idle_snowman.png" id="3_a2hdj"]
+[ext_resource type="Texture2D" uid="uid://q8dev2fsink1" path="res://Assets/Entities/Enemies/Ninja Penguin/ninja_penguin_idle.png" id="3_0wtbk"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="4_e62pm"]
-[ext_resource type="Texture2D" uid="uid://g3le7parjafw" path="res://Assets/Entities/Enemies/Snowman/walk_snowman.png" id="5_ahiw1"]
+[ext_resource type="Texture2D" uid="uid://ddgdqjj43pltf" path="res://Assets/Entities/Enemies/Ninja Penguin/ninja_penguin_death.png" id="5_bvodh"]
 [ext_resource type="PackedScene" uid="uid://b1mma4h8fmwl5" path="res://Entities/Components/MeleeComponent.tscn" id="5_poco5"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_30n1q"]
-[ext_resource type="Texture2D" uid="uid://b76kr72jd2le5" path="res://Assets/Entities/Enemies/Snowman/snowman_death.png" id="6_l5kta"]
-[ext_resource type="Texture2D" uid="uid://ccxfwowo1add" path="res://Assets/Entities/Enemies/Snowman/snowman_slap.png" id="7_n583h"]
+[ext_resource type="Texture2D" uid="uid://bcbr4ts0xmluy" path="res://Assets/Entities/Enemies/Ninja Penguin/ninja_penguin_walk.png" id="6_mwq3q"]
 [ext_resource type="Script" path="res://Entities/Components/MovementComponent.gd" id="7_xfihx"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="8_e7bcd"]
 [ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="9_nlfnn"]
@@ -28,7 +27,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_a2hdj")]
+"values": [ExtResource("3_0wtbk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,7 +139,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_l5kta")]
+"values": [ExtResource("5_bvodh")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -205,7 +204,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_a2hdj")]
+"values": [ExtResource("3_0wtbk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -282,7 +281,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_doj0s"]
 resource_name = "run"
-length = 0.2
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -294,7 +293,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_ahiw1")]
+"values": [ExtResource("6_mwq3q")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -315,7 +314,7 @@ tracks/2/path = NodePath("EnemySprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -346,7 +345,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_n583h")]
+"values": [ExtResource("6_mwq3q")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -418,7 +417,7 @@ scale = Vector2(1.0625, 0.675)
 offset = Vector2(-0.279807, 1.48153)
 
 [node name="EnemySprite" parent="." index="1"]
-texture = ExtResource("3_a2hdj")
+texture = ExtResource("3_0wtbk")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 2
 frame = 0
