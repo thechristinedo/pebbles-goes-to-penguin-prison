@@ -24,12 +24,13 @@ class_name Player
 @onready var walkSound = $walkSound
 @onready var slideSound = $slideSound
 
-# Health
+# Fish
 @onready var fishventory = $Fishventory
 @export var max_health: int = 10
 @onready var health: int = max_health
 var is_eating = false
 @onready var fish_count: int
+@onready var world = get_parent()
 
 @export var speed: float = 200
 var current_animation: String = "idle"
@@ -87,13 +88,9 @@ func _physics_process(_delta):
 		invincible = false
 		$Gun.visible = true
 	
-		
-	# press shift to heal (eat)
-	
 	if current_slide_cooldown > 0:
 		current_slide_cooldown -= _delta
 		
-	
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
 
@@ -179,9 +176,9 @@ func handle_player_interactions() -> void:
 			fishventory.eat_resource()
 			#print("Fish left in inventory: ", fishventory.get_fish_value())
 			get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, -1)
+			drop_fishbone()
 		else:
 			print("No fish in fishventory! Collect some fish!")
-
 
 func update_animation() -> void:
 	# Make sure we only update the animation if we are not sliding or eating
@@ -238,7 +235,12 @@ func heal(amount: int):
 	
 func reset_heal():
 	is_eating = false
-	
+
+func drop_fishbone():
+	var bone = load("res://Collectables/Pickup/PickupBone.tscn").instantiate()
+	bone.position = self.position
+	world.add_child(bone)
+
 func take_damage(damage: int = 1) -> void:
 	#damage is only going to be 1 for pebbles 
 	if invincible: return

@@ -20,6 +20,9 @@ func setup() -> void:
 
 func switch_room(room_path: String) -> void:
 	_next_room_path = room_path
+	for child in room_manager_node.get_children():
+		if child is Area2D:
+			child.queue_free()
 	animation_player.play("fade_in")
 
 func set_camera_bounds(bounds: CollisionShape2D) -> void:
