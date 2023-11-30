@@ -6,6 +6,7 @@ class_name Pickup
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var acquireSound = $acquireSound
 
+
 func _ready():
 	connect("body_entered", _on_body_entered)
 
@@ -44,3 +45,5 @@ func _on_body_entered(body):
 		print("Collected fish! Total fish: ", inventory.get_fish_value())
 		await get_tree().create_timer(1.36).timeout
 		queue_free()
+		
+	

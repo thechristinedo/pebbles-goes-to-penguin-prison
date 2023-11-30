@@ -28,9 +28,12 @@ class_name Player
 # Fish
 @onready var fishventory = $Fishventory
 @export var max_health: int = 10
-@onready var health: int = max_health
+
+var health: int = max_health
 var is_eating = false
-@onready var fish_count: int
+
+var fish_count: int
+var saved_fish_count: int = 0
 @onready var world = get_parent()
 
 @export var speed: float = 200
@@ -62,6 +65,9 @@ func _ready():
 	add_to_group("player")
 	animation_tree.active = true
 	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
+	print("Health: ", health, " Fish: ",fishventory.get_fish_value())
+	#print("fishitem: ", fish_resource)
+	
 
 func _physics_process(_delta):
 	update_animation()
@@ -102,9 +108,15 @@ func handle_player_shoot() -> void:
 	if Input.is_action_pressed("shoot"):
 		var current_gun = inventory_node.get_selected_gun()
 		if current_gun:
+			print("Cur Gun: ", current_gun)
+			print("Shooter: ", current_gun.shooter)
+			print("Firerate: ", current_gun.shooter.firerate)
 			ranged_attack_component.set_fire_rate(current_gun.shooter.firerate)
+			
 			var has_shot = ranged_attack_component.shoot()
+			print("has_shot: ", has_shot)
 			if has_shot: 
+				
 				var gunType = ranged_attack_component.gun.get_type()
 				if gunType == "shotgun":
 					shotgunShot.play()
@@ -129,7 +141,6 @@ func handle_player_movement() -> void:
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
-	
 
 func update_weapon_rotation(_delta, force_update_position = false) -> void:
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
@@ -193,6 +204,10 @@ func handle_player_interactions() -> void:
 			drop_fishbone()
 		else:
 			print("No fish in fishventory! Collect some fish!")
+	
+	if Input.is_action_just_pressed("reload"):
+		$reload.play()
+		gun.reload()
 
 func update_animation() -> void:
 	# Make sure we only update the animation if we are not sliding or eating
@@ -328,3 +343,21 @@ func _on_input_scheme_changed(scheme) -> void:
 		update_weapon_rotation(0, true)
 	else:
 		crosshair.hide()
+		
+func get_health() -> int:
+	return health
+
+func get_fish_count() -> int:
+	return fishventory.get_fish_value()
+
+func get_inventory_data():
+	return inventory_node.get_inventory_data()
+
+func get_fish_item():
+	return fishventory.save_fish_item()
+	
+func set_new_data(fish_items):
+	
+	print("SET NEW DATA...", fish_items)
+	
+	

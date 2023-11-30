@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2gsuh1kyuipl"]
+[gd_scene load_steps=16 format=3 uid="uid://2gsuh1kyuipl"]
 
 [ext_resource type="Script" path="res://GUI/User Interface/UI_menus/Menu.gd" id="1_tgxhm"]
 [ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_3itbe"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_ts0n3"]
 [ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="10_3ymch"]
 [ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="11_p6ei1"]
+[ext_resource type="Texture2D" uid="uid://4q3rf7g8m62b" path="res://Assets/trash.png" id="11_t01sp"]
 [ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="12_1rcud"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hykk"]
@@ -387,12 +388,36 @@ theme_override_constants/outline_size = 2
 text = "Save Slot 1
 "
 
+[node name="Trash1" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot1"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 1.0
+offset_right = 1012.0
+offset_bottom = 509.0
+scale = Vector2(0.07, 0.07)
+size_flags_vertical = 0
+theme = ExtResource("9_ts0n3")
+theme_override_constants/outline_size = 2
+icon = ExtResource("11_t01sp")
+
 [node name="SaveSlot2" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Save Slot 2
 "
+
+[node name="Trash2" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot2"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 1.0
+offset_right = 1012.0
+offset_bottom = 509.0
+scale = Vector2(0.07, 0.07)
+size_flags_vertical = 0
+theme = ExtResource("9_ts0n3")
+theme_override_constants/outline_size = 2
+icon = ExtResource("11_t01sp")
 
 [node name="SaveSlot3" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -401,12 +426,36 @@ theme_override_constants/outline_size = 2
 text = "Save Slot 3
 "
 
+[node name="Trash3" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot3"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 1.0
+offset_right = 1012.0
+offset_bottom = 509.0
+scale = Vector2(0.07, 0.07)
+size_flags_vertical = 0
+theme = ExtResource("9_ts0n3")
+theme_override_constants/outline_size = 2
+icon = ExtResource("11_t01sp")
+
 [node name="Back" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Back
 "
+
+[node name="Success" type="Label" parent="SaveSlot/MarginContainer2/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Save file deleted successfully."
+horizontal_alignment = 1
+
+[node name="Error" type="Label" parent="SaveSlot/MarginContainer2/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Error. Failed to delete save file."
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_p6ei1")
@@ -428,6 +477,9 @@ bus = &"Sound Effects"
 [connection signal="item_selected" from="InputType/VBoxContainer2/InputTypeButton" to="." method="_on_input_type_button_item_selected"]
 [connection signal="pressed" from="InputType/VBoxContainer2/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot1" to="." method="_on_save_slot_1_pressed"]
+[connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot1/Trash1" to="." method="_on_trash_1_pressed"]
 [connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot2" to="." method="_on_save_slot_2_pressed"]
+[connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot2/Trash2" to="." method="_on_trash_2_pressed"]
 [connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot3" to="." method="_on_save_slot_3_pressed"]
+[connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot3/Trash3" to="." method="_on_trash_3_pressed"]
 [connection signal="pressed" from="SaveSlot/MarginContainer2/VBoxContainer/Back" to="." method="_on_back_pressed"]

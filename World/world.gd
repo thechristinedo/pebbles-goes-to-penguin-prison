@@ -13,7 +13,7 @@ static var INPUT_SCHEME: INPUT_SCHEMES = INPUT_SCHEMES.KEYBOARD_AND_MOUSE
 
 func _ready():
 	init_room()
-	
+	$intenseMusic.play()
 	player.health_updated.connect(player_health_bar_ui.set_health)
 	#player.pebbles_shoot.connect(player_ammo_ui.set_ammo_amount)
 	
@@ -25,7 +25,7 @@ func _ready():
 func init_room() -> void:
 	RoomManager.setup()
 	RoomManager.switch_room(RoomManager.starting_room)
-	$intenseMusic.play()
+	
 
 func _physics_process(_delta):
 	pass

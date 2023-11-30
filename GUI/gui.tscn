@@ -131,7 +131,7 @@ _data = {
 "tutorial_dialog": SubResource("Animation_nmhev")
 }
 
-[node name="GUI" type="CanvasLayer"]
+[node name="GUI" type="CanvasLayer" groups=["Persist"]]
 script = ExtResource("1_e6sdv")
 
 [node name="Inventory" type="Control" parent="."]
@@ -243,6 +243,14 @@ layout_mode = 2
 theme = ExtResource("5_qhty0")
 theme_override_constants/outline_size = 3
 text = "Resume"
+
+[node name="Save" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Save
+"
 
 [node name="Volume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -444,7 +452,7 @@ position = Vector2(25, 53)
 scale = Vector2(1.71875, 1.71875)
 texture = ExtResource("9_3mk52")
 
-[node name="Ammo Amount" type="Label" parent="Panel"]
+[node name="AmmoAmount" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 46.0
@@ -452,7 +460,7 @@ offset_right = 93.0
 offset_bottom = 63.0
 theme_override_fonts/font = ExtResource("10_ydoat")
 theme_override_font_sizes/font_size = 14
-text = "45"
+text = "30"
 script = ExtResource("11_bbeky")
 
 [node name="FishSprite" type="Sprite2D" parent="Panel"]
@@ -473,13 +481,14 @@ text = "0
 script = ExtResource("13_ob65g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_uih8p")
 }
 
 [node name="Textbox" type="MarginContainer" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.627451)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -514,13 +523,14 @@ theme = ExtResource("5_qhty0")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
-text = "Use keys 'WASD' to move."
+text = "Barrels may drop fish that heal. Press SHIFT to heal."
 vertical_alignment = 1
 autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0
 
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Save" to="PauseMenu" method="_on_save_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/InputTypeButton" to="PauseMenu" method="_on_input_type_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Back To Main Menu" to="PauseMenu" method="_on_back_to_main_menu_pressed"]
