@@ -1,25 +1,36 @@
 extends CanvasLayer
 
 # Cursor
-const CURSOR = preload("res://Assets/GUI/Cursor/cursor1.png")
+#const CURSOR = preload("res://Assets/GUI/Cursor/cursor1.png")
+#const ANIMATION_FRAMES = [
+#	preload("res://Assets/GUI/Cursor/cursor2.png"),
+#	preload("res://Assets/GUI/Cursor/cursor3.png"),
+#	preload("res://Assets/GUI/Cursor/cursor4.png"),
+#	preload("res://Assets/GUI/Cursor/cursor5.png")
+#]
+#const CURSOR = preload("res://Assets/GUI/Cursor/crosshair1.png")
 const ANIMATION_FRAMES = [
-	preload("res://Assets/GUI/Cursor/cursor2.png"),
-	preload("res://Assets/GUI/Cursor/cursor3.png"),
-	preload("res://Assets/GUI/Cursor/cursor4.png"),
-	preload("res://Assets/GUI/Cursor/cursor5.png")
+	preload("res://Assets/GUI/Cursor/crosshair2.png"),
+	preload("res://Assets/GUI/Cursor/crosshair3.png"),
+	preload("res://Assets/GUI/Cursor/crosshair4.png"),
+	preload("res://Assets/GUI/Cursor/crosshair5.png")
 ]
+
 @export var frames_per_second = 16.0
 var current_frame = 0
 
 func _ready():
-	begin_load()
-	$AnimationPlayer.play("tutorial_dialog")
-	$CursorAnimationTimer.connect("timeout", Callable(self, "update_frame"))
-	
-	Input.set_custom_mouse_cursor(
-		CURSOR, 
-		Input.CURSOR_ARROW, 
-		Vector2(16,16))
+	if World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
+		Input.set_custom_mouse_cursor(null)
+	else:
+		begin_load()
+		$AnimationPlayer.play("tutorial_dialog")
+		$CursorAnimationTimer.connect("timeout", Callable(self, "update_frame"))
+
+#	Input.set_custom_mouse_cursor(
+#		CURSOR, 
+#		Input.CURSOR_ARROW, 
+#		Vector2(16,16))
 
 func begin_load():
 	$CursorAnimationTimer.start(1.0/frames_per_second)
@@ -29,7 +40,7 @@ func begin_load():
 func update_frame():
 	if Input.get_current_cursor_shape() != Input.CURSOR_ARROW:
 		return
-	
+
 	current_frame += 1
 	if current_frame >= ANIMATION_FRAMES.size():
 		current_frame = 0

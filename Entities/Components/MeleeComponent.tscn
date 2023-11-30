@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://daulk7ivq47fo"]
+[gd_scene load_steps=7 format=3 uid="uid://b1mma4h8fmwl5"]
 
 [ext_resource type="Script" path="res://Entities/Components/MeleeComponent.gd" id="1_3jflr"]
 [ext_resource type="Texture2D" uid="uid://dbo8qnj30ukbp" path="res://Assets/Melee/melee.png" id="2_nlr1t"]
