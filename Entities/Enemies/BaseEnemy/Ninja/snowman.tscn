@@ -409,7 +409,6 @@ _data = {
 radius = 129.19
 
 [node name="snowman" instance=ExtResource("1_d03o8")]
-platform_floor_layers = 4294967294
 script = ExtResource("2_yfx8t")
 
 [node name="Shadow" parent="." index="0"]

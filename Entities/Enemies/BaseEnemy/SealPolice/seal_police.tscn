@@ -540,7 +540,6 @@ _data = {
 radius = 129.19
 
 [node name="SealPolice" instance=ExtResource("1_06o5o")]
-platform_floor_layers = 4294967294
 
 [node name="Shadow" parent="." index="0"]
 visible = false

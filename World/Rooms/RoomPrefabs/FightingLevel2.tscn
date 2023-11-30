@@ -1,11 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://cl0ixssag2vrj"]
+[gd_scene load_steps=30 format=3 uid="uid://cl0ixssag2vrj"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_648ik"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_5guae"]
 [ext_resource type="Texture2D" uid="uid://ocplid2yhool" path="res://Assets/Maps/fighting_level_2_closed.png" id="2_j56rx"]
 [ext_resource type="Texture2D" uid="uid://dnso2fd5vvg7f" path="res://Assets/Maps/fighting_level_2_open.png" id="3_f7bhr"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_a06m1"]
+[ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="6_1cobl"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="6_1hyae"]
+[ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="7_0n48h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5d2s"]
 vertices = PackedVector2Array(222, 5, 221, 215, 175, 67, 164, 20, 184, -9, 83, -12, 85, 16, 184, 213, 167, -111, 176, -80, 82, -78, 76, -113, -223, 220, -220, 29, -180, 38, -144, 221, -176, -152, -225, -146, -224, -249, -74, -242, 214, -134, 170, -126, 166, -177, 219, -292, -12, -298, 78, -176, -13, -267, 94, 370, -98, 369, -97, 279, 95, 261, 124, 217, 85, 71, -170, -9, -120, 1, -165, -137, -134, -145, -70, -268, -102, -118, -106, 244, -104, -37, -113, -79)
@@ -176,6 +178,21 @@ shape = SubResource("RectangleShape2D_vmjkn")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomCollisions" index="3"]
 position = Vector2(123, 37)
 shape = SubResource("RectangleShape2D_vmjkn")
+
+[node name="emperor" parent="Enemies" index="0" instance=ExtResource("7_0n48h")]
+position = Vector2(-8, -216)
+
+[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource("6_1cobl")]
+position = Vector2(-86, -12)
+
+[node name="Enemy3" parent="Enemies" index="2" instance=ExtResource("6_1cobl")]
+position = Vector2(153, 147)
+
+[node name="Enemy4" parent="Enemies" index="3" instance=ExtResource("6_1cobl")]
+position = Vector2(-173, 142)
+
+[node name="Enemy5" parent="Enemies" index="4" instance=ExtResource("6_1cobl")]
+position = Vector2(56, -104)
 
 [node name="TorchFlame" type="PointLight2D" parent="." index="7"]
 position = Vector2(-157, -325)

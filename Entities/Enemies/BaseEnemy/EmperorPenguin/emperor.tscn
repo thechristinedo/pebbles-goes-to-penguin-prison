@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://s2xdvvsal6yb"]
+[gd_scene load_steps=22 format=3 uid="uid://s2xdvvsal6yb"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_xibmg"]
 [ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.gd" id="2_k8v5j"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="11_d5gs4"]
 [ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="12_cxib4"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="13_3hbg5"]
+[ext_resource type="AudioStream" uid="uid://jcq0mvxk2bna" path="res://Audio/ice1.mp3" id="14_5nogk"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="14_eb6ft"]
 
 [sub_resource type="Animation" id="Animation_5aqcb"]
@@ -408,7 +409,6 @@ _data = {
 radius = 129.19
 
 [node name="emperor" instance=ExtResource("1_xibmg")]
-platform_floor_layers = 4294967294
 script = ExtResource("2_k8v5j")
 
 [node name="Shadow" parent="." index="0"]
@@ -497,5 +497,8 @@ autostart = true
 [node name="ShootTimer2" type="Timer" parent="." index="15"]
 wait_time = 5.0
 one_shot = true
+
+[node name="icicleSound" type="AudioStreamPlayer2D" parent="." index="16"]
+stream = ExtResource("14_5nogk")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

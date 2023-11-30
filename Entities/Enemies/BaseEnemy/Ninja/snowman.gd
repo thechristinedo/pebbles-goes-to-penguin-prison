@@ -7,8 +7,8 @@ const starReturn_scene = preload("res://Entities/Enemies/BaseEnemy/Ninja/starRet
 @onready var shurikenSound = $shurikenSound
 
 const rotate_speed = 200
-const shooter_timer_wait_time = 0.2
-const spawn_point_count = 4
+const shooter_timer_wait_time = 0.001
+const spawn_point_count = 24
 const radius = 25
 
 var player # The player reference
