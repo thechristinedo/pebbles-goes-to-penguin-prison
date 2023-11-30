@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dcy38limnheyy"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_d03o8"]
-[ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Snowman/snowman.gd" id="2_yfx8t"]
+[ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.gd" id="2_yfx8t"]
 [ext_resource type="Texture2D" uid="uid://g7vd3clwdaeq" path="res://Assets/Entities/Enemies/Snowman/idle_snowman.png" id="3_a2hdj"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="4_e62pm"]
 [ext_resource type="Texture2D" uid="uid://g3le7parjafw" path="res://Assets/Entities/Enemies/Snowman/walk_snowman.png" id="5_ahiw1"]

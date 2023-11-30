@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="7_e3bok"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="7_rldi8"]
 [ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="8_rhf8l"]
-[ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Snowman/snowman.tscn" id="8_yfm3n"]
+[ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.tscn" id="8_yfm3n"]
 
 [sub_resource type="Gradient" id="Gradient_lc73q"]
 interpolation_mode = 2
