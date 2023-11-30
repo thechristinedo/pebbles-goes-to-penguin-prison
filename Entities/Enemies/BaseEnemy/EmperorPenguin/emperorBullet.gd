@@ -19,7 +19,7 @@ func _on_kill_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Bullet": pass
-	print("Collided with: ", body)
+	# print("Collided with: ", body)
 	if body.has_method("take_damage") and body.has_method("handle_player_shoot"):
 		var damage = 2
 		body.take_damage(damage)
