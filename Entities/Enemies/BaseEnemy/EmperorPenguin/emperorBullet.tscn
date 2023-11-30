@@ -1,19 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4ylarq3fhue0"]
+[gd_scene load_steps=4 format=3 uid="uid://sks6tf5mye2u"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Snowman/snowball.gd" id="1_k5iyg"]
-[ext_resource type="Texture2D" uid="uid://c3tts7ie7281b" path="res://Assets/Guns/Bullets/ninjastar2.png" id="2_27qay"]
+[ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperorBullet.gd" id="1_sw0pv"]
+[ext_resource type="Texture2D" uid="uid://bve70t6ywf6xm" path="res://Assets/Guns/Bullets/icicle.png" id="2_uo62v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntdwx"]
-size = Vector2(8, 9.5)
+size = Vector2(25, 7)
 
-[node name="snowball" type="Node2D"]
-script = ExtResource("1_k5iyg")
+[node name="emperorBullet" type="Node2D"]
+script = ExtResource("1_sw0pv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, 0)
 rotation = -1.5708
-scale = Vector2(0.353518, 0.353518)
-texture = ExtResource("2_27qay")
+texture = ExtResource("2_uo62v")
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 10.0
@@ -22,7 +20,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, -0.75)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ntdwx")
 
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
