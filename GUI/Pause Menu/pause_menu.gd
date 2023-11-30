@@ -2,6 +2,7 @@ extends Control
 
 @onready var pausemenu = $"."
 @onready var volumemenu = $Volume
+@onready var inputTypeMenu = $InputType
 
 func _process(delta):
 	pass
@@ -26,9 +27,20 @@ func _on_volume_pressed():
 	$CenterContainer.visible = false
 	$MarginContainer.visible = false
 	volumemenu.visible = true
+	
+func _on_input_type_button_pressed():
+	$CenterContainer.visible = false
+	$MarginContainer.visible = false
+	inputTypeMenu.visible = true
 
 func _on_back_pressed():
 	volumemenu.visible = false
+	inputTypeMenu.visible = false
 	$CenterContainer.visible = true
 	$MarginContainer.visible = true
 	pausemenu.visible = true
+
+func _on_input_type_button_item_selected(index):
+	if index != -1:
+		World.INPUT_SCHEME = index
+		EventBus.input_scheme_changed.emit(index)

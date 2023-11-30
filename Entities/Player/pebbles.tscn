@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cbdi8sxhqyw71"]
+[gd_scene load_steps=60 format=3 uid="uid://cbdi8sxhqyw71"]
 
 [ext_resource type="Script" path="res://Entities/Player/pebbles.gd" id="1_2fbo2"]
 [ext_resource type="Texture2D" uid="uid://c6paxncqjbdkb" path="res://Assets/Entities/Player/pebbles-idle.png" id="1_7v67i"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://h17pdkvnep5y" path="res://Audio/walkingtrim.mp3" id="14_aw3cd"]
 [ext_resource type="AudioStream" uid="uid://bawoidr8iu42" path="res://Audio/slideSound.mp3" id="16_3ru8d"]
 [ext_resource type="AudioStream" uid="uid://cwgue21qev62b" path="res://Audio/dropSound.mp3" id="17_jl1ic"]
+[ext_resource type="AudioStream" uid="uid://b820khxfwtnti" path="res://Audio/eat.mp3" id="23_56qfj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cx6u"]
 resource_local_to_scene = true
@@ -543,6 +544,9 @@ volume_db = -5.0
 [node name="dropSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_jl1ic")
 pitch_scale = 1.45
+
+[node name="eatSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_56qfj")
 
 [node name="walkTimer" type="Timer" parent="."]
 one_shot = true

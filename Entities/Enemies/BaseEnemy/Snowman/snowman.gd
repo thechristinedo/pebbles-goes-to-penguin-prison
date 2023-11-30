@@ -3,6 +3,7 @@ extends CharacterBody2D
 const snowball_scene = preload("res://Entities/Enemies/BaseEnemy/Snowman/snowball.tscn")
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
+@onready var icicleSound = $icicleSound
 
 const rotate_speed = 200
 const shooter_timer_wait_time = 0.2
@@ -24,6 +25,7 @@ func _shoot():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		rotater.add_child(spawn_point)
+		icicleSound.play()
 	
 	
 	# # of spirals we want to create

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="2_u61ii"]
 [ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Assets/Entities/Enemies/Seal Guard/walking seal.png" id="3_he1a1"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="3_yoe80"]
-[ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="4_7hdnh"]
+[ext_resource type="PackedScene" uid="uid://b1mma4h8fmwl5" path="res://Entities/Components/MeleeComponent.tscn" id="4_7hdnh"]
 [ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Assets/Entities/Enemies/Seal Guard/seal slap.png" id="4_c82ya"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_irsci"]
 [ext_resource type="Texture2D" uid="uid://djflvvt61ynhd" path="res://Assets/Entities/Enemies/Seal Guard/seal_death.png" id="6_qtqdd"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5gvl6sf6hn7d"]
+[gd_scene load_steps=4 format=3 uid="uid://bgw1euwbef5rt"]
 
 [ext_resource type="Script" path="res://GUI/User Interface/UI_menu_scenes/victory_screen.gd" id="1_ve08r"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="2_e34pb"]
@@ -45,7 +45,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("2_e34pb")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 300
 text = "Victory!"
 
 [node name="MarginContainer" type="MarginContainer" parent="Victory"]
@@ -56,9 +56,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -208.0
-offset_top = -92.0
+offset_top = 42.0001
 offset_right = 92.0
-offset_bottom = 68.0001
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.369, 1.374)
