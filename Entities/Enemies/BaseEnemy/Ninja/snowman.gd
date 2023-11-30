@@ -13,6 +13,10 @@ const radius = 25
 
 var player # The player reference
 
+func _ready():
+	player = get_tree().get_nodes_in_group("player")[0] # Assign the player reference
+	_shoot()
+
 func _process(delta: float) -> void:
 	var new_rotation = rotater.rotation_degrees + rotate_speed * delta
 	rotater.rotation_degrees = fmod(new_rotation, 360)
@@ -59,8 +63,3 @@ func angle_to_player():
 	# Calculate the angle between the snowman and the player
 	var diff = player.position - position # Get the difference vector
 	return atan2(diff.y, diff.x) # Return the angle using atan2
-
-func _on_sight_radius_body_entered(body):
-	if body.name == "Pebbles":
-		print("ENTERED")
-		_shoot()
