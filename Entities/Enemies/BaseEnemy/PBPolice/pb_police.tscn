@@ -609,6 +609,7 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [node name="SightRadius" type="Area2D" parent="." index="6"]
 visible = false

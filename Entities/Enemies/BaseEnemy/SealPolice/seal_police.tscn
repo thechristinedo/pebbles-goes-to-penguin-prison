@@ -565,6 +565,7 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [node name="MovementParticles" parent="." index="5"]
 visible = false
