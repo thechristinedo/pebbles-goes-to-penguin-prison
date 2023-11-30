@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ct16m35oho4tv"]
+[gd_scene load_steps=33 format=3 uid="uid://ct16m35oho4tv"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_pdroj"]
 [ext_resource type="Texture2D" uid="uid://nqnbcdd3m2yh" path="res://Assets/Maps/fighting_level_3_closed.png" id="2_md6c6"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_iof12"]
 [ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="5_whf78"]
 [ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.tscn" id="6_m16jw"]
+[ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="7_2tb1t"]
+[ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="8_0i7vv"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_cpduf"]
 [ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="10_i17r6"]
 
@@ -169,16 +171,34 @@ visible = false
 polygon = PackedVector2Array(-146, -315, -81, -314, -81, -293, -20, -293, -20, -316, 59, -315, 60, -278, 144, -277, 144, -124, 182, -122, 182, -94, 195, -58, 193, -27, 192, -6, 159, -5, 160, 57, 231, 58, 233, 231, 155, 232, 131, 241, 107, 269, 104, 309, 104, 377, -103, 376, -104, 283, -115, 255, -146, 233, -233, 233, -230, 93, -217, 90, -199, 106, -199, 127, -169, 127, -168, 93, -183, 86, -181, 66, -196, 54, -193, 6, -189, -14, -169, -14, -168, -48, -184, -52, -177, -73, -188, -122, -72, -126, -72, -156, -151, -156, -146, -159, -147, -197, -73, -195, -72, -226, -148, -225, -146, -306, -172, -237, -333, -195, -383, 493, 525, 423, 382, -507, -420, -480, -323, -211, -181, -244)
 
 [node name="snowman" parent="Enemies" index="0" instance=ExtResource("6_m16jw")]
-position = Vector2(13, -160)
+position = Vector2(33, -137)
 
 [node name="Enemy5" parent="Enemies" index="1" instance=ExtResource("5_whf78")]
 position = Vector2(89, -41)
 
-[node name="Enemy6" parent="Enemies" index="2" instance=ExtResource("5_whf78")]
+[node name="Enemy7" parent="Enemies" index="2" instance=ExtResource("5_whf78")]
+position = Vector2(148, 170)
+
+[node name="Enemy6" parent="Enemies" index="3" instance=ExtResource("5_whf78")]
 position = Vector2(-135, 189)
 
-[node name="Enemy6" parent="Enemies/Enemy6" index="13" instance=ExtResource("4_0fp4j")]
-position = Vector2(161, -90)
+[node name="emperor" parent="Enemies" index="4" instance=ExtResource("7_2tb1t")]
+position = Vector2(-65, 99)
+
+[node name="Enemy" parent="Enemies" index="5" instance=ExtResource("8_0i7vv")]
+position = Vector2(-133, 83)
+
+[node name="Enemy2" parent="Enemies" index="6" instance=ExtResource("8_0i7vv")]
+position = Vector2(62, 219)
+
+[node name="Enemy3" parent="Enemies" index="7" instance=ExtResource("8_0i7vv")]
+position = Vector2(102, -205)
+
+[node name="Enemy8" parent="Enemies" index="8" instance=ExtResource("4_0fp4j")]
+position = Vector2(26, 99)
+
+[node name="Enemy9" parent="Enemies" index="9" instance=ExtResource("4_0fp4j")]
+position = Vector2(-39, -199)
 
 [node name="DoorInteractableArea" type="Area2D" parent="." index="7"]
 

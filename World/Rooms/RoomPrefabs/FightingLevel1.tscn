@@ -239,7 +239,7 @@ position = Vector2(-94, -48)
 shape = SubResource("RectangleShape2D_0hpm0")
 
 [node name="snowman" parent="Enemies" index="0" instance=ExtResource("8_yfm3n")]
-position = Vector2(-196, -126)
+position = Vector2(-195, -91)
 
 [node name="Enemy2" parent="Enemies" index="1" instance=ExtResource("6_s53w1")]
 position = Vector2(-123, -85)
@@ -247,11 +247,20 @@ position = Vector2(-123, -85)
 [node name="Enemy3" parent="Enemies" index="2" instance=ExtResource("6_s53w1")]
 position = Vector2(-146, -4)
 
-[node name="Enemy5" parent="Enemies" index="3" instance=ExtResource("7_e3bok")]
-position = Vector2(17, -78)
+[node name="Enemy4" parent="Enemies" index="3" instance=ExtResource("6_s53w1")]
+position = Vector2(134, 21)
 
-[node name="Enemy6" parent="Enemies" index="4" instance=ExtResource("8_rhf8l")]
+[node name="Enemy5" parent="Enemies" index="4" instance=ExtResource("7_e3bok")]
+position = Vector2(37, -49)
+
+[node name="Enemy7" parent="Enemies" index="5" instance=ExtResource("7_e3bok")]
+position = Vector2(42, 35)
+
+[node name="Enemy6" parent="Enemies" index="6" instance=ExtResource("8_rhf8l")]
 position = Vector2(161, -90)
+
+[node name="Enemy8" parent="Enemies" index="7" instance=ExtResource("8_rhf8l")]
+position = Vector2(-47, 119)
 
 [node name="DoorInteractableArea" type="Area2D" parent="." index="7"]
 

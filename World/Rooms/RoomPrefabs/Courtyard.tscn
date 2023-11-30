@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5ulskhs2ovtc"]
+[gd_scene load_steps=13 format=3 uid="uid://b5ulskhs2ovtc"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_y0v3n"]
 [ext_resource type="Texture2D" uid="uid://dkuwnqg7g2qwy" path="res://Assets/Maps/courtyard_closed.png" id="2_x7s0r"]
+[ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="3_ea0q4"]
+[ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.tscn" id="4_oarpx"]
+[ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="5_xs1vm"]
+[ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="6_jqk6b"]
+[ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="7_d2uq7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nres3"]
 vertices = PackedVector2Array(238, -165, 243, 276, 229, 182, 229, 148, 210, 77, 210, 6, 225, 142, 222, 132, 226, 183, -235, 277, -230, -71, 53, 77, -104, -165, 52, 5, -104, -87, 219, 132, 219, 147, 211, 147, -134, -71, -134, -169, -110, -169, -110, -85, 211, 150, 219, 150, 219, 155, 225, 155, 222, 141)
@@ -57,3 +62,36 @@ shape = SubResource("RectangleShape2D_yo2nk")
 
 [node name="CanvasModulate" parent="." index="5"]
 color = Color(1, 1, 1, 1)
+
+[node name="emperor" parent="Enemies" index="0" instance=ExtResource("3_ea0q4")]
+position = Vector2(-137, 11)
+
+[node name="emperor2" parent="Enemies" index="1" instance=ExtResource("3_ea0q4")]
+position = Vector2(113, -107)
+
+[node name="snowman" parent="Enemies" index="2" instance=ExtResource("4_oarpx")]
+position = Vector2(121, 171)
+
+[node name="SealPolice" parent="Enemies" index="3" instance=ExtResource("5_xs1vm")]
+position = Vector2(-151, 160)
+
+[node name="SealPolice2" parent="Enemies" index="4" instance=ExtResource("5_xs1vm")]
+position = Vector2(-56, -73)
+
+[node name="SealPolice3" parent="Enemies" index="5" instance=ExtResource("5_xs1vm")]
+position = Vector2(-47, 78)
+
+[node name="SealPolice4" parent="Enemies" index="6" instance=ExtResource("5_xs1vm")]
+position = Vector2(47, -29)
+
+[node name="PolarBearPolice" parent="Enemies" index="7" instance=ExtResource("6_jqk6b")]
+position = Vector2(-186, 108)
+
+[node name="PolarBearPolice2" parent="Enemies" index="8" instance=ExtResource("6_jqk6b")]
+position = Vector2(189, -58)
+
+[node name="PolarBearPolice3" parent="Enemies" index="9" instance=ExtResource("6_jqk6b")]
+position = Vector2(43, -120)
+
+[node name="Enemy" parent="Enemies" index="10" instance=ExtResource("7_d2uq7")]
+position = Vector2(-112, 114)

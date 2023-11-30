@@ -552,7 +552,7 @@ region_rect = Rect2(0.078, 0.273, 44, 31.713)
 texture = ExtResource("2_u61ii")
 offset = Vector2(1, -2)
 hframes = 2
-frame = 1
+frame = 0
 
 [node name="Hitbox" parent="." index="2"]
 visible = false
