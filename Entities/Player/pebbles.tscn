@@ -326,11 +326,7 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_itukp"]
-resource_name = "standing"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rhytv"]
-load_path = "res://.godot/imported/spritesheet (1).png-211d7c474487446b675fdb6921a1a924.ctex"
 
 [sub_resource type="Animation" id="Animation_6xri4"]
 resource_name = "slide1"
@@ -371,6 +367,9 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+
+[sub_resource type="Animation" id="Animation_itukp"]
+resource_name = "standing"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgk60"]
 _data = {
