@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgw1euwbef5rt"]
+
+[ext_resource type="Script" path="res://GUI/User Interface/UI_menu_scenes/victory_screen.gd" id="1_ve08r"]
+[ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="2_e34pb"]
+[ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="3_g3m1t"]
+
+[node name="VictoryScreen" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_ve08r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.709804, 0.54902, 0.313726)
+
+[node name="Victory" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="Victory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -656.0
+offset_top = -198.0
+offset_right = 669.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Victory/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_e34pb")
+theme_override_font_sizes/font_size = 300
+text = "Victory!"
+
+[node name="MarginContainer" type="MarginContainer" parent="Victory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 42.0001
+offset_right = 92.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.369, 1.374)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Victory/MarginContainer"]
+layout_mode = 2
+
+[node name="Play Again" type="Button" parent="Victory/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_g3m1t")
+theme_override_constants/outline_size = 2
+text = "Play Again"
+
+[node name="Back to Main Menu" type="Button" parent="Victory/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_g3m1t")
+theme_override_constants/outline_size = 2
+text = "Back to Main Menu"
+
+[node name="Quit" type="Button" parent="Victory/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_g3m1t")
+theme_override_constants/outline_size = 2
+text = "Quit"
+
+[connection signal="pressed" from="Victory/MarginContainer/VBoxContainer2/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Victory/MarginContainer/VBoxContainer2/Back to Main Menu" to="." method="_on_back_to_main_menu_pressed"]
+[connection signal="pressed" from="Victory/MarginContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]

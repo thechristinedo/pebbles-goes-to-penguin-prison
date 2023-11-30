@@ -17,10 +17,15 @@ extends StaticBody2D
 func take_damage() -> void:
 	health -= 50
 	flash()
+	
 	#print("current health: ", health)
 	if health <= 0:
-		queue_free()
+		barrelbreak.play()
 		spawn_resource()
+		$CollisionShape2D.set_deferred("disabled", true)
+		sprite.visible = false
+		await get_tree().create_timer(1.36).timeout
+		queue_free()
 
 func spawn_resource():
 	var pickup_instance : Pickup = pickup_type.instantiate() as Pickup

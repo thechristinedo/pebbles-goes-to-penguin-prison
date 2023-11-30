@@ -7,8 +7,23 @@ extends RigidBody2D
 
 const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smoke.tscn")
 
+func _ready():
+	add_to_group("bullets")
+	var player = get_tree().get_nodes_in_group("player")[0]
+	if player.animation_tree.get("parameters/conditions/is_sliding"):
+		# If yes, ignore the player layer
+		set_collision_mask_value(1, false)
+		get_node("Area2D").set_collision_mask_value(1, false)
+
 func _physics_process(delta):
 	linear_velocity = Vector2.RIGHT.rotated(rotation) * speed
+	update_texture()
+
+func update_texture():
+	if speed < 800:
+		$Sprite2D.texture = load("res://Assets/Guns/Bullets/enemyBullet.png")
+	else:
+		$Sprite2D.texture = load("res://Assets/Guns/Bullets/bullet.png")
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Bullet": pass

@@ -34,6 +34,7 @@ func has_taken_damage() -> bool:
 	return _taken_damage
 
 func flash() -> void:
+	if entity_sprite_node.material == null: return
 	get_tree().create_timer(0.15).connect("timeout", _flash_callback)
 	entity_sprite_node.material.set_shader_parameter("flash_modifier", 0.9)
 

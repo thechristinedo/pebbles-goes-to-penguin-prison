@@ -1,12 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://ds15qivbbevhi"]
+[gd_scene load_steps=18 format=3 uid="uid://ds15qivbbevhi"]
 
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="1_s4ugw"]
-[ext_resource type="Shader" path="res://Entities/Enemies/Penguin Police/flash.gdshader" id="2_mnhat"]
-[ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/penguin-police-idle.png" id="3_nib0a"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6enk"]
-render_priority = 0
-shader = ExtResource("2_mnhat")
+[ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-idle.png" id="3_nib0a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl74s"]
 height = 26.0
@@ -89,7 +84,6 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_s4ugw")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_i6enk")
 texture = ExtResource("3_nib0a")
 hframes = 3
 frame = 2

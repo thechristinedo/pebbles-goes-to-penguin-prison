@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://wy54al360bqf"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_e6lsb"]
-[ext_resource type="Texture2D" uid="uid://ch1xerpsg7h0f" path="res://Assets/Maps/prison-cell-map-closed.png" id="2_qri7w"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_y8yxa"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="3_0vrse"]
+[ext_resource type="Texture2D" uid="uid://ch1xerpsg7h0f" path="res://Assets/Maps/prison-cell-closed.png" id="3_muxg8"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="5_uhpgq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bmf8s"]
@@ -14,13 +14,13 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-101, -101, -103, 139, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6veok"]
 size = Vector2(292, 402)
 
-[sub_resource type="Gradient" id="Gradient_a55sn"]
+[sub_resource type="Gradient" id="Gradient_y51n2"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.721739)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s855q"]
-gradient = SubResource("Gradient_a55sn")
+gradient = SubResource("Gradient_y51n2")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -28,14 +28,14 @@ fill_from = Vector2(0.5, 0.5)
 offsets = PackedFloat32Array(0, 0.504762, 1)
 colors = PackedColorArray(1, 0.983333, 0, 1, 1, 0.517647, 0, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_lu6bf"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ujj3a"]
 gradient = SubResource("Gradient_kg5pi")
 
 [sub_resource type="Curve" id="Curve_7h7om"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_0q1jq"]
+[sub_resource type="CurveTexture" id="CurveTexture_sba1l"]
 curve = SubResource("Curve_7h7om")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07hc4"]
@@ -47,8 +47,8 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 3.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_0q1jq")
-color_ramp = SubResource("GradientTexture1D_lu6bf")
+scale_curve = SubResource("CurveTexture_sba1l")
+color_ramp = SubResource("GradientTexture1D_ujj3a")
 turbulence_enabled = true
 turbulence_noise_strength = 4.64
 turbulence_noise_scale = 1.12
@@ -96,10 +96,11 @@ _data = {
 
 [node name="Room" instance=ExtResource("1_e6lsb")]
 script = ExtResource("2_y8yxa")
+next_room_path = "res://World/Rooms/RoomPrefabs/Armory.tscn"
 
 [node name="MapSprite" parent="." index="0"]
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_qri7w")
+texture = ExtResource("3_muxg8")
 
 [node name="NavigationRegion2D" parent="." index="2"]
 visible = false
@@ -139,10 +140,7 @@ script = ExtResource("3_0vrse")
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_07hc4")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." index="7"]
-color = Color(0.592157, 0.54902, 0.729412, 1)
-
-[node name="DoorInteractableArea" type="Area2D" parent="." index="8"]
+[node name="DoorInteractableArea" type="Area2D" parent="." index="7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorInteractableArea" index="0"]
 position = Vector2(-1, -71)

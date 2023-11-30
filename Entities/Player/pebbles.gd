@@ -8,7 +8,7 @@ class_name Player
 @onready var shadow: Sprite2D = $Shadow
 @onready var gun: Gun = $Gun
 @onready var crosshair = $Crosshair
-@export var crosshair_range := 50.0
+@export var crosshair_range := 70.0
 @onready var character_sprite: Sprite2D = $PebblesSprite
 @onready var ranged_attack_component: Node = $RangedAttackComponent
 @onready var inventory_node: Node = $Inventory
@@ -23,19 +23,23 @@ class_name Player
 @onready var machinegunShot = $machinegunShot
 @onready var walkSound = $walkSound
 @onready var slideSound = $slideSound
+@onready var eatSound = $eatSound
 
-# Health
+# Fish
 @onready var fishventory = $Fishventory
 @export var max_health: int = 10
 
 var health: int = max_health
 var is_eating = false
+
 var fish_count: int
 var saved_fish_count: int = 0
+@onready var world = get_parent()
 
 @export var speed: float = 200
 var current_animation: String = "idle"
 var is_sliding = false 
+var lastMovement
 
 var slide_cooldown : float = 0.5
 var current_slide_cooldown : float = 0.0
@@ -45,6 +49,7 @@ var enemy_attack_cooldown = true
 
 # Controller support
 const ROTATE_SPEED = 20
+var last_aim_angle = 0.0
 
 signal health_updated
 signal fish_update
@@ -57,6 +62,7 @@ var collectables: Array[Area2D]
 var invincible: bool = false
 
 func _ready():
+	add_to_group("player")
 	animation_tree.active = true
 	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
 	print("Health: ", health, " Fish: ",fishventory.get_fish_value())
@@ -92,20 +98,14 @@ func _physics_process(_delta):
 		invincible = false
 		$Gun.visible = true
 	
-		
-	# press shift to heal (eat)
-	
 	if current_slide_cooldown > 0:
 		current_slide_cooldown -= _delta
 		
-	
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
 	
 
-func handle_player_shoot() -> void:
-	gun.aim(get_global_mouse_position())
-	
+func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):
 		var current_gun = inventory_node.get_selected_gun()
 		if current_gun:
@@ -122,32 +122,49 @@ func handle_player_shoot() -> void:
 				camera.shake(current_gun.shooter.recoil, 0.05)
 
 func handle_player_movement() -> void:
+	if is_sliding: return
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
 		if $walkTimer.time_left <= 0:
 				walkSound.pitch_scale = randf_range(0.8, 1.2)
 				walkSound.play()
 				$walkTimer.start(0.2)
+		if Input.is_action_just_pressed("left"):
+			lastMovement = "left"
+		elif Input.is_action_just_pressed("right"):
+			lastMovement = "right"
+			
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
-	var angle_to_mouse = get_angle_to(get_global_mouse_position())
-	if angle_to_mouse < PI/2 and angle_to_mouse > -PI/2:
-		character_sprite.flip_h = false # right
-	else:
-		character_sprite.flip_h = true # left
+	
 
 func update_weapon_rotation(_delta, force_update_position = false) -> void:
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
-		var mouse_pos = get_local_mouse_position()
-		var new_transform = gun.transform.looking_at(mouse_pos)
-		gun.transform = gun.transform.interpolate_with(new_transform, ROTATE_SPEED * _delta)
+		gun.aim(get_global_mouse_position())
+		last_aim_angle = get_angle_to(get_global_mouse_position())
 	elif World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
+		crosshair.show()
 		var aim_direction := Input.get_vector("weapon aim left", "weapon aim right", "weapon aim up", "weapon aim down")
 		if force_update_position || aim_direction != Vector2.ZERO:
-			var angle = aim_direction.angle()
-			gun.global_rotation = angle
-			crosshair.global_position = global_position + (Vector2(cos(angle), sin(angle)) * crosshair_range)
+			last_aim_angle = aim_direction.angle()
+			gun.global_rotation = last_aim_angle
+			# TODO: Update pebbles facing direction
+			crosshair.global_position = global_position + (Vector2(cos(last_aim_angle), sin(last_aim_angle)) * crosshair_range)
+			gun.aim(crosshair.global_position)
+			
 		crosshair.global_rotation = 0
+		
+	# Flip Pebbles
+	if last_aim_angle < PI/2 and last_aim_angle > -PI/2:
+		character_sprite.flip_h = false # right
+	else:
+		character_sprite.flip_h = true # left
+		
+func update_character_orientation(aim_angle: float) -> void:
+	if aim_angle < PI/2 and aim_angle > -PI/2:
+		character_sprite.flip_h = false  # Face right
+	else:
+		character_sprite.flip_h = true  # Face left
 
 func handle_player_interactions() -> void:
 	# pickup gun
@@ -181,12 +198,13 @@ func handle_player_interactions() -> void:
 		if fishventory.get_fish_value() > 0:
 			is_eating = true
 			heal(25)
+			eatSound.play()
 			fishventory.eat_resource()
 			#print("Fish left in inventory: ", fishventory.get_fish_value())
 			get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, -1)
+			drop_fishbone()
 		else:
 			print("No fish in fishventory! Collect some fish!")
-
 
 func update_animation() -> void:
 	# Make sure we only update the animation if we are not sliding or eating
@@ -215,15 +233,48 @@ func _on_pickup_area_area_exited(area):
 		collectables.pop_back()
 
 func slide():
-	speed *= 1.5
+	var mouse_position = get_global_mouse_position()
+	var angle = position.angle_to_point(mouse_position)
+	rotation = angle
+	var direction = Vector2.RIGHT.rotated(angle)
+	var movement = direction * speed
+	velocity = movement
+	var floor_normal = Vector2(0, -1)
+	move_and_slide()
+	# Ignore the bullets layer
+	set_collision_mask_value(2, false)
+	# Get all the bullets in the scene
+	var bullets = get_tree().get_nodes_in_group("bullets")
+	var bossBullets = get_tree().get_nodes_in_group("bossBullets")
+	# Loop through the bullets and ignore the player layer
+	for bullet in bullets:
+		bullet.set_collision_mask_value(1, false)
+		bullet.get_node("Area2D").set_collision_mask_value(1, false)
+	
+	for bossBullet in bossBullets:
+		bossBullet.get_node("Area2D").set_collision_mask_value(1, false)
+	
 	animation_tree.set("parameters/conditions/is_sliding", true)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	anim_state.travel("slide")
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.5).timeout
+	
+	# Restore the collision mask
+	set_collision_mask_value(2, true)
+	# Loop through the bullets and restore the player layer
+	bullets = get_tree().get_nodes_in_group("bullets")
+	for bullet in bullets:
+		bullet.set_collision_mask_value(1, true)
+		bullet.get_node("Area2D").set_collision_mask_value(1, true)
+		
+	bossBullets = get_tree().get_nodes_in_group("bullets")
+	for bossBullet in bossBullets:
+		bossBullet.get_node("Area2D").set_collision_mask_value(1, true)
+	
 	reset_slide()
 	
 func reset_slide():
-	speed /= 1.5
+	rotation = 0
 	is_sliding = false
 	animation_tree.set("parameters/conditions/is_sliding", false)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
@@ -243,7 +294,12 @@ func heal(amount: int):
 	
 func reset_heal():
 	is_eating = false
-	
+
+func drop_fishbone():
+	var bone = load("res://Collectables/Pickup/PickupBone.tscn").instantiate()
+	bone.position = self.position
+	world.add_child(bone)
+
 func take_damage(damage: int = 1) -> void:
 	#damage is only going to be 1 for pebbles 
 	if invincible: return
@@ -258,6 +314,7 @@ func take_damage(damage: int = 1) -> void:
 		gun.visible = false
 		character_sprite.visible = false
 		shadow.visible = false
+		inventory_node.clear_inventory()
 		gameOver.visible = true
 		print("dead")
 		pebbles_death.emit()

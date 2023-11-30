@@ -86,7 +86,6 @@ states/float/position = Vector2(324.5, 62.5)
 transitions = ["Start", "float", SubResource("AnimationNodeStateMachineTransition_lwuwe")]
 
 [node name="PickupFishBone" type="Area2D"]
-z_index = 1
 collision_layer = 129
 script = ExtResource("1_yp5bf")
 
@@ -102,6 +101,7 @@ shape = SubResource("CapsuleShape2D_vbmhq")
 shape = SubResource("CircleShape2D_ihltp")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)

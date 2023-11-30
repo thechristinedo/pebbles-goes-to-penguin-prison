@@ -75,7 +75,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_nmhev"]
 resource_name = "tutorial_dialog"
-length = 18.0
+length = 28.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,7 +83,7 @@ tracks/0/path = NodePath("Textbox:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 17.5),
+"times": PackedFloat32Array(0, 2, 28),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
@@ -95,10 +95,10 @@ tracks/1/path = NodePath("Textbox:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 27, 28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -107,10 +107,10 @@ tracks/2/path = NodePath("Textbox/MarginContainer/Label:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2, 3, 4, 4.5, 5, 6, 7.5, 8.5, 9, 10.5, 12.5, 13.5, 14, 15, 16),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(2, 3, 4, 4.5, 5, 6, 7.5, 8.5, 9, 10.5, 12.5, 13.5, 14, 15.6, 17.5, 18.5, 19, 20.5, 22.5, 23.5, 24, 25.5, 27),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.296, 1.0]
+"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -119,10 +119,10 @@ tracks/3/path = NodePath("Textbox/MarginContainer/Label:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2, 5, 9, 14),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2, 5, 9, 14, 19, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["", "Use WASD keys to move.", "To shoot, click LMB. ", "Barrels may drop fish that heal. Press SHIFT to heal.", "Goodluck, Pebbles."]
+"values": ["Barrels may drop fish that heal. Press SHIFT to heal.", "Use WASD keys to move.", "To pick up weapons, walk near the weapon and press E. ", "To shoot, click LMB. ", "To slide, press SPACE. Pebbles is briefly invincible when sliding.", "Barrels may drop fish that heal. Press SHIFT to heal.", "Goodluck, Pebbles."]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uih8p"]
@@ -257,6 +257,12 @@ theme = ExtResource("5_qhty0")
 theme_override_constants/outline_size = 3
 text = "Volume"
 
+[node name="InputTypeButton" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Input Type"
+
 [node name="Back To Main Menu" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_qhty0")
@@ -356,6 +362,65 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("5_qhty0")
 theme_override_constants/outline_size = 2
+text = "Back
+"
+
+[node name="InputType" type="Control" parent="PauseMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="PauseMenu/InputType"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 780.0
+offset_top = 308.0
+offset_right = 1080.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/InputType/CenterContainer3"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_ks7nk")
+theme_override_font_sizes/font_size = 100
+text = "Input Type"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu/InputType"]
+layout_mode = 2
+offset_left = 457.0
+offset_top = 468.0
+offset_right = 1456.0
+offset_bottom = 707.0
+
+[node name="InputTypeButton" type="OptionButton" parent="PauseMenu/InputType/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_font_sizes/font_size = 60
+alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Keyboard & Mouse"
+popup/item_0/id = 0
+popup/item_1/text = "Gamepad"
+popup/item_1/id = 1
+
+[node name="Back" type="Button" parent="PauseMenu/InputType/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 60
 text = "Back
 "
 
@@ -465,6 +530,9 @@ visible_ratio = 0.0
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Save" to="PauseMenu" method="_on_save_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/InputTypeButton" to="PauseMenu" method="_on_input_type_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Back To Main Menu" to="PauseMenu" method="_on_back_to_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="pressed" from="PauseMenu/Volume/MarginContainer/VBoxContainer/Back" to="PauseMenu" method="_on_back_pressed"]
+[connection signal="item_selected" from="PauseMenu/InputType/VBoxContainer2/InputTypeButton" to="PauseMenu" method="_on_input_type_button_item_selected"]
+[connection signal="pressed" from="PauseMenu/InputType/VBoxContainer2/Back" to="PauseMenu" method="_on_back_pressed"]

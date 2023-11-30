@@ -2,6 +2,7 @@ extends Control
 
 @onready var pausemenu = $"."
 @onready var volumemenu = $Volume
+@onready var inputTypeMenu = $InputType
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
@@ -24,13 +25,18 @@ func _on_volume_pressed():
 	$CenterContainer.visible = false
 	$MarginContainer.visible = false
 	volumemenu.visible = true
+	
+func _on_input_type_button_pressed():
+	$CenterContainer.visible = false
+	$MarginContainer.visible = false
+	inputTypeMenu.visible = true
 
 func _on_back_pressed():
 	volumemenu.visible = false
+	inputTypeMenu.visible = false
 	$CenterContainer.visible = true
 	$MarginContainer.visible = true
 	pausemenu.visible = true
-
 
 func _on_save_pressed():
 	var pebbles_instance = RoomManager.pebbles
@@ -50,3 +56,8 @@ func get_game_data():
 		"weapons": pebbles_instance.get_inventory_data()
 	}
 	return data
+
+func _on_input_type_button_item_selected(index):
+	if index != -1:
+		World.INPUT_SCHEME = index
+		EventBus.input_scheme_changed.emit(index)

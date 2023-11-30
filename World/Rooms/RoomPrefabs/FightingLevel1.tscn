@@ -1,0 +1,272 @@
+[gd_scene load_steps=25 format=3 uid="uid://6yw5hjaux1c2"]
+
+[ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_2v8wi"]
+[ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_j0agu"]
+[ext_resource type="Texture2D" uid="uid://k2ruq5ejwvqc" path="res://Assets/Maps/fighting_level_1_open.png" id="3_vihto"]
+[ext_resource type="Texture2D" uid="uid://b7unnuxlolfml" path="res://Assets/Maps/fighting_level_1_closed.png" id="4_24oj6"]
+[ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_rajou"]
+[ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="6_s53w1"]
+[ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="7_e3bok"]
+[ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="7_rldi8"]
+[ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="8_rhf8l"]
+[ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.tscn" id="8_yfm3n"]
+
+[sub_resource type="Gradient" id="Gradient_lc73q"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.721739)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6xp1c"]
+gradient = SubResource("Gradient_lc73q")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_j74hw"]
+offsets = PackedFloat32Array(0, 0.504762, 1)
+colors = PackedColorArray(1, 0.983333, 0, 1, 1, 0.517647, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1usbu"]
+gradient = SubResource("Gradient_j74hw")
+
+[sub_resource type="Curve" id="Curve_vghsm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0puu7"]
+curve = SubResource("Curve_vghsm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_euqod"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_0puu7")
+color_ramp = SubResource("GradientTexture1D_1usbu")
+turbulence_enabled = true
+turbulence_noise_strength = 4.64
+turbulence_noise_scale = 1.12
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yudql"]
+vertices = PackedVector2Array(-17, 16, 188, -110, 192, 108, 81, 108, -18, 69, 126, -112, -19, -15, -20, -69, -14, -97, -174, 17, -172, -15, -15, -135, 125, -135, -173, -97, -172, -67, 82, 216, -114, 216, -114, 113, -175, 71, -221, 113, -223, -137, -173, -137)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 1, 0, 6, 7, 8), PackedInt32Array(6, 0, 9, 10), PackedInt32Array(8, 11, 12, 5), PackedInt32Array(13, 8, 7, 14), PackedInt32Array(4, 3, 15, 16, 17), PackedInt32Array(18, 4, 17, 19), PackedInt32Array(18, 19, 20, 9), PackedInt32Array(14, 10, 9, 20, 13), PackedInt32Array(13, 20, 21)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-223, -137, -173, -137, -173, -97, -14, -97, -15, -135, 125, -135, 126, -112, 188, -110, 192, 108, 81, 108, 82, 216, -114, 216, -114, 113, -221, 113), PackedVector2Array(-172, -67, -172, -15, -19, -15, -20, -69), PackedVector2Array(-174, 17, -175, 71, -18, 69, -17, 16)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgjv"]
+size = Vector2(474, 490)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hpm0"]
+size = Vector2(144, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtora"]
+radius = 19.0
+
+[sub_resource type="Animation" id="Animation_jgcjo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_lesqm"]
+resource_name = "hover"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, 3), Vector2(0, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1nb23"]
+_data = {
+"RESET": SubResource("Animation_jgcjo"),
+"hover": SubResource("Animation_lesqm")
+}
+
+[node name="Room" instance=ExtResource("1_2v8wi")]
+script = ExtResource("2_j0agu")
+next_room_path = "res://World/Rooms/RoomPrefabs/prison_cell.tscn"
+open_door_map_texture = ExtResource("3_vihto")
+
+[node name="MapSprite" parent="." index="0"]
+texture = ExtResource("4_24oj6")
+
+[node name="TorchFlame" type="PointLight2D" parent="MapSprite" index="0"]
+position = Vector2(190, -93)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame" index="0"]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame2" type="PointLight2D" parent="MapSprite" index="1"]
+position = Vector2(190, 70)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame2" index="0"]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame3" type="PointLight2D" parent="MapSprite" index="2"]
+position = Vector2(-219, -31)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame3" index="0"]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame4" type="PointLight2D" parent="MapSprite" index="3"]
+position = Vector2(-141, -161)
+scale = Vector2(1.60937, 1.96094)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame4" index="0"]
+position = Vector2(-1.86408, -11.7291)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame5" type="PointLight2D" parent="MapSprite" index="4"]
+position = Vector2(100, -161)
+scale = Vector2(1.60937, 1.96094)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame5" index="0"]
+position = Vector2(1.24272, -11.7291)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame6" type="PointLight2D" parent="MapSprite" index="5"]
+position = Vector2(-70, -40)
+scale = Vector2(1.01562, 0.662109)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.44
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame6" index="0"]
+position = Vector2(-0.984608, -12.0826)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame7" type="PointLight2D" parent="MapSprite" index="6"]
+position = Vector2(-155, 28)
+scale = Vector2(1.01562, 0.662109)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.44
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame7" index="0"]
+position = Vector2(-0.984608, -12.0826)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="TorchFlame8" type="PointLight2D" parent="MapSprite" index="7"]
+position = Vector2(-34, -122)
+scale = Vector2(1.01562, 0.662109)
+color = Color(1, 0.670588, 0.101961, 1)
+energy = 0.44
+texture = SubResource("GradientTexture2D_6xp1c")
+script = ExtResource("5_rajou")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MapSprite/TorchFlame8" index="0"]
+position = Vector2(4.92308, -13.5929)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_euqod")
+
+[node name="PebblesSpawn" parent="." index="1"]
+position = Vector2(-14, 197)
+
+[node name="NavigationRegion2D" parent="." index="2"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_yudql")
+
+[node name="CameraArea" parent="." index="3"]
+visible = false
+
+[node name="CameraBounds" parent="CameraArea" index="0"]
+position = Vector2(-14, 9)
+shape = SubResource("RectangleShape2D_xlgjv")
+
+[node name="RoomCollisions" parent="." index="4"]
+collision_layer = 12
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollisions" index="0"]
+polygon = PackedVector2Array(-226, -142, -166, -142, -165, -115, -21, -115, -21, -144, 129, -144, 129, -127, 190, -127, 191.322, -162.266, 326, -278, -362, -270, -339, 308, 338, 287, 334, -278, 197, -156, 197, 118, 93, 118, 88, 124, 88, 222, -121, 222, -120, 125, -127, 118, -227, 118)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomCollisions" index="1"]
+position = Vector2(-95, 33.5)
+shape = SubResource("RectangleShape2D_0hpm0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomCollisions" index="2"]
+position = Vector2(-94, -48)
+shape = SubResource("RectangleShape2D_0hpm0")
+
+[node name="Enemy2" parent="Enemies" index="0" instance=ExtResource("6_s53w1")]
+position = Vector2(-123, -85)
+
+[node name="Enemy3" parent="Enemies" index="1" instance=ExtResource("6_s53w1")]
+position = Vector2(-146, -4)
+
+[node name="Enemy5" parent="Enemies" index="2" instance=ExtResource("7_e3bok")]
+position = Vector2(17, -78)
+
+[node name="Enemy6" parent="Enemies" index="3" instance=ExtResource("8_rhf8l")]
+position = Vector2(161, -90)
+
+[node name="DoorInteractableArea" type="Area2D" parent="." index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorInteractableArea" index="0"]
+position = Vector2(17, -132)
+shape = SubResource("CircleShape2D_dtora")
+
+[node name="Button" type="Sprite2D" parent="DoorInteractableArea" index="1"]
+position = Vector2(18, -207)
+texture = ExtResource("7_rldi8")
+offset = Vector2(0, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorInteractableArea" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_1nb23")
+}
+
+[node name="snowman" parent="." index="8" instance=ExtResource("8_yfm3n")]
+position = Vector2(-196, -126)
+
+[connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
+[connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]

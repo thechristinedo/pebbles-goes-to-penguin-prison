@@ -56,7 +56,6 @@ func _input(event):
 			KEY_4: player_select_slot(3)
 			KEY_5: player_select_slot(4)
 			_: pass
-			
 
 func get_inventory_data() -> Array:
 	var inventory_data = []
@@ -87,3 +86,10 @@ func set_inventory_data(data: Array):
 			new_item.shooter = item_data["shooter"]
 			new_item.muzzle = item_data["muzzle"]
 			insert_gun(new_item)
+
+func clear_inventory():
+	for i in range(_inventory.items.size()):
+		#set null to items
+		_inventory.items[i] = null
+		# reset selected slots
+		_inventory.selected_slot = 0

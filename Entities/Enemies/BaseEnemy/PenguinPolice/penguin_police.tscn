@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://co48vtwnry2yr"]
+[gd_scene load_steps=27 format=3 uid="uid://co48vtwnry2yr"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_nhfw3"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/flash.gdshader" id="2_bw34v"]
 [ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="2_shtlg"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-idle.png" id="4_1unws"]
 [ext_resource type="PackedScene" uid="uid://pjwrbqlmgj5t" path="res://Entities/Components/MovementComponent.tscn" id="4_n0hko"]
@@ -17,6 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://biwmbpmxmqiyd" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death4.png" id="9_lsyd7"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="9_uk4pl"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="10_nlyvt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f42ta"]
+resource_local_to_scene = true
+shader = ExtResource("2_bw34v")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_rww5g"]
 length = 0.001
@@ -525,6 +532,9 @@ radius = 150.0
 position = Vector2(4, 15)
 offset = Vector2(-6.66667, 1.90735e-06)
 region_rect = Rect2(0.291103, 0.867493, 70.7945, 32.1308)
+
+[node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_f42ta")
 
 [node name="Gun" parent="." index="2" instance=ExtResource("2_shtlg")]
 visible = false

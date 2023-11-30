@@ -5,6 +5,8 @@ class_name Gun
 @onready var bullet_trail_scene: PackedScene = preload("res://Guns/Bullets/bullet_trail.tscn")
 @export var inventory_item: InventoryItem
 
+@export var bulletSpeed: float = 800
+
 func _ready():
 	position.y = position.y + 7
 	offset.x = 7
@@ -44,6 +46,8 @@ func shoot() -> bool:
 				
 				var bullet_trail = bullet_trail_scene.instantiate() as BulletTrail
 				bullet_trail.bullet_scene = bullet
+				
+				bullet.speed = bulletSpeed
 				
 				room_node.add_child(bullet)
 				room_node.add_child(bullet_trail)
