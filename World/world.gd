@@ -16,7 +16,6 @@ func _ready():
 	
 	player.health_updated.connect(player_health_bar_ui.set_health)
 	#player.pebbles_shoot.connect(player_ammo_ui.set_ammo_amount)
-	
 	# health bar needs to be initialized here for some reason
 #	player.emit_signal("health_updated", player.max_health, player.max_health)
 	player.health_updated.emit(player.max_health, player.max_health)
@@ -33,4 +32,3 @@ func _physics_process(_delta):
 
 func update_player_health(health: int, max_health: int) -> void:
 	player.health_updated.emit(health, max_health)
-

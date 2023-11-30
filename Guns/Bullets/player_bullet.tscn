@@ -7,11 +7,14 @@
 size = Vector2(8, 5)
 
 [node name="Bullet" type="RigidBody2D"]
+z_index = 1
 collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_le6ad")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_wqmym")
 
@@ -22,6 +25,8 @@ shape = SubResource("RectangleShape2D_1i2ji")
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_1i2ji")

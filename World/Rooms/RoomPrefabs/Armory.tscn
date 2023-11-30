@@ -155,6 +155,8 @@ shape = SubResource("RectangleShape2D_syum4")
 
 [node name="RoomCollisions" parent="." index="4"]
 visible = false
+collision_layer = 12
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollisions" index="0"]
 polygon = PackedVector2Array(-221, -58, -103, -60, -103, 34, -68, 34, -68, 119, 104, 119, 104, -50, -30, -50, -30, -61, -202, -61, 147, -280, 183, 205, -223, 203)
