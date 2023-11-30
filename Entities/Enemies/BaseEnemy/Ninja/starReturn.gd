@@ -16,6 +16,7 @@ func _ready():
 		get_node("Area2D").set_collision_mask_value(1, false)
 
 func _process(delta):
+	if snowman == null: return
 	check_distance() # Check the distance to the snowman
 	update_direction() # Update the direction based on the recall state
 	position += direction * speed * delta # Move the snowball using the direction vector
@@ -41,7 +42,6 @@ func destroy():
 
 func check_distance():
 	# Check the distance between the snowball and the snowman
-	if snowman == null: return
 	var dist = position.distance_to(snowman.position)
 	if dist > 125: # If the distance is greater than 300 pixels, set the recall state to true
 		recall = true
