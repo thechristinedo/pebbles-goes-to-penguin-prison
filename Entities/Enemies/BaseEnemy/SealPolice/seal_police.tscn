@@ -1,8 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cedpgh0klnx6y"]
+[gd_scene load_steps=25 format=3 uid="uid://cedpgh0klnx6y"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_06o5o"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/flash.gdshader" id="2_38dsl"]
 [ext_resource type="Texture2D" uid="uid://clgx2nqq8to3k" path="res://Assets/Entities/Enemies/Seal Guard/idle seal.png" id="2_u61ii"]
 [ext_resource type="Texture2D" uid="uid://bixkwd5ek5br" path="res://Assets/Entities/Enemies/Seal Guard/walking seal.png" id="3_he1a1"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/flash.gdshader" id="3_v1ohu"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="3_yoe80"]
 [ext_resource type="PackedScene" uid="uid://b1mma4h8fmwl5" path="res://Entities/Components/MeleeComponent.tscn" id="4_7hdnh"]
 [ext_resource type="Texture2D" uid="uid://52cvegyov84" path="res://Assets/Entities/Enemies/Seal Guard/seal slap.png" id="4_c82ya"]
@@ -13,6 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="8_7ysro"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="10_2m638"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="11_1b5v1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2vwb"]
+shader = ExtResource("2_38dsl")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xr6lq"]
+shader = ExtResource("3_v1ohu")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_drp0q"]
 length = 0.001
@@ -540,6 +552,7 @@ _data = {
 radius = 129.19
 
 [node name="SealPolice" instance=ExtResource("1_06o5o")]
+material = SubResource("ShaderMaterial_y2vwb")
 
 [node name="Shadow" parent="." index="0"]
 visible = false
@@ -549,6 +562,8 @@ offset = Vector2(0, 1.90735e-06)
 region_rect = Rect2(0.078, 0.273, 44, 31.713)
 
 [node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_xr6lq")
+position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("2_u61ii")
 offset = Vector2(1, -2)
 hframes = 2

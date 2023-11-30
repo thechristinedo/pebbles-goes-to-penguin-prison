@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://s2xdvvsal6yb"]
+[gd_scene load_steps=24 format=3 uid="uid://s2xdvvsal6yb"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_xibmg"]
 [ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.gd" id="2_k8v5j"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/flash.gdshader" id="3_ljkqb"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="4_qr2xj"]
 [ext_resource type="Texture2D" uid="uid://ckqpatkoj2h4m" path="res://Assets/Entities/Enemies/Wizard Penguin/wizard penguin death.png" id="5_mb5de"]
 [ext_resource type="Texture2D" uid="uid://dqic14s4e40yu" path="res://Assets/Entities/Enemies/Wizard Penguin/wizard penguin idle.png" id="6_6irkn"]
@@ -14,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="13_3hbg5"]
 [ext_resource type="AudioStream" uid="uid://jcq0mvxk2bna" path="res://Audio/ice1.mp3" id="14_5nogk"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="14_eb6ft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5y755"]
+shader = ExtResource("3_ljkqb")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_5aqcb"]
 length = 0.001
@@ -417,6 +423,7 @@ scale = Vector2(1.0625, 0.675)
 offset = Vector2(-0.279807, 1.48153)
 
 [node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_5y755")
 texture = ExtResource("6_6irkn")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 2
