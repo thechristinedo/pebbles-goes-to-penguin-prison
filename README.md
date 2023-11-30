@@ -4,7 +4,7 @@
 Top-Down 2D Roguelike Dungeon-Crawler
 
 ## Description
-Embark on a thrilling escape adventure in "Pebbles Goes to Penguin Prison". Pebbles, a mischievous penguin, navigates through a unique prison filled with hazards, guards, and intricate levels. Utilize strategy and combat skills to defeat bosses, uncover weapons, and unlock new areas. Each defeat resets the journey, challenging your resilience. Conquer the ultimate guardians to escape, but beware - Pebbles' love for mischief continues, hinting at endless adventurous possibilities. Experience a captivating blend of strategy, action, and narrative in this engaging roguelike adventure!
+Embark on a thrilling escape adventure in "Pebbles Goes to Penguin Prison", where all the assets and drawings are meticulously handmade. Pebbles, a mischievous penguin, navigates through a unique prison filled with hazards, guards, and intricate levels. Utilize strategy and combat skills to defeat bosses, uncover weapons, and unlock new areas. Each defeat resets the journey, challenging your resilience. Conquer the ultimate guardians to escape, but beware - Pebbles' love for mischief continues, hinting at endless adventurous possibilities. Experience a captivating blend of strategy, action, and narrative in this engaging roguelike adventure!
 
 # Controls
 
