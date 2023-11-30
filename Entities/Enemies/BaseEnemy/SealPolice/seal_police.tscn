@@ -549,11 +549,10 @@ offset = Vector2(0, 1.90735e-06)
 region_rect = Rect2(0.078, 0.273, 44, 31.713)
 
 [node name="EnemySprite" parent="." index="1"]
-position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("2_u61ii")
 offset = Vector2(1, -2)
 hframes = 2
-frame = 0
+frame = 1
 
 [node name="Hitbox" parent="." index="2"]
 visible = false
@@ -565,6 +564,7 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [node name="MovementParticles" parent="." index="5"]
 visible = false
