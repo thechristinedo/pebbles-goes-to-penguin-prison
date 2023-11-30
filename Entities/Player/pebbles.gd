@@ -164,11 +164,6 @@ func update_weapon_rotation(_delta, force_update_position = false) -> void:
 	else:
 		character_sprite.flip_h = true # left
 		
-func update_character_orientation(aim_angle: float) -> void:
-	if aim_angle < PI/2 and aim_angle > -PI/2:
-		character_sprite.flip_h = false  # Face right
-	else:
-		character_sprite.flip_h = true  # Face left
 
 func handle_player_interactions() -> void:
 	# pickup gun
@@ -241,10 +236,14 @@ func _on_pickup_area_area_exited(area):
 		collectables.pop_back()
 
 func slide():
-	var mouse_position = get_global_mouse_position()
-	var angle = position.angle_to_point(mouse_position)
-	rotation = angle
-	var direction = Vector2.RIGHT.rotated(angle)
+	var direction = Vector2.ZERO
+	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
+		var mouse_position = get_global_mouse_position()
+		var angle = position.angle_to_point(mouse_position)
+		direction = Vector2.RIGHT.rotated(angle)
+	elif World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
+		direction = Vector2.RIGHT.rotated(last_aim_angle)
+
 	var movement = direction * speed
 	velocity = movement
 	var floor_normal = Vector2(0, -1)
