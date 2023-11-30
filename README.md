@@ -19,6 +19,7 @@ Choose between Keyboard or Gamepad within the settings menu.
 | Move Right         | D                     |
 | Roll               | Space                 |
 | Shoot              | Left Mouse Button     |
+| Reload             | R                     |
 | Eat Fish (Heal)    | Q                     |
 | Interact           | E                     |
 | Drop Gun           | F                     |
@@ -34,7 +35,8 @@ Choose between Keyboard or Gamepad within the settings menu.
 | Move Right         | Left Stick Right, Joystick Right                       |
 | Roll               | Left Trigger, Sony L2, Xbox LT                         |
 | Shoot              | Right Trigger, Sony R2, Xbox RT                        |
-| Eat Fish (Heal)    | Left Action, Sony Square, Xbox X, Nintendo Y           |
+| Reload             | Left Action, Sony Square, Xbox X, Nintendo Y           |
+| Eat Fish (Heal)    | Right Action, Sony Circle, Xbox B, Nintendo A          |
 | Interact           | Bottom Action Button, Sony Cross, Xbox A, Nintendo B   |
 | Drop Gun           | Top Action Button, Sony Triangle, Xbox Y, Nintendo X   |
 | Switch Gun         | Left/Right Shoulder, Sony L1/L2, Xbox LB/RB            |
