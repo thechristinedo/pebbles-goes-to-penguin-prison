@@ -1,14 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://bf3hrropygqfs"]
+[gd_scene load_steps=29 format=3 uid="uid://bf3hrropygqfs"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_exph8"]
 [ext_resource type="Texture2D" uid="uid://e3k34ljwnw88" path="res://Assets/Maps/armory_map_closed.png" id="2_1rgid"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_gikpt"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="3_813nj"]
-[ext_resource type="Texture2D" uid="uid://cbk4704lvf81a" path="res://Assets/Maps/armory_map.png" id="3_d44tr"]
+[ext_resource type="Texture2D" uid="uid://cbk4704lvf81a" path="res://Assets/Maps/armory_map_open.png" id="3_c8r2y"]
 [ext_resource type="PackedScene" uid="uid://b5ibn8wniwg7b" path="res://Collectables/Guns/revolver_collectable.tscn" id="4_2sguf"]
 [ext_resource type="PackedScene" uid="uid://3npb3tvfm4h7" path="res://Collectables/Guns/shotgun_collectable.tscn" id="5_7pymj"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="7_gyx3s"]
-[ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="9_qvrx7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rypnj"]
 vertices = PackedVector2Array(96, -19, 98, 114, -64, 115, -63, 28, -40, -18, -98, 28, -99, -66, -42, -67)
@@ -18,13 +17,13 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-99, -66, -98, 28, -63,
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syum4"]
 size = Vector2(257, 300)
 
-[sub_resource type="Gradient" id="Gradient_lc73q"]
+[sub_resource type="Gradient" id="Gradient_v8umh"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.721739)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_edodp"]
-gradient = SubResource("Gradient_lc73q")
+gradient = SubResource("Gradient_v8umh")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -32,14 +31,14 @@ fill_from = Vector2(0.5, 0.5)
 offsets = PackedFloat32Array(0, 0.504762, 1)
 colors = PackedColorArray(1, 0.983333, 0, 1, 1, 0.517647, 0, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1usbu"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fvguj"]
 gradient = SubResource("Gradient_4g73l")
 
 [sub_resource type="Curve" id="Curve_53j7f"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_0puu7"]
+[sub_resource type="CurveTexture" id="CurveTexture_twhh1"]
 curve = SubResource("Curve_53j7f")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0ntu"]
@@ -51,8 +50,8 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 3.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_0puu7")
-color_ramp = SubResource("GradientTexture1D_1usbu")
+scale_curve = SubResource("CurveTexture_twhh1")
+color_ramp = SubResource("GradientTexture1D_fvguj")
 turbulence_enabled = true
 turbulence_noise_strength = 4.64
 turbulence_noise_scale = 1.12
@@ -139,7 +138,8 @@ _data = {
 
 [node name="Room" instance=ExtResource("1_exph8")]
 script = ExtResource("2_gikpt")
-open_door_map_texture = ExtResource("3_d44tr")
+next_room_path = "res://World/Rooms/RoomPrefabs/FightingLevel1.tscn"
+open_door_map_texture = ExtResource("3_c8r2y")
 
 [node name="MapSprite" parent="." index="0"]
 texture = ExtResource("2_1rgid")
@@ -217,9 +217,6 @@ offset = Vector2(0, -5)
 libraries = {
 "": SubResource("AnimationLibrary_1nb23")
 }
-
-[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("9_qvrx7")]
-position = Vector2(-83, -26)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]

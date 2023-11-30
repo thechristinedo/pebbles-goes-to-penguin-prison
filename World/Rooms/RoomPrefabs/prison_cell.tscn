@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://wy54al360bqf"]
+[gd_scene load_steps=19 format=3 uid="uid://wy54al360bqf"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_e6lsb"]
-[ext_resource type="Texture2D" uid="uid://ch1xerpsg7h0f" path="res://Assets/Maps/prison-cell-map-closed.png" id="2_qri7w"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_y8yxa"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="3_0vrse"]
-[ext_resource type="Texture2D" uid="uid://droexjrpr7w7w" path="res://Assets/Maps/prison-cell-map.png" id="3_fqcxt"]
+[ext_resource type="Texture2D" uid="uid://ch1xerpsg7h0f" path="res://Assets/Maps/prison-cell-closed.png" id="3_muxg8"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="5_uhpgq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bmf8s"]
@@ -98,11 +97,10 @@ _data = {
 [node name="Room" instance=ExtResource("1_e6lsb")]
 script = ExtResource("2_y8yxa")
 next_room_path = "res://World/Rooms/RoomPrefabs/Armory.tscn"
-open_door_map_texture = ExtResource("3_fqcxt")
 
 [node name="MapSprite" parent="." index="0"]
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_qri7w")
+texture = ExtResource("3_muxg8")
 
 [node name="NavigationRegion2D" parent="." index="2"]
 visible = false

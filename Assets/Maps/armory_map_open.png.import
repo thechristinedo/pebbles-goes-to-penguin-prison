@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://droexjrpr7w7w"
-path="res://.godot/imported/prison-cell-map.png-d09f1a5f814dbc38119b326c5acd0b0f.ctex"
+uid="uid://cbk4704lvf81a"
+path="res://.godot/imported/armory_map_open.png-41fd4e04433d5473b5363efb2409887b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/prison-cell-map.png"
-dest_files=["res://.godot/imported/prison-cell-map.png-d09f1a5f814dbc38119b326c5acd0b0f.ctex"]
+source_file="res://Assets/Maps/armory_map_open.png"
+dest_files=["res://.godot/imported/armory_map_open.png-41fd4e04433d5473b5363efb2409887b.ctex"]
 
 [params]
 

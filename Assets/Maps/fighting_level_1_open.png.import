@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch1xerpsg7h0f"
-path="res://.godot/imported/prison-cell-map-closed.png-20c37c5abf036d5eb2f0a9f7b5880684.ctex"
+uid="uid://k2ruq5ejwvqc"
+path="res://.godot/imported/fighting_level_1_open.png-f8f7a2bb4c48c9f1fda69f93643acae3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/prison-cell-map-closed.png"
-dest_files=["res://.godot/imported/prison-cell-map-closed.png-20c37c5abf036d5eb2f0a9f7b5880684.ctex"]
+source_file="res://Assets/Maps/fighting_level_1_open.png"
+dest_files=["res://.godot/imported/fighting_level_1_open.png-f8f7a2bb4c48c9f1fda69f93643acae3.ctex"]
 
 [params]
 

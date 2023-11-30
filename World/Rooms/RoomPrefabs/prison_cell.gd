@@ -12,7 +12,7 @@ var room_start_with_enemies: bool = false
 var door_opened: bool = true
 
 func _ready():
-	if enemies_container.get_child_count() != 0: 
+	if !no_more_enemies(): 
 		room_start_with_enemies = true
 		door_opened = false
 	door_interactable_animation_player.play("hover")
