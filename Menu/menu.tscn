@@ -389,6 +389,7 @@ text = "Save Slot 1
 "
 
 [node name="Trash1" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot1"]
+layout_mode = 0
 offset_left = 504.0
 offset_top = 1.0
 offset_right = 1012.0
@@ -407,6 +408,7 @@ text = "Save Slot 2
 "
 
 [node name="Trash2" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot2"]
+layout_mode = 0
 offset_left = 504.0
 offset_top = 1.0
 offset_right = 1012.0
@@ -425,6 +427,7 @@ text = "Save Slot 3
 "
 
 [node name="Trash3" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer/SaveSlot3"]
+layout_mode = 0
 offset_left = 504.0
 offset_top = 1.0
 offset_right = 1012.0

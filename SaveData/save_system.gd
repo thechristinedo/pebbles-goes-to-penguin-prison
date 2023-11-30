@@ -47,15 +47,16 @@ func apply_game_data(data):
 		get_tree().root.add_child(world_instance)
 		get_tree().current_scene = world_instance
 		
-	RoomManager.switch_room(data["current_room"])
-	var player = RoomManager.pebbles
-	var fishventory = player.find_child("Fishventory")
-	var inventory = player.find_child("Inventory")
-	if data["fish_items"]:
-		data["fish_items"] = fishventory.deserialize(data["fish_items"])
-	if data["weapons"]:
-		data["weapons"] = inventory.set_inventory_data(data["weapons"])
-	player.saved_fish_count = data["fish_count"]
-	player.health = data["player_health"]
-	player.global_position = data["player_position"]
+	if (data["current_room"]):
+		RoomManager.switch_room(data["current_room"])
+		var player = RoomManager.pebbles
+		var fishventory = player.find_child("Fishventory")
+		var inventory = player.find_child("Inventory")
+		if data["fish_items"]:
+			data["fish_items"] = fishventory.deserialize(data["fish_items"])
+		if data["weapons"]:
+			data["weapons"] = inventory.set_inventory_data(data["weapons"])
+		player.saved_fish_count = data["fish_count"]
+		player.health = data["player_health"]
+		player.global_position = data["player_position"]
 

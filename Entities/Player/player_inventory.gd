@@ -7,7 +7,8 @@ extends Node
 
 func _ready():
 	player_select_slot()
-	print("ready...", _inventory)
+	
+	
 
 func is_full() -> bool:
 	if null in _inventory.items:
@@ -26,8 +27,8 @@ func insert_gun(resource: InventoryItem) -> bool:
 	for i in range(_inventory.items.size()):
 		if (!_inventory.items[i]):
 			_inventory.items[i] = resource
-			if (i == _inventory.selected_slot):
-				print(i ," ", _inventory.selected_slot)
+			print("Inserting Gun: ", resource)
+			if (i == _inventory.selected_slot and gun):
 				player_select_slot()
 			return true  # Item successfully added
 	return false
@@ -42,9 +43,10 @@ func get_selected_gun() -> InventoryItem:
 	return _inventory.items[_inventory.selected_slot]
 
 func player_select_slot(index: int = _inventory.selected_slot) -> void:
-	_inventory.selected_slot = index
-	gun.inventory_item = _inventory.items[index]
-	gun.update_texture()
+		print("gun...", gun)
+		_inventory.selected_slot = index
+		gun.inventory_item = _inventory.items[index]
+		gun.update_texture()
 
 func _input(event):
 	var just_pressed = event.is_pressed() and not event.is_echo()
@@ -59,14 +61,17 @@ func _input(event):
 
 func get_inventory_data() -> Array:
 	var inventory_data = []
-	for i in range(_inventory.items.size()):
-		var item = _inventory.items[i]
+	for item in _inventory.items:
 		if item:
+			var shooter_data ={}
+			if item.shooter:
+				shooter_data["path"] = item.shooter.resource_path
+
 			inventory_data.append({
 				"name": item.name,
 				"texture_path": item.texture.resource_path,
 				"stackable": item.stackable,
-				"shooter": item.shooter,
+				"shooter": shooter_data,
 				"muzzle": item.muzzle,
 				"path_to_collectable_scene": item.path_to_collectable_scene
 				})
@@ -79,15 +84,20 @@ func set_inventory_data(data: Array):
 		print("inventory null")
 		_inventory = load("res://Inventory/inventory.tres")
 	clear_inventory()
+	print("The data: ", data)
 	for item_data in data:
 		if item_data:
+			print("ITEM DATA...", item_data)
 			var new_item = InventoryItem.new()
 			new_item.name = item_data["name"]
-			new_item.texture = load(item_data["texture_path"])
+			new_item.texture = load(item_data["texture_path"]) if item_data["texture_path"] != "" else null
 			new_item.stackable = item_data["stackable"]
-			new_item.shooter = item_data["shooter"]
 			new_item.muzzle = item_data["muzzle"]
+			new_item.path_to_collectable_scene = item_data["path_to_collectable_scene"]
+			new_item.shooter = load(item_data["shooter"]["path"])
 			insert_gun(new_item)
+		else:
+			insert_gun(null)
 
 func clear_inventory():
 	for i in range(_inventory.items.size()):
