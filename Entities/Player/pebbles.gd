@@ -36,6 +36,7 @@ var is_eating = false
 @export var speed: float = 200
 var current_animation: String = "idle"
 var is_sliding = false 
+var lastMovement
 
 var slide_cooldown : float = 0.5
 var current_slide_cooldown : float = 0.0
@@ -58,6 +59,7 @@ var collectables: Array[Area2D]
 var invincible: bool = false
 
 func _ready():
+	add_to_group("player")
 	animation_tree.active = true
 	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
 
@@ -113,11 +115,17 @@ func handle_player_shoot() -> void:
 				camera.shake(current_gun.shooter.recoil, 0.05)
 
 func handle_player_movement() -> void:
+	if is_sliding: return
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
 		if $walkTimer.time_left <= 0:
 				walkSound.pitch_scale = randf_range(0.8, 1.2)
 				walkSound.play()
 				$walkTimer.start(0.2)
+		if Input.is_action_just_pressed("left"):
+			lastMovement = "left"
+		elif Input.is_action_just_pressed("right"):
+			lastMovement = "right"
+			
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
@@ -136,7 +144,7 @@ func update_weapon_rotation(_delta, force_update_position = false) -> void:
 			# TODO: Update pebbles facing direction
 			crosshair.global_position = global_position + (Vector2(cos(last_aim_angle), sin(last_aim_angle)) * crosshair_range)
 			gun.aim(crosshair.global_position)
-
+			
 		crosshair.global_rotation = 0
 		
 	# Flip Pebbles
@@ -218,15 +226,48 @@ func _on_pickup_area_area_exited(area):
 		collectables.pop_back()
 
 func slide():
-	speed *= 1.5
+	var mouse_position = get_global_mouse_position()
+	var angle = position.angle_to_point(mouse_position)
+	rotation = angle
+	var direction = Vector2.RIGHT.rotated(angle)
+	var movement = direction * speed
+	velocity = movement
+	var floor_normal = Vector2(0, -1)
+	move_and_slide()
+	# Ignore the bullets layer
+	set_collision_mask_value(2, false)
+	# Get all the bullets in the scene
+	var bullets = get_tree().get_nodes_in_group("bullets")
+	var bossBullets = get_tree().get_nodes_in_group("bossBullets")
+	# Loop through the bullets and ignore the player layer
+	for bullet in bullets:
+		bullet.set_collision_mask_value(1, false)
+		bullet.get_node("Area2D").set_collision_mask_value(1, false)
+	
+	for bossBullet in bossBullets:
+		bossBullet.get_node("Area2D").set_collision_mask_value(1, false)
+	
 	animation_tree.set("parameters/conditions/is_sliding", true)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	anim_state.travel("slide")
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.5).timeout
+	
+	# Restore the collision mask
+	set_collision_mask_value(2, true)
+	# Loop through the bullets and restore the player layer
+	bullets = get_tree().get_nodes_in_group("bullets")
+	for bullet in bullets:
+		bullet.set_collision_mask_value(1, true)
+		bullet.get_node("Area2D").set_collision_mask_value(1, true)
+		
+	bossBullets = get_tree().get_nodes_in_group("bullets")
+	for bossBullet in bossBullets:
+		bossBullet.get_node("Area2D").set_collision_mask_value(1, true)
+	
 	reset_slide()
 	
 func reset_slide():
-	speed /= 1.5
+	rotation = 0
 	is_sliding = false
 	animation_tree.set("parameters/conditions/is_sliding", false)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback

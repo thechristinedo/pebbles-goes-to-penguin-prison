@@ -22,7 +22,6 @@ func _ready():
 	player.health_updated.emit(player.max_health, player.max_health)
 	#player.emit_signal("pebbles_shoot", player.ammo)
 
-
 func init_room() -> void:
 	RoomManager.setup()
 	RoomManager.switch_room(RoomManager.starting_room)
