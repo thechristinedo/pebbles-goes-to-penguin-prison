@@ -8,6 +8,8 @@ extends Control
 @onready var input_type_menu = $InputType
 @onready var selectSound = $selectSound
 @onready var saveslot = $SaveSlot
+@onready var success_label = get_node("SaveSlot/MarginContainer2/VBoxContainer/Success")
+@onready var error_label = get_node("SaveSlot/MarginContainer2/VBoxContainer/Error")
 
 func _on_play_pressed():
 	#$TextureRect.visible = true
@@ -20,20 +22,38 @@ func _on_play_pressed():
 
 func _on_save_slot_1_pressed():
 	#$TextureRect.visible = true
-	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 	selectSound.play()
+	saveslot.visible = false
+	if SaveSystem.slot_has_data(1):
+		$ParallaxBackground.visible = false
+		$AudioStreamPlayer.playing = false
+		SaveSystem.load_game(1)
+		
+	else:
+		SaveSystem.save_game(1, "Slot 1")
+		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_2_pressed():
-	#$TextureRect.visible = true
 	selectSound.play()
-	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
-	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
+	saveslot.visible = false
+	if SaveSystem.slot_has_data(2):
+		$ParallaxBackground.visible = false
+		$AudioStreamPlayer.playing = false
+		SaveSystem.load_game(2)
+	else:
+		SaveSystem.save_game(2, "Slot 2")
+		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_3_pressed():
-	#$TextureRect.visible = true
 	selectSound.play()
-	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
-	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
+	saveslot.visible = false
+	if SaveSystem.slot_has_data(3):
+		$ParallaxBackground.visible = false
+		$AudioStreamPlayer.playing = false
+		SaveSystem.load_game(3)
+	else:
+		SaveSystem.save_game(3, "Slot 3")
+		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_options_pressed():
 	selectSound.play()
@@ -70,3 +90,20 @@ func _on_input_type_button_item_selected(index):
 	if index != -1:
 		World.INPUT_SCHEME = index
 		EventBus.input_scheme_changed.emit(index)
+
+func _on_trash_1_pressed():
+	var error = SaveSystem.delete_save(1)
+	print(error)
+	if error != OK:
+		success_label.visible = false
+		error_label.visible = true
+	else: 
+		success_label.visible = true
+		error_label.visible = false
+
+func _on_trash_2_pressed():
+	SaveSystem.delete_save(2)
+
+
+func _on_trash_3_pressed():
+	SaveSystem.delete_save(3)

@@ -26,6 +26,7 @@ config/use_filter=true
 RoomManager="*res://World/Rooms/room_manager.gd"
 SceneTransition="*res://Menu/Scene Transition/scene_transition.tscn"
 EventBus="*res://globals/event_bus.gd"
+SaveSystem="*res://SaveData/save_system.gd"
 
 [display]
 

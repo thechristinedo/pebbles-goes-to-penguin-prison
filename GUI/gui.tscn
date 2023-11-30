@@ -131,7 +131,7 @@ _data = {
 "tutorial_dialog": SubResource("Animation_nmhev")
 }
 
-[node name="GUI" type="CanvasLayer"]
+[node name="GUI" type="CanvasLayer" groups=["Persist"]]
 script = ExtResource("1_e6sdv")
 
 [node name="Inventory" type="Control" parent="."]
@@ -243,6 +243,13 @@ layout_mode = 2
 theme = ExtResource("5_qhty0")
 theme_override_constants/outline_size = 3
 text = "Resume"
+
+[node name="Save" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_qhty0")
+theme_override_constants/outline_size = 3
+text = "Save
+"
 
 [node name="Volume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -521,6 +528,7 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Save" to="PauseMenu" method="_on_save_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/InputTypeButton" to="PauseMenu" method="_on_input_type_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Back To Main Menu" to="PauseMenu" method="_on_back_to_main_menu_pressed"]
