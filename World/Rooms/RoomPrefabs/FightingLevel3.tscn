@@ -275,7 +275,7 @@ position = Vector2(-100, -299)
 position = Vector2(161, -94)
 
 [node name="Sharkguncollectable" parent="." index="14" instance=ExtResource("14_lkphn")]
-position = Vector2(69, -287)
+position = Vector2(70, -288)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]
