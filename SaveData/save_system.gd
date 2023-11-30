@@ -52,16 +52,12 @@ func apply_game_data(data):
 
 	var player = RoomManager.pebbles
 	var fishventory = player.find_child("Fishventory")
+	var inventory = player.find_child("Inventory")
 	if data["fish_items"]:
 		data["fish_items"] = fishventory.deserialize(data["fish_items"])
+	if data["weapons"]:
+		data["weapons"] = inventory.set_inventory_data(data["weapons"])
 	player.saved_fish_count = data["fish_count"]
 	player.health = data["player_health"]
 	player.global_position = data["player_position"]
-
-	
-	#player.set_new_data(data["fish_item"])
-	print("Applying data: ", str(player))
-	print("Set player health to: ", player.get_health())
-	#player.fish_count = data["fish_count"]
-	#player.global_position = data["player_position"
 

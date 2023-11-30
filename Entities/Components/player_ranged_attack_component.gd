@@ -9,8 +9,13 @@ var _can_fire: bool = true
 
 func _ready():
 	firerate_timer.connect("timeout", _set_can_fire)
-	if gun.inventory_item:
-		set_fire_rate(gun.inventory_item.shooter.firerate)
+	print("Gun: ", gun)
+	if gun:
+		print("Inventory Item: ", gun.inventory_item)
+		if gun.inventory_item:
+			print("Shooter: ", gun.inventory_item.shooter)
+			if gun.inventory_item.shooter:
+				set_fire_rate(gun.inventory_item.shooter.firerate)
 
 func set_fire_rate(firerate: float) -> void:
 	_firerate = firerate

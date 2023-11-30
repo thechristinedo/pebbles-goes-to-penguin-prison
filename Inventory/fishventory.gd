@@ -41,5 +41,4 @@ func deserialize(data: Dictionary):
 			"item": fish_item,
 			"count": fish_data.get("count", 0)
 		}
-		print("DESERIALIZED.", resources[key])
 

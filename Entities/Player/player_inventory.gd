@@ -3,6 +3,7 @@ extends Node
 @onready var gun: Gun = $"../Gun"
 @onready var _inventory: Inventory = preload("res://Inventory/inventory.tres")
 @onready var firerate = $"../RangedAttackComponent/Firerate"
+@onready var player = RoomManager.pebbles
 
 func _ready():
 	player_select_slot()
@@ -20,17 +21,15 @@ func scroll_down() -> void:
 	_inventory.selected_slot = wrapi(_inventory.selected_slot + 1, 0, 5)
 	player_select_slot()
 
+func clear_items():
+	for i in range(1,_inventory.items.size()):
+		_inventory.items[i] = null
+
 func insert_gun(resource: InventoryItem) -> bool:
-	if _inventory.items[_inventory.selected_slot] == null:
-		_inventory.items[_inventory.selected_slot] = resource
-		player_select_slot()
-		return true
-	
-	for i in range(_inventory.items.size()):
-		if !_inventory.items[i]: 
+	for i in range(1,_inventory.items.size()):
+		if (!_inventory.items[i]):
 			_inventory.items[i] = resource
-			player_select_slot()
-			return true
+			return true  # Item successfully added
 	return false
 
 func drop_gun(index: int = _inventory.selected_slot) -> InventoryItem:
@@ -61,7 +60,8 @@ func _input(event):
 
 func get_inventory_data() -> Array:
 	var inventory_data = []
-	for item in _inventory.items:
+	for i in range(1, _inventory.items.size()):
+		var item = _inventory.items[i]
 		if item:
 			inventory_data.append({
 				"name": item.name,
@@ -74,3 +74,16 @@ func get_inventory_data() -> Array:
 		else:
 			inventory_data.append(null)
 	return inventory_data
+
+func set_inventory_data(data: Array):
+	_inventory = load("res://Inventory/inventory.tres")
+	clear_items()
+	for item_data in data:
+		if item_data:
+			var new_item = InventoryItem.new()
+			new_item.name = item_data["name"]
+			new_item.texture = load(item_data["texture_path"])
+			new_item.stackable = item_data["stackable"]
+			new_item.shooter = item_data["shooter"]
+			new_item.muzzle = item_data["muzzle"]
+			insert_gun(new_item)

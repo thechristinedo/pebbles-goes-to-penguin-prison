@@ -8,7 +8,6 @@ class_name Pickup
 
 func _ready():
 	connect("body_entered", _on_body_entered)
-	print("In pickup.gd: ", resource_type)
 
 var launch_velocity : Vector2 = Vector2.ZERO
 var move_duration : float = 0
