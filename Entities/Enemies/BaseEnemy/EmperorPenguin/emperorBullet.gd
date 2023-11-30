@@ -5,7 +5,6 @@ const impact_smoke: PackedScene = preload("res://Guns/Bullets/Effects/impact_smo
 
 func _process(delta):
 	position += transform.x * speed * delta
-	$Sprite2D.rotation += 0.1 # Rotate the sprite
 	
 func _on_kill_timer_timeout():
 	queue_free()
