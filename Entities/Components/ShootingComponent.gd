@@ -3,6 +3,7 @@ class_name ShootingComponent
 
 @export var entity_sprite: Sprite2D
 @export var gun: Gun
+@onready var shootSound = $shootSound
 
 var can_shoot: bool = true
 
@@ -24,6 +25,7 @@ func shoot():
 	if can_shoot:
 		gun.bulletSpeed = 75
 		gun.shoot()
+		shootSound.play()
 		can_shoot = false
 		get_tree().create_timer(gun.inventory_item.shooter.firerate).connect("timeout", _enable_can_shoot)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://6yw5hjaux1c2"]
+[gd_scene load_steps=25 format=3 uid="uid://6yw5hjaux1c2"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_2v8wi"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_j0agu"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://b7unnuxlolfml" path="res://Assets/Maps/fighting_level_1_closed.png" id="4_24oj6"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_rajou"]
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="6_s53w1"]
+[ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="7_e3bok"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="7_rldi8"]
+[ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="8_rhf8l"]
+[ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Snowman/snowman.tscn" id="8_yfm3n"]
 
 [sub_resource type="Gradient" id="Gradient_lc73q"]
 interpolation_mode = 2
@@ -230,17 +233,17 @@ shape = SubResource("RectangleShape2D_0hpm0")
 position = Vector2(-94, -48)
 shape = SubResource("RectangleShape2D_0hpm0")
 
-[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("6_s53w1")]
-position = Vector2(107, -84)
-
-[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource("6_s53w1")]
+[node name="Enemy2" parent="Enemies" index="0" instance=ExtResource("6_s53w1")]
 position = Vector2(-123, -85)
 
-[node name="Enemy3" parent="Enemies" index="2" instance=ExtResource("6_s53w1")]
+[node name="Enemy3" parent="Enemies" index="1" instance=ExtResource("6_s53w1")]
 position = Vector2(-146, -4)
 
-[node name="Enemy4" parent="Enemies" index="3" instance=ExtResource("6_s53w1")]
-position = Vector2(146, 51)
+[node name="Enemy5" parent="Enemies" index="2" instance=ExtResource("7_e3bok")]
+position = Vector2(17, -78)
+
+[node name="Enemy6" parent="Enemies" index="3" instance=ExtResource("8_rhf8l")]
+position = Vector2(161, -90)
 
 [node name="DoorInteractableArea" type="Area2D" parent="." index="7"]
 
@@ -257,6 +260,9 @@ offset = Vector2(0, -5)
 libraries = {
 "": SubResource("AnimationLibrary_1nb23")
 }
+
+[node name="snowman" parent="." index="8" instance=ExtResource("8_yfm3n")]
+position = Vector2(-196, -126)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bf3hrropygqfs"]
+[gd_scene load_steps=30 format=3 uid="uid://bf3hrropygqfs"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_exph8"]
 [ext_resource type="Texture2D" uid="uid://e3k34ljwnw88" path="res://Assets/Maps/armory_map_closed.png" id="2_1rgid"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ibn8wniwg7b" path="res://Collectables/Guns/revolver_collectable.tscn" id="4_2sguf"]
 [ext_resource type="PackedScene" uid="uid://3npb3tvfm4h7" path="res://Collectables/Guns/shotgun_collectable.tscn" id="5_7pymj"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="7_gyx3s"]
+[ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_u4pcx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rypnj"]
 vertices = PackedVector2Array(96, -19, 98, 114, -64, 115, -63, 28, -40, -18, -98, 28, -99, -66, -42, -67)
@@ -217,6 +218,12 @@ offset = Vector2(0, -5)
 libraries = {
 "": SubResource("AnimationLibrary_1nb23")
 }
+
+[node name="Barrel" parent="." index="13" instance=ExtResource("9_u4pcx")]
+position = Vector2(86, 34)
+
+[node name="Barrel2" parent="." index="14" instance=ExtResource("9_u4pcx")]
+position = Vector2(86, 81)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]

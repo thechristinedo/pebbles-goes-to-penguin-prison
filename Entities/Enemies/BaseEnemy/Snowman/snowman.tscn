@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dcy38limnheyy"]
+[gd_scene load_steps=23 format=3 uid="uid://dcy38limnheyy"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_d03o8"]
 [ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Snowman/snowman.gd" id="2_yfx8t"]
 [ext_resource type="Texture2D" uid="uid://g7vd3clwdaeq" path="res://Assets/Entities/Enemies/Snowman/idle_snowman.png" id="3_a2hdj"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="4_e62pm"]
 [ext_resource type="Texture2D" uid="uid://g3le7parjafw" path="res://Assets/Entities/Enemies/Snowman/walk_snowman.png" id="5_ahiw1"]
-[ext_resource type="PackedScene" uid="uid://daulk7ivq47fo" path="res://Entities/Components/MeleeComponent.tscn" id="5_poco5"]
+[ext_resource type="PackedScene" uid="uid://b1mma4h8fmwl5" path="res://Entities/Components/MeleeComponent.tscn" id="5_poco5"]
 [ext_resource type="Script" path="res://Entities/Components/HealthComponent.gd" id="6_30n1q"]
 [ext_resource type="Texture2D" uid="uid://b76kr72jd2le5" path="res://Assets/Entities/Enemies/Snowman/snowman_death.png" id="6_l5kta"]
 [ext_resource type="Texture2D" uid="uid://ccxfwowo1add" path="res://Assets/Entities/Enemies/Snowman/snowman_slap.png" id="7_n583h"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://1apot56ranma" path="res://Entities/Enemies/BaseEnemy/EntityStates/Melee.tscn" id="9_nlfnn"]
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="10_o272g"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="11_l65ai"]
+[ext_resource type="AudioStream" uid="uid://jcq0mvxk2bna" path="res://Audio/ice1.mp3" id="15_ee12f"]
 
 [sub_resource type="Animation" id="Animation_5aqcb"]
 length = 0.001
@@ -496,5 +497,8 @@ autostart = true
 [node name="ShootTimer2" type="Timer" parent="." index="15"]
 wait_time = 5.0
 one_shot = true
+
+[node name="icicleSound" type="AudioStreamPlayer2D" parent="." index="16"]
+stream = ExtResource("15_ee12f")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

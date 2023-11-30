@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1mma4h8fmwl5"]
+[gd_scene load_steps=8 format=3 uid="uid://b1mma4h8fmwl5"]
 
 [ext_resource type="Script" path="res://Entities/Components/MeleeComponent.gd" id="1_3jflr"]
 [ext_resource type="Texture2D" uid="uid://dbo8qnj30ukbp" path="res://Assets/Melee/melee.png" id="2_nlr1t"]
+[ext_resource type="AudioStream" uid="uid://c0fv5u8jhjex8" path="res://Audio/sealSlap.mp3" id="3_lqjjk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fn28j"]
 radius = 50.0
@@ -84,3 +85,6 @@ hframes = 3
 libraries = {
 "": SubResource("AnimationLibrary_uj7q2")
 }
+
+[node name="slap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lqjjk")
