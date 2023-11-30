@@ -103,7 +103,7 @@ func _physics_process(_delta):
 		
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
-	
+
 
 func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):

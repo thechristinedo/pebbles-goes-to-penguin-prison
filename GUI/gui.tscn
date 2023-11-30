@@ -451,7 +451,7 @@ position = Vector2(25, 53)
 scale = Vector2(1.71875, 1.71875)
 texture = ExtResource("9_3mk52")
 
-[node name="Ammo Amount" type="Label" parent="Panel"]
+[node name="AmmoAmount" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 46.0
@@ -459,7 +459,7 @@ offset_right = 93.0
 offset_bottom = 63.0
 theme_override_fonts/font = ExtResource("10_ydoat")
 theme_override_font_sizes/font_size = 14
-text = "45"
+text = "999"
 script = ExtResource("11_bbeky")
 
 [node name="FishSprite" type="Sprite2D" parent="Panel"]
