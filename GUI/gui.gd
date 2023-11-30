@@ -45,3 +45,4 @@ func update_frame():
 	if current_frame >= ANIMATION_FRAMES.size():
 		current_frame = 0
 	Input.set_custom_mouse_cursor(ANIMATION_FRAMES[current_frame], Input.CURSOR_ARROW, Vector2(16,16))
+

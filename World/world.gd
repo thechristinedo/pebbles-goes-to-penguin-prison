@@ -33,4 +33,3 @@ func _physics_process(_delta):
 
 func update_player_health(health: int, max_health: int) -> void:
 	player.health_updated.emit(health, max_health)
-

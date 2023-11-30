@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5gvl6sf6hn7d"]
+[gd_scene load_steps=4 format=3 uid="uid://bgw1euwbef5rt"]
 
 [ext_resource type="Script" path="res://GUI/User Interface/UI_menu_scenes/victory_screen.gd" id="1_ve08r"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="2_e34pb"]
