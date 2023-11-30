@@ -13,17 +13,17 @@ Select between Keyboard or Gamepad within the settings menu.
 ## Keyboard Controls
 | Action             | Key                   |
 |--------------------|-----------------------|
-| Move Up            | W (Physical)          |
-| Move Left          | A (Physical)          |
-| Move Down          | S (Physical)          |
-| Move Right         | D (Physical)          |
-| Roll               | Space (Physical)      |
+| Move Up            | W                     |
+| Move Left          | A                     |
+| Move Down          | S                     |
+| Move Right         | D                     |
+| Roll               | Space                 |
 | Shoot              | Left Mouse Button     |
-| Eat Fish (Heal)    | Q (Physical)          |
-| Interact           | E (Physical)          |
-| Drop Gun           | F (Physical)          |
+| Eat Fish (Heal)    | Q                     |
+| Interact           | E                     |
+| Drop Gun           | F                     |
 | Switch Gun         | Mouse Wheel Up/Down   |
-| Pause              | Escape (Physical)     |
+| Pause              | Escape                |
 
 ## Gamepad Controls
 | Action             | Gamepad Input                                          |
