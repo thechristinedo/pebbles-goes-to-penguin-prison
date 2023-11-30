@@ -422,9 +422,6 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 2
 frame = 0
 
-[node name="Hitbox" parent="." index="2"]
-visible = false
-
 [node name="AnimationTree" parent="." index="3"]
 anim_player = NodePath("../AnimationPlayer")
 active = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://ct16m35oho4tv"]
+[gd_scene load_steps=35 format=3 uid="uid://ct16m35oho4tv"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_pdroj"]
 [ext_resource type="Texture2D" uid="uid://nqnbcdd3m2yh" path="res://Assets/Maps/fighting_level_3_closed.png" id="2_md6c6"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_xxxo1"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="3_6l0y4"]
+[ext_resource type="Texture2D" uid="uid://cvc3m1agq7m47" path="res://Assets/Maps/fighting_level_3_open.png" id="3_q30wn"]
 [ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="4_0fp4j"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_iof12"]
 [ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="5_whf78"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="8_0i7vv"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_cpduf"]
 [ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="10_i17r6"]
+[ext_resource type="PackedScene" uid="uid://drxk1ac83qn5k" path="res://Collectables/Guns/machinegun_collectable.tscn" id="13_5vkfh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xst36"]
 vertices = PackedVector2Array(-227, 223, -229, 89, -205, 106, -200, 133, -149, 225, -168, 142, -168, -65, -177, -115, -68, -117, -140, -296, -84, -300, -84, -282, -139, -230, -69, -230, -18, -280, 53, -266, 99, 370, -100, 370, -98, 284, 99, 281, 142, -268, 143, -118, -68, -188, -16, -302, 52, -304, -139, -159, -139, -188, -70, -158, 156, 61, 228, 62, 226, 227, 143, 227, 185, -118, 191, -56, 191, -11, 155, -10, -161, -18, -183, 13, 113, 246, -112, 247, -161, 105, -182, 53, -173, 82)
@@ -143,12 +145,10 @@ turbulence_noise_scale = 1.12
 [node name="Room" instance=ExtResource("1_pdroj")]
 script = ExtResource("2_xxxo1")
 next_room_path = "res://World/Rooms/RoomPrefabs/Courtyard.tscn"
+open_door_map_texture = ExtResource("3_q30wn")
 
 [node name="MapSprite" parent="." index="0"]
 texture = ExtResource("2_md6c6")
-
-[node name="Enemy6" parent="MapSprite" index="0" instance=ExtResource("4_0fp4j")]
-position = Vector2(-111, -15)
 
 [node name="PebblesSpawn" parent="." index="1"]
 position = Vector2(0, 331)
@@ -180,13 +180,13 @@ position = Vector2(89, -41)
 position = Vector2(148, 170)
 
 [node name="Enemy6" parent="Enemies" index="3" instance=ExtResource("5_whf78")]
-position = Vector2(-135, 189)
+position = Vector2(-112, 189)
 
 [node name="emperor" parent="Enemies" index="4" instance=ExtResource("7_2tb1t")]
 position = Vector2(-65, 99)
 
 [node name="Enemy" parent="Enemies" index="5" instance=ExtResource("8_0i7vv")]
-position = Vector2(-133, 83)
+position = Vector2(-55, -29)
 
 [node name="Enemy2" parent="Enemies" index="6" instance=ExtResource("8_0i7vv")]
 position = Vector2(62, 219)
@@ -195,7 +195,7 @@ position = Vector2(62, 219)
 position = Vector2(102, -205)
 
 [node name="Enemy8" parent="Enemies" index="8" instance=ExtResource("4_0fp4j")]
-position = Vector2(26, 99)
+position = Vector2(33, 77)
 
 [node name="Enemy9" parent="Enemies" index="9" instance=ExtResource("4_0fp4j")]
 position = Vector2(-39, -199)
@@ -273,6 +273,9 @@ position = Vector2(-100, -299)
 
 [node name="Barrel2" parent="." index="13" instance=ExtResource("10_i17r6")]
 position = Vector2(161, -94)
+
+[node name="MachinegunCollectable" parent="." index="14" instance=ExtResource("13_5vkfh")]
+position = Vector2(70, -289)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]
