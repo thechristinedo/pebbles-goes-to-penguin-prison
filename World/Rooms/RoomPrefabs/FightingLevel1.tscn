@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=25 format=3 uid="uid://6yw5hjaux1c2"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_2v8wi"]
@@ -6,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7unnuxlolfml" path="res://Assets/Maps/fighting_level_1_closed.png" id="4_24oj6"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_rajou"]
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="6_s53w1"]
+
 [ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="7_e3bok"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="7_rldi8"]
 [ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="8_rhf8l"]
@@ -222,6 +224,10 @@ visible = false
 position = Vector2(-14, 9)
 shape = SubResource("RectangleShape2D_xlgjv")
 
+[node name="RoomCollisions" parent="." index="4"]
+collision_layer = 12
+collision_mask = 3
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollisions" index="0"]
 polygon = PackedVector2Array(-226, -142, -166, -142, -165, -115, -21, -115, -21, -144, 129, -144, 129, -127, 190, -127, 191.322, -162.266, 326, -278, -362, -270, -339, 308, 338, 287, 334, -278, 197, -156, 197, 118, 93, 118, 88, 124, 88, 222, -121, 222, -120, 125, -127, 118, -227, 118)
 
@@ -244,6 +250,12 @@ position = Vector2(17, -78)
 
 [node name="Enemy6" parent="Enemies" index="3" instance=ExtResource("8_rhf8l")]
 position = Vector2(161, -90)
+
+[node name="snowman" parent="Enemies" index="4" instance=ExtResource("7_7tiws")]
+position = Vector2(30, 22)
+
+[node name="emperor" parent="Enemies" index="5" instance=ExtResource("8_7xxsy")]
+position = Vector2(48, -75)
 
 [node name="DoorInteractableArea" type="Area2D" parent="." index="7"]
 

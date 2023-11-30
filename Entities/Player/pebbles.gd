@@ -31,13 +31,13 @@ class_name Player
 @onready var health: int = max_health
 var is_eating = false
 @onready var fish_count: int
-@onready var world = get_parent()
+@onready var world = get_parent() 
 
 @export var speed: float = 200
 var current_animation: String = "idle"
 var is_sliding = false 
 
-var slide_cooldown : float = 0.5
+var slide_cooldown : float = 2
 var current_slide_cooldown : float = 0.0
 
 var enemy_inattack_range = false
@@ -58,6 +58,7 @@ var collectables: Array[Area2D]
 var invincible: bool = false
 
 func _ready():
+	add_to_group("player")
 	animation_tree.active = true
 	EventBus.input_scheme_changed.connect(_on_input_scheme_changed)
 
@@ -219,10 +220,36 @@ func _on_pickup_area_area_exited(area):
 
 func slide():
 	speed *= 1.5
+	# Ignore the bullets layer
+	set_collision_mask_value(2, false)
+	# Get all the bullets in the scene
+	var bullets = get_tree().get_nodes_in_group("bullets")
+	var bossBullets = get_tree().get_nodes_in_group("bossBullets")
+	# Loop through the bullets and ignore the player layer
+	for bullet in bullets:
+		bullet.set_collision_mask_value(1, false)
+		bullet.get_node("Area2D").set_collision_mask_value(1, false)
+	
+	for bossBullet in bossBullets:
+		bossBullet.get_node("Area2D").set_collision_mask_value(1, false)
+	
 	animation_tree.set("parameters/conditions/is_sliding", true)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	anim_state.travel("slide")
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(1).timeout
+	
+	# Restore the collision mask
+	set_collision_mask_value(2, true)
+	# Loop through the bullets and restore the player layer
+	bullets = get_tree().get_nodes_in_group("bullets")
+	for bullet in bullets:
+		bullet.set_collision_mask_value(1, true)
+		bullet.get_node("Area2D").set_collision_mask_value(1, true)
+		
+	bossBullets = get_tree().get_nodes_in_group("bullets")
+	for bossBullet in bossBullets:
+		bossBullet.get_node("Area2D").set_collision_mask_value(1, true)
+		
 	reset_slide()
 	
 func reset_slide():
