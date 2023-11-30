@@ -37,6 +37,7 @@ next_room = "res://World/Rooms/RoomPrefabs/starting_room.tscn"
 position = Vector2(81, -18)
 
 [node name="CameraArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CameraBounds" type="CollisionShape2D" parent="CameraArea"]
 visible = false
