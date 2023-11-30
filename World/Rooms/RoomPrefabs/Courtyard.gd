@@ -31,6 +31,9 @@ func _on_door_interactable_area_body_exited(body):
 
 func next_scene_transition() -> void:
 	map_sprite.texture = open_door_map_texture
+	get_tree().create_timer(3).connect("timeout", _victory_scene)
+
+func _victory_scene() -> void:
 	get_tree().paused = true
 	add_child(victory_scene)
 	victory_scene.visible = true
