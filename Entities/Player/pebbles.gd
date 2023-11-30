@@ -107,7 +107,6 @@ func _physics_process(_delta):
 
 func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):
-		print("Shooting")
 		var current_gun = inventory_node.get_selected_gun()
 		if current_gun:
 			print("Cur Gun: ", current_gun)

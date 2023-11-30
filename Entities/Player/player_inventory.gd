@@ -84,10 +84,8 @@ func set_inventory_data(data: Array):
 		print("inventory null")
 		_inventory = load("res://Inventory/inventory.tres")
 	clear_inventory()
-	print("The data: ", data)
 	for item_data in data:
 		if item_data:
-			print("ITEM DATA...", item_data)
 			var new_item = InventoryItem.new()
 			new_item.name = item_data["name"]
 			new_item.texture = load(item_data["texture_path"]) if item_data["texture_path"] != "" else null

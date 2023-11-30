@@ -245,6 +245,7 @@ theme_override_constants/outline_size = 3
 text = "Resume"
 
 [node name="Save" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("5_qhty0")
 theme_override_constants/outline_size = 3

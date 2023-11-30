@@ -16,7 +16,6 @@ var player # The player reference
 func _ready():
 	_shoot()
 	player = RoomManager.pebbles # Assign the player reference
-	print("PLAYER...", player)
 
 func _process(delta: float) -> void:
 	var new_rotation = rotater.rotation_degrees + rotate_speed * delta
@@ -37,7 +36,6 @@ func _shoot():
 	for i in range(3):
 		for s in rotater.get_children():
 			await get_tree().create_timer(0.2).timeout
-			print("shooting bullet")
 			var bullet = snowball_scene.instantiate()
 			get_tree().get_root().add_child(bullet)
 			bullet.position = s.global_position

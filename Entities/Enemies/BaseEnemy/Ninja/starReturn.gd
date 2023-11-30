@@ -9,7 +9,7 @@ var recall = false # The recall state of the snowball
 
 func _ready():
 	add_to_group("bossBullets")
-	var player = get_tree().get_nodes_in_group("player")[0]
+	var player = RoomManager.pebbles
 	if player.animation_tree.get("parameters/conditions/is_sliding"):
 		# If yes, ignore the player layer
 		# set_collision_mask_value(1, false)
