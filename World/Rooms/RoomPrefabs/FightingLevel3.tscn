@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="8_0i7vv"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_cpduf"]
 [ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="10_i17r6"]
-[ext_resource type="PackedScene" uid="uid://drxk1ac83qn5k" path="res://Collectables/Guns/machinegun_collectable.tscn" id="13_5vkfh"]
+[ext_resource type="PackedScene" uid="uid://bspqkbt84pgk5" path="res://Collectables/Guns/lasergun_collectable.tscn" id="14_lkphn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xst36"]
 vertices = PackedVector2Array(-227, 223, -229, 89, -205, 106, -200, 133, -149, 225, -168, 142, -168, -65, -177, -115, -68, -117, -140, -296, -84, -300, -84, -282, -139, -230, -69, -230, -18, -280, 53, -266, 99, 370, -100, 370, -98, 284, 99, 281, 142, -268, 143, -118, -68, -188, -16, -302, 52, -304, -139, -159, -139, -188, -70, -158, 156, 61, 228, 62, 226, 227, 143, 227, 185, -118, 191, -56, 191, -11, 155, -10, -161, -18, -183, 13, 113, 246, -112, 247, -161, 105, -182, 53, -173, 82)
@@ -274,8 +274,8 @@ position = Vector2(-100, -299)
 [node name="Barrel2" parent="." index="13" instance=ExtResource("10_i17r6")]
 position = Vector2(161, -94)
 
-[node name="MachinegunCollectable" parent="." index="14" instance=ExtResource("13_5vkfh")]
-position = Vector2(70, -289)
+[node name="Sharkguncollectable" parent="." index="14" instance=ExtResource("14_lkphn")]
+position = Vector2(69, -287)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]
