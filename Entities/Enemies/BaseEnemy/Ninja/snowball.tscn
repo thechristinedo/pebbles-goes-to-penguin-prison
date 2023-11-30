@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4ylarq3fhue0"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Snowman/snowball.gd" id="1_k5iyg"]
+[ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Ninja/snowball.gd" id="1_k5iyg"]
 [ext_resource type="Texture2D" uid="uid://c3tts7ie7281b" path="res://Assets/Guns/Bullets/ninjastar2.png" id="2_27qay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntdwx"]
