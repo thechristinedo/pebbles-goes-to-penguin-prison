@@ -47,9 +47,11 @@ func apply_game_data(data):
 		var world_instance = world_scene.instantiate()
 		get_tree().root.add_child(world_instance)
 		get_tree().current_scene = world_instance
+
 		
 	RoomManager.switch_room(data["current_room"])
 
+	
 	var player = RoomManager.pebbles
 	var fishventory = player.find_child("Fishventory")
 	var inventory = player.find_child("Inventory")

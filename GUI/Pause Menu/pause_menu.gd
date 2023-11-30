@@ -35,8 +35,8 @@ func _on_back_pressed():
 func _on_save_pressed():
 	var pebbles_instance = RoomManager.pebbles
 	var game_data = get_game_data()
-
 	SaveSystem.save_game(SaveSystem.current_slot, game_data)
+	
 	
 func get_game_data():
 	var pebbles_instance = RoomManager.pebbles

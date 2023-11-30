@@ -24,27 +24,34 @@ func _on_save_slot_1_pressed():
 	saveslot.visible = false
 	if SaveSystem.slot_has_data(1):
 		$ParallaxBackground.visible = false
+		$AudioStreamPlayer.playing = false
 		SaveSystem.load_game(1)
-
+		
 	else:
 		SaveSystem.save_game(1, "Slot 1")
 		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_2_pressed():
-	saveslot.visible = false
-	SaveSystem.save_game(2, "Slot 2")
-	$ParallaxBackground.visible = false
 	selectSound.play()
-	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
-	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
+	saveslot.visible = false
+	if SaveSystem.slot_has_data(2):
+		$ParallaxBackground.visible = false
+		$AudioStreamPlayer.playing = false
+		SaveSystem.load_game(2)
+	else:
+		SaveSystem.save_game(2, "Slot 2")
+		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_save_slot_3_pressed():
-	saveslot.visible = false
-	SaveSystem.save_game(3, "Slot 3")
-	#$TextureRect.visible = true
 	selectSound.play()
-	get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
-	#SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
+	saveslot.visible = false
+	if SaveSystem.slot_has_data(3):
+		$ParallaxBackground.visible = false
+		$AudioStreamPlayer.playing = false
+		SaveSystem.load_game(3)
+	else:
+		SaveSystem.save_game(3, "Slot 3")
+		get_tree().change_scene_to_file("res://Intro/intro_cutscene.tscn")
 
 func _on_options_pressed():
 	selectSound.play()
