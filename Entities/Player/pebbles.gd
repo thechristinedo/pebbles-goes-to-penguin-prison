@@ -44,6 +44,7 @@ var enemy_attack_cooldown = true
 
 # Controller support
 const ROTATE_SPEED = 20
+var last_aim_angle = 0.0
 
 signal health_updated
 signal fish_update
@@ -122,27 +123,32 @@ func handle_player_movement() -> void:
 	
 
 func update_weapon_rotation(_delta, force_update_position = false) -> void:
-	var angle_to_mouse = get_angle_to(get_global_mouse_position()) # TODO: Don't initialize this to mouse
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
 		gun.aim(get_global_mouse_position())
-		angle_to_mouse = get_angle_to(get_global_mouse_position()) # TODO: This is used to flip Pebbles. Update this depending on keyboard or controller
+		last_aim_angle = get_angle_to(get_global_mouse_position())
 	elif World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
 		crosshair.show()
 		var aim_direction := Input.get_vector("weapon aim left", "weapon aim right", "weapon aim up", "weapon aim down")
 		if force_update_position || aim_direction != Vector2.ZERO:
-			var angle = aim_direction.angle()
-			gun.global_rotation = angle
+			last_aim_angle = aim_direction.angle()
+			gun.global_rotation = last_aim_angle
 			# TODO: Update pebbles facing direction
-			crosshair.global_position = global_position + (Vector2(cos(angle), sin(angle)) * crosshair_range)
+			crosshair.global_position = global_position + (Vector2(cos(last_aim_angle), sin(last_aim_angle)) * crosshair_range)
 			gun.aim(crosshair.global_position)
-			angle_to_mouse = get_angle_to(crosshair.global_position)
+
 		crosshair.global_rotation = 0
 		
 	# Flip Pebbles
-	if angle_to_mouse < PI/2 and angle_to_mouse > -PI/2:
+	if last_aim_angle < PI/2 and last_aim_angle > -PI/2:
 		character_sprite.flip_h = false # right
 	else:
 		character_sprite.flip_h = true # left
+		
+func update_character_orientation(aim_angle: float) -> void:
+	if aim_angle < PI/2 and aim_angle > -PI/2:
+		character_sprite.flip_h = false  # Face right
+	else:
+		character_sprite.flip_h = true  # Face left
 
 func handle_player_interactions() -> void:
 	# pickup gun
