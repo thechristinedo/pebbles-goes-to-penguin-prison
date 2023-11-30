@@ -3,10 +3,10 @@
 [ext_resource type="Shader" path="res://Entities/Enemies/hit_flash.gdshader" id="1_gk0nd"]
 [ext_resource type="Texture2D" uid="uid://ds1rqwa2cldf1" path="res://Entities/Enemies/PolarBear/polar_bear_death2.png" id="1_qq04s"]
 [ext_resource type="Script" path="res://Entities/Enemies/PolarBear/polar_bear.gd" id="1_w8qpw"]
-[ext_resource type="Texture2D" uid="uid://c2akt0wppjqup" path="res://Enemies/Polar Bear Guard/idle pb.png" id="3_bigm2"]
+[ext_resource type="Texture2D" uid="uid://c2akt0wppjqup" path="res://Assets/Entities/Enemies/Polar Bear Guard/idle pb.png" id="3_bigm2"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="4_p6t7c"]
-[ext_resource type="Texture2D" uid="uid://xm4iu353nad3" path="res://Enemies/Polar Bear Guard/pb slap.png" id="5_s5vqn"]
-[ext_resource type="Texture2D" uid="uid://27mwfe38jco2" path="res://Enemies/Polar Bear Guard/pb walking.png" id="6_i65li"]
+[ext_resource type="Texture2D" uid="uid://xm4iu353nad3" path="res://Assets/Entities/Enemies/Polar Bear Guard/pb slap.png" id="5_s5vqn"]
+[ext_resource type="Texture2D" uid="uid://27mwfe38jco2" path="res://Assets/Entities/Enemies/Polar Bear Guard/pb walking.png" id="6_i65li"]
 [ext_resource type="AudioStream" uid="uid://dfsp13wh0lwrc" path="res://Audio/polarSlap.mp3" id="7_l2txk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ne1sd"]
@@ -149,6 +149,7 @@ size = Vector2(33, 22)
 radius = 29.0172
 
 [node name="polar-bear-slap" type="CharacterBody2D"]
+platform_floor_layers = 4294967294
 script = ExtResource("1_w8qpw")
 
 [node name="RegenTimer" type="Timer" parent="."]
