@@ -3,9 +3,10 @@ extends CharacterBody2D
 const snowball_scene = preload("res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperorBullet.tscn")
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
+@onready var icicleSound = $icicleSound
 
 const rotate_speed = 200
-const shooter_timer_wait_time = 5
+const shooter_timer_wait_time = 0.5
 const spawn_point_count = 8
 const radius = 25
 
@@ -28,6 +29,7 @@ func _process(delta: float) -> void:
 
 func _on_shoot_timer_timeout():
 	for s in rotater.get_children():
+		icicleSound.play()
 		var bullet = snowball_scene.instantiate()
 		get_tree().get_root().add_child(bullet)
 		bullet.position = s.global_position
