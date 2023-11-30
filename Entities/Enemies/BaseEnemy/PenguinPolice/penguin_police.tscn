@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://co48vtwnry2yr"]
+[gd_scene load_steps=25 format=3 uid="uid://co48vtwnry2yr"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_nhfw3"]
 [ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="2_shtlg"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://tm20eyj2c0k" path="res://Guns/GunTypes/shotgun.tres" id="5_ebvr6"]
 [ext_resource type="PackedScene" uid="uid://bb8xwn6qpp2de" path="res://Entities/Components/HealthComponent.tscn" id="5_ud36b"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="5_wdsq7"]
-[ext_resource type="Texture2D" uid="uid://d25u4luifj0pd" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death1.png" id="6_1jspc"]
 [ext_resource type="Texture2D" uid="uid://bikh14ur2a6rq" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-run.png" id="6_cxmxj"]
 [ext_resource type="PackedScene" uid="uid://cpjufgwbq8fw2" path="res://Entities/Components/StateMachineComponent.tscn" id="6_yplnt"]
 [ext_resource type="Texture2D" uid="uid://d1fskg8ypleek" path="res://Assets/Entities/Enemies/Penguin Guard/death/police_death2.png" id="7_7k5dq"]
@@ -155,7 +154,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("6_1jspc"), ExtResource("7_7k5dq"), ExtResource("8_3i0ds"), ExtResource("9_lsyd7")]
+"values": [null, ExtResource("7_7k5dq"), ExtResource("8_3i0ds"), ExtResource("9_lsyd7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

@@ -8,6 +8,8 @@ extends Control
 @onready var input_type_menu = $InputType
 @onready var selectSound = $selectSound
 @onready var saveslot = $SaveSlot
+@onready var success_label = get_node("SaveSlot/MarginContainer2/VBoxContainer/Success")
+@onready var error_label = get_node("SaveSlot/MarginContainer2/VBoxContainer/Error")
 
 func _on_play_pressed():
 	#$TextureRect.visible = true
@@ -88,3 +90,20 @@ func _on_input_type_button_item_selected(index):
 	if index != -1:
 		World.INPUT_SCHEME = index
 		EventBus.input_scheme_changed.emit(index)
+
+func _on_trash_1_pressed():
+	var error = SaveSystem.delete_save(1)
+	print(error)
+	if error != OK:
+		success_label.visible = false
+		error_label.visible = true
+	else: 
+		success_label.visible = true
+		error_label.visible = false
+
+func _on_trash_2_pressed():
+	SaveSystem.delete_save(2)
+
+
+func _on_trash_3_pressed():
+	SaveSystem.delete_save(3)
