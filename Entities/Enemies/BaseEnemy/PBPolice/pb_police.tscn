@@ -597,7 +597,7 @@ scale = Vector2(1, 0.983871)
 texture = ExtResource("2_6h32t")
 offset = Vector2(0, -5.9836)
 hframes = 2
-frame = 1
+frame = 0
 
 [node name="Hitbox" parent="." index="2"]
 visible = false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dcy38limnheyy"]
+[gd_scene load_steps=24 format=3 uid="uid://dcy38limnheyy"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_d03o8"]
 [ext_resource type="Script" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.gd" id="2_yfx8t"]
 [ext_resource type="Texture2D" uid="uid://q8dev2fsink1" path="res://Assets/Entities/Enemies/Ninja Penguin/ninja_penguin_idle.png" id="3_0wtbk"]
+[ext_resource type="Shader" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/flash.gdshader" id="3_mur2c"]
 [ext_resource type="Texture2D" uid="uid://dl4ml73v7034e" path="res://Assets/Entities/shadow.png" id="4_e62pm"]
 [ext_resource type="Texture2D" uid="uid://ddgdqjj43pltf" path="res://Assets/Entities/Enemies/Ninja Penguin/ninja_penguin_death.png" id="5_bvodh"]
 [ext_resource type="PackedScene" uid="uid://b1mma4h8fmwl5" path="res://Entities/Components/MeleeComponent.tscn" id="5_poco5"]
@@ -14,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://b861t4gjr66ie" path="res://Entities/Enemies/BaseEnemy/EntityStates/Follow.tscn" id="10_o272g"]
 [ext_resource type="PackedScene" uid="uid://b5lanaf8vkvxv" path="res://Entities/Enemies/BaseEnemy/EntityStates/Idle.tscn" id="11_l65ai"]
 [ext_resource type="AudioStream" uid="uid://hplmmxhj0xir" path="res://Audio/shuriken2.mp3" id="14_7t3iv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyi3v"]
+shader = ExtResource("3_mur2c")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_5aqcb"]
 length = 0.001
@@ -417,6 +423,7 @@ scale = Vector2(1.0625, 0.675)
 offset = Vector2(-0.279807, 1.48153)
 
 [node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_dyi3v")
 texture = ExtResource("3_0wtbk")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 2
