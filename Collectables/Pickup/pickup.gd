@@ -33,14 +33,14 @@ func launch(velocity : Vector2, duration : float):
 	launching = true
 
 func _on_body_entered(body):
-	$Sprite2D.visible = false
-	$Shadow.visible = false
-	$CollisionShape2D.set_deferred("disabled", true)
-	$CollectionCollisionShape.set_deferred("disabled", true)
-	acquireSound.play()
 	var inventory = body.find_child("Fishventory")
 	
 	if (inventory):
+		$Sprite2D.visible = false
+		$Shadow.visible = false
+		$CollisionShape2D.set_deferred("disabled", true)
+		$CollectionCollisionShape.set_deferred("disabled", true)
+		acquireSound.play()
 		inventory.add_resources(resource_type, 1)
 		print("Collected fish! Total fish: ", inventory.get_fish_value())
 		await get_tree().create_timer(1.36).timeout
