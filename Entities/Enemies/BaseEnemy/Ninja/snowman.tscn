@@ -501,5 +501,6 @@ one_shot = true
 
 [node name="icicleSound" type="AudioStreamPlayer2D" parent="." index="16"]
 stream = ExtResource("15_ee12f")
+bus = &"Sound Effects"
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

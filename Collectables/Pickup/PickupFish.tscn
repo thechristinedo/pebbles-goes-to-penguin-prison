@@ -134,5 +134,6 @@ active = true
 
 [node name="acquireSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_1ap0n")
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
