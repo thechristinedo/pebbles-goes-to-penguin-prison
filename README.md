@@ -8,8 +8,6 @@ Embark on a thrilling escape adventure in "Pebbles Goes to Penguin Prison". Pebb
 
 # Controls
 
-Below are the controls for "Pebbles Goes to Penguin Prison":
-
 ## Keyboard Controls
 | Action      | Key                 |
 |-------------|---------------------|
