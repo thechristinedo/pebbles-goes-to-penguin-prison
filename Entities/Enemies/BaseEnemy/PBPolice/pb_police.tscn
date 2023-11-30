@@ -583,6 +583,7 @@ _data = {
 radius = 129.19
 
 [node name="PolarBearPolice" instance=ExtResource("1_2bf6c")]
+platform_floor_layers = 4294967294
 
 [node name="Shadow" parent="." index="0"]
 position = Vector2(-4, 6)
