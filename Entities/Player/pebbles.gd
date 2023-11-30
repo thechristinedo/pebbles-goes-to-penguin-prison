@@ -8,7 +8,7 @@ class_name Player
 @onready var shadow: Sprite2D = $Shadow
 @onready var gun: Gun = $Gun
 @onready var crosshair = $Crosshair
-@export var crosshair_range := 50.0
+@export var crosshair_range := 70.0
 @onready var character_sprite: Sprite2D = $PebblesSprite
 @onready var ranged_attack_component: Node = $RangedAttackComponent
 @onready var inventory_node: Node = $Inventory
@@ -97,9 +97,7 @@ func _physics_process(_delta):
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
 
-func handle_player_shoot() -> void:
-	gun.aim(get_global_mouse_position())
-	
+func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):
 		var current_gun = inventory_node.get_selected_gun()
 		if current_gun:
@@ -124,17 +122,13 @@ func handle_player_movement() -> void:
 	var movement_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = movement_direction * speed
 	movement_particles.emitting = true if velocity else false
-	var angle_to_mouse = get_angle_to(get_global_mouse_position())
-	if angle_to_mouse < PI/2 and angle_to_mouse > -PI/2:
-		character_sprite.flip_h = false # right
-	else:
-		character_sprite.flip_h = true # left
+	
 
 func update_weapon_rotation(_delta, force_update_position = false) -> void:
+	var angle_to_mouse = get_angle_to(get_global_mouse_position()) # TODO: Don't initialize this to mouse
 	if World.INPUT_SCHEME == World.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
-		var mouse_pos = get_local_mouse_position()
-		var new_transform = gun.transform.looking_at(mouse_pos)
-		gun.transform = gun.transform.interpolate_with(new_transform, ROTATE_SPEED * _delta)
+		gun.aim(get_global_mouse_position())
+		angle_to_mouse = get_angle_to(get_global_mouse_position()) # TODO: This is used to flip Pebbles. Update this depending on keyboard or controller
 	elif World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
 		var aim_direction := Input.get_vector("weapon aim left", "weapon aim right", "weapon aim up", "weapon aim down")
 		if force_update_position || aim_direction != Vector2.ZERO:
@@ -142,7 +136,15 @@ func update_weapon_rotation(_delta, force_update_position = false) -> void:
 			gun.global_rotation = angle
 			# TODO: Update pebbles facing direction
 			crosshair.global_position = global_position + (Vector2(cos(angle), sin(angle)) * crosshair_range)
+			gun.aim(crosshair.global_position)
+			angle_to_mouse = get_angle_to(crosshair.global_position)
 		crosshair.global_rotation = 0
+		
+	# Flip Pebbles
+	if angle_to_mouse < PI/2 and angle_to_mouse > -PI/2:
+		character_sprite.flip_h = false # right
+	else:
+		character_sprite.flip_h = true # left
 
 func handle_player_interactions() -> void:
 	# pickup gun

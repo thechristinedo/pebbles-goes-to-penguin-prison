@@ -10,7 +10,7 @@ func _process(delta):
 	if _will_lerp:
 		_current_shake_strength = lerpf(_current_shake_strength, 0, delta * lerp_strength)
 		if _current_shake_strength < 0.1: _current_shake_strength = 0
-	
+
 	offset = Vector2(
 		randf_range(-1.0, 1.0) * _current_shake_strength,
 		randf_range(-1.0, 1.0) * _current_shake_strength
