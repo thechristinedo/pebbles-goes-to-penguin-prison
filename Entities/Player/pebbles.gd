@@ -257,6 +257,7 @@ func take_damage(damage: int = 1) -> void:
 		gun.visible = false
 		character_sprite.visible = false
 		shadow.visible = false
+		inventory_node.clear_inventory()
 		gameOver.visible = true
 		print("dead")
 		pebbles_death.emit()

@@ -58,3 +58,9 @@ func _input(event):
 			KEY_5: player_select_slot(4)
 			_: pass
 			
+func clear_inventory():
+	for i in range(_inventory.items.size()):
+		#set null to items
+		_inventory.items[i] = null
+		# reset selected slots
+		_inventory.selected_slot = 0
