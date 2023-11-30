@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://co48vtwnry2yr"]
 
 [ext_resource type="PackedScene" uid="uid://ds15qivbbevhi" path="res://Entities/Enemies/BaseEnemy/enemy_base.tscn" id="1_nhfw3"]
-[ext_resource type="PackedScene" uid="uid://bjgtb3bv0peso" path="res://Guns/gun.tscn" id="2_shtlg"]
+[ext_resource type="PackedScene" path="res://Guns/gun.tscn" id="2_shtlg"]
 [ext_resource type="Texture2D" uid="uid://bhf0kuub42tp7" path="res://Assets/Entities/Enemies/Penguin Guard/penguin-police-idle.png" id="4_1unws"]
 [ext_resource type="PackedScene" uid="uid://pjwrbqlmgj5t" path="res://Entities/Components/MovementComponent.tscn" id="4_n0hko"]
 [ext_resource type="Resource" uid="uid://tm20eyj2c0k" path="res://Guns/GunTypes/shotgun.tres" id="5_ebvr6"]
