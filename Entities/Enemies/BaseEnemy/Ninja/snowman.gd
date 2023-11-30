@@ -15,7 +15,8 @@ var player # The player reference
 
 func _ready():
 	_shoot()
-	player = get_tree().get_nodes_in_group("player")[0] # Assign the player reference
+	player = RoomManager.pebbles # Assign the player reference
+	print("PLAYER...", player)
 
 func _process(delta: float) -> void:
 	var new_rotation = rotater.rotation_degrees + rotate_speed * delta

@@ -58,5 +58,4 @@ func apply_game_data(data):
 			data["weapons"] = inventory.set_inventory_data(data["weapons"])
 		player.saved_fish_count = data["fish_count"]
 		player.health = data["player_health"]
-		player.global_position = data["player_position"]
 
