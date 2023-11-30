@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5ulskhs2ovtc"]
+[gd_scene load_steps=14 format=3 uid="uid://b5ulskhs2ovtc"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_y0v3n"]
+[ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/Courtyard.gd" id="2_i6yin"]
 [ext_resource type="Texture2D" uid="uid://dkuwnqg7g2qwy" path="res://Assets/Maps/courtyard_closed.png" id="2_x7s0r"]
 [ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="3_ea0q4"]
 [ext_resource type="PackedScene" uid="uid://dcy38limnheyy" path="res://Entities/Enemies/BaseEnemy/Ninja/snowman.tscn" id="4_oarpx"]
@@ -26,6 +27,7 @@ size = Vector2(11, 52)
 size = Vector2(9, 4)
 
 [node name="Room" instance=ExtResource("1_y0v3n")]
+script = ExtResource("2_i6yin")
 
 [node name="MapSprite" parent="." index="0"]
 position = Vector2(0, -36)
