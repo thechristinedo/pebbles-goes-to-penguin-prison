@@ -11,29 +11,31 @@ Embark on a thrilling escape adventure in "Pebbles Goes to Penguin Prison". Pebb
 Select between Keyboard or Gamepad within the settings menu.
 
 ## Keyboard Controls
-| Action      | Key                 |
-|-------------|---------------------|
-| Move Up     | W (Physical)        |
-| Move Left   | A (Physical)        |
-| Move Down   | S (Physical)        |
-| Move Right  | D (Physical)        |
-| Roll        | Space (Physical)    |
-| Shoot       | Left Mouse Button   |
-| Interact    | E (Physical)        |
-| Drop Gun    | F (Physical)        |
-| Switch Gun  | Mouse Wheel Up/Down |
-| Pause       | Escape (Physical)   |
+| Action             | Key                   |
+|--------------------|-----------------------|
+| Move Up            | W (Physical)          |
+| Move Left          | A (Physical)          |
+| Move Down          | S (Physical)          |
+| Move Right         | D (Physical)          |
+| Roll               | Space (Physical)      |
+| Shoot              | Left Mouse Button     |
+| Eat Fish (Heal)    | Q (Physical)          |
+| Interact           | E (Physical)          |
+| Drop Gun           | F (Physical)          |
+| Switch Gun         | Mouse Wheel Up/Down   |
+| Pause              | Escape (Physical)     |
 
 ## Gamepad Controls
-| Action      | Gamepad Input                                          |
-|-------------|--------------------------------------------------------|
-| Move Up     | Left Stick Up, Joystick Up                             |
-| Move Down   | Left Stick Down, Joystick Down                         |
-| Move Left   | Left Stick Left, Joystick Left                         |
-| Move Right  | Left Stick Right, Joystick Right                       |
-| Roll        | Left Trigger, Sony L2, Xbox LT                         |
-| Shoot       | Right Trigger, Sony R2, Xbox RT                        |
-| Interact    | Bottom Action Button, Sony Cross, Xbox A, Nintendo B   |
-| Drop Gun    | Top Action Button, Sony Triangle, Xbox Y, Nintendo X   |
-| Switch Gun  | Left/Right Shoulder, Sony L1/L2, Xbox LB/RB            |
-| Pause       | Start, Xbox Menu, Nintendo +                           |
+| Action             | Gamepad Input                                          |
+|--------------------|--------------------------------------------------------|
+| Move Up            | Left Stick Up, Joystick Up                             |
+| Move Down          | Left Stick Down, Joystick Down                         |
+| Move Left          | Left Stick Left, Joystick Left                         |
+| Move Right         | Left Stick Right, Joystick Right                       |
+| Roll               | Left Trigger, Sony L2, Xbox LT                         |
+| Shoot              | Right Trigger, Sony R2, Xbox RT                        |
+| Eat Fish (Heal)    | Left Action, Sony Square, Xbox X, Nintendo Y           |
+| Interact           | Bottom Action Button, Sony Cross, Xbox A, Nintendo B   |
+| Drop Gun           | Top Action Button, Sony Triangle, Xbox Y, Nintendo X   |
+| Switch Gun         | Left/Right Shoulder, Sony L1/L2, Xbox LB/RB            |
+| Pause              | Start, Xbox Menu, Nintendo +                           |
