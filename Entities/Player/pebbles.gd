@@ -127,6 +127,7 @@ func update_weapon_rotation(_delta, force_update_position = false) -> void:
 		gun.aim(get_global_mouse_position())
 		angle_to_mouse = get_angle_to(get_global_mouse_position()) # TODO: This is used to flip Pebbles. Update this depending on keyboard or controller
 	elif World.INPUT_SCHEME == World.INPUT_SCHEMES.GAMEPAD:
+		crosshair.show()
 		var aim_direction := Input.get_vector("weapon aim left", "weapon aim right", "weapon aim up", "weapon aim down")
 		if force_update_position || aim_direction != Vector2.ZERO:
 			var angle = aim_direction.angle()
