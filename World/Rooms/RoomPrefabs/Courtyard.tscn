@@ -70,32 +70,29 @@ color = Color(1, 1, 1, 1)
 [node name="emperor" parent="Enemies" index="0" instance=ExtResource("3_ea0q4")]
 position = Vector2(-137, 11)
 
-[node name="emperor2" parent="Enemies" index="1" instance=ExtResource("3_ea0q4")]
-position = Vector2(113, -107)
-
-[node name="snowman" parent="Enemies" index="2" instance=ExtResource("4_oarpx")]
+[node name="snowman" parent="Enemies" index="1" instance=ExtResource("4_oarpx")]
 position = Vector2(121, 171)
 
-[node name="SealPolice" parent="Enemies" index="3" instance=ExtResource("5_xs1vm")]
+[node name="SealPolice" parent="Enemies" index="2" instance=ExtResource("5_xs1vm")]
 position = Vector2(-125, 160)
 
-[node name="SealPolice2" parent="Enemies" index="4" instance=ExtResource("5_xs1vm")]
+[node name="SealPolice2" parent="Enemies" index="3" instance=ExtResource("5_xs1vm")]
 position = Vector2(-56, -73)
 
-[node name="SealPolice3" parent="Enemies" index="5" instance=ExtResource("5_xs1vm")]
+[node name="SealPolice3" parent="Enemies" index="4" instance=ExtResource("5_xs1vm")]
 position = Vector2(-45, 95)
 
-[node name="SealPolice4" parent="Enemies" index="6" instance=ExtResource("5_xs1vm")]
+[node name="SealPolice4" parent="Enemies" index="5" instance=ExtResource("5_xs1vm")]
 position = Vector2(47, -29)
 
-[node name="PolarBearPolice" parent="Enemies" index="7" instance=ExtResource("6_jqk6b")]
+[node name="PolarBearPolice" parent="Enemies" index="6" instance=ExtResource("6_jqk6b")]
 position = Vector2(-183, 119)
 
-[node name="PolarBearPolice2" parent="Enemies" index="8" instance=ExtResource("6_jqk6b")]
+[node name="PolarBearPolice2" parent="Enemies" index="7" instance=ExtResource("6_jqk6b")]
 position = Vector2(189, -58)
 
-[node name="PolarBearPolice3" parent="Enemies" index="9" instance=ExtResource("6_jqk6b")]
+[node name="PolarBearPolice3" parent="Enemies" index="8" instance=ExtResource("6_jqk6b")]
 position = Vector2(43, -120)
 
-[node name="Enemy" parent="Enemies" index="10" instance=ExtResource("7_d2uq7")]
+[node name="Enemy" parent="Enemies" index="9" instance=ExtResource("7_d2uq7")]
 position = Vector2(-42, -126)

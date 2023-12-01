@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cl0ixssag2vrj"]
+[gd_scene load_steps=34 format=3 uid="uid://cl0ixssag2vrj"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_648ik"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_5guae"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/TorchFlame.gd" id="5_a06m1"]
 [ext_resource type="PackedScene" uid="uid://co48vtwnry2yr" path="res://Entities/Enemies/BaseEnemy/PenguinPolice/penguin_police.tscn" id="6_1cobl"]
 [ext_resource type="Texture2D" uid="uid://cakwqxt6ffxh3" path="res://Assets/GUI/Keys/interact_key.png" id="6_1hyae"]
-[ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="7_0n48h"]
 [ext_resource type="PackedScene" uid="uid://cedpgh0klnx6y" path="res://Entities/Enemies/BaseEnemy/SealPolice/seal_police.tscn" id="7_s5pxk"]
 [ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="8_udmtp"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_2af7x"]
@@ -184,31 +183,28 @@ shape = SubResource("RectangleShape2D_vmjkn")
 position = Vector2(123, 37)
 shape = SubResource("RectangleShape2D_vmjkn")
 
-[node name="emperor" parent="Enemies" index="0" instance=ExtResource("7_0n48h")]
-position = Vector2(-17, -143)
-
-[node name="Enemy3" parent="Enemies" index="1" instance=ExtResource("6_1cobl")]
+[node name="Enemy3" parent="Enemies" index="0" instance=ExtResource("6_1cobl")]
 position = Vector2(153, 147)
 
-[node name="Enemy4" parent="Enemies" index="2" instance=ExtResource("6_1cobl")]
+[node name="Enemy4" parent="Enemies" index="1" instance=ExtResource("6_1cobl")]
 position = Vector2(-133, 144)
 
-[node name="SealPolice" parent="Enemies" index="3" instance=ExtResource("7_s5pxk")]
+[node name="SealPolice" parent="Enemies" index="2" instance=ExtResource("7_s5pxk")]
 position = Vector2(-46, 84)
 
-[node name="SealPolice2" parent="Enemies" index="4" instance=ExtResource("7_s5pxk")]
+[node name="SealPolice2" parent="Enemies" index="3" instance=ExtResource("7_s5pxk")]
 position = Vector2(44, -86)
 
-[node name="SealPolice3" parent="Enemies" index="5" instance=ExtResource("7_s5pxk")]
+[node name="SealPolice3" parent="Enemies" index="4" instance=ExtResource("7_s5pxk")]
 position = Vector2(103, -214)
 
-[node name="SealPolice4" parent="Enemies" index="6" instance=ExtResource("7_s5pxk")]
+[node name="SealPolice4" parent="Enemies" index="5" instance=ExtResource("7_s5pxk")]
 position = Vector2(-94, -149)
 
-[node name="PolarBearPolice" parent="Enemies" index="7" instance=ExtResource("8_udmtp")]
+[node name="PolarBearPolice" parent="Enemies" index="6" instance=ExtResource("8_udmtp")]
 position = Vector2(-98, 20)
 
-[node name="PolarBearPolice2" parent="Enemies" index="8" instance=ExtResource("8_udmtp")]
+[node name="PolarBearPolice2" parent="Enemies" index="7" instance=ExtResource("8_udmtp")]
 position = Vector2(83, 102)
 
 [node name="TorchFlame" type="PointLight2D" parent="." index="7"]
