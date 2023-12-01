@@ -5,11 +5,7 @@ class_name Gun
 @onready var bullet_trail_scene: PackedScene = preload("res://Guns/Bullets/bullet_trail.tscn")
 @export var inventory_item: InventoryItem
 
-var bullet_count_label: Label = null
 @export var bulletSpeed: float = 800
-@export var max_bullet_count: int = 30
-var current_bullet_count: int = 0
-
 
 func _ready():
 	var myGun = preload("res://Guns/Gun.tscn")
@@ -17,10 +13,6 @@ func _ready():
 	position.y = position.y + 7
 	offset.x = 7
 	update_texture()	
-	
-	current_bullet_count = max_bullet_count
-	print("Max bullets is: " + str(current_bullet_count))
-	bullet_count_label = get_node("/root/World/GUI/Panel/AmmoAmount")
 
 
 func update_texture() -> void:
@@ -28,7 +20,6 @@ func update_texture() -> void:
 		texture = inventory_item.texture
 	else:
 		texture = null
-	print(current_bullet_count)
 
 func aim(target: Vector2) -> float:
 	look_at(target)
@@ -44,8 +35,6 @@ func get_type():
 		return inventory_item.shooter.type()
 
 func shoot() -> bool:
-	if current_bullet_count <= 0:
-		return false
 	print("Shooting with inventory item:", inventory_item)
 	if inventory_item and inventory_item.shooter: 
 		print("shoot function..." , inventory_item, " ", inventory_item.shooter)
@@ -67,8 +56,6 @@ func shoot() -> bool:
 				
 				room_node.add_child(bullet)
 				room_node.add_child(bullet_trail)
-			decrease_bullet_count()
-			bullet_count_label.text = str(current_bullet_count)
 			return true
 	return false
 
@@ -78,11 +65,3 @@ func _muzzle_flash() -> void:
 
 func _muzzle_flash_timeout() -> void:
 	$MuzzleFlash.energy = 0
-
-func decrease_bullet_count():
-	current_bullet_count -= 1
-	print("Current bullets left: " + str(current_bullet_count))
-
-func reload():
-	current_bullet_count = max_bullet_count
-	bullet_count_label.text = str(current_bullet_count)

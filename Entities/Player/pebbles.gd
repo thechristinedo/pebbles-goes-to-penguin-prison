@@ -16,7 +16,6 @@ class_name Player
 @onready var gameOver = load("res://GUI/User Interface/UI_menu_scenes/game_over_screen.tscn").instantiate()
 
 # Audio
-@onready var reload = $reload
 @onready var pickup = $pickup
 @onready var shotgunShot = $shotgunShot
 @onready var revolverShot = $revolverShot
@@ -24,6 +23,11 @@ class_name Player
 @onready var walkSound = $walkSound
 @onready var slideSound = $slideSound
 @onready var eatSound = $eatSound
+
+# Gun
+var bullet_count_label: Label = null
+@export var max_bullet_count: int = 30
+var current_bullet_count: int = 0
 
 # Fish
 @onready var fishventory = $Fishventory
@@ -68,6 +72,10 @@ func _ready():
 	print("Health: ", health, " Fish: ",fishventory.get_fish_value())
 	#print("fishitem: ", fish_resource)
 	
+	current_bullet_count = max_bullet_count
+	print("Max bullets is: " + str(current_bullet_count))
+	bullet_count_label = get_node("/root/World/GUI/Panel/AmmoAmount")
+	
 
 func _physics_process(_delta):
 	update_animation()
@@ -106,6 +114,9 @@ func _physics_process(_delta):
 
 func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):
+		if current_bullet_count <= 0:
+			
+			return
 		var current_gun = inventory_node.get_selected_gun()
 		if current_gun:
 			print("Cur Gun: ", current_gun)
@@ -116,7 +127,8 @@ func handle_player_shoot() -> void:
 			var has_shot = ranged_attack_component.shoot()
 			print("has_shot: ", has_shot)
 			if has_shot: 
-				
+				decrease_bullet_count()
+				bullet_count_label.text = str(current_bullet_count)
 				var gunType = ranged_attack_component.gun.get_type()
 				if gunType == "shotgun":
 					shotgunShot.play()
@@ -169,7 +181,7 @@ func handle_player_interactions() -> void:
 	# pickup gun
 	if collectables.size() and Input.is_action_just_pressed("interact"):
 		if !inventory_node.is_full():
-			reload.play()
+			$reload.play()
 			pickup.play()
 			inventory_node.insert_gun(collectables.pop_back().collect())
 	
@@ -207,7 +219,7 @@ func handle_player_interactions() -> void:
 	
 	if Input.is_action_just_pressed("reload"):
 		$reload.play()
-		gun.reload()
+		reload()
 
 func update_animation() -> void:
 	# Make sure we only update the animation if we are not sliding or eating
@@ -361,3 +373,10 @@ func set_new_data(fish_items):
 	print("SET NEW DATA...", fish_items)
 	
 	
+func decrease_bullet_count():
+	current_bullet_count -= 1
+	print("Current bullets left: " + str(current_bullet_count))
+
+func reload():
+	current_bullet_count = max_bullet_count
+	bullet_count_label.text = str(current_bullet_count)
