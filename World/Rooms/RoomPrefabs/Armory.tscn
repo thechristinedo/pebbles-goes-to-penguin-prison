@@ -202,7 +202,7 @@ position = Vector2(5, -56)
 [node name="DoorInteractableArea" type="Area2D" parent="." index="10"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorInteractableArea" index="0"]
-position = Vector2(-75, -46)
+position = Vector2(-75, -57)
 shape = SubResource("CircleShape2D_scfwv")
 
 [node name="Button" type="Sprite2D" parent="DoorInteractableArea" index="1"]
@@ -216,10 +216,10 @@ libraries = {
 }
 
 [node name="Barrel" parent="." index="12" instance=ExtResource("9_u4pcx")]
-position = Vector2(94, 34)
+position = Vector2(-87, -34)
 
 [node name="Barrel2" parent="." index="13" instance=ExtResource("9_u4pcx")]
-position = Vector2(95, 110)
+position = Vector2(-57, -34)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]
