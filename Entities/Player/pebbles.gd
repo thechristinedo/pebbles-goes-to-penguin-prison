@@ -280,6 +280,7 @@ func slide():
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	anim_state.travel("slide")
 	await get_tree().create_timer(0.5).timeout
+	is_sliding = false
 	
 	# Restore the collision mask
 	set_collision_mask_value(2, true)
@@ -301,6 +302,7 @@ func reset_slide():
 	animation_tree.set("parameters/conditions/is_sliding", false)
 	var anim_state = animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	anim_state.travel(current_animation)
+	current_slide_cooldown = slide_cooldown # Reset cooldown
 
 func heal(amount: int):
 	animation_tree.set("parameters/conditions/is_eating", true)
