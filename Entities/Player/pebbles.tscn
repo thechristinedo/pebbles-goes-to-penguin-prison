@@ -604,6 +604,7 @@ stream = ExtResource("23_56qfj")
 bus = &"Sound Effects"
 
 [node name="gameOverSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 2
 stream = ExtResource("25_my0hk")
 
 [node name="walkTimer" type="Timer" parent="."]

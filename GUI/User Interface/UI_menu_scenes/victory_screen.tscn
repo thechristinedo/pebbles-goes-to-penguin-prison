@@ -88,7 +88,7 @@ theme_override_constants/outline_size = 2
 text = "Quit"
 
 [node name="VictorySound" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
+process_mode = 2
 stream = ExtResource("5_21s51")
 autoplay = true
 

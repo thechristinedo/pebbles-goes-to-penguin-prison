@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-#@onready var victory_sound = $VictorySound
-#
-#func _ready():
-#	# Play the victory sound when the scene is ready
-#	victory_sound.play()
+@onready var victory_sound = $VictorySound
+
+func _ready():
+	# Play the victory sound when the scene is ready
+	victory_sound.play()
 
 func _on_play_again_pressed():
 	get_tree().paused = false

@@ -338,6 +338,7 @@ func take_damage(damage: int = 1) -> void:
 		shadow.visible = false
 		inventory_node.clear_inventory()
 		gameOver.visible = true
+		$gameOverSound.play()
 		print("dead")
 		pebbles_death.emit()
 	get_node("/root/World").update_player_health(health, max_health)
