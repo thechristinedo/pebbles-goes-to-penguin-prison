@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://2gsuh1kyuipl"]
+[gd_scene load_steps=17 format=3 uid="uid://2gsuh1kyuipl"]
 
 [ext_resource type="Script" path="res://GUI/User Interface/UI_menus/Menu.gd" id="1_tgxhm"]
 [ext_resource type="Shader" path="res://Misc/pixel.gdshader" id="2_3itbe"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="8_dxhl1"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="9_ts0n3"]
 [ext_resource type="PackedScene" uid="uid://1gct8vkdfl7a" path="res://volume_slider.tscn" id="10_3ymch"]
+[ext_resource type="Script" path="res://Menu/button.gd" id="10_c8pew"]
 [ext_resource type="AudioStream" uid="uid://d4ib2wmobssvo" path="res://Audio/startSound.mp3" id="11_p6ei1"]
 [ext_resource type="Texture2D" uid="uid://4q3rf7g8m62b" path="res://Assets/trash.png" id="11_t01sp"]
 [ext_resource type="AudioStream" uid="uid://ca2uysq0dlhmw" path="res://Audio/selectSound.mp3" id="12_1rcud"]
@@ -127,6 +128,7 @@ layout_mode = 2
 theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 3
 text = "Play"
+script = ExtResource("10_c8pew")
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -383,6 +385,7 @@ layout_mode = 2
 [node name="SaveSlot1" type="Button" parent="SaveSlot/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+focus_neighbor_right = NodePath("Trash1")
 theme = ExtResource("9_ts0n3")
 theme_override_constants/outline_size = 2
 text = "Save Slot 1

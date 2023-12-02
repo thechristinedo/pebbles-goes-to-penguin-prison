@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgw1euwbef5rt"]
+[gd_scene load_steps=5 format=3 uid="uid://bgw1euwbef5rt"]
 
 [ext_resource type="Script" path="res://GUI/User Interface/UI_menu_scenes/victory_screen.gd" id="1_ve08r"]
 [ext_resource type="FontFile" uid="uid://cqia8tbmpi3ec" path="res://Misc/ChiKareGo2.ttf" id="2_e34pb"]
 [ext_resource type="Theme" uid="uid://dap64i2o0ns0x" path="res://Misc/Theme.tres" id="3_g3m1t"]
+[ext_resource type="Script" path="res://GUI/User Interface/UI_menu_scenes/button.gd" id="4_dohq5"]
 
 [node name="VictoryScreen" type="CanvasLayer"]
 layer = 10
@@ -71,6 +72,7 @@ layout_mode = 2
 theme = ExtResource("3_g3m1t")
 theme_override_constants/outline_size = 2
 text = "Play Again"
+script = ExtResource("4_dohq5")
 
 [node name="Back to Main Menu" type="Button" parent="Victory/MarginContainer/VBoxContainer2"]
 layout_mode = 2
