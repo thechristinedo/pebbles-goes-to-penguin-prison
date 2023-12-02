@@ -431,7 +431,7 @@ hframes = 2
 frame = 0
 
 [node name="Hitbox" parent="." index="2"]
-position = Vector2(1, 18)
+position = Vector2(0, 18)
 
 [node name="AnimationTree" parent="." index="3"]
 anim_player = NodePath("../AnimationPlayer")

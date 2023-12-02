@@ -108,6 +108,7 @@ func _on_input_type_button_item_selected(index):
 		EventBus.input_scheme_changed.emit(index)
 
 func _on_trash_1_pressed():
+	selectSound.play()
 	var error = SaveSystem.delete_save(1)
 	if error != OK:
 		success_label.visible = false
@@ -117,6 +118,7 @@ func _on_trash_1_pressed():
 		error_label.visible = false
 
 func _on_trash_2_pressed():
+	selectSound.play()
 	var error = SaveSystem.delete_save(2)
 	if error != OK:
 		success_label.visible = false
@@ -128,6 +130,7 @@ func _on_trash_2_pressed():
 
 
 func _on_trash_3_pressed():
+	selectSound.play()
 	var error = SaveSystem.delete_save(3)
 	if error != OK:
 		success_label.visible = false

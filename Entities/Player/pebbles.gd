@@ -20,6 +20,7 @@ class_name Player
 @onready var shotgunShot = $shotgunShot
 @onready var revolverShot = $revolverShot
 @onready var machinegunShot = $machinegunShot
+@onready var lasergunShot = $lasergunShot
 @onready var walkSound = $walkSound
 @onready var slideSound = $slideSound
 @onready var eatSound = $eatSound
@@ -136,6 +137,8 @@ func handle_player_shoot() -> void:
 					revolverShot.play()
 				elif gunType == "machinegun":
 					machinegunShot.play()
+				elif gunType == "lasergun":
+					lasergunShot.play()
 				camera.shake(current_gun.shooter.recoil, 0.05)
 
 func handle_player_movement() -> void:
