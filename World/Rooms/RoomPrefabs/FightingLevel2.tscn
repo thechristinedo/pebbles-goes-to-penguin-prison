@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cl0ixssag2vrj"]
+[gd_scene load_steps=35 format=3 uid="uid://cl0ixssag2vrj"]
 
 [ext_resource type="PackedScene" uid="uid://b8rqo3xqcfu1m" path="res://World/Rooms/Room.tscn" id="1_648ik"]
 [ext_resource type="Script" path="res://World/Rooms/RoomPrefabs/prison_cell.gd" id="2_5guae"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://xrolridxojk0" path="res://Entities/Enemies/BaseEnemy/PBPolice/pb_police.tscn" id="8_udmtp"]
 [ext_resource type="PackedScene" uid="uid://b71kmqiplxyv0" path="res://Entities/Objects/barrel_fish.tscn" id="9_2af7x"]
 [ext_resource type="PackedScene" uid="uid://cfrfa68vweth2" path="res://Entities/Objects/barrel_bone.tscn" id="10_xwfak"]
+[ext_resource type="PackedScene" uid="uid://s2xdvvsal6yb" path="res://Entities/Enemies/BaseEnemy/EmperorPenguin/emperor.tscn" id="13_4jeo6"]
 [ext_resource type="PackedScene" uid="uid://drxk1ac83qn5k" path="res://Collectables/Guns/machinegun_collectable.tscn" id="13_qugg6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5d2s"]
@@ -299,6 +300,9 @@ position = Vector2(209, -151)
 
 [node name="MachinegunCollectable" parent="." index="16" instance=ExtResource("13_qugg6")]
 position = Vector2(-93, -279)
+
+[node name="emperor" parent="." index="17" instance=ExtResource("13_4jeo6")]
+position = Vector2(-2, -219)
 
 [connection signal="body_entered" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_entered"]
 [connection signal="body_exited" from="DoorInteractableArea" to="." method="_on_door_interactable_area_body_exited"]

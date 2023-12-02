@@ -8,8 +8,16 @@ extends Control
 @onready var input_type_menu = $InputType
 @onready var selectSound = $selectSound
 @onready var saveslot = $SaveSlot
+@onready var playButton = $MarginContainer/VBoxContainer/Play
+@onready var slotButton = $SaveSlot/MarginContainer2/VBoxContainer/SaveSlot1
+@onready var volumeButton = $Option/MarginContainer2/VBoxContainer/Volume
+@onready var masterVolumeSlider = $Volume/MarginContainer/VBoxContainer/master_slider
+@onready var inputTypeButton = $InputType/VBoxContainer2/InputTypeButton
 @onready var success_label = get_node("SaveSlot/MarginContainer2/VBoxContainer/Success")
 @onready var error_label = get_node("SaveSlot/MarginContainer2/VBoxContainer/Error")
+
+func _ready():
+	playButton.grab_focus()
 
 func _on_play_pressed():
 	#$TextureRect.visible = true
@@ -19,6 +27,7 @@ func _on_play_pressed():
 	main_label.visible = false
 	main_buttons.visible = false
 	saveslot.visible = true
+	slotButton.grab_focus()
 
 func _on_save_slot_1_pressed():
 	#$TextureRect.visible = true
@@ -64,6 +73,7 @@ func _on_options_pressed():
 	main_buttons.visible = false
 	option_menu.visible = true
 	#get_tree().change_scene_to_file("res://options_menu.tscn")
+	volumeButton.grab_focus()
 
 func _on_exit_pressed():
 	selectSound.play()
@@ -73,11 +83,13 @@ func _on_volume_pressed():
 	selectSound.play()
 	option_menu.visible = false
 	volume_menu.visible = true
+	masterVolumeSlider.grab_focus()
 	
 func _on_input_type_pressed():
 	selectSound.play()
 	option_menu.visible = false
 	input_type_menu.visible = true
+	inputTypeButton.grab_focus()
 
 func _on_back_pressed():
 	selectSound.play()
@@ -87,6 +99,7 @@ func _on_back_pressed():
 	volume_menu.visible = false
 	input_type_menu.visible = false
 	saveslot.visible = false
+	playButton.grab_focus()
 
 
 func _on_input_type_button_item_selected(index):

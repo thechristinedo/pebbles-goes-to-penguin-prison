@@ -14,7 +14,12 @@ const radius = 25
 var player # The player reference
 
 func _ready():
-	player = get_tree().get_nodes_in_group("player")[0] # Assign the player reference
+#	player = get_tree().get_nodes_in_group("player")[0] # Assign the player reference
+	var player_nodes = get_tree().get_nodes_in_group("player")
+	if player_nodes.size() > 0:
+		player = player_nodes[0]
+	else:
+		print("No player nodes found in 'player' group.")
 	_shoot()
 
 func _process(delta: float) -> void:
@@ -60,6 +65,9 @@ func _shootOne():
 		await get_tree().create_timer(0.4).timeout
 
 func angle_to_player():
+	if player == null:
+		print("Player reference is null.")
+		return 0
 	# Calculate the angle between the snowman and the player
 	var diff = player.position - position # Get the difference vector
 	return atan2(diff.y, diff.x) # Return the angle using atan2

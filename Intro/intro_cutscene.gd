@@ -1,9 +1,11 @@
 extends Node2D
 
+@onready var skipButton = $Control/skip_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play('Intro')
+	skipButton.grab_focus()
 	await(get_tree().create_timer(40).timeout)
 	SceneTransition.change_scene("res://World/world.tscn", 'dissolve')
 	
