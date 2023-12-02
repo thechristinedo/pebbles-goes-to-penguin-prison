@@ -29,6 +29,9 @@ class_name Player
 var bullet_count_label: Label = null
 @export var max_bullet_count: int = 30
 var current_bullet_count: int = 0
+var reload_cooldown_seconds: float = 4 # Cooldown duration in seconds
+var current_reload_cooldown: float = 0.0 # Current cooldown timer
+
 
 # Fish
 @onready var fishventory = $Fishventory
@@ -46,7 +49,7 @@ var current_animation: String = "idle"
 var is_sliding = false 
 var lastMovement
 
-var slide_cooldown : float = 0.5
+var slide_cooldown : float = 0.7
 var current_slide_cooldown : float = 0.0
 
 var enemy_inattack_range = false
@@ -112,6 +115,10 @@ func _physics_process(_delta):
 		
 	fish_count = fishventory.get_fish_value()
 	get_node("/root/World/GUI/Panel/FishAmount").set_count_label(fish_count, 0)
+	
+	# Reload cooldown
+	if current_reload_cooldown > 0:
+		current_reload_cooldown -= _delta
 
 func handle_player_shoot() -> void:	
 	if Input.is_action_pressed("shoot"):
@@ -221,7 +228,6 @@ func handle_player_interactions() -> void:
 			print("No fish in fishventory! Collect some fish!")
 	
 	if Input.is_action_just_pressed("reload"):
-		$reload.play()
 		reload()
 
 func update_animation() -> void:
@@ -384,5 +390,9 @@ func decrease_bullet_count():
 	print("Current bullets left: " + str(current_bullet_count))
 
 func reload():
-	current_bullet_count = max_bullet_count
-	bullet_count_label.text = str(current_bullet_count)
+	if current_reload_cooldown <= 0.0:
+		current_bullet_count = max_bullet_count
+		bullet_count_label.text = str(current_bullet_count)
+		# Set cooldown timer
+		current_reload_cooldown = reload_cooldown_seconds
+		$reload.play()
