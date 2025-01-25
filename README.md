@@ -58,5 +58,3 @@ Default: Keyboard & Mouse <br>
 
 <!--Visit the live site to see my work in action: [richerduong.com](https://richerduong.com)-->
 <br>
-
-*Created by Richer Duong*
